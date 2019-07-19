@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  founded_date: 2019-07-19
+  name: MyString
+  city: MyString
+  state: MyString
+  description: MyString
+  founders_id: 1
+
+two:
+  founded_date: 2019-07-19
+  name: MyString
+  city: MyString
+  state: MyString
+  description: MyString
+  founders_id: 1
