@@ -1,6 +1,8 @@
 {
   "name": "app",
   "private": true,
+  "eslint": "eslint",
+
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
@@ -11,6 +13,13 @@
     "react_ujs": "^2.5.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0"
   }
 }
