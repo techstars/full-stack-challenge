@@ -5,17 +5,14 @@ $primary: #292939;
 $secondary: #f2f2e6;
 $active: #ed6767;
 $alt: #793f5c;
+
 /*
-  HTML Element Styles
-*/
+ * __HTML Element Styles__ *
+ */
 html {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 10px;
   color: $primary
-}
-
-body {
-  margin : 0;
 }
 
 @media screen and (max-width: 720px) {
@@ -29,10 +26,34 @@ body {
     font-size: 1.6rem;
   }
 }
+body {
+  margin : 0;
+}
 
+a {
+  color: $alt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $active;
+}
+
+
+/*
+ * __Template Styles__ *
+*/
 
 #navbar {
   background: $primary;
   color: $secondary;
-  height: 20vh;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  h1, a { margin: auto 4rem 0 4rem; }
+  
+  a { font-size: 2.5rem; }
 }
