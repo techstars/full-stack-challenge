@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'companies/index'
   root to: 'companies#index'
+  resources :companies
 
 end
