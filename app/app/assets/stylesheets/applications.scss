@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap');
+
+
+$primary: #292939;
+$secondary: #f2f2e6;
+$active: #ed6767;
+$alt: #793f5c;
+/*
+  HTML Element Styles
+*/
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 10px;
+  color: $primary
+}
+
+body {
+  margin : 0;
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+
+#navbar {
+  background: $primary;
+  color: $secondary;
+  height: 20vh;
+}
