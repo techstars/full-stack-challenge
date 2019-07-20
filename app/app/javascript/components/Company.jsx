@@ -1,14 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import CompanyType from '../types/company';
 
-const Company = ({ name }) => (
+const Company = ({
+  founded_date, name, city, state, description,
+}) => (
   <li>
-    <p>{name}</p>
+    <p>{ name }</p>
+    <p>{ founded_date.toString() }</p>
+    <p>{ city }</p>
+    <p>{ state }</p>
+    <p>{ description }</p>
   </li>
 );
 
 export default Company;
 
-Company.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+Company.propTypes = { ...CompanyType };

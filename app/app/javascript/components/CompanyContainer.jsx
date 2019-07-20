@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import CompanyType from '../types/company';
 import Company from './Company';
 
