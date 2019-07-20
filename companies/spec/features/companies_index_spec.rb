@@ -2,12 +2,35 @@ require 'rails_helper'
 
 RSpec.feature "Index of companies", type: :feature do
   context 'when visitor visits companies index' do
-    it 'can see all companies' do
-      company_1 = Company.create(name: "Company 1 Name", location: "Denver,CO", description:"Long description here")
-      company_2 = Company.create(name: "Company 2 Name", location: "Boulder,CO", description:"Long description here")
+    before :each do
+      @companies = create_list(:company, 3)
       visit '/'
-      expect(page).to have_content(company_1.name)
-      expect(page).to have_content(company_2.name)
     end
+    it 'can see all companies' do
+      expect(page).to have_content(@companies[0].name)
+      expect(page).to have_content(@companies[1].name)
+      expect(page).to have_content(@companies[2].name)
+    end
+
+    it "can see each company's name, location and description" do
+      @companies.each do |company|
+        within "#company-#{company.id}" do
+          expect(page).to have_content(company.name)
+          expect(page).to have_content(company.description)
+          expect(page).to have_content(company.location)
+        end
+      end
+
+    end
+
+    it 'can see a button to add a new company' do
+      expect(page).to have_selector(:link_or_button, 'Add Company')
+    end
+
+    it 'can click on the add a new company button' do
+      click_on("Add Company")
+      expect(current_path).to eq(new_company_path)
+    end
+
   end
 end
