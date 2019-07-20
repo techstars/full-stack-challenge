@@ -1,2 +1,38 @@
-<h1>Companies#index</h1>
-<p>Find me in app/views/companies/index.html.erb</p>
+
+<section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Companies</h1>
+          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+
+        </div>
+      </section>
+
+<section class="container">
+  <% @companies.each do |company| %>
+  <section class="row" id="cards_wrapper">
+    <div class='card mt-5' id="company-<%= company.id %>">
+      <div class="card-body">
+        <div class="row ">
+          <div class="col-sm-4 pr-3 border-right">
+            <h3 class="card-title text-right"> <%= company.name %> </h3>
+          </div>
+          <div class="col-sm-4">
+            <h5 class="text-left"> <%= company.location %></h5>
+          </div>
+          <div class="col-sm-4 text-right">
+            <%= link_to "more...", root_path %>
+          </div>
+
+        </div>
+        <div class="row m-2">
+          <p class="card-text"><%= company.description %></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <% end %>
+  <section class="m-4 text-right">
+    <%= link_to "Add Company", root_path, class:"btn btn-primary"  %>
+  </section>
+</section>
