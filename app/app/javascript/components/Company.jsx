@@ -2,16 +2,29 @@ import React from 'react';
 import CompanyType from '../types/company';
 
 const Company = ({
-  founded_date, name, city, state, description,
-}) => (
-  <li>
-    <p>{ name }</p>
-    <p>{ founded_date.toString() }</p>
-    <p>{ city }</p>
-    <p>{ state }</p>
-    <p>{ description }</p>
-  </li>
-);
+  id, founded_date, name, city, state, description,
+}) => {
+  const date = new Date(founded_date);
+  const dateString = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
+  return (
+    <li>
+      <div className="row">
+        <div className="nameplate">
+          <h2>{ name }</h2>
+          <span>{`${city}, ${state}`}</span>
+        </div>
+        <a href={`/companies/${id}`}>more...</a>
+      </div>
+
+      <hr />
+
+      <p>{ description }</p>
+      <span>
+        {`Founded ${dateString}`}
+      </span>
+    </li>
+  );
+};
 
 export default Company;
 

@@ -2,7 +2,7 @@
 
 
 $primary: #292939;
-$secondary: #f2f2e6;
+$secondary: #fff;
 $active: #ed6767;
 $alt: #793f5c;
 
@@ -13,6 +13,11 @@ html {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 10px;
   color: $primary
+}
+
+body {
+  margin : 0;
+  background: $primary;
 }
 
 @media screen and (max-width: 720px) {
@@ -26,9 +31,6 @@ html {
     font-size: 1.6rem;
   }
 }
-body {
-  margin : 0;
-}
 
 a {
   color: $alt;
@@ -39,6 +41,25 @@ a {
 a:hover {
   color: $active;
 }
+
+button {
+  background: $secondary;
+  border: 0;
+  padding: 1rem 2rem;
+}
+
+/*
+ * __Modifiers__ *
+*/
+
+.row {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
 
 
 /*
