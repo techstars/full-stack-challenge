@@ -19,11 +19,11 @@ li {
     justify-content: space-between;
     align-items: inherit;    
     h2 { 
-      font-size: 4rem;
+      font-size: 2.4em;
       margin: 0;
     }
     span {
-      font-size: 2rem;
+      font-size: 1.4em;
       font-weight: 400; 
       padding-left: 0.6em;
       border-left: 1px solid $primary;
@@ -40,4 +40,8 @@ li {
   p {
     font-size: 1.4em;
   }
+}
+
+button {
+  float: right;
 }

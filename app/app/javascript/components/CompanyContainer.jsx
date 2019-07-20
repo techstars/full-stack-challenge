@@ -21,6 +21,7 @@ class CompanyContainer extends Component {
         <Navbar />
         <ul>
           {companies.map(company => <Company key={company.id} {...company} />)}
+          <button type="button" onClick={() => window.location = '/companies/new'}>Add Companyy</button>
         </ul>
       </React.Fragment>
     );
