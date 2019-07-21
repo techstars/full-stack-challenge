@@ -13,11 +13,12 @@ RSpec.feature "Company Create", type: :feature do
       end
 
       it 'I can see all the fields needed to create a Company' do
+        save_and_open_page
         expect(page).to have_field("Name")
         expect(page).to have_field("City")
         expect(page).to have_field("State")
         expect(page).to have_field("Description")
-        expect(page).to have_field("Founded Date")
+        expect(page).to have_field("date-picker")
       end
     end
   end

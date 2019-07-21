@@ -17,7 +17,7 @@ RSpec.feature "Index of companies", type: :feature do
         within "#company-#{company.id}" do
           expect(page).to have_content(company.name)
           expect(page).to have_content(company.description)
-          expect(page).to have_content(company.location)
+          expect(page).to have_content(company.city)
         end
       end
 
