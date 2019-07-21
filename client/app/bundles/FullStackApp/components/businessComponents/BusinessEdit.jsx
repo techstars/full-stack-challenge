@@ -9,9 +9,11 @@ const BusinessEdit = ({
   const editSubmit = ev => {
     ev.preventDefault();
     let name;
-    let description;
+    let shortdesc;
+    let longdesc;
     let location;
     let founded;
+    let founders;
     if (!ev.target[0].value) {
       name = business.name;
     } else {
@@ -19,28 +21,42 @@ const BusinessEdit = ({
     }
 
     if (!ev.target[1].value) {
-      description = business.description;
+      shortdesc = business.shortdesc;
     } else {
-      description = ev.target[1].value;
+      shortdesc = ev.target[1].value;
     }
 
     if (!ev.target[2].value) {
-      location = business.location;
+      longdesc = business.longdesc;
     } else {
-      location =
-        ev.target[2].value.charAt(0).toUpperCase() +
-        ev.target[2].value.slice(1);
+      longdesc = ev.target[1].value;
     }
 
     if (!ev.target[3].value) {
+      location = business.location;
+    } else {
+      location =
+        ev.target[3].value.charAt(0).toUpperCase() +
+        ev.target[3].value.slice(1);
+    }
+
+    if (!ev.target[4].value) {
       founded = business.founded;
     } else {
-      founded = ev.target[3].value;
+      founded = ev.target[4].value;
+    }
+
+    if (!ev.target[5].value) {
+      founders = business.founders;
+    } else {
+      founders = ev.target[5].value;
     }
 
     let editBody = {
       name,
-      description,
+      shortdesc,
+      longdesc,
+      founders,
       location,
       founded
     };
@@ -51,9 +67,11 @@ const BusinessEdit = ({
     <div className='createForm'>
       <form onSubmit={editSubmit}>
         <input placeholder={business.name} />
-        <input placeholder={business.description} />
+        <input placeholder={business.shortdesc} />
+        <textarea placeholder={business.longdesc} />
         <input placeholder={business.location} />
         <input maxLength='4' placeholder={business.founded} />
+        <input placeholder={business.founders} />
         <button type='submit'>Edit Entry</button>
       </form>
       <button onClick={() => cancelEditCallback()}>Cancel Edit</button>

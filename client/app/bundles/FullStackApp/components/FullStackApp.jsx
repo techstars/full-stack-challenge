@@ -3,6 +3,7 @@ import Header from './Header';
 import Businesses from './businessComponents/Businesses';
 import BusinessEdit from './businessComponents/BusinessEdit';
 import AddBusiness from './createComponents/AddBusiness';
+import BusinessSingleView from './businessComponents/BusinessSingleView';
 
 export default class FullStackApp extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class FullStackApp extends React.Component {
     this.state = {
       businesses: [],
       business: { id: 0, name: '', location: '', description: '', founded: 0 },
-      create: false
+      create: false,
+      singleview: {}
     };
   }
 
@@ -70,9 +72,11 @@ export default class FullStackApp extends React.Component {
       method: 'PATCH',
       body: JSON.stringify({
         name: editBody.name,
-        description: editBody.description,
+        shortdesc: editBody.shortdesc,
+        longdesc: editBody.longdesc,
         location: editBody.location,
-        founded: editBody.founded
+        founded: editBody.founded,
+        founders: editBody.founders
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -87,8 +91,12 @@ export default class FullStackApp extends React.Component {
     }
   };
 
+  viewItemCallback = business => {
+    return this.setState({ singleview: business });
+  };
+
   cancelEditCallback = () =>
-    this.setState({ business: { id: 0 }, create: false });
+    this.setState({ business: { id: 0 }, create: false, singleview: {} });
 
   toggleCreate = () => {
     return this.setState({ create: true });
@@ -99,9 +107,11 @@ export default class FullStackApp extends React.Component {
       method: 'POST',
       body: JSON.stringify({
         name: postBody.name,
-        description: postBody.description,
+        shortdesc: postBody.shortdesc,
+        longdesc: postBody.longdesc,
         location: postBody.location,
-        founded: postBody.founded
+        founded: postBody.founded,
+        founders: postBody.founders
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -137,9 +147,14 @@ export default class FullStackApp extends React.Component {
               businesses={this.state.businesses}
               editCallback={this.editCallback}
               deleteCallback={this.deleteCallback}
+              viewItemCallback={this.viewItemCallback}
             />
           </div>
         )}
+        <BusinessSingleView
+          business={this.state.singleview}
+          closeViewCallback={this.cancelEditCallback}
+        />
       </div>
     );
   }

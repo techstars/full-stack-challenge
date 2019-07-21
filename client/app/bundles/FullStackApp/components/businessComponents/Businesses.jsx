@@ -1,7 +1,12 @@
 import React from 'react';
 import BusinessesList from './BusinessesList';
 
-const Businesses = ({ businesses, editCallback, deleteCallback }) => {
+const Businesses = ({
+  businesses,
+  editCallback,
+  deleteCallback,
+  viewItemCallback
+}) => {
   if (businesses.length === 0) {
     return <div>Loading...🍬🍭🍫</div>;
   } else {
@@ -14,6 +19,7 @@ const Businesses = ({ businesses, editCallback, deleteCallback }) => {
             item={x}
             editCallback={editCallback}
             deleteCallback={deleteCallback}
+            viewItemCallback={viewItemCallback}
           />
         ))}
       </span>

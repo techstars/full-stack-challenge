@@ -4,9 +4,11 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
   const create = ev => {
     ev.preventDefault();
     let name;
-    let description;
+    let shortdesc;
+    let longdesc;
     let location;
     let founded;
+    let founders;
     if (!ev.target[0].value) {
       alert('please provide a name');
     } else {
@@ -14,30 +16,44 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
     }
 
     if (!ev.target[1].value) {
-      alert('please provide a description');
+      alert('please provide a short description');
     } else {
-      description = ev.target[1].value;
+      shortdesc = ev.target[1].value;
     }
 
     if (!ev.target[2].value) {
-      alert('please provide a location in format City, State e.g. Boulder, CO');
+      alert('please provide a long description');
     } else {
-      location =
-        ev.target[2].value.charAt(0).toUpperCase() +
-        ev.target[2].value.slice(1);
+      longdesc = ev.target[2].value;
     }
 
     if (!ev.target[3].value) {
+      alert('please provide a location in format City, State e.g. Boulder, CO');
+    } else {
+      location =
+        ev.target[3].value.charAt(0).toUpperCase() +
+        ev.target[3].value.slice(1);
+    }
+
+    if (!ev.target[4].value) {
       alert('please provide a year founded');
     } else {
-      founded = ev.target[3].value;
+      founded = ev.target[4].value;
+    }
+
+    if (!ev.target[5].value) {
+      alert('please provide a year founded');
+    } else {
+      founders = ev.target[5].value;
     }
 
     let postBody = {
       name,
-      description,
+      shortdesc,
+      longdesc,
       location,
-      founded
+      founded,
+      founders
     };
     return createCallback(postBody);
   };
@@ -49,7 +65,9 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
         <br />
         <input type='text' placeholder='Business Name' required />
         <br />
-        <input type='text' placeholder='Description' required />
+        <input type='text' placeholder='Short Description' required />
+        <br />
+        <textarea placeholder='Long Description' required />
         <br />
         <input
           type='text'
@@ -58,6 +76,12 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
         />
         <br />
         <input maxLength='4' placeholder='Year Founded' required />
+        <br />
+        <input
+          type='text'
+          placeholder='Founders (Formate: Name, Name)'
+          required
+        />
         <br />
         <button type='submit'>Create</button>
       </form>

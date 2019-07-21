@@ -127,6 +127,10 @@ My steps:
 
 `gem 'react_on_rails', '8.0.3'`
 
+Running dev with react app:
+
+`foreman start -f Procfile.dev`
+
 ---
 
 ## Resources

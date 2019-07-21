@@ -1,6 +1,11 @@
 import React from 'react';
 
-const BusinessesList = ({ item, editCallback, deleteCallback }) => {
+const BusinessesList = ({
+  item,
+  editCallback,
+  deleteCallback,
+  viewItemCallback
+}) => {
   const titleStyle = {
     fontSize: '17px'
   };
@@ -8,6 +13,8 @@ const BusinessesList = ({ item, editCallback, deleteCallback }) => {
   const editItem = id => editCallback(id);
 
   const deleteItem = id => deleteCallback(id);
+
+  const viewItem = item => viewItemCallback(item);
 
   return (
     <div>
@@ -19,7 +26,7 @@ const BusinessesList = ({ item, editCallback, deleteCallback }) => {
           <b> {item.name}</b>
         </div>
         <div>
-          <i>{item.description}</i>
+          <i>{item.shortdesc}</i>
         </div>
 
         <div>
@@ -30,6 +37,7 @@ const BusinessesList = ({ item, editCallback, deleteCallback }) => {
           <b>Founded:</b> {item.founded}
         </div>
         <div className='buttonDiv'>
+          <button onClick={() => viewItem(item)}>View</button>
           <button onClick={() => editItem(item.id)}>Edit</button>
           <button onClick={() => deleteItem(item.id)}>Delete</button>
         </div>
