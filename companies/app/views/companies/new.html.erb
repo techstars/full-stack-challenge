@@ -1,3 +1,16 @@
+<% if @company.errors %>
+    <ul id="errors">
+      <% @company.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <% end %>
+    </ul>
+<% end %>
+
 <div class="container p-5 m-5">
   <div class="row">
     <div class="col md-6">
