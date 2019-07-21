@@ -1,9 +1,7 @@
 class Company < ApplicationRecord
   validates :name, presence: true
-  validates :location, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
   validates :description, presence: true
-
-  attr_accessor :city,
-                :state
-
+  validates :founded_date, presence: true
 end

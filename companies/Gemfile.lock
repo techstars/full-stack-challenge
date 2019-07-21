@@ -91,6 +91,7 @@ GEM
       factory_bot (~> 5.0.2)
       railties (>= 4.2.0)
     ffi (1.11.1)
+    flatpickr (4.5.7.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.6.0)
@@ -245,6 +246,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   factory_bot_rails
   faker!
+  flatpickr
   jbuilder (~> 2.5)
   jquery-rails
   launchy
