@@ -1,4 +1,8 @@
-# Techstars Engineering: Fun Front to Back
+# Fischer Full-Stack-Challenge 🍭🍬🍫
+
+[Deployed URL]()
+
+## Techstars Engineering: Fun Front to Back
 
 Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse project and value team members who can do it all from CSS to DevOps and everything inbetween. We love to code and are passionate about doing it well.
 
@@ -92,7 +96,11 @@ If you move onto the next stage of the interview process we will have you come i
 
 My steps:
 
-`rails g scaffold Business name:string shortdesc:text longdesc:text location:string founded:integer founders:string`
+`rails new full-stack-challenge --database=postgresql`
+
+`rails g scaffold Business name:string shortdesc:text longdesc:text location:string founded:integer founders:array`
+
+`rake db:migrate`
 
 `gem 'webpacker_lite'`
 
