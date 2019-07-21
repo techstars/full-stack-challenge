@@ -2,6 +2,27 @@
 
 [Deployed URL]()
 
+For Rails generated Businesses routes:
+
+`rails server`
+
+`http://localhost:3000/businesses for Rails XML CRUD`
+
+Test routes httPie: `http GET/DELETE/PUT/POST :3000/businessses.json or :businesses/:id.json`
+
+```json
+Business: {
+  id: int (auto),
+  name: string,
+  longdesc: string,
+  shortdesc: string,
+  founded: int,
+  founders: string,
+  location: string,
+  timestamps (auto)
+}
+```
+
 ## Techstars Engineering: Fun Front to Back
 
 Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse project and value team members who can do it all from CSS to DevOps and everything inbetween. We love to code and are passionate about doing it well.
@@ -105,3 +126,9 @@ My steps:
 `gem 'webpacker_lite'`
 
 `gem 'react_on_rails', '8.0.3'`
+
+---
+
+## Resources
+
+[Testing with RSpec and Jest](https://www.freecodecamp.org/news/how-to-get-started-testing-a-ruby-on-rails-reactjs-app-with-rspec-jest-and-enzyme-d058f415894e/)
