@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @business.name %>
+</p>
+
+<p>
+  <strong>Shortdesc:</strong>
+  <%= @business.shortdesc %>
+</p>
+
+<p>
+  <strong>Longdesc:</strong>
+  <%= @business.longdesc %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @business.location %>
+</p>
+
+<p>
+  <strong>Founded:</strong>
+  <%= @business.founded %>
+</p>
+
+<p>
+  <strong>Founders:</strong>
+  <%= @business.founders %>
+</p>
+
+<%= link_to 'Edit', edit_business_path(@business) %> |
+<%= link_to 'Back', businesses_path %>
