@@ -3,8 +3,7 @@
       <div class="card-body" >
         <div class="row text-center">
           <div class="col">
-            <h1 class=" border border-danger"> <%= @company.name %> </h1>
-
+            <h1> <%= @company.name %> </h1>
           </div>
         </div>
         <div class="row">
@@ -23,10 +22,29 @@
 
         <div class="row">
           <%= @company.description %>
-
         </div>
 
       </div>
+    </div>
+
+
+    <section class="container">
+      <h1>Founders</h1>
+      <section class="row" id="cards_wrapper">
+        <% @company.founders.each do |founder| %>
+        <div class='card col-12 col-md-6 col-lg-4 col-xl-3' id="founder-<%= founder.id %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= founder.name %></h5>
+            <h6><%= founder.title %></h6>
+          </div>
+
+        </div>
+        <% end %>
+      </section>
+      <section class="m-4 text-right">
+        <%= link_to "Add Founder", new_company_path, class:"btn btn-primary"  %>
+      </section>
+    </section>
 
 
   </section>
