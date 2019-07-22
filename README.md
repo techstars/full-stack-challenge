@@ -1,3 +1,38 @@
+# Deployed site
+[Hosted on Heroku](https://fast-anchorage-36967.herokuapp.com/)
+
+# To run application
+
+Clone the repo on your local machine from your terminal
+
+    git clone https://github.com/teresa-m-knowles/full-stack-challenge.git
+
+Enter the newly created directory and run bundle install and bundle update
+
+    cd little_shop
+    bundle install
+    bundle update
+
+Create, migrate, and seed the database
+
+    rake db:{create,migrate,seed}
+
+Launch a local server with rails s
+
+    rails s
+    
+# To run the tests
+```
+rspec
+```
+
+# Decisions
+
+- Since I'm still learning React, I decided not to use it for the frontend because of the short timeframe 
+- Ended up choosing to have a more robust test suite and functionality over spending more time styling
+ 
+   
+
 # Techstars Engineering: Fun Front to Back
 
 Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse project and value team members who can do it all from CSS to DevOps and everything inbetween.  We love to code and are passionate about doing it well.
