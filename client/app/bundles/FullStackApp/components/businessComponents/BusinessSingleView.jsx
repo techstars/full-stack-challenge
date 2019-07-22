@@ -1,10 +1,37 @@
 import React from 'react';
 
-const BusinessSingleView = ({ business, closeViewCallback }) => {
+const BusinessSingleView = ({
+  business,
+  closeViewCallback,
+  editCallback,
+  deleteCallback
+}) => {
+  const editItem = id => editCallback(id);
+
+  const deleteItem = id => deleteCallback(id);
+
+  const formatDate = date => {
+    //1945-02-10
+    let month;
+    let year = date.split('-')[0];
+    let monthNum = date.split('-')[1];
+    for (let i = 0; i < monthArr.length; i++) {
+      if (+monthNum - 1 === i) {
+        month = monthArr[i];
+      }
+    }
+    let day = date.split('-')[2];
+
+    let dateReturn = `${month} ${day}, ${year}`;
+    return dateReturn;
+  };
+
   return (
     <div className='singleView'>
       <div>
-        <h3>Name: {business.name}</h3>
+        <h3>
+          <em>{business.name}</em>
+        </h3>
       </div>
       <br />
       <div>
@@ -14,14 +41,31 @@ const BusinessSingleView = ({ business, closeViewCallback }) => {
       <div>Location: {business.location}</div>
       <div>
         <br />
-        <em>Year: {business.founded}</em>
+        Founded: <em>{formatDate(business.founded)}</em>
       </div>
       <br />
       <div>Founders: {business.founders}</div>
       <br />
+      <button onClick={() => editItem(business.id)}>Edit</button>
+      <button onClick={() => deleteItem(business.id)}>Delete</button>
       <button onClick={() => closeViewCallback()}>Close</button>
     </div>
   );
 };
 
 export default BusinessSingleView;
+
+const monthArr = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];

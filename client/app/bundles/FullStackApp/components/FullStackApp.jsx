@@ -22,9 +22,10 @@ export default class FullStackApp extends React.Component {
   }
 
   getPhoto = async () => {
-    let sig = numsArr[Math.floor(Math.random() * numsArr.length)];
+    let num = Math.floor(Math.random() * 29 + 1);
+    console.log('sig:', num);
     let response = await fetch(
-      `https://source.unsplash.com/collection/7728984/480x480/?sig=${sig}`
+      `https://source.unsplash.com/collection/7728984/480x480/?sig=${num}`
     );
     return response.url;
   };
@@ -35,7 +36,6 @@ export default class FullStackApp extends React.Component {
     for (let i = 0; i < resJson.length; i++) {
       resJson[i] = { ...resJson[i], photo: await this.getPhoto() };
     }
-    console.log('resJs:', resJson);
     return this.setState({ businesses: resJson });
   };
 
@@ -48,10 +48,11 @@ export default class FullStackApp extends React.Component {
         alert(`Delete for item ${id} failed`);
       } else {
         alert(`Business ${id} deleted`);
+        this.setState({ create: false, view: false });
         return this.getBus();
       }
     } else {
-      return this.setState({ create: false });
+      return this.setState({ create: false, view: false });
     }
   };
 
@@ -63,7 +64,6 @@ export default class FullStackApp extends React.Component {
         business = busArr[i];
       }
     }
-    console.log('edit call hit:', business);
     return this.setState({ business: business });
   };
 
@@ -86,7 +86,7 @@ export default class FullStackApp extends React.Component {
     if (response.status !== 200) {
       alert(`Edit for item ${id} error`);
     } else {
-      this.setState({ business: { id: 0 } });
+      this.setState({ business: { id: 0 }, view: false });
       return this.getBus();
     }
   };
@@ -149,6 +149,9 @@ export default class FullStackApp extends React.Component {
           <BusinessSingleView
             business={this.state.singleview}
             closeViewCallback={this.cancelEditCallback}
+            deleteCallback={this.deleteCallback}
+            editCallback={this.editCallback}
+            viewItemCallback={this.viewItemCallback}
           />
         ) : (
           <div>
@@ -160,8 +163,6 @@ export default class FullStackApp extends React.Component {
             </button>
             <Businesses
               businesses={this.state.businesses}
-              editCallback={this.editCallback}
-              deleteCallback={this.deleteCallback}
               viewItemCallback={this.viewItemCallback}
             />
           </div>
@@ -170,26 +171,3 @@ export default class FullStackApp extends React.Component {
     );
   }
 }
-
-const numsArr = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20
-];

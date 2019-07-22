@@ -9,6 +9,8 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
     let location;
     let founded;
     let founders;
+    let city;
+    let state;
     if (!ev.target[0].value) {
       alert('please provide a name');
     } else {
@@ -30,28 +32,32 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
     if (!ev.target[3].value) {
       alert('please provide a location in format City, State e.g. Boulder, CO');
     } else {
-      location =
-        ev.target[3].value.charAt(0).toUpperCase() +
-        ev.target[3].value.slice(1);
+      state = ev.target[3].value.charAt(0).toUpperCase();
     }
 
     if (!ev.target[4].value) {
-      alert('please provide a year founded');
+      alert('please provide a location in format City, State e.g. Boulder, CO');
     } else {
-      founded = ev.target[4].value;
+      state = ev.target[4].value.toUpperCase();
     }
-
+    console.log('founded value:', ev.target[5].value);
     if (!ev.target[5].value) {
       alert('please provide a year founded');
     } else {
-      founders = ev.target[5].value;
+      founded = ev.target[5].value.toString();
+    }
+
+    if (!ev.target[6].value) {
+      alert('please provide a year founded');
+    } else {
+      founders = ev.target[6].value;
     }
 
     let postBody = {
       name,
       shortdesc,
       longdesc,
-      location,
+      location: `${city}, ${state}`,
       founded,
       founders
     };
@@ -65,25 +71,26 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
         <form onSubmit={create}>
           <br />
           <br />
-          <input type='text' placeholder='Business Name' required />
-          <br />
-          <input type='text' placeholder='Short Description' required />
-          <br />
-          <textarea placeholder='Long Description' required />
-          <br />
-          <input
-            type='text'
-            placeholder='Location "City, State (Lewes, DE)'
-            required
-          />
-          <br />
-          <input maxLength='4' placeholder='Year Founded' required />
-          <br />
-          <input
-            type='text'
-            placeholder='Founders (Formate: Name, Name)'
-            required
-          />
+          <label>Business</label>
+          <input />
+          <label>Tagline</label>
+          <input />
+          <label>Description</label>
+          <textarea />
+          <label>
+            City
+            <input />
+          </label>
+          <label>
+            State
+            <input maxLength='2' width='2' />
+          </label>
+          <label>Founded</label>
+
+          <input type='date' />
+
+          <label>Founders</label>
+          <input />
           <br />
           <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
             Create

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_190045) do
     t.text "shortdesc"
     t.text "longdesc"
     t.string "location"
-    t.integer "founded"
+    t.string "founded"
     t.string "founders"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

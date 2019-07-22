@@ -1,20 +1,28 @@
 import React from 'react';
+import Founders from '../foundersComponents/Founders';
 
-const BusinessesList = ({
-  item,
-  editCallback,
-  deleteCallback,
-  viewItemCallback
-}) => {
+const BusinessesList = ({ item, viewItemCallback }) => {
   const titleStyle = {
     fontSize: '17px'
   };
 
-  const editItem = id => editCallback(id);
-
-  const deleteItem = id => deleteCallback(id);
-
   const viewItem = item => viewItemCallback(item);
+
+  const formatDate = date => {
+    //1945-02-10
+    let month;
+    let year = date.split('-')[0];
+    let monthNum = date.split('-')[1];
+    for (let i = 0; i < monthArr.length; i++) {
+      if (+monthNum - 1 === i) {
+        month = monthArr[i];
+      }
+    }
+    let day = date.split('-')[2];
+
+    let dateReturn = `${month} ${day}, ${year}`;
+    return dateReturn;
+  };
 
   return (
     <div>
@@ -35,24 +43,32 @@ const BusinessesList = ({
           </div>
 
           <div>
-            <b>Founded:</b> {item.founded}
+            <b>Founded:</b> {formatDate(item.founded)}
           </div>
         </div>
         <div className='buttonDiv'>
-          <button onClick={() => viewItem(item)}>View</button>
-          <button onClick={() => editItem(item.id)}>Edit</button>
-          <button onClick={() => deleteItem(item.id)}>Delete</button>
+          <h2 className='more' onClick={() => viewItem(item)}>
+            more...
+          </h2>
         </div>
       </div>
     </div>
   );
 };
 
-{
-  /* <img
-              src='https://images.unsplash.com/photo-1501755792080-cd51e405462c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2282&q=80'
-              alt='Unsplash Photo'
-            /> */
-}
-
 export default BusinessesList;
+
+const monthArr = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
