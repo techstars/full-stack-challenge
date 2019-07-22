@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe 'Techstars Assessment API', type :request do
+RSpec.describe 'Techstars Assessment API', type: :request do
   # Initialize test data:
   let!(:companies) { create_list(:company, 12) }
   let(:company_id) { companies.first.id }
@@ -48,3 +48,5 @@ Rspec.describe 'Techstars Assessment API', type :request do
   end
 
 
+
+end
