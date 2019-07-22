@@ -133,6 +133,16 @@ Running dev with react app:
 
 `foreman start -f Procfile.dev`
 
+Heroku:
+
+heroku create fullstackbusinesses
+
+database automatically provisioned with rails config
+
+`heroku run rake db:migrate`
+
+`heroku run rake db:seed`
+
 ---
 
 ## Resources
