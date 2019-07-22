@@ -56,8 +56,8 @@ export default class FullStackApp extends React.Component {
     for (let i = 0; i < resJson.length; i++) {
       resJson[i] = {
         ...resJson[i],
-        // photo: await this.getPhoto()
-        photo: 'http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder.svg'
+        photo: await this.getPhoto()
+        // photo: 'http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder.svg'
       };
     }
     this.getFounders();
