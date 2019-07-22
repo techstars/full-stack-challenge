@@ -143,7 +143,7 @@ database automatically provisioned with rails config
 
 `heroku run rake db:seed`
 
-error troubleshooting: yarn install issues with webpack, config.assets.js_compressor = Uglifier.new(harmony: true)
+error troubleshooting: yarn install issues with webpack (`"scripts": { "postinstall": "cd client && npm install" }`), `config.assets.js_compressor = Uglifier.new(harmony: true)`)
 
 ---
 
