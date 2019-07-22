@@ -23,11 +23,18 @@ RSpec.feature "A user can edit a company", type: :feature do
         it "allows me to edit fields" do
           old_name = @company.name
           fill_in "company_name", with: "New Name"
-          click_button "Save"
+          click_on "Save"
+
           expect(current_path).to eq(company_path(@company))
           expect(page).to have_content("New Name")
           expect(page).to_not have_content(old_name)
-          expect(@company.name).to eq("New Name")
+        end
+        it "updates the company's information" do
+          fill_in "company_name", with: "New Name"
+          click_on "Save"
+
+          new = Company.find(@company.id)
+          expect(new.name).to eq("New Name")
         end
       end
     end
