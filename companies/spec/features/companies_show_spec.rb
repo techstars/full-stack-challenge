@@ -6,6 +6,7 @@ RSpec.feature "Company show page", type: :feature do
     describe 'When I click on more... for a company' do
       before :each do
         @company = build(:company)
+        @company.save
         visit '/'
         within "#company-#{@company.id}" do
           click_on "more..."
