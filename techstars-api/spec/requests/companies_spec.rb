@@ -21,7 +21,7 @@ RSpec.describe "Techstars Assessment API", type: :request do
 
   # Suite for GET /companies/:id
   describe "GET /companies/:id" do
-    before { get "companies/#{company_id}" }
+    before { get "/companies/#{company_id}" }
 
     context "when the record exists" do
       it "returns the company" do
@@ -52,11 +52,11 @@ RSpec.describe "Techstars Assessment API", type: :request do
     # valid payload
     let(:valid_attributes) {
       { name: "Faceback",
-       city: "Boulder",
-       state: "CO",
-       description: "Faceback has breakthrough tech that can render an
+        city: "Boulder",
+        state: "CO",
+        description: "Faceback has breakthrough tech that can render an
         image of the back of someones head from a picture of their face",
-       date_founded: "01-01-2001" }
+        date_founded: "01-01-2001" }
     }
 
     context "when the request is valid" do
@@ -68,7 +68,7 @@ RSpec.describe "Techstars Assessment API", type: :request do
         expect(json["state"]).to eq("CO")
         expect(json["description"]).to eq("Faceback has breakthrough tech that can render an
         image of the back of someones head from a picture of their face")
-        expect(json["date_founded"]).to eq("01-01-2001")
+        expect(json["date_founded"]).to eq("2001-01-01")
       end
 
       it "returns a status code 201" do
@@ -83,7 +83,7 @@ RSpec.describe "Techstars Assessment API", type: :request do
                name: "Faceback",
                city: "Boulder",
                state: "CO",
-               date_founded: "01-01-2001",
+               date_founded: "2001-01-01",
              }
       }
 
@@ -92,7 +92,7 @@ RSpec.describe "Techstars Assessment API", type: :request do
       end
 
       it "returns a validation failure message" do
-        expect(response.body).to match(/Validation failed: description can't be blank/)
+        expect(response.body).to match(/Validation failed: Description can't be blank/)
       end
     end
   end
