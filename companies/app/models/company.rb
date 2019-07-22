@@ -4,4 +4,6 @@ class Company < ApplicationRecord
   validates :state, presence: true
   validates :description, presence: true
   validates :founded_date, presence: true
+
+  has_many :founders
 end
