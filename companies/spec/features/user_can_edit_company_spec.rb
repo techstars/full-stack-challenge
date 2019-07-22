@@ -36,6 +36,17 @@ RSpec.feature "A user can edit a company", type: :feature do
           new = Company.find(@company.id)
           expect(new.name).to eq("New Name")
         end
+        it "does not update if fields are filled incorrectly" do
+            fill_in "company_name", with: ""
+            click_on "Save"
+
+            expect(page).to have_content("Name can't be blank")
+
+            fill_in "company_description", with: ""
+            click_on "Save"
+
+            expect(page).to have_content("Description can't be blank")
+        end
       end
     end
   end
