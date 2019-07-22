@@ -5,7 +5,7 @@
     "postinstall": "cd client && npm install"
   },
   "dependencies": {
-    "@rails/webpacker": "^3.5.5",
+    "@rails/webpacker": "^4.0.7",
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
@@ -17,7 +17,7 @@
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.7.2"
   },
   "cacheDirectories": [
     "node_modules",
