@@ -1,16 +1,14 @@
 import React from 'react';
-import AddFounder from './AddFounder';
+import EditFounders from '../foundersComponents/EditFounders';
 
 const BusinessEdit = ({
   business,
   editSubmitCallback,
   id,
-  cancelEditCallback
+  cancelEditCallback,
+  addFounderCallback,
+  founders
 }) => {
-  let founderArr = [];
-  const founderCallback = founder => {
-    return founderArr.push(founder);
-  };
   const editSubmit = ev => {
     ev.preventDefault();
     let name;
@@ -18,7 +16,6 @@ const BusinessEdit = ({
     let longdesc;
     let location;
     let founded;
-    let founders;
     let city;
     let state;
     if (!ev.target[0].value) {
@@ -59,17 +56,10 @@ const BusinessEdit = ({
       founded = ev.target[5].value;
     }
 
-    if (!ev.target[6].value) {
-      founders = business.founders;
-    } else {
-      founders = ev.target[6].value;
-    }
-
     let editBody = {
       name,
       shortdesc,
       longdesc,
-      founders,
       location: `${city}, ${state}`,
       founded
     };
@@ -78,36 +68,39 @@ const BusinessEdit = ({
 
   return (
     <div className='singleView'>
-      <form onSubmit={editSubmit}>
-        <label>Business</label>
-        <input placeholder={business.name} />
-        <label>Tagline</label>
-        <input placeholder={business.shortdesc} />
-        <label>Description</label>
-        <textarea placeholder={business.longdesc} />
-        <label>
-          City
-          <input placeholder={business.location.split(',')[0]} />
-        </label>
-        <label>
-          State
-          <input
-            placeholder={business.location.split(',')[1]}
-            maxLength='2'
-            width='2'
-          />
-        </label>
-        <label>Founded</label>
-        <input type='date' />
-        <label>Founders</label>
+      <div>
+        <form onSubmit={editSubmit}>
+          <label>Business</label>
+          <input placeholder={business.name} />
+          <label>Tagline</label>
+          <input placeholder={business.shortdesc} />
+          <label>Description</label>
+          <textarea placeholder={business.longdesc} />
+          <label>
+            City
+            <input placeholder={business.location.split(',')[0]} />
+          </label>
+          <label>
+            State
+            <input
+              placeholder={business.location.split(',')[1]}
+              maxLength='2'
+              width='2'
+            />
+          </label>
+          <label>Founded</label>
+          <input type='date' />
 
-        <input placeholder={business.founders} />
-
-        <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
-          Edit Entry
-        </button>
-      </form>
-      {/* <AddFounder founders={business.founders} /> */}
+          <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
+            Edit Entry
+          </button>
+        </form>
+      </div>
+      <EditFounders
+        businessid={business.id}
+        addFounderCallback={addFounderCallback}
+        founders={founders}
+      />
       <button onClick={() => cancelEditCallback()}>Cancel Edit</button>
     </div>
   );

@@ -10,7 +10,7 @@ For Rails generated Businesses routes:
 
 Test routes httPie: `http GET/DELETE/PUT/POST :3000/businessses.json or :businesses/:id.json`
 
-```json
+```haskell
 Business: {
   id: int (auto),
   name: string,
@@ -120,6 +120,8 @@ My steps:
 `rails new full-stack-challenge --database=postgresql`
 
 `rails g scaffold Business name:string shortdesc:text longdesc:text location:string founded:integer founders:array`
+
+`rails g scaffold Founders name:string businessid:integer`
 
 `rake db:migrate`
 

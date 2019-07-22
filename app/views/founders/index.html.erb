@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Founders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Businessid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @founders.each do |founder| %>
+      <tr>
+        <td><%= founder.name %></td>
+        <td><%= founder.businessid %></td>
+        <td><%= link_to 'Show', founder %></td>
+        <td><%= link_to 'Edit', edit_founder_path(founder) %></td>
+        <td><%= link_to 'Destroy', founder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Founder', new_founder_path %>

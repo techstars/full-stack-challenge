@@ -1,5 +1,4 @@
 import React from 'react';
-import Founders from '../foundersComponents/Founders';
 
 const BusinessesList = ({ item, viewItemCallback }) => {
   const titleStyle = {

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @founder.name %>
+</p>
+
+<p>
+  <strong>Businessid:</strong>
+  <%= @founder.businessid %>
+</p>
+
+<%= link_to 'Edit', edit_founder_path(@founder) %> |
+<%= link_to 'Back', founders_path %>

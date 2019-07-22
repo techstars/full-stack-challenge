@@ -1,10 +1,12 @@
 import React from 'react';
+import Founders from '../foundersComponents/Founders';
 
 const BusinessSingleView = ({
   business,
   closeViewCallback,
   editCallback,
-  deleteCallback
+  deleteCallback,
+  founders
 }) => {
   const editItem = id => editCallback(id);
 
@@ -44,7 +46,7 @@ const BusinessSingleView = ({
         Founded: <em>{formatDate(business.founded)}</em>
       </div>
       <br />
-      <div>Founders: {business.founders}</div>
+      <Founders businessid={business.id} founders={founders} />
       <br />
       <button onClick={() => editItem(business.id)}>Edit</button>
       <button onClick={() => deleteItem(business.id)}>Delete</button>

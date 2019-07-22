@@ -7,11 +7,11 @@ const Businesses = ({ businesses, viewItemCallback }) => {
   } else {
     return (
       <span>
-        {businesses.map((x, y) => (
+        {businesses.map((business, y) => (
           <BusinessesList
             id={y}
             key={y}
-            item={x}
+            item={business}
             viewItemCallback={viewItemCallback}
           />
         ))}

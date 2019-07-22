@@ -73,6 +73,18 @@ button:active {
   width: 50%;
 }
 
+.founderForm {
+  margin: 1% 15% 15% 15%;
+  border: 1px solid black;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  -webkit-box-shadow: 7px 4px 7px 0px rgba(237, 237, 237, 1);
+  -moz-box-shadow: 7px 4px 7px 0px rgba(237, 237, 237, 1);
+  box-shadow: 7px 4px 7px 0px rgba(237, 237, 237, 1);
+}
+
 input {
   font-size: 1em;
   width: 100%;
@@ -89,7 +101,7 @@ textarea {
 }
 
 .singleView {
-  margin: 10% 15% 15% 15%;
+  margin: 10% 15% 0% 15%;
   border: 1px solid black;
   padding: 2%;
   display: flex;

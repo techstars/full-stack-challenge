@@ -10,7 +10,6 @@
       <th>Longdesc</th>
       <th>Location</th>
       <th>Founded</th>
-      <th>Founders</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +22,6 @@
         <td><%= business.longdesc %></td>
         <td><%= business.location %></td>
         <td><%= business.founded %></td>
-        <td><%= business.founders %></td>
         <td><%= link_to 'Show', business %></td>
         <td><%= link_to 'Edit', edit_business_path(business) %></td>
         <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>

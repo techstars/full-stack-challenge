@@ -1,6 +1,11 @@
 import React from 'react';
+import AddFounder from '../foundersComponents/AddFounder';
 
-const AddBusiness = ({ createCallback, cancelEditCallback }) => {
+const AddBusiness = ({
+  createCallback,
+  cancelEditCallback,
+  addFounderCallback
+}) => {
   const create = ev => {
     ev.preventDefault();
     let name;
@@ -8,7 +13,6 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
     let longdesc;
     let location;
     let founded;
-    let founders;
     let city;
     let state;
     if (!ev.target[0].value) {
@@ -47,19 +51,12 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
       founded = ev.target[5].value.toString();
     }
 
-    if (!ev.target[6].value) {
-      alert('please provide a year founded');
-    } else {
-      founders = ev.target[6].value;
-    }
-
     let postBody = {
       name,
       shortdesc,
       longdesc,
       location: `${city}, ${state}`,
-      founded,
-      founders
+      founded
     };
     return createCallback(postBody);
   };
@@ -88,9 +85,6 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
           <label>Founded</label>
 
           <input type='date' />
-
-          <label>Founders</label>
-          <input />
           <br />
           <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
             Create
@@ -98,6 +92,7 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
         </form>
         <button onClick={() => cancelEditCallback()}>Cancel</button>
       </div>
+      <AddFounder addFounderCallback={addFounderCallback} />
     </div>
   );
 };
