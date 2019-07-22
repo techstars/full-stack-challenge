@@ -1,6 +1,8 @@
 # Fischer Full-Stack-Challenge 🍭🍬🍫
 
-[Deployed URL]()
+[Deployed URL](https://businesseschalllenge.herokuapp.com/)
+
+[Rails API Resources JSON URL](https://fullstackbusinesses.herokuapp.com/businesses.json)
 
 For Rails generated Businesses routes:
 
@@ -35,9 +37,9 @@ First, fork this repository into your own GitHub account. Then complete each of 
 
 ## What we are looking for
 
-[] Ability to set up a REST API (Strongly Recommend Rails).
-[] Ability to set up a Relational Database - PostgreSQL
-[] Understanding of the HTTP protocol and how it works with REST API conventions
+[x] Ability to set up a REST API (Strongly Recommend Rails).
+[x] Ability to set up a Relational Database - PostgreSQL
+[x] Understanding of the HTTP protocol and how it works with REST API conventions
 [x] Understanding the basics of CRUD
 
 - Create
@@ -107,7 +109,7 @@ Create a test suite for your application, writing unit and or functional tests t
 
 ### Part 6 : Deployment
 
-Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with tye deployed URL. Bonus points for using a provider other than Heroku like Digital Ocean. Please seed your application with at least a dozen Companies and Founders.
+Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with the deployed URL. Bonus points for using a provider other than Heroku like Digital Ocean. Please seed your application with at least a dozen Companies and Founders.
 
 ### Next Steps
 
