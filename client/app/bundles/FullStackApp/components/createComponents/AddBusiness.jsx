@@ -59,33 +59,38 @@ const AddBusiness = ({ createCallback, cancelEditCallback }) => {
   };
 
   return (
-    <div className='createForm'>
-      <form onSubmit={create}>
-        Create A New Business
-        <br />
-        <input type='text' placeholder='Business Name' required />
-        <br />
-        <input type='text' placeholder='Short Description' required />
-        <br />
-        <textarea placeholder='Long Description' required />
-        <br />
-        <input
-          type='text'
-          placeholder='Location "City, State (Lewes, DE)'
-          required
-        />
-        <br />
-        <input maxLength='4' placeholder='Year Founded' required />
-        <br />
-        <input
-          type='text'
-          placeholder='Founders (Formate: Name, Name)'
-          required
-        />
-        <br />
-        <button type='submit'>Create</button>
-      </form>
-      <button onClick={() => cancelEditCallback()}>Cancel</button>
+    <div style={{ textAlign: 'center' }}>
+      <h2>Business Create Form</h2>
+      <div className='singleView'>
+        <form onSubmit={create}>
+          <br />
+          <br />
+          <input type='text' placeholder='Business Name' required />
+          <br />
+          <input type='text' placeholder='Short Description' required />
+          <br />
+          <textarea placeholder='Long Description' required />
+          <br />
+          <input
+            type='text'
+            placeholder='Location "City, State (Lewes, DE)'
+            required
+          />
+          <br />
+          <input maxLength='4' placeholder='Year Founded' required />
+          <br />
+          <input
+            type='text'
+            placeholder='Founders (Formate: Name, Name)'
+            required
+          />
+          <br />
+          <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
+            Create
+          </button>
+        </form>
+        <button onClick={() => cancelEditCallback()}>Cancel</button>
+      </div>
     </div>
   );
 };

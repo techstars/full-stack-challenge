@@ -22,19 +22,21 @@ const BusinessesList = ({
         <span className='avatar'>
           <img src={item.photo} alt='Unsplash Photo' />
         </span>
-        <div style={titleStyle}>
-          <b> {item.name}</b>
-        </div>
-        <div>
-          <i>{item.shortdesc}</i>
-        </div>
+        <div className='businessesDisplay'>
+          <div style={titleStyle}>
+            <b> {item.name}</b>
+          </div>
+          <div>
+            <i>{item.shortdesc}</i>
+          </div>
 
-        <div>
-          <b>Location:</b> {item.location}
-        </div>
+          <div>
+            <b>Location:</b> {item.location}
+          </div>
 
-        <div>
-          <b>Founded:</b> {item.founded}
+          <div>
+            <b>Founded:</b> {item.founded}
+          </div>
         </div>
         <div className='buttonDiv'>
           <button onClick={() => viewItem(item)}>View</button>

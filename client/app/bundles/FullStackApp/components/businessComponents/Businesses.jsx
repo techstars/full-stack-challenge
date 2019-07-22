@@ -8,7 +8,7 @@ const Businesses = ({
   viewItemCallback
 }) => {
   if (businesses.length === 0) {
-    return <div>Loading...🍬🍭🍫</div>;
+    return <div>Loading...✨</div>;
   } else {
     return (
       <span>

@@ -29,7 +29,7 @@ const BusinessEdit = ({
     if (!ev.target[2].value) {
       longdesc = business.longdesc;
     } else {
-      longdesc = ev.target[1].value;
+      longdesc = ev.target[2].value;
     }
 
     if (!ev.target[3].value) {
@@ -64,7 +64,7 @@ const BusinessEdit = ({
   };
 
   return (
-    <div className='createForm'>
+    <div className='singleView'>
       <form onSubmit={editSubmit}>
         <input placeholder={business.name} />
         <input placeholder={business.shortdesc} />
@@ -72,7 +72,9 @@ const BusinessEdit = ({
         <input placeholder={business.location} />
         <input maxLength='4' placeholder={business.founded} />
         <input placeholder={business.founders} />
-        <button type='submit'>Edit Entry</button>
+        <button style={{ marginLeft: '75%', width: '20%' }} type='submit'>
+          Edit Entry
+        </button>
       </form>
       <button onClick={() => cancelEditCallback()}>Cancel Edit</button>
     </div>

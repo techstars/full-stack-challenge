@@ -12,7 +12,8 @@ export default class FullStackApp extends React.Component {
       businesses: [],
       business: { id: 0, name: '', location: '', description: '', founded: 0 },
       create: false,
-      singleview: {}
+      singleview: {},
+      view: false
     };
   }
 
@@ -21,10 +22,9 @@ export default class FullStackApp extends React.Component {
   }
 
   getPhoto = async () => {
-    const numsArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     let sig = numsArr[Math.floor(Math.random() * numsArr.length)];
     let response = await fetch(
-      `https://source.unsplash.com/collection/7669791/480x480/?sig=${sig}`
+      `https://source.unsplash.com/collection/7728984/480x480/?sig=${sig}`
     );
     return response.url;
   };
@@ -92,11 +92,16 @@ export default class FullStackApp extends React.Component {
   };
 
   viewItemCallback = business => {
-    return this.setState({ singleview: business });
+    return this.setState({ singleview: business, view: true });
   };
 
   cancelEditCallback = () =>
-    this.setState({ business: { id: 0 }, create: false, singleview: {} });
+    this.setState({
+      business: { id: 0 },
+      create: false,
+      singleview: {},
+      view: false
+    });
 
   toggleCreate = () => {
     return this.setState({ create: true });
@@ -140,9 +145,19 @@ export default class FullStackApp extends React.Component {
             createCallback={this.createCallback}
             cancelEditCallback={this.cancelEditCallback}
           />
+        ) : this.state.view ? (
+          <BusinessSingleView
+            business={this.state.singleview}
+            closeViewCallback={this.cancelEditCallback}
+          />
         ) : (
           <div>
-            <button onClick={() => this.toggleCreate()}>Create Business</button>
+            <button
+              style={{ marginLeft: '75%' }}
+              onClick={() => this.toggleCreate()}
+            >
+              Create Business
+            </button>
             <Businesses
               businesses={this.state.businesses}
               editCallback={this.editCallback}
@@ -151,11 +166,30 @@ export default class FullStackApp extends React.Component {
             />
           </div>
         )}
-        <BusinessSingleView
-          business={this.state.singleview}
-          closeViewCallback={this.cancelEditCallback}
-        />
       </div>
     );
   }
 }
+
+const numsArr = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+];
