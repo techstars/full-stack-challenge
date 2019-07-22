@@ -69,3 +69,15 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara::Webkit.configure do |config|
+  # Allow pages to make requests to any URL without issuing a warning.
+  config.allow_unknown_urls
+
+  # Don't raise errors when SSL certificates can't be validated
+  config.ignore_ssl_errors
+
+  # Don't load images
+  config.skip_image_loading
+
+end

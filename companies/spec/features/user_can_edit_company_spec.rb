@@ -32,9 +32,7 @@ RSpec.feature "A user can edit a company", type: :feature do
         it "updates the company's information" do
           fill_in "company_name", with: "New Name"
           click_on "Save"
-
-          new = Company.find(@company.id)
-          expect(new.name).to eq("New Name")
+          expect(@company.reload.name).to eq("New Name")
         end
         it "does not update if fields are filled incorrectly" do
             fill_in "company_name", with: ""
