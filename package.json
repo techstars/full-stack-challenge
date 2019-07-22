@@ -1,7 +1,21 @@
 {
   "name": "full-stack-challenge",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@rails/webpacker": "^3.5.5",
+    "axios": "^0.18.0",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-email-editor": "^0.8.1",
+    "stimulus": "^1.0.1",
+    "styled-components": "^3.3.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.4"
+  },
   "cacheDirectories": [
     "node_modules",
     "client/node_modules"
