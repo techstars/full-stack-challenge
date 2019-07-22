@@ -47,6 +47,60 @@ RSpec.describe 'Techstars Assessment API', type: :request do
     end
   end
 
+  # Suite for POST /companies
+  describe 'POST /companies' do
+    # valid payload
+    let(:valid_attributes) {
+      { name: 'Faceback',
+        city: 'Boulder',
+        state: 'CO',
+        description: 'Faceback has breakthrough tech that can render an
+        image of the back of someones head from a picture of their face',
+        date_founded: '01-01-2001'
+      }
+    }
+
+    context 'when the request is valid' do
+      before { post '/companies', params: valid_attributes }
+
+      it 'adds a new company' do
+        expect(json['name']).to eq('Faceback')
+        expect(json['city']).to eq('Boulder')
+        expect(json['state']).to eq('CO')
+        expect(json['description']).to eq('Faceback has breakthrough tech that can render an
+        image of the back of someones head from a picture of their face')
+        expect(json['date_founded']).to eq('01-01-2001')
+      end
+
+      it 'returns a status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before {
+        post '/companies',
+        params: {
+          name: 'Faceback',
+          city: 'Boulder',
+          state: 'CO',
+          date_founded: '01-01-2001'
+        }
+      }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body)
+          .to match(/Validation failed: description can't be blank/)
+      end
+    end
+  end
+
+
+
 
 
 end
