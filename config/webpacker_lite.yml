@@ -16,10 +16,10 @@ development:
   # Default is false, ENV 'HOT_RELOAD' will always override
   hot_reloading_enabled_by_default: false
 
-test:
-  <<: *default
-  # generated files for tests, in /public/webpack/test
-  webpack_public_output_dir: webpack/test
+# test:
+#   <<: *default
+#   # generated files for tests, in /public/webpack/test
+#   webpack_public_output_dir: webpack/test
 
 production:
   <<: *default
