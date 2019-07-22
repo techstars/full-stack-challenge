@@ -99,6 +99,25 @@ RSpec.describe 'Techstars Assessment API', type: :request do
     end
   end
 
+  # Suite for PUT /companies/:id
+  describe 'PUT /companies/:id' do
+    let(:valid_attributes) { { name: 'BackFace' }}
+
+    context 'when the record exists' do
+      before { put "/companies/#{company_id}", params: valid_attributes }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns a status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
+
+
+
 
 
 
