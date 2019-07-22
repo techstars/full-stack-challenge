@@ -1,0 +1,2 @@
+class FoundersController < ApplicationController
+end
