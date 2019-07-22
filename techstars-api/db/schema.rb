@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_07_22_175344) do
     t.text "state", null: false
     t.text "description", null: false
     t.date "date_founded", null: false
-    t.text "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

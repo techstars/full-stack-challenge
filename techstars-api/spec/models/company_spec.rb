@@ -10,5 +10,4 @@ RSpec.describe Company, type: :model do
   it { should validate_presence_of(:state) }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:date_founded) }
-  it { should validate_presence_of(:location) }
 end
