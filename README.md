@@ -143,6 +143,8 @@ database automatically provisioned with rails config
 
 `heroku run rake db:seed`
 
+error troubleshooting: yarn install issues with webpack, config.assets.js_compressor = Uglifier.new(harmony: true)
+
 ---
 
 ## Resources
