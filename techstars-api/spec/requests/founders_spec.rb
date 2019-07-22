@@ -29,7 +29,7 @@ RSpec.describe "Founders API" do
       end
 
       it "returns a not found message" do
-        expect(response.body).to match(/Couldn't find any founders/)
+        expect(response.body).to match(/Couldn't find Company with 'id'=0/)
       end
     end
   end
