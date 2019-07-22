@@ -1,6 +1,9 @@
 {
   "name": "full-stack-challenge",
   "private": true,
+  "scripts": {
+    "postinstall": "cd client && npm install"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.5.5",
     "axios": "^0.18.0",
