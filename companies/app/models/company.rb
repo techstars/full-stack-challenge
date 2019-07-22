@@ -5,5 +5,5 @@ class Company < ApplicationRecord
   validates :description, presence: true
   validates :founded_date, presence: true
 
-  has_many :founders
+  has_many :founders, dependent: :destroy
 end
