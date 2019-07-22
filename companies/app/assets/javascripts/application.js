@@ -19,6 +19,6 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("turbolinks:load", function() {
   flatpickr('#date-picker');
 })
