@@ -1,7 +1,9 @@
+require 'faker'
+
 FactoryBot.define do
-  factory :founder do
-    name { "MyString" }
-    title { "MyString" }
-    company { nil }
+  factory :founder, class: Founder do
+    company
+    name { Faker::Name.name }
+    title {Faker::Job.title}
   end
 end

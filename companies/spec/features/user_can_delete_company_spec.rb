@@ -7,8 +7,7 @@ RSpec.feature "A user can edit a company", type: :feature do
     describe "When I visit a company's show page" do
       describe "and click on the Delete button", js: true do
         before :each do
-          @company = build(:company)
-          @company.save
+          @company = create(:company)
           visit company_path(@company)
         end
         it "I see a confimation alert" do

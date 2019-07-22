@@ -5,8 +5,7 @@ RSpec.feature "A user can edit a company", type: :feature do
     describe "When I visit a company's show page" do
       describe "and click on the Edit button" do
         before :each do
-          @company = build(:company)
-          @company.save
+          @company = create(:company)
           visit company_path(@company)
           click_button "Edit"
         end
