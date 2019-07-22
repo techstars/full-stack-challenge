@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 2019_07_22_175344) do
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.text "name"
-    t.text "city"
-    t.text "state"
-    t.text "description"
-    t.date "date_founded"
-    t.text "location"
+    t.text "name", null: false
+    t.text "city", null: false
+    t.text "state", null: false
+    t.text "description", null: false
+    t.date "date_founded", null: false
+    t.text "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "founders", force: :cascade do |t|
-    t.text "name"
-    t.text "title"
-    t.bigint "company_id"
+    t.text "name", null: false
+    t.text "title", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_founders_on_company_id"
