@@ -36,7 +36,9 @@ const AddBusiness = ({
     if (!ev.target[3].value) {
       alert('please provide a location in format City, State e.g. Boulder, CO');
     } else {
-      state = ev.target[3].value.charAt(0).toUpperCase();
+      city =
+        ev.target[3].value.charAt(0).toUpperCase() +
+        ev.target[3].value.slice(1);
     }
 
     if (!ev.target[4].value) {
@@ -44,7 +46,7 @@ const AddBusiness = ({
     } else {
       state = ev.target[4].value.toUpperCase();
     }
-    console.log('founded value:', ev.target[5].value);
+
     if (!ev.target[5].value) {
       alert('please provide a year founded');
     } else {

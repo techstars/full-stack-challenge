@@ -201,7 +201,11 @@ export default class FullStackApp extends React.Component {
 
   // incomplete method for adding founders - refactor
   addFounderCallback = founder => {
-    alert('Founder added:' + founder);
+    alert(
+      'Founder added:' +
+        founder +
+        '(Press Edit Entry or Create to submit founder changes)'
+    );
     return this.state.founderset.push(founder);
   };
 
