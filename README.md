@@ -1,4 +1,4 @@
-# Fischer Full-Stack-Challenge 🍭🍬🍫
+# Fischer Full-Stack-Challenge - Businesses 🏢
 
 [Deployed URL](https://businesschallenge.herokuapp.com//)
 
