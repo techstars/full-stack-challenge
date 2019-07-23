@@ -17,7 +17,7 @@ class BusinessesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create business" do
     assert_difference('Business.count') do
-      post businesses_url, params: { business: { founded: @business.founded, founders: @business.founders, location: @business.location, longdesc: @business.longdesc, name: @business.name, shortdesc: @business.shortdesc } }
+      post businesses_url, params: { business: { founded: @business.founded, location: @business.location, longdesc: @business.longdesc, name: @business.name, shortdesc: @business.shortdesc } }
     end
 
     assert_redirected_to business_url(Business.last)
@@ -34,7 +34,7 @@ class BusinessesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update business" do
-    patch business_url(@business), params: { business: { founded: @business.founded, founders: @business.founders, location: @business.location, longdesc: @business.longdesc, name: @business.name, shortdesc: @business.shortdesc } }
+    patch business_url(@business), params: { business: { founded: @business.founded, location: @business.location, longdesc: @business.longdesc, name: @business.name, shortdesc: @business.shortdesc } }
     assert_redirected_to business_url(@business)
   end
 

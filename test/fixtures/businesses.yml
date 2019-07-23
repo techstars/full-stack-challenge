@@ -5,13 +5,11 @@ one:
   shortdesc: MyText
   longdesc: MyText
   location: MyString
-  founded: 1
-  founders: 
+  founded: 2
 
 two:
-  name: MyString
-  shortdesc: MyText
-  longdesc: MyText
-  location: MyString
-  founded: 1
-  founders: 
+  name: Test2
+  shortdesc: Short
+  longdesc: Long
+  location: Bouler
+  founded: 2

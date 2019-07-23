@@ -15,7 +15,6 @@ class BusinessesTest < ApplicationSystemTestCase
     click_on "New Business"
 
     fill_in "Founded", with: @business.founded
-    fill_in "Founders", with: @business.founders
     fill_in "Location", with: @business.location
     fill_in "Longdesc", with: @business.longdesc
     fill_in "Name", with: @business.name
@@ -31,7 +30,6 @@ class BusinessesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Founded", with: @business.founded
-    fill_in "Founders", with: @business.founders
     fill_in "Location", with: @business.location
     fill_in "Longdesc", with: @business.longdesc
     fill_in "Name", with: @business.name

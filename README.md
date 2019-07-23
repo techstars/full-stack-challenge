@@ -40,7 +40,7 @@ Founder: {
 
 ## Process
 
-Staying within the ~48hr limit for the project, the largest problem I ran into was the webpack build errors around Heroku deployment of the `react-on-rails Client` setup. Locally, the files build and are located in the correct place but the 'application.html.erb' build for deployment was unable to locate the `webpack-bundle` built by Heroku (~4 hrs). The frontend is therefore directly cloned out of the Client package and deployed seperately, for now, on Heroku (no logistical or styling changes exist between the versions).
+Staying within the ~48hr limit for the project, the largest problem I ran into was the webpack build errors around Heroku deployment of the `react-on-rails Client` setup. Locally, the files build but the 'application.html.erb' build for deployment was unable to locate the `webpack-bundle` built by Heroku (~4 hrs). The frontend is therefore directly cloned out of the Client package and deployed seperately, for now, on Heroku (no logistical or styling changes exist between the versions). My main problem here being the early decision to build the React App in the Client folder as opposed to `app/javascripts/`. React testing is set up with simple rendering with `Jest` with babel-configs in the Spec folder as well. Cursory.
 
 ---
 
@@ -114,7 +114,9 @@ _ Founded Date
 
 ### Part 5 : Tests
 
-Create a test suite for your application, writing unit and or functional tests that adequately cover the code base. TDDers will have already completed this challenge.
+`rails test` -> Runs through 18 assertions in the test folder related to loading and responding with @business and @founder dummy data: ✅
+
+`rspec` - basic tests for the 'FoundersController' are written with `rspec`. I have spent ~ 3 hours with this testing framework and am just starting to make some tests pass...testing frameworks are often accompanied with the same investment needed to learn entirely new languages
 
 ### Part 6 : Deployment
 
