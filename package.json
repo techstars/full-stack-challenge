@@ -1,30 +1,5 @@
 {
   "name": "full-stack-challenge",
   "private": true,
-  "scripts": {
-    "postinstall": "cd client && npm install"
-  },
-  "dependencies": {
-    "@babel/preset-react": "^7.0.0",
-    "@rails/webpacker": "^4.0.7",
-    "axios": "^0.18.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "babel-preset-react": "^6.24.1",
-    "js-yaml": "^3.13.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-email-editor": "^0.8.1",
-    "react-on-rails": "^11.3.0",
-    "stimulus": "^1.0.1",
-    "styled-components": "^3.3.2",
-    "webpack-cli": "^3.1.0"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3.7.2"
-  },
-  "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
-  ]
+  "dependencies": {}
 }
