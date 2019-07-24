@@ -1,88 +1,93 @@
-# Techstars Engineering: Fun Front to Back
+# Rhys Goehring's TechStars Engineering Assessment
 
-Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse project and value team members who can do it all from CSS to DevOps and everything inbetween.  We love to code and are passionate about doing it well.
+Thank you for the opportunity to complete this assessment, I hope you like what I've built and look
+forward to hearing your feedback.
 
-This is your chance to show the team how you approach problems and give us insight into your abilities. For the challenge, you are required to design, develop, and style a Full Stack application using Rails as the API and React as the front-end. Do not use Rails templates for your UI. Feel free to use any third party libraries you see fit. You will have **48 hours** to submit a solution for the given requirements. We strongly prefer that whatever you do, you do it well, as opposed to trying to razzle dazzle us.  Please read all the instructions carefully and email us if you have any questions. 
+## Architectural Decisions
+As this is one of the first Rails applications I've made in a couple of years, I decided
+to build a separate Rails API and React Client rather than serving the React app from a
+Rails server.
 
-## Getting Started
-First, fork this repository into your own GitHub account. Then complete each of the parts below, working as you would in a professional environment. Once you have completed all the sections, please update the README, to reflect how to build and run your application, as well as any architectural decisions you have made. Add your deployment url to your github repo so we can test the deployed application. When you believe you are ready to submit your challenge, submit a pull request into our master branch. We will see the notification and get back to you on next steps. 
+I deployed the Rails API to https://ancient-woodland-20852.herokuapp.com
 
-## What we are looking for
-
-* Ability to set up a REST API (Strongly Recommend Rails).
-* Ability to set up a Relational Database
-* Understanding of the HTTP protocol and how it works with REST API conventions
-* Understanding the basics of CRUD
-  * Create
-  * Read
-  * Update
-  * Delete
-* Ability to layout and design an HTML page with CSS
-* Ability to create an intuitive UI using a front-end framework (React preferred)
-* Ability to use javascript on the front-end to interact with a REST API
-* Ability to develop automated tests for your application
-* Ability to translate user stories as into a web application
-* Ability to deploy a front-end and back-end stack.
+The GitHub repo for the React app is located at https://github.com/rhysgoehring/full-stack-challenge-client
+and is deployed to https://full-stack-challenge-client.rhysgoehring.now.sh/
 
 
-## The Challenge
+## Building and Running the Application
+The client and server are independent and run separately.
 
-### Intro
+### Server
+1. Clone this repository
+2. Inside the root project directory, install dependencies with:
+```sh
+  bundle install
+```
+3. Create the database:
+```sh
+  rake db:create
+```
+4. Run database migrations:
+```sh
+  rake db:migrate
+```
+5. Seed the database:
+```sh
+  rake db:seed
+```
 
-Build an application that will be a directory of companies, and the people who have founded them. The main page should be a list of all the companies with some high-level information (Name, Short Description, City, State). When the user click on a company, show its details. Included in those details will be the founding members of company, a long description.
+6. Run Test Suite:
+```sh
+  bundle exec rspec
+```
 
-### Part 1 : Companies Index
+7. Start the server:
+```sh
+  rails s
+```
 
-1. Create the basic layout for the page
-2. Create a list view of all companies
-  * Company Name
-  * Company Location
-  * Short Description
-3. Add ability to create a new company
-<br />
+### Client
+1. Clone the client respository:
+```sh
+  git clone https://github.com/rhysgoehring/full-stack-challenge-client
+```
 
-![step 1](Step_1.png)
+2. In the project directory, install dependencies:
+```sh
+  yarn install
+```
+Or with NPM:
 
-### Part 2 : Companies Create
+```sh
+ npm install
+```
 
-1. Implement form to create a new company
-2. Fields
-    * Company Name __required__
-    * Company Location (City, State) __required__
-    * Company Description __required__
-    * Founded Date
-<br />
+3. Start the App
+```sh
+  yarn start
+```
+Or with NPM:
 
-![step 2](Step_2.png)
+```sh
+ npm start
+```
 
-### Part 3 : Company Details
+4. Since the server is running on port 3000, you'll be prompted to run the app on another port,
+   press 'Y' to do so.
 
-1. Shows all of the company's information
-2. Ability to update company
-3. Ability to delete company
-<br />
+5. App will open in new browswer window / tab.
 
-![step 3](Step_3.png)
+## Project Issues
+Since I hadn't used RoR in quite some time, I spent a good amount of project time doing tutorials and reading
+some articles to make sure I knew what I was doing and to avoid any mistakes that may be easy to stumble into.
 
-### Part 4 : Founders
+While this did help me create my Rails API using TDD, it left me with a little less time than I would have liked
+to work on the React client. I had planned on using TDD for the React client as well, but I was a bit pressed for time by the time I started working on the front end. Ultimately, I was unable to include any tests for the client.
 
-1. In the Company details add the ability to add a Founder to a Company.
-2. Each Founder can only belong to a single company.
-3. Founder  Fields
-    * Founder Full Name
-    * Founder Title
-4. Founders added should display in the company detail page.
-<br />
+Although it was emphasized in the project instructions that strong functionality was a priority over "razzle dazzle", I had initially planned and was looking forward to having a well styled front end. Again, due to time
+constraints I had when working on the React client I didn't have time to style the application very well and so it's a bit bare.
 
-![step 4](Step_4.png)
+Finally, I did encounter one functionality issue I wasn't able to fix which was only allowing a Founder to belony to only a single company. I could not enforce this constraint and in my app, a founder can be added to a company if they already belong to another.
 
-### Part 5 : Tests
-Create a test suite for your application, writing unit and or functional tests that adequately cover the code base. TDDers will have already completed this challenge.
-
-### Part 6 : Deployment 
- Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with tye deployed URL. Bonus points for using a provider other than Heroku like Digital Ocean.  Please seed your application with at least a dozen Companies and Founders.
-
-### Next Steps
-If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base.  Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
 
 
