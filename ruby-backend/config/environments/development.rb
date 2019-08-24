@@ -50,6 +50,9 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  #CEB -- configure debug responses for api
+  config.debug_exception_response_format = :api
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
