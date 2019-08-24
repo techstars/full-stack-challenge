@@ -17,7 +17,8 @@ All comments from me are prefixed with "CEB"
 The app needs a backend and a frontend; the backend will be built
 in Ruby on Rails and contained in the directory "ruby-backend".
 The frontend is built in React and will be contained in the
-directory "react-frontend".
+directory "react-frontend". UPDATE: not any more, React is now
+included with Rails using the gem react-rails
 
 --Installed Ruby 2.6.3 with rbenv and installed Rails
 --Installed SQLite 3 for the DB (after failed first attempt)
@@ -29,3 +30,11 @@ Excluding online tutorials for MVC because this is only an API, no views.
 
 --Changed the Ruby app to API only
 --Got a simple root controller and status route up and running!
+
+CHANGE OF PLAN! Including React via the gem react-rails instead of having
+it separate and trying to serve static files or something like that.
+I don't like doing it this way as I really would like to separate the backend
+from the frontend completely, but since everything has to be in one repo,
+that's the way it's going to be.
+
+--Got the main React component up and running at the home route!

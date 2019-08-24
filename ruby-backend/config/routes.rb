@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
 	#CEB -- 
 
+	scope '/' do
+		get '/' => 'home#index'
+	end
+
 	scope '/api' do
 		scope '/v1' do
 			get '/' => 'root#status'
