@@ -65,3 +65,9 @@ that's the way it's going to be.
 
 --Switched database from sqlite3 to postgresql because Heroku
   doesn't like sqlite3
+
+--Got it deployed to Heroku finally.
+--Created 12 example companies and added founders.
+
+At this point I am calling it the first working version. Everything
+does what it is supposed to.

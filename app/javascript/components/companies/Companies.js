@@ -456,7 +456,8 @@ class Companies extends React.Component
 	{
 		return(
 			<div>
-				<h2>Companies index</h2>
+				<h2>Techstars Full Stack Challenge</h2>
+				<h4>Collin Brockway -- August 24, 2019</h4>
 				{
 					this.state.ready ?
 						<div>
