@@ -3,6 +3,12 @@ import PropTypes from "prop-types"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
+import Truncate from 'react-truncate';
+
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+
 import './bootstrap.min.css'
 import './Companies.css'
 //import '/Companies.css'
@@ -14,7 +20,8 @@ class Companies extends React.Component
 		super();
 		this.state =
 		{
-			//nothing here yet
+			debug: false,			
+
 			ready: false,
 
 			showNewCompanyForm: false,
@@ -22,6 +29,7 @@ class Companies extends React.Component
 			newCompanyDescription: '',
 			newCompanyCity: '',
 			newCompanyState: '',
+			newCompanyDateFounded: new Date(),
 
 			companyDetails: 0,
 			showCompanyDetails: false,
@@ -32,6 +40,7 @@ class Companies extends React.Component
 			editCompanyDescription: '',
 			editCompanyCity: '',
 			editCompanyState: '',
+			editCompanyDateFounded: new Date(),
 
 			founderToAdd: 0,
 			founderToAddTitle: '',
@@ -39,6 +48,23 @@ class Companies extends React.Component
 			showNewMemberForm: false,
 			newMemberName: ''
 		}
+	}
+
+	customLog = (s) =>
+	{
+		//Custom logging function for flexibility
+		if (this.state.debug)
+		{
+			console.log(s);
+		}
+	}
+
+	toggleDebug = () =>
+	{
+		this.setState(
+		{
+			debug: !this.state.debug
+		});
 	}
 
 	componentDidMount()
@@ -66,7 +92,7 @@ class Companies extends React.Component
 	getMembers = async () =>
 	{
 		//get the members from the API
-		console.log("getMembers was called");
+		this.customLog("getMembers was called");
 		let response = await fetch(this.props.apiURL + '/api/v1/members');
 		response = await response.json();
 
@@ -79,13 +105,21 @@ class Companies extends React.Component
 	getCompanies = async () =>
 	{
 		//get the companies from the API
-		console.log("getCompanies was called");
+		this.customLog("getCompanies was called");
 		let response = await fetch(this.props.apiURL + '/api/v1/companies');
 		response = await response.json();
 
 		response.forEach(async (company, index) =>
 		{
 			response[index].founders = await JSON.parse(company.founders);
+			
+			//The date parsing is so weird in Javascript.
+			//It basically forces everything to local time,
+			//which really messes things up when you try to convert
+			//between string and Date.
+			
+			this.customLog("new company date: " + company.dateFounded);
+			response[index].dateFounded = await new Date(company.dateFounded + "T00:00:00.000");
 		});
 
 		this.setState(
@@ -96,7 +130,7 @@ class Companies extends React.Component
 
 	addMoreCompanyInfo = () =>
 	{
-		console.log("addMoreCompanyInfo was called");
+		this.customLog("addMoreCompanyInfo was called");
 
 		//add the founder name info to the companies
 		//this is something like my 50th try at this.
@@ -169,21 +203,23 @@ class Companies extends React.Component
 	{
 		//return a bunch of list items for the companies:
 		
-		console.log("companiesList was called");
+		this.customLog("companiesList was called");
 
 
-		console.log(this.state.companies);
-		//console.log(this.state.companies[0].founders[0].name);
-		//console.log(this.state.members);
+		this.customLog(this.state.companies);
+		//this.customLog(this.state.companies[0].founders[0].name);
+		//this.customLog(this.state.members);
 
 		return this.state.companies.map((company, index) =>
 		{
 			return(
-				<div className="company-index-box" onClick={this.toggleShowCompanyDetails.bind(null, index)}>
+				<div key={index} className="company-index-box" onClick={this.toggleShowCompanyDetails.bind(null, index)}>
 					<h3>{company.name}</h3>
 					{company.city}, {company.state}
 					<br/><br/>
-					{company.description}
+					<Truncate lines={3} ellipsis={<span>...</span>}>
+						{company.description}
+					</Truncate>
 				</div>
 			);
 		});
@@ -229,11 +265,16 @@ class Companies extends React.Component
 		if (!this.state.showEditCompanyForm)
 		{
 			//add values to state
-			this.state.editCompanyName = this.state.companies[index].name;
-			this.state.editCompanyDescription = this.state.companies[index].description;
-			this.state.editCompanyCity = this.state.companies[index].city;
-			this.state.editCompanyState = this.state.companies[index].state;
+			this.setState(
+			{
+				editCompanyName: this.state.companies[index].name,
+				editCompanyDescription: this.state.companies[index].description,
+				editCompanyCity: this.state.companies[index].city,
+				editCompanyState: this.state.companies[index].state,
+				editCompanyDateFounded: this.state.companies[index].dateFounded
+			});
 		}
+		this.customLog(this.state.companies[index].dateFounded);
 		this.setState(
 		{
 			editCompany: index,
@@ -249,7 +290,25 @@ class Companies extends React.Component
 		{
 			[e.target.name]: e.target.value
 		});
-		//console.log(this.state);
+		//this.customLog(this.state);
+	}
+
+	handleNewCompanyDateChange = (date) =>
+	{
+		this.customLog(date);
+		this.setState(
+		{
+			newCompanyDateFounded: date
+		});
+	}
+
+	handleEditCompanyDateChange = (date) =>
+	{
+		this.customLog(date);
+		this.setState(
+		{
+			editCompanyDateFounded: date
+		});
 	}
 	
 	submitNewCompany = async (e) =>
@@ -261,7 +320,8 @@ class Companies extends React.Component
 			name: this.state.newCompanyName,
 			description: this.state.newCompanyDescription,
 			city: this.state.newCompanyCity,
-			state: this.state.newCompanyState
+			state: this.state.newCompanyState,
+			dateFounded: this.state.newCompanyDateFounded
 		};
 
 		const infoToSend = await JSON.stringify(newCompany);
@@ -278,7 +338,7 @@ class Companies extends React.Component
 
 		response = await response.json();
 
-		console.log(await response);
+		this.customLog(await response);
 
 		//force-reload companies:
 		this.forceReloadCompanies();
@@ -295,7 +355,8 @@ class Companies extends React.Component
 			name: this.state.editCompanyName,
 			description: this.state.editCompanyDescription,
 			city: this.state.editCompanyCity,
-			state: this.state.editCompanyState
+			state: this.state.editCompanyState,
+			dateFounded: this.state.editCompanyDateFounded
 		};
 
 		const infoToSend = await JSON.stringify(editCompany);
@@ -312,7 +373,7 @@ class Companies extends React.Component
 
 		response = await response.json();
 
-		console.log(await response);
+		this.customLog(await response);
 
 		//force-reload companies:
 		this.forceReloadCompanies();
@@ -326,7 +387,7 @@ class Companies extends React.Component
 
 		//delete a company from the database
 
-		console.log("deleting company with id of " + id);
+		this.customLog("deleting company with id of " + id);
 
 		//const infoToSend = await JSON.stringify({id: id});
 
@@ -342,7 +403,7 @@ class Companies extends React.Component
 
 		response = await response.json();
 
-		console.log(await response);
+		this.customLog(await response);
 
 		//force-reload companies:
 		this.forceReloadCompanies();
@@ -405,7 +466,7 @@ class Companies extends React.Component
 
 			response = await response.json();
 
-			console.log(await response);
+			this.customLog(await response);
 
 			//force-reload companies:
 			this.forceReloadCompanies();
@@ -444,12 +505,23 @@ class Companies extends React.Component
 
 		response = await response.json();
 
-		console.log(await response);
+		this.customLog(await response);
 
 		//force-reload companies:
 		this.forceReloadCompanies();
 		//turn off the modal:
 		this.toggleNewMemberForm();
+	}
+
+	formatDate = (date) =>
+	{
+		//returns a nicely formatted version of a JS date object!
+		//Note that getMonth is zero-indexed. Why?!?!
+		return(
+			<span>
+				{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}
+			</span>
+		);
 	}
 
 	render ()
@@ -458,6 +530,13 @@ class Companies extends React.Component
 			<div>
 				<h2>Techstars Full Stack Challenge</h2>
 				<h4>Collin Brockway -- August 24, 2019</h4>
+				<button onClick={this.toggleDebug}>Toggle debug logs</button>
+				{
+					this.state.debug ?
+						<p>Debug logs on</p>
+					:
+						<p>Debug logs off</p>
+				}
 				{
 					this.state.ready ?
 						<div>
@@ -472,6 +551,8 @@ class Companies extends React.Component
 											<textarea name="newCompanyDescription" onChange={this.handleChange} placeholder="Description" type="text" rows="10" cols="60"></textarea><br/>
 											<input name="newCompanyCity" onChange={this.handleChange} placeholder="City"></input><br/>
 											<input name="newCompanyState" onChange={this.handleChange} placeholder="State"></input><br/>
+											Date founded:
+											<DatePicker name="newCompanyDateFounded" selected={this.state.newCompanyDateFounded} onChange={this.handleNewCompanyDateChange}></DatePicker><br/>
 											<button type='submit'>Submit</button>
 										</form>
 								</ModalBody>
@@ -512,6 +593,8 @@ class Companies extends React.Component
 											<textarea name="editCompanyDescription" onChange={this.handleChange} value={this.state.editCompanyDescription} placeholder="Description" type="text" rows="10" cols="60"></textarea><br/>
 											<input name="editCompanyCity" onChange={this.handleChange} value={this.state.editCompanyCity} placeholder="City"></input><br/>
 											<input name="editCompanyState" onChange={this.handleChange} value={this.state.editCompanyState} placeholder="State"></input><br/>
+											Date founded:
+											<DatePicker name="editCompanyDateFounded" selected={this.state.editCompanyDateFounded} onChange={this.handleEditCompanyDateChange}></DatePicker><br/>
 											<button type='submit'>Submit</button>
 										</form>
 								</ModalBody>
@@ -535,6 +618,8 @@ class Companies extends React.Component
 										{this.state.companies[this.state.companyDetails].city}, {this.state.companies[this.state.companyDetails].state}
 										<br/><br/>
 										{this.state.companies[this.state.companyDetails].description}
+										<br/><br/>
+										Date founded: {this.formatDate(this.state.companies[this.state.companyDetails].dateFounded)}
 										<br/><br/>
 										<form onSubmit={this.deleteCompany.bind(null, this.state.companies[this.state.companyDetails].id)}>
 											<button type="submit">Delete</button>

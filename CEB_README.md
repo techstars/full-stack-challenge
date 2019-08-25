@@ -71,3 +71,17 @@ that's the way it's going to be.
 
 At this point I am calling it the first working version. Everything
 does what it is supposed to.
+
+8/25/2019
+
+--Added foundedDate functionality. Wrangling JS dates is hard.
+--Added truncation on descriptions in the index
+--Added custom debug log function
+
+This is the second working version, probably the final.
+
+List of modules used in the React side:
+
+reactstrap
+react-datepicker
+react-truncate
