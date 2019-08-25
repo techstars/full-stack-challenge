@@ -49,4 +49,8 @@ that's the way it's going to be.
   a hack; a separate function adds the data synchronously and trips a flag
   in the state when the data is ready. It works but it is not ideal.
 
-
+--Added create function in backend and newCompany form in frontend, both work
+--Added some bits of styling to React frontend to make it look good
+--Added details modal for companies
+--Added update route and edit form, both work
+--Added delete route and button, both work

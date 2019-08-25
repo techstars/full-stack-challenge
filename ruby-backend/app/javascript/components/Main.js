@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Companies from './companies/Companies'
 
@@ -35,9 +37,7 @@ class Main extends React.Component
 	{
 		return(
 			<div>
-				<h1>React is up and running!</h1>
-				<p>API status:</p>
-				{this.state.apiOnline}
+				API status: {this.state.apiOnline}
 				<br/>
 				<Companies apiURL={this.state.apiURL}></Companies>
 			</div>

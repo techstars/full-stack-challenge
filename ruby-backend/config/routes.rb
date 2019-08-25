@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 			get '/' => 'root#status'
 			scope '/companies' do
 				get '/' => 'company#index'
+				get '/:id' => 'company#show'
+				post '/' => 'company#create'
+				delete '/:id' => 'company#delete'
+				put '/:id' => 'company#update'
 			end
 			scope '/members' do
 				get '/' => 'member#index'
