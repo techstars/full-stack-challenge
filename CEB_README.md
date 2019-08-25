@@ -62,3 +62,6 @@ that's the way it's going to be.
 
 --Moved all stuff from ruby-backend into the root directory for the repo,
   for deploy on Heroku
+
+--Switched database from sqlite3 to postgresql because Heroku
+  doesn't like sqlite3
