@@ -18,7 +18,8 @@ The app needs a backend and a frontend; the backend will be built
 in Ruby on Rails and contained in the directory "ruby-backend".
 The frontend is built in React and will be contained in the
 directory "react-frontend". UPDATE: not any more, React is now
-included with Rails using the gem react-rails
+included with Rails using the gem react-rails -- also the main
+app is now in the root directory of the repo.
 
 --Installed Ruby 2.6.3 with rbenv and installed Rails
 --Installed SQLite 3 for the DB (after failed first attempt)
@@ -58,3 +59,6 @@ that's the way it's going to be.
 --Added more member functionality - you can create new members and
   add them to existing companies as founders. You cannot add a founder
   to more than one company, and they must have a title.
+
+--Moved all stuff from ruby-backend into the root directory for the repo,
+  for deploy on Heroku

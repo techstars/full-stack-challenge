@@ -5,31 +5,31 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/ruby-backend/.bundle
+/.bundle
 
 # Ignore the default SQLite database.
-/ruby-backend/db/*.sqlite3
-/ruby-backend/db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/ruby-backend/log/*
-/ruby-backend/tmp/*
-!/ruby-backend/log/.keep
-!/ruby-backend/tmp/.keep
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
 # Ignore uploaded files in development.
-/ruby-backend/storage/*
-!/ruby-backend/storage/.keep
+/storage/*
+!/storage/.keep
 
-/ruby-backend/public/assets
-/ruby-backend/.byebug_history
+/public/assets
+/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/ruby-backend/config/master.key
+/config/master.key
 
-/ruby-backend/public/packs
-/ruby-backend/public/packs-test
-/ruby-backend/node_modules
-/ruby-backend/yarn-error.log
-/ruby-backend/yarn-debug.log*
-/ruby-backend/.yarn-integrity
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+/yarn-debug.log*
+/.yarn-integrity
