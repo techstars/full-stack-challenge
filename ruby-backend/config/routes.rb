@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 			scope '/companies' do
 				get '/' => 'company#index'
 			end
+			scope '/members' do
+				get '/' => 'member#index'
+				get '/:id' => 'member#show'
+			end
 		end
 	end
 end

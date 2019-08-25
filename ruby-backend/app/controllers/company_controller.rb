@@ -1,5 +1,7 @@
 class CompanyController < ApplicationController
 	def index
-		render json: '{companies: []}'
+		#some fake data for now:
+		#render json: '{"companies": [{"name": "Company1"}, {"name": "Company2"}]}'
+		render json: Company.all
 	end
 end

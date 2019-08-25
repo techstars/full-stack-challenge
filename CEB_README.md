@@ -10,7 +10,7 @@ so this will be a journey.
 
 
 ----NOTE----
-All comments from me are prefixed with "CEB"
+All comments from me in the Ruby backend are prefixed with "CEB"
 ------------
 
 
@@ -38,3 +38,15 @@ from the frontend completely, but since everything has to be in one repo,
 that's the way it's going to be.
 
 --Got the main React component up and running at the home route!
+--Made a Companies component and got it talking to the /companies route
+--Got the database up and running and made a Companies table,
+  with some seed data. Works with the frontend so far
+--Made a Members table, to contain the Founders, and so that later on
+  other "members" can be added like employees etc. This caused the React
+  side to throw a fit when I tried to add the founder data to the companies
+  after the fact. It's an async and await issue; I solved it at last (after
+  like 6 hours of trying every possible method) with what is basically
+  a hack; a separate function adds the data synchronously and trips a flag
+  in the state when the data is ready. It works but it is not ideal.
+
+

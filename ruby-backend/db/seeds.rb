@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+companies = Company.create([{name: "Company 1", description: "description one", city: "Denver", state: "Colorado", founders: '[{"id": 1, "title": "Founder and CEO"}]'}])
+members = Member.create([{name: "Collin Brockway", companies: '[1]'}])
