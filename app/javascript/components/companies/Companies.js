@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
-
+import './bootstrap.min.css'
 import './Companies.css'
+//import '/Companies.css'
 
 class Companies extends React.Component
 {
