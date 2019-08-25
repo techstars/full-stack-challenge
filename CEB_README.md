@@ -85,3 +85,7 @@ List of modules used in the React side:
 reactstrap
 react-datepicker
 react-truncate
+
+Link to Heroku deploy:
+
+http://ceb-full-stack-challenge.herokuapp.com

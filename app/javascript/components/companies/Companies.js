@@ -271,7 +271,7 @@ class Companies extends React.Component
 				editCompanyDescription: this.state.companies[index].description,
 				editCompanyCity: this.state.companies[index].city,
 				editCompanyState: this.state.companies[index].state,
-				editCompanyDateFounded: this.state.companies[index].dateFounded
+				//editCompanyDateFounded: this.state.companies[index].dateFounded
 			});
 		}
 		this.customLog(this.state.companies[index].dateFounded);
