@@ -43,3 +43,21 @@
 {
 	background-color: white;
 }
+
+.founder-container
+{
+	border: 1px solid black;
+	background-color: lightgrey;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.founder-box
+{
+	border: 1px solid black;
+	background-color: lightblue;
+	padding: 5px;
+	text-align: center;
+}

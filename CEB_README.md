@@ -54,3 +54,7 @@ that's the way it's going to be.
 --Added details modal for companies
 --Added update route and edit form, both work
 --Added delete route and button, both work
+
+--Added more member functionality - you can create new members and
+  add them to existing companies as founders. You cannot add a founder
+  to more than one company, and they must have a title.

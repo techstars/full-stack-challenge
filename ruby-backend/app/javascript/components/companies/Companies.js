@@ -30,7 +30,13 @@ class Companies extends React.Component
 			editCompanyName: '',
 			editCompanyDescription: '',
 			editCompanyCity: '',
-			editCompanyState: ''
+			editCompanyState: '',
+
+			founderToAdd: 0,
+			founderToAddTitle: '',
+
+			showNewMemberForm: false,
+			newMemberName: ''
 		}
 	}
 
@@ -118,9 +124,14 @@ class Companies extends React.Component
 					return(
 					{
 						name: this.getMemberFromState(founder.id).name,
-						title: founder.title
+						title: founder.title,
+						id: founder.id
 					});
 				});
+			}
+			else
+			{
+				tempCompanies[index].founders = [];
 			}
 		});
 
@@ -196,6 +207,14 @@ class Companies extends React.Component
 		this.setState(
 		{
 			showNewCompanyForm: !this.state.showNewCompanyForm
+		});
+	}
+
+	toggleNewMemberForm = () =>
+	{
+		this.setState(
+		{
+			showNewMemberForm: !this.state.showNewMemberForm
 		});
 	}
 
@@ -330,6 +349,108 @@ class Companies extends React.Component
 		this.toggleShowCompanyDetails();
 	}
 
+	handleSubmitFounder = async (e) =>
+	{
+		//basically this is an update route thing
+		//we want to add the member at index this.state.founderToAdd
+		//to the company we are viewing (this.state.companyDetails)
+
+		e.preventDefault();
+
+
+		//OK but first we have to make sure that this person
+		//doesn't already belong to some other company
+
+		let proceed = true;
+
+		for (let i = 0; i < this.state.companies.length; i++)
+		{
+			for (let j = 0; j < this.state.companies[i].founders.length; j++)
+			{
+				if (this.state.companies[i].founders[j].id == this.state.members[this.state.founderToAdd].id)
+				{
+					//oops we can't do that!
+					alert("This member is already a founder of " + this.state.companies[i].name);
+					proceed = false;
+				}
+			}
+		}
+
+		if (this.state.founderToAddTitle == '')
+		{
+			alert("You must specify a title for this founder!");
+			proceed = false;
+		}
+
+		if (proceed)
+		{
+		
+			const editCompany =
+			{
+				founders: JSON.stringify(this.state.companies[this.state.companyDetails].founders.concat([{id: this.state.members[this.state.founderToAdd].id, title: this.state.founderToAddTitle}]))
+			};
+
+			const infoToSend = await JSON.stringify(editCompany);
+
+			let response = await fetch(this.props.apiURL + '/api/v1/companies/' + this.state.companies[this.state.companyDetails].id,
+			{
+				method: 'PUT',
+				headers:
+				{
+					'Content-Type': 'application/json'
+				},
+				body: await infoToSend,
+			});
+
+			response = await response.json();
+
+			console.log(await response);
+
+			//force-reload companies:
+			this.forceReloadCompanies();
+			//turn off the modal:
+			this.toggleShowCompanyDetails.bind(null, 0);
+		}
+
+		//reset the founderToAdd variables:
+		this.setState(
+		{
+			founderToAdd: 0,
+			founderToAddTitle: ''
+		});
+	}
+
+	submitNewMember = async (e) =>
+	{
+		e.preventDefault();
+		
+		const newMember =
+		{
+			name: this.state.newMemberName,
+		};
+
+		const infoToSend = await JSON.stringify(newMember);
+
+		let response = await fetch(this.props.apiURL + '/api/v1/members',
+		{
+			method: 'POST',
+			headers:
+			{
+				'Content-Type': 'application/json'
+			},
+			body: await infoToSend,
+		});
+
+		response = await response.json();
+
+		console.log(await response);
+
+		//force-reload companies:
+		this.forceReloadCompanies();
+		//turn off the modal:
+		this.toggleNewMemberForm();
+	}
+
 	render ()
 	{
 		return(
@@ -345,10 +466,10 @@ class Companies extends React.Component
 								
 								<ModalBody>
 										<form onSubmit={this.submitNewCompany}>
-											<input name="newCompanyName" onChange={this.handleChange} placeholder="Name of company"></input>
-											<textarea name="newCompanyDescription" onChange={this.handleChange} placeholder="Description" type="text" rows="10" cols="60"></textarea>
-											<input name="newCompanyCity" onChange={this.handleChange} placeholder="City"></input>
-											<input name="newCompanyState" onChange={this.handleChange} placeholder="State"></input>
+											<input name="newCompanyName" onChange={this.handleChange} placeholder="Name of company"></input><br/>
+											<textarea name="newCompanyDescription" onChange={this.handleChange} placeholder="Description" type="text" rows="10" cols="60"></textarea><br/>
+											<input name="newCompanyCity" onChange={this.handleChange} placeholder="City"></input><br/>
+											<input name="newCompanyState" onChange={this.handleChange} placeholder="State"></input><br/>
 											<button type='submit'>Submit</button>
 										</form>
 								</ModalBody>
@@ -357,6 +478,24 @@ class Companies extends React.Component
 									<button onClick={this.toggleNewCompanyForm}>Close</button>
 								</ModalFooter>
 							</Modal>
+
+							<Modal isOpen={this.state.showNewMemberForm} toggle={this.toggleNewMemberForm} className='new-member-form' size='lg'>
+								<ModalHeader>
+									New Member
+								</ModalHeader>
+								
+								<ModalBody>
+										<form onSubmit={this.submitNewMember}>
+											<input name="newMemberName" onChange={this.handleChange} placeholder="Name of member"></input><br/>
+											<button type='submit'>Submit</button>
+										</form>
+								</ModalBody>
+
+								<ModalFooter>
+									<button onClick={this.toggleNewMemberForm}>Close</button>
+								</ModalFooter>
+							</Modal>
+
 
 						{
 							this.state.showEditCompanyForm ?
@@ -367,10 +506,10 @@ class Companies extends React.Component
 								
 								<ModalBody>
 										<form onSubmit={this.submitEditCompany}>
-											<input name="editCompanyName" onChange={this.handleChange} value={this.state.editCompanyName} placeholder="Name of company"></input>
-											<textarea name="editCompanyDescription" onChange={this.handleChange} value={this.state.editCompanyDescription} placeholder="Description" type="text" rows="10" cols="60"></textarea>
-											<input name="editCompanyCity" onChange={this.handleChange} value={this.state.editCompanyCity} placeholder="City"></input>
-											<input name="editCompanyState" onChange={this.handleChange} value={this.state.editCompanyState} placeholder="State"></input>
+											<input name="editCompanyName" onChange={this.handleChange} value={this.state.editCompanyName} placeholder="Name of company"></input><br/>
+											<textarea name="editCompanyDescription" onChange={this.handleChange} value={this.state.editCompanyDescription} placeholder="Description" type="text" rows="10" cols="60"></textarea><br/>
+											<input name="editCompanyCity" onChange={this.handleChange} value={this.state.editCompanyCity} placeholder="City"></input><br/>
+											<input name="editCompanyState" onChange={this.handleChange} value={this.state.editCompanyState} placeholder="State"></input><br/>
 											<button type='submit'>Submit</button>
 										</form>
 								</ModalBody>
@@ -399,6 +538,37 @@ class Companies extends React.Component
 											<button type="submit">Delete</button>
 										</form>
 										<button onClick={this.toggleEditCompanyForm.bind(null, this.state.companyDetails)}>Edit</button>
+										<br/><br/>
+										Company founders:
+										<div className="founder-container">
+											{
+												this.state.companies[this.state.companyDetails].founders.map((founder) =>
+												{
+													return(
+														<div className="founder-box">
+															Name: {founder.name}<br/>
+															Title: {founder.title}
+														</div>
+													)
+												})
+											}
+										</div>
+										Attach a member to this company as a founder:
+										<form onSubmit={this.handleSubmitFounder}>
+											<select type='text' name='founderToAdd' onChange={this.handleChange}>
+												{
+													this.state.members.map((member, index) =>
+													{
+														return(
+															<option key={index} value={index}>{member.name}</option>
+														)
+													})
+												}
+											</select>
+											<input name="founderToAddTitle" onChange={this.handleChange} placeholder="Title"></input>
+											<br/>
+											<button type='submit'>Attach As Founder</button>
+										</form>
 									</ModalBody>
 
 									<ModalFooter>
@@ -414,7 +584,11 @@ class Companies extends React.Component
 								<div className="company-index-new" onClick={this.toggleNewCompanyForm}>
 									Create a new company
 								</div>
+								<div className="company-index-new" onClick={this.toggleNewMemberForm}>
+									Create a new member
+								</div>
 							</div>
+							
 						</div>
 					:
 						<div>
