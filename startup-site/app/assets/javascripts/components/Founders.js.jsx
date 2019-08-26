@@ -1,15 +1,15 @@
-class Companies extends React.Component{
+class Founders extends React.Component{
   constructor(props) {
      super(props)
   }
   render() {
     return (
-      this.renderCompanies()
+      this.renderFounders()
     )
   }
 
-  renderCompanies() {
-    return this.props.companies.map(company => {
+  renderFounders() {
+    return this.props.founders.map(company => {
       return (
         <div key={company.id} className="card">
           <div className="row">

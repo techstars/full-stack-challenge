@@ -4,7 +4,6 @@ class Navigation extends React.Component {
   }
 
   render() {
-    console.log('nav props', this.props)
     return (
       <nav className="nav row align-items-center">
         <div className="col-sm-9">
