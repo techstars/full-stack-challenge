@@ -12,7 +12,7 @@ class Navigation extends React.Component {
           <a className="link" href="#">Companies</a>
           <a className="link" href="#">Founders</a>
         </div>
-        <div className="col-sm-3" onClick={this.props.toggleAddCompany}>
+        <div className="col-sm-3" onClick={this.props.toggle_add_company}>
           <button className="button">Add Company</button>
         </div>       
       </nav>

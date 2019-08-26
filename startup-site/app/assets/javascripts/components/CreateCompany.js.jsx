@@ -8,7 +8,7 @@ class CreateCompany extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <button className="close" onClick={this.props.toggleAddCompany}>X</button>
+            <button className="close" onClick={this.props.toggle_add_company}>X</button>
           </div>
         </div>
         <div className="row">
@@ -19,19 +19,20 @@ class CreateCompany extends React.Component {
         <div className="row">
           <div className="col-sm-12">
             <label>Company Name</label>
-            <input name="name" type="text" onChange={this.props.onChange}/>
+            <input name="name" type="text" onChange={this.props.on_change}/>
             <label>City</label>
-            <input name="city" type="text" onChange={this.props.onChange}/>
+            <input name="city" type="text" onChange={this.props.on_change}/>
             <label>State</label>
-            <input name="state" type="text" onChange={this.props.onChange}/>
+            <input name="state" type="text" onChange={this.props.on_change}/>
             <label>Short Description</label>
-            <input name="short_description" type="text" onChange={this.props.onChange}/>
+            <input name="short_description" type="text" onChange={this.props.on_change}/>
             <label>Long Description</label>
-            <input name="long_description" type="text" onChange={this.props.onChange}/>
-            <label>Image URL</label>
-            <input name="image_url" type="text" onChange={this.props.onChange}/>
+            <input name="long_description" type="text" onChange={this.props.on_change}/>
+            <label>Logo Image URL</label>
+            <input name="logo_url" type="text" onChange={this.props.on_change}/>
+            <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
           </div>
-            <button onClick={this.props.onSubmit}>Submit</button>
+            <button onClick={this.props.on_submit}>Submit</button>
         </div>
       </div>
       
