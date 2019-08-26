@@ -30,8 +30,8 @@ class Companies extends React.Component{
                   ? <div>
                       <p>{company.short_description}</p>
                       <p>{company.long_description}</p>
-                      <button onClick={this.props.edit_company}>Edit</button>
-                      <button onClick={this.props.delete_company}>Delete</button>
+                      <button onClick={this.props.edit_company.bind(null, company)}>Edit</button>
+                      <button onClick={this.props.delete_company.bind(null, company)}>Delete</button>
                     </div>
                   : ''
               }

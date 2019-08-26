@@ -11,7 +11,12 @@ class CompaniesController < ApplicationController
     p "hitting the create route"
     @company = Company.new(company_params)
     @company.save
-    render 'index'
+    render 'home'
+  end 
+
+  def destroy
+    Company.destroy(params[:id])
+    render 'home'
   end 
 
   private 
