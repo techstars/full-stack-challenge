@@ -32,6 +32,22 @@ class Companies extends React.Component{
                       <p>{company.long_description}</p>
                       <button onClick={this.props.edit_company.bind(null, company)}>Edit</button>
                       <button onClick={this.props.delete_company.bind(null, company)}>Delete</button>
+                      <div>
+                        <h5>Founders</h5>
+                        { company.founders.length 
+                          ? company.founders.map(founder => <p>{founder.full_name}</p>)
+                          : <p>No founders</p>
+                        }
+                        <button onClick={this.props.toggle_add_founder.bind(null, company.id)}>Add Founder</button>
+                        {
+                          company.show_company_form 
+                            ? <FounderForm
+                                company_id={company.id}
+                                on_change={this.props.on_change_founders}
+                                on_submit={this.props.on_submit_founders}/>
+                            : ''
+                        }
+                      </div>
                     </div>
                   : ''
               }

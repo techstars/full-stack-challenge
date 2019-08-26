@@ -10,6 +10,5 @@ json.companies Company.all.order('updated_at DESC') do |company|
   json.logo_url company.logo_url
 end 
 
-
-
 json.path companies_path()
+json.founder_path founder_path()

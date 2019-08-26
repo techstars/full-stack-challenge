@@ -6,7 +6,6 @@ class CompanyForm extends React.Component {
   }
 
   render() {
-    console.log("form props", this.props)
     return (
       <div className="container">
         <div className="row">

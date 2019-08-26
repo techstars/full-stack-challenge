@@ -6,6 +6,7 @@ class App extends React.Component{
     if(this.props.companies){
       companies = this.props.companies.map(company => {
         company.show_details = false
+        company.show_founder_form = false
         return company
       })
     }
@@ -13,10 +14,12 @@ class App extends React.Component{
     this.state = {
       companies: companies,
       founders: this.props.founders || [],
-      show_form: false,
+      show_company_form: false,
       is_edit: false,
+      form_in_progress: false,
       active_tab: true,
       path: this.props.path,
+      founder_path: this.props.founder_path,
       new_company: {
         name: '',
         city: '',
@@ -25,13 +28,21 @@ class App extends React.Component{
         long_description: '',
         logo_url: '',
         show_details: false,
+      },
+      new_founder: {
+        full_name: '',
+        bio: '',
+        image_url: ''
       }  
     }
     this.set_active_tab = this.set_active_tab.bind(this)
     this.toggle_add_company = this.toggle_add_company.bind(this)
+    this.toggle_add_founder = this.toggle_add_founder.bind(this)
     this.expand_details = this.expand_details.bind(this)
     this.on_change = this.on_change.bind(this)
+    this.on_change_founders = this.on_change_founders.bind(this)
     this.on_submit = this.on_submit.bind(this)
+    this.on_submit_founders = this.on_submit_founders.bind(this)
     this.delete_company = this.delete_company.bind(this)
     this.edit_company = this.edit_company.bind(this)
     
@@ -39,7 +50,7 @@ class App extends React.Component{
   render() {
     // console.log("state", this.state)
     console.log("props", this.props)
-    return this.state.show_form 
+    return this.state.show_company_form 
       ? <CompanyForm 
           {...this.props}
           values={this.state.new_company}
@@ -48,24 +59,21 @@ class App extends React.Component{
           on_submit={this.on_submit}
         /> 
       : <div className="container-fluid site">
-              <Navigation 
-                toggle_add_company={this.toggle_add_company}
-                set_active_tab={this.set_active_tab}/>
-              <div className="col-sm-12">
-                { this.state.active_tab
-                    ? <Companies 
-                        companies={this.state.companies}
-                        expand_details={this.expand_details}
-                        edit_company={this.edit_company}
-                        delete_company={this.delete_company}/>
-                    : <Founders 
-                        founders={this.state.founders}
-                        expand_details={this.expand_details}
-                        edit_company={this.edit_company}
-                        delete_company={this.delete_company}/>
-                }  
-              </div>
-            </div>
+          <Navigation 
+            toggle_add_company={this.toggle_add_company}
+            set_active_tab={this.set_active_tab}/>
+          <div className="col-sm-12">
+            <Companies 
+              {...this.props}
+              companies={this.state.companies}
+              expand_details={this.expand_details}
+              edit_company={this.edit_company}
+              delete_company={this.delete_company}
+              toggle_add_founder={this.toggle_add_founder}
+              on_change_founders={this.on_change_founders}
+              on_submit_founders={this.on_submit_founders}/>                
+          </div>
+        </div>
   }
 
   set_active_tab(tab) {
@@ -75,7 +83,21 @@ class App extends React.Component{
   }
 
   toggle_add_company() {
-    this.setState({show_form: !this.state.show_form})
+    this.setState({show_company_form: !this.state.show_company_form})
+  }
+
+  toggle_add_founder(id) {
+    var companies = this.state.companies.map(company => {
+      console.log("company", company)
+      if(company.id === id){
+        company.show_company_form = !company.show_company_form
+      }
+      return company
+    })
+    this.setState({ 
+      companies: companies,
+      form_in_progress: true
+     })
   }
 
   expand_details(id) {
@@ -89,7 +111,6 @@ class App extends React.Component{
   }
 
   on_change(event) {
-    console.log("required?", event.target.required)
     var new_company = {...this.state.new_company}
     new_company[event.target.name] = event.target.value
     this.setState({
@@ -97,10 +118,46 @@ class App extends React.Component{
     })
   }
 
+  on_change_founders(event) {
+    var new_founder = {...this.state.new_founder}
+    new_founder[event.target.name] = event.target.value
+    this.setState({
+      new_founder: new_founder
+    })
+  }
+
+  on_submit_founders(id) {
+    console.log("founder to submit", this.state.new_founder) 
+    var self = this
+
+    var request_body = {
+      new_founder: {
+        ...self.state.new_founder,
+        company_id: id
+      }
+    }
+    var path = self.state.founder_path
+    fetch(path, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(request_body),
+    }).then(response => response.json())
+    .then(response_json=> {
+      console.log("post response", response_json)
+      self.setState({
+        companies: response_json.companies,
+        is_edit: false
+      })
+    })   
+  }
+
   edit_company(company) {
     console.log("company to edit", company)
     this.setState({
-      show_form: true,
+      show_company_form: true,
       new_company: company,
       is_edit: true
     })
@@ -128,7 +185,7 @@ class App extends React.Component{
     var request_body = {
       new_company: self.state.new_company
     }
-    var path = self.state.is_edit ? `${self.state.path}/${self.state.new_company.id}` : self.state.create_path
+    var path = self.state.is_edit ? `${self.state.path}/${self.state.new_company.id}` : self.state.path
     fetch(path, {
       method: this.state.is_edit ? 'PATCH' : 'POST',
       headers: {
@@ -140,7 +197,7 @@ class App extends React.Component{
     .then(response_json=> {
       console.log("post response", response_json)
       self.setState({
-        show_form: false,
+        show_company_form: false,
         companies: response_json.companies,
         is_edit: false
       })
