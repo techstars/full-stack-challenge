@@ -11,7 +11,7 @@ class CompaniesController < ApplicationController
     p "hitting the create route"
     @company = Company.new(company_params)
     @company.save
-    render 'home'
+    render 'index'
   end 
 
   private 

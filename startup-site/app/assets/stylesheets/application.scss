@@ -10,6 +10,12 @@ body {
   font-family: Helvetica;
 }
 
+input {
+  .button {
+    background-color: pink
+  }
+}
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -66,3 +72,4 @@ body {
   background-color: transparent;
   color: green
 }
+

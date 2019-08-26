@@ -19,7 +19,7 @@ class CreateCompany extends React.Component {
         <div className="row">
           <div className="col-sm-12">
             <label>Company Name</label>
-            <input name="name" type="text" onChange={this.props.on_change}/>
+            <input name="name" type="text" onChange={this.props.on_change} required/>
             <label>City</label>
             <input name="city" type="text" onChange={this.props.on_change}/>
             <label>State</label>
@@ -30,9 +30,12 @@ class CreateCompany extends React.Component {
             <input name="long_description" type="text" onChange={this.props.on_change}/>
             <label>Logo Image URL</label>
             <input name="logo_url" type="text" onChange={this.props.on_change}/>
+            <label>Date Founded</label>
+            <input type="date" name="bdaytime"/>
             <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
+            <input className="button" type="submit" value="submit" onClick={this.props.on_submit} />
           </div>
-            <button onClick={this.props.on_submit}>Submit</button>
+            
         </div>
       </div>
       
