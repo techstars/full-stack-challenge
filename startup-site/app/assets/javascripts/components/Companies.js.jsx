@@ -20,13 +20,18 @@ class Companies extends React.Component{
               <h5 className="header">{company.name}</h5>
               <p>{company.city}</p>
               <p>{company.state}</p>
-              <a onClick={this.props.expand_details.bind(null, company.id)}>
-                { company.show_details ? 'Show less...' : 'Show more...' }
-              </a>
+              <div>
+                <a onClick={this.props.expand_details.bind(null, company.id)}>
+                  { company.show_details ? 'Show less...' : 'Show more...' }
+                </a>
+              </div>
+              
               { company.show_details 
                   ? <div>
                       <p>{company.short_description}</p>
                       <p>{company.long_description}</p>
+                      <button onClick={this.props.edit_company}>Edit</button>
+                      <button onClick={this.props.delete_company}>Delete</button>
                     </div>
                   : ''
               }

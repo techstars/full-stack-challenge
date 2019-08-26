@@ -9,8 +9,8 @@ class CompaniesController < ApplicationController
 
   def create
     p "hitting the create route"
-    @company = Company.new(company_params)
-    @company.save
+    @founder = Founder.new(founder_params)
+    @founder.save
     render 'index'
   end 
 

@@ -3,33 +3,16 @@ class Founders extends React.Component{
      super(props)
   }
   render() {
-    return (
-      this.renderFounders()
-    )
-  }
-
-  renderFounders() {
-    return this.props.founders.map(company => {
+    return this.props.founders.map(founder => {
       return (
-        <div key={company.id} className="card">
+        <div key={founder.id} className="card">
           <div className="row">
             <div className="col-sm-2">
-              <img src={company.logo_url} />
+              <img src={founder.image_url} />
             </div>
             <div className="col-sm-10">
-              <h5 className="header">{company.name}</h5>
-              <p>{company.city}</p>
-              <p>{company.state}</p>
-              <a onClick={this.props.expand_details.bind(null, company.id)}>
-                { company.show_details ? 'Show less...' : 'Show more...' }
-              </a>
-              { company.show_details 
-                  ? <div>
-                      <p>{company.short_description}</p>
-                      <p>{company.long_description}</p>
-                    </div>
-                  : ''
-              }
+              <h5 className="header">{founder.full_name} - <em>{founder.title}, {founder.company}</em></h5>
+              <p>{founder.bio}</p>
             </div>
           </div>
         </div>

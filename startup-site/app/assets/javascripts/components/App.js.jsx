@@ -4,7 +4,7 @@ class App extends React.Component{
 
     var companies = []
     if(this.props.companies){
-      companies= this.props.companies.map(company => {
+      companies = this.props.companies.map(company => {
         company.show_details = false
         return company
       })
@@ -12,6 +12,7 @@ class App extends React.Component{
 
     this.state = {
       companies: companies,
+      founders: this.props.founders || [],
       show_form: false,
       active_tab: true,
       new_company: {
@@ -33,6 +34,7 @@ class App extends React.Component{
   }
   render() {
     console.log("state", this.state)
+    console.log("props", this.props)
     return this.state.show_form 
       ? <CreateCompany 
           {...this.props}
@@ -40,30 +42,28 @@ class App extends React.Component{
           on_change={this.on_change}
           on_submit={this.on_submit}
         /> 
-      : this.state.active_tab 
-          ? <div className="container-fluid site">
+      : <div className="container-fluid site">
               <Navigation 
                 toggle_add_company={this.toggle_add_company}
                 set_active_tab={this.set_active_tab}/>
               <div className="col-sm-12">
-                <Companies 
-                  companies={this.state.companies}
-                  expand_details={this.expand_details}/>
+                { this.state.active_tab
+                    ? <Companies 
+                        companies={this.state.companies}
+                        expand_details={this.expand_details}/>
+                    : <Founders 
+                        founders={this.state.founders}
+                        expand_details={this.expand_details}/>
+                }  
               </div>
-            </div>       
-          : <div className="container-fluid site">
-              <Navigation 
-                toggle_add_company={this.toggle_add_company}
-                set_active_tab={this.set_active_tab}/>
-              <div className="col-sm-12">
-                {/* <Founders companies={this.state.companies}/> */}
-              </div>
-            </div>    
+            </div>
   }
 
   set_active_tab(tab) {
+    console.log("tab", tab)
     var show = true
     if(tab === 'founders') show = false
+    console.log("show", show)
     this.setState({ active_tab: show })
   }
 
@@ -87,6 +87,14 @@ class App extends React.Component{
     this.setState({
       new_company: new_company
     })
+  }
+
+  edit_company() {
+
+  }
+
+  delete_company() {
+    
   }
 
   on_submit() {
