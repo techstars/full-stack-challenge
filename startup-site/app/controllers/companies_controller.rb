@@ -14,6 +14,11 @@ class CompaniesController < ApplicationController
     render 'home'
   end 
 
+  def update
+    Company.update(params[:id], company_params)
+    render 'home'
+  end 
+
   def destroy
     Company.destroy(params[:id])
     render 'home'

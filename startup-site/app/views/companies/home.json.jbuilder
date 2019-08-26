@@ -10,4 +10,6 @@ json.companies Company.all.order('updated_at DESC') do |company|
   json.logo_url company.logo_url
 end 
 
-json.company @company
+
+
+json.path companies_path()

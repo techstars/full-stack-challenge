@@ -14,7 +14,9 @@ class App extends React.Component{
       companies: companies,
       founders: this.props.founders || [],
       show_form: false,
+      is_edit: false,
       active_tab: true,
+      path: this.props.path,
       new_company: {
         name: '',
         city: '',
@@ -36,7 +38,7 @@ class App extends React.Component{
   }
   render() {
     // console.log("state", this.state)
-    // console.log("props", this.props)
+    console.log("props", this.props)
     return this.state.show_form 
       ? <CompanyForm 
           {...this.props}
@@ -99,14 +101,14 @@ class App extends React.Component{
     console.log("company to edit", company)
     this.setState({
       show_form: true,
-      new_company: company
+      new_company: company,
+      is_edit: true
     })
   }
 
   delete_company(company) {
-    console.log("company to delete", company)
     var self = this
-    fetch(`http://localhost:3000/companies/${company.id}`, {
+    fetch(`${this.state.path}/${company.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -122,13 +124,13 @@ class App extends React.Component{
   }
 
   on_submit() {
-    console.log("submit me", this.state.new_company)
     var self = this
     var request_body = {
       new_company: self.state.new_company
     }
-    fetch('http://localhost:3000/companies', {
-      method: 'POST',
+    var path = self.state.is_edit ? `${self.state.path}/${self.state.new_company.id}` : self.state.create_path
+    fetch(path, {
+      method: this.state.is_edit ? 'PATCH' : 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -139,7 +141,8 @@ class App extends React.Component{
       console.log("post response", response_json)
       self.setState({
         show_form: false,
-        companies: response_json.companies
+        companies: response_json.companies,
+        is_edit: false
       })
     }) 
   }
