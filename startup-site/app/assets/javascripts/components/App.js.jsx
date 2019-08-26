@@ -4,6 +4,7 @@ class App extends React.Component{
     this.state = {
       companies: this.props.companies || [],
       show_form: false,
+      active_tab: 'companies',
       new_company: {
         name: '',
         city: '',
@@ -13,9 +14,10 @@ class App extends React.Component{
         logo_url: ''
       }  
     }
-     this.toggle_add_company = this.toggle_add_company.bind(this)
-     this.on_change = this.on_change.bind(this)
-     this.on_submit = this.on_submit.bind(this)
+    this.set_active_tab = this.set_active_tab.bind(this)
+    this.toggle_add_company = this.toggle_add_company.bind(this)
+    this.on_change = this.on_change.bind(this)
+    this.on_submit = this.on_submit.bind(this)
   }
   render() {
     return this.state.show_form 
@@ -25,12 +27,27 @@ class App extends React.Component{
           on_change={this.on_change}
           on_submit={this.on_submit}
         /> 
-      : <div className="container-fluid site">
-          <Navigation toggle_add_company={this.toggle_add_company}/>
-          <div className="col-sm-12">
-            <Companies companies={this.state.companies}/>
-          </div>
-        </div>    
+      : this.state.active_tab 
+          ? <div className="container-fluid site">
+              <Navigation 
+                toggle_add_company={this.toggle_add_company}
+                set_active_tab={this.set_active_tab}/>
+              <div className="col-sm-12">
+                <Companies companies={this.state.companies}/>
+              </div>
+            </div>       
+          : <div className="container-fluid site">
+              <Navigation 
+                toggle_add_company={this.toggle_add_company}
+                onChangeActiveTab={this.onChangeActiveTab}/>
+              <div className="col-sm-12">
+                {/* <Founders companies={this.state.companies}/> */}
+              </div>
+            </div>    
+  }
+
+  set_active_tab(tab) {
+    this.setState({ active_tab: tab })
   }
 
   toggle_add_company() {
