@@ -9,6 +9,12 @@ const Header = () => (
             </h1>
         </Link>
 
+        <Link to="/new">
+            <h1>
+                Add New Company
+            </h1>
+        </Link>
+
     </header>
 );
 

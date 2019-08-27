@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route exact path="/companies" component={App} />
+                <Route exact path="/new" component={CompanyForm} />
             </Switch>
         </Router>,
         document.querySelector('#root'),
