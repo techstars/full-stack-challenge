@@ -1,5 +1,10 @@
 {
   "name": "company-list",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.0"
+  }
 }
