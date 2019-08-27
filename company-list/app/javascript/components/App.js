@@ -1,6 +1,7 @@
 import React from 'react';
-// import { Route } from 'react-router-dom';
 import CompaniesContainer from './CompaniesContainer';
+import Header from './Header';
+
 import './App.css';
 
 

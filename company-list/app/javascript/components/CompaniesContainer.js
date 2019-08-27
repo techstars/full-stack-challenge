@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from './Header';
 import CompaniesList from './CompaniesList';
-import AddCompanyForm from './AddCompanyForm';
+import CompanyForm from './CompanyForm';
 import { Link } from 'react-router-dom';
 
 
@@ -45,9 +44,7 @@ class CompaniesContainer extends Component {
                 <div className="grid">
                     <CompaniesList companies={companies} founders={founders}/>
                 </div>
-                <div>
-                    <Link to="/new">Add New Company</Link>
-                </div>
+
             </div>
         );
     }
