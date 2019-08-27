@@ -7,48 +7,48 @@ class FounderForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            <h1>Add a Founder</h1>
+      <div className="nested-container">
+        <form ref={this.form}>
+          <div className="input-group">
+            <label className="label">Full Name</label>
+            <input
+              className="input" 
+              name="full_name" 
+              type="text" 
+              onChange={this.props.on_change} 
+              required/>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <form ref={this.form} onSubmit={e => e.preventDefault()}>
-              <label>Full Name</label>
-              <input 
-                name="full_name" 
-                type="text" 
-                onChange={this.props.on_change} 
-                required/>
-              
-              <label>Bio</label>
-              <input 
-                name="bio" 
-                type="text" 
-                onChange={this.props.on_change} 
-                required/>
-              
-              <label>Headshot URL</label>
-              <input 
-                name="image_url" 
-                type="url" 
-                onChange={this.props.on_change}
-                required/>
+          <div className="input-group">
+            <label className="label">Bio</label>
+            <input
+              className="input" 
+              name="bio" 
+              type="text" 
+              onChange={this.props.on_change} 
+              required/>
+          </div>
+          
+          <div className="input-group">
+            <label className="label">Headshot URL</label>
+            <input
+              className="input" 
+              name="image_url" 
+              type="url" 
+              onChange={this.props.on_change}
+              required/>
+          </div>
 
-              <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
-              <input className="button" type="submit" onClick={this.validate.bind(null, this.props.company_id)} />
-            </form>
+          <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
+          <div>
+            <input className="nested-button" type="submit" onClick={this.validate.bind(null, this.props.company_id)} />
           </div>
-        </div>
+        </form>
       </div>
       
     )
   }
 
   validate(id) {
-    console.log("company id", id)
     var valid = this.form.current.reportValidity()
     if(!valid) return valid
     else this.props.on_submit(id)

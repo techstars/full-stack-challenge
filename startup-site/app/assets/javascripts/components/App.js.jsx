@@ -48,8 +48,6 @@ class App extends React.Component{
     
   }
   render() {
-    // console.log("state", this.state)
-    console.log("props", this.props)
     return this.state.show_company_form 
       ? <CompanyForm 
           {...this.props}
@@ -58,21 +56,19 @@ class App extends React.Component{
           on_change={this.on_change}
           on_submit={this.on_submit}
         /> 
-      : <div className="container-fluid site">
+      : <div className="container">
           <Navigation 
             toggle_add_company={this.toggle_add_company}
             set_active_tab={this.set_active_tab}/>
-          <div className="col-sm-12">
-            <Companies 
-              {...this.props}
-              companies={this.state.companies}
-              expand_details={this.expand_details}
-              edit_company={this.edit_company}
-              delete_company={this.delete_company}
-              toggle_add_founder={this.toggle_add_founder}
-              on_change_founders={this.on_change_founders}
-              on_submit_founders={this.on_submit_founders}/>                
-          </div>
+          <Companies 
+            {...this.props}
+            companies={this.state.companies}
+            expand_details={this.expand_details}
+            edit_company={this.edit_company}
+            delete_company={this.delete_company}
+            toggle_add_founder={this.toggle_add_founder}
+            on_change_founders={this.on_change_founders}
+            on_submit_founders={this.on_submit_founders}/>                
         </div>
   }
 
@@ -88,7 +84,6 @@ class App extends React.Component{
 
   toggle_add_founder(id) {
     var companies = this.state.companies.map(company => {
-      console.log("company", company)
       if(company.id === id){
         company.show_company_form = !company.show_company_form
       }
@@ -127,9 +122,7 @@ class App extends React.Component{
   }
 
   on_submit_founders(id) {
-    console.log("founder to submit", this.state.new_founder) 
     var self = this
-
     var request_body = {
       new_founder: {
         ...self.state.new_founder,
@@ -146,7 +139,6 @@ class App extends React.Component{
       body: JSON.stringify(request_body),
     }).then(response => response.json())
     .then(response_json=> {
-      console.log("post response", response_json)
       self.setState({
         companies: response_json.companies,
         is_edit: false
@@ -155,7 +147,6 @@ class App extends React.Component{
   }
 
   edit_company(company) {
-    console.log("company to edit", company)
     this.setState({
       show_company_form: true,
       new_company: company,
@@ -173,7 +164,6 @@ class App extends React.Component{
       },
     }).then(response => response.json())
     .then(response_json => {
-      console.log("post response", response_json)
       this.setState({
         companies: response_json.companies
       })
@@ -195,10 +185,11 @@ class App extends React.Component{
       body: JSON.stringify(request_body),
     }).then(response => response.json())
     .then(response_json=> {
-      console.log("post response", response_json)
       self.setState({
         show_company_form: false,
         companies: response_json.companies,
+        new_company: {},
+        new_founder: {},
         is_edit: false
       })
     }) 

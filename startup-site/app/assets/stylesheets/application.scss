@@ -1,43 +1,62 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /*
  *= require_tree .
  *= require_self
  */
+
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
 body {
   background-color: #ededed;
   font-family: Helvetica;
 }
 
-input {
-  .button {
-    background-color: pink
-  }
-}
-
-.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
   background-color: #15A748;
   padding: 14px;
-  height: 60px;
-
-  a {
-    padding-right: 26px;
-  }
-
-  .link {
-    color: white;
-  }
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   .logo {
     font-size: 16px;
     text-transform: uppercase;
-    font-family: Helvetica;
     color: white;
   }
 
@@ -47,29 +66,203 @@ input {
     height: 34px;
     background-color: white;
     color: #15A748;
-    padding-left: 8px;
-  }
-}
-
-.card {
-  background-color: white;
-  border-radius: 2px;
-  padding: 20px;
-  margin-top: 10px;
-
-  img {
-    width: 80px;
-  }
-
-  .header {
-    font-size: 16px;
+    padding: 8px;
     font-weight: bold;
   }
 }
 
-.close-button {
-  border: none;
-  background-color: transparent;
-  color: green
+.content {
+  .card {
+    background-color: white;
+    border-radius: 2px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .card-image {
+      margin-right: 18px;
+    }
+
+    .card-content {
+      padding: 2px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: flex-start;
+      align-content: space-between;
+   
+      .card-row {
+        margin-bottom: 14px;
+      }
+
+      .name {
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .location {
+        text-transform: capitalize;
+        font-style: italic;
+        font-size: 14px;
+      }
+
+      .description {
+        font-size: 12px;
+      }
+
+      .show-more {
+        color: grey;
+        font-size: 12px;
+      }
+
+      .founders {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .founders-header {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .add-founder {
+        border-style: solid;
+        border-width: 1px;
+        border-color: green;
+        border-radius: 3px;
+        color: green;
+        background-color: white;
+        height: 22px;
+        margin-right: 10px;
+      }
+
+      .no-founders {
+        margin-top: 16px;
+      }
+
+      .founder-card {
+        display: flex;
+        flex-direction: 'row';
+        margin-top: 10px;
+
+        img {
+          width: 60px;
+        } 
+      }
+
+      .founder-image {
+        margin-right: 10px;
+        border-radius: 1/2;
+      }
+      .founder-content {
+        flex-grow: 1
+      }
+    }
+
+    .heading {
+      margin-right: 16px;
+    }
+  
+    img {
+      width: 80px;
+    }
+    
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @include md {
+  
+  }
+  @include lg {
+    .card {
+      justify-content: flex-start;
+      align-content: flex-start;
+      .card-content {
+        flex-grow: 0;
+        align-content: flex-start;
+        margin-right: 650px;
+      }
+    } 
+    
+  }
+
 }
 
+.container-form {
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+
+  .label {
+    margin-right: 10px;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .input {
+    border-width: 1px;
+    border-radius: 2px;
+    border-style: solid;
+    border-color: black;
+    height: 24px;
+    flex-grow: 3;
+  }
+
+  .button {
+    border-radius: 3px;
+    background-color: green;
+    color: white;
+    height: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .nested-button {
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+    border-radius: 3px;
+    color: green;
+    background-color: white;
+    height: 22px;
+    margin-right: 10px;
+  }
+}
+
+.form-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  // padding: 20px;
+}
+
+.close {
+  border: none;
+  background-color: transparent;
+  color: green;
+  height: 15px;
+  color: black;
+  border: none;
+  background-color: transparent;
+  font-size: 26px;
+}
