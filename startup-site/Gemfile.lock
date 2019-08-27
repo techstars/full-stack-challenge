@@ -54,8 +54,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
-    bootstrap-sass (3.2.0.4)
-      sass (~> 3.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.1.1)
@@ -223,7 +221,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.1.0)
-  bootstrap-sass (~> 3.2.0)
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -246,7 +243,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.2.9p480
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.17.3
