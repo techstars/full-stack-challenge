@@ -37,13 +37,13 @@ class CompaniesContainer extends Component {
 
 
     render() {
-        const { companies } = this.state;
+        const { companies, founders } = this.state;
         if (companies === null) return null;
 
         return (
             <div>
                 <div className="grid">
-                    <CompaniesList companies={companies} />
+                    <CompaniesList companies={companies} founders={founders}/>
                 </div>
                 <div>
                     <Link to="/new">Add New Company</Link>
