@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route exact path="/companies" component={App} />
+                <Route path="/companies" component={App} />
                 <Route exact path="/new" component={CompanyForm} />
             </Switch>
         </Router>,
