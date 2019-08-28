@@ -3,15 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Header = () => (
     <header>
-        <Link to="/companies">
+        <Link to="/">
             <h1>
                 Company List
-            </h1>
-        </Link>
-
-        <Link to="/new">
-            <h1>
-                Add New Company
             </h1>
         </Link>
 

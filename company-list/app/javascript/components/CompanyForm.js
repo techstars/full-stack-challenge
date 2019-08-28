@@ -41,9 +41,11 @@ class CompanyForm extends React.Component {
         if (!this.isEmptyObject(errors)) {
             this.setState({ errors })
         } else {
-            console.log(company);
-        }
+            const { addCompany } =  this.props
+            addCompany(company);        }
     }
+
+
 
     updateCompany = (key, value) => {
         this.setState(prevState => ({
@@ -58,8 +60,6 @@ class CompanyForm extends React.Component {
         const { name, value } = event.target;
         this.updateCompany(name, value)
     };
-
-
 
 
     validateCompany= (company) => {
@@ -196,6 +196,10 @@ CompanyForm.defaultProps = {
     }
 };
 
+// CompanyForm.propTypes = {
+//     company: PropTypes.shape(),
+//     onSubmit: PropTypes.func.isRequired,
+// };
 
 
 export default CompanyForm;

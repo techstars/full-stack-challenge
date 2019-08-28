@@ -26,14 +26,12 @@ class Api::CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:event).permit(
+    params.require(:company).permit(
       :id,
       :name,
       :description,
       :founded_date,
-      :city,
-      :host,
-      :published
+      :city
     )
   end
 end
