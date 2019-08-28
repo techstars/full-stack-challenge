@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Pikaday from 'pikaday';
+import 'pikaday/css/pikaday.css';
 
 
 class CompanyForm extends React.Component {
@@ -9,7 +11,28 @@ class CompanyForm extends React.Component {
             company: props.company,
             errors: {}
          };
+        this.dateInput = React.createRef();
+
     }
+
+    componentDidMount() {
+        new Pikaday({
+            field: this.dateInput.current,
+            onSelect: (date) => {
+                const formattedDate = this.formatDate(date);
+                this.dateInput.current.value = formattedDate;
+                this.updateCompany('founded_date', formattedDate);
+            },
+        });
+    }
+
+
+    formatDate = (d) => {
+        const YYYY = d.getFullYear();
+        const MM = `0${d.getMonth() + 1}`.slice(-2);
+        const DD = `0${d.getDate()}`.slice(-2);
+        return `${YYYY}-${MM}-${DD}`;
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -22,15 +45,18 @@ class CompanyForm extends React.Component {
         }
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-
+    updateCompany = (key, value) => {
         this.setState(prevState => ({
             company: {
                 ...prevState.company,
-                [name]: value,
+                [key]: value,
             },
         }));
+    }
+
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+        this.updateCompany(name, value)
     };
 
 
@@ -56,7 +82,7 @@ class CompanyForm extends React.Component {
         }
 
         if (company.description === '') {
-            errors.description = 'You must enter a valid date';
+            errors.description = 'You must enter a valid description';
         }
         console.log(company)
         console.log(errors)
@@ -91,6 +117,7 @@ class CompanyForm extends React.Component {
     render() {
         return (
             <div>
+                {this.renderErrors()}
                 <h2>New Event</h2>
                 <form className="CompanyForm" onSubmit={this.handleSubmit}>
                     <div>
@@ -130,10 +157,11 @@ class CompanyForm extends React.Component {
                         <label htmlFor="founded_date">
                             <strong>Founded Date:</strong>
                             <input
-                                type="text" 
-                                id="founded_date" 
-                                name="founded_date" 
-                                onChange={this.handleInputChange}   
+                                type="text"
+                                id="founded_date"
+                                name="founded_date"
+                                ref={this.dateInput}
+                                autoComplete="off"
                             />
                         </label>
                     </div>
@@ -171,3 +199,15 @@ CompanyForm.defaultProps = {
 
 
 export default CompanyForm;
+
+{/* <div>
+    <label htmlFor="founded_date">
+        <strong>Founded Date:</strong>
+        <input
+            type="text"
+            id="founded_date"
+            name="founded_date"
+            onChange={this.handleInputChange}
+        />
+    </label>
+</div> */}
