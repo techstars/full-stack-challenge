@@ -4,18 +4,20 @@ import CompaniesList from './CompaniesList';
 import PropTypes from 'prop-types';
 import CompanyForm from './CompanyForm';
 import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
+import CompanyDetails from './CompanyDetails';
 
-
+const initialState = 
+    {
+    companies: null,
+    founders: null,
+    show: 'wait',
+    company: { }
+}
 
 class CompaniesContainer extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            companies: null,
-            founders: null,
-            form: false
-        };
+        this.state = initialState
     }
 
     componentDidMount() {
@@ -26,11 +28,21 @@ class CompaniesContainer extends Component {
             .then((results) => {
                 this.setState({
                     companies: results[0].data,
-                    founders: results[1].data
-                }).catch((error) => {
-                    console.log(error);
-                    });
+                    founders: results[1].data,
+                    show: 'list'
+                })
+            .catch((error) => {
+                console.log(error);
             });
+
+            });
+    }
+
+    showDetails = (company) => {
+        this.setState({
+            company: company,
+            show:'details'
+        })
     }
 
     addCompany = (newCompany) => {
@@ -40,8 +52,8 @@ class CompaniesContainer extends Component {
                 alert('A New Company Has Been Added!');
                 const savedCompany = response.data;
                 this.setState(prevState => ({
-                    form: false,
                     companies: [...prevState.companies, savedCompany],
+                    show: 'list'
                 }));
 
             })
@@ -51,26 +63,62 @@ class CompaniesContainer extends Component {
     }
 
     handleAddButton = () => {
-        const {form } = this.state
-        this.setState({form: !form})
+        this.setState({show: 'form'})
     }
 
+
+
+    deleteCompany = (companyId) => {
+            axios
+                .delete(`/api/companies/${companyId}.json`)
+                .then((response) => {
+                    if (response.status === 204) {
+                        alert('Company deleted');
+                        const { companies } = this.state;
+                        this.setState({ 
+                            companies: companies.filter(company => company.id !== companyId),
+                            show: 'list' 
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        
+    }
+
+
     render() {
-        const { companies, founders, form } = this.state;
+        const { companies, founders, show, company } = this.state;
+        // if (companies === null) return null
+
         let page
-
-        if (companies === null) return null
-
-        form ? 
-            page = <CompanyForm
-                    addCompany={this.addCompany}       
-            />
-        :
-            page = <CompaniesList
-                companies={companies}
-                founders={founders}
-            />
-
+        
+        switch(show) {
+            case 'wait':
+                page = {}
+            case 'details':
+                page = <CompanyDetails
+                    deleteCompany={this.deleteCompany}
+                    company={company}
+                />
+                break;
+            case 'form':    
+                page = <CompanyForm
+                    addCompany={this.addCompany}
+                />
+                break;
+            default:   
+                page = <CompaniesList
+                    companies={companies}
+                    founders={founders}
+                    showDetails={this.showDetails}
+                /> 
+                break;
+        }      
+        
+    
+   
 
         return (
             <div>
@@ -87,3 +135,19 @@ class CompaniesContainer extends Component {
 
 
 export default CompaniesContainer;
+
+
+
+
+
+        // form ? 
+        //     page = <CompanyForm
+        //             addCompany={this.addCompany}
+        //     />
+        // :
+        //     page = <CompaniesList
+        //         companies={companies}
+        //         founders={founders}
+        //         deleteCompany={this.deleteCompany}
+        //         handleMore={this.handleMore}       
+        //     />

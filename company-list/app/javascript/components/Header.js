@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => (
     <header>
-        <Link to="/">
+        <Link to='/companies'>
             <h1>
                 Company List
             </h1>

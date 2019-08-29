@@ -4,15 +4,21 @@ import CompanyCard from './CompanyCard'
 
 
 export default class CompaniesList extends Component {
-    renderCompanies() {
-        const { companies } = this.props;
+    constructor(props){
+        super(props)
+    }
+
+    renderCompanies = () => {
+        const { companies, showDetails } = this.props;
         companies.sort(
             (a, b) => new Date(b.founded_date) - new Date(a.founded_date),
         );
 
         return companies.map(company => (
             <div key={company.id}>
-                <CompanyCard company={company}/>
+                <CompanyCard company={company} 
+                    showDetails={showDetails}
+                />
             </div>
         ));
     }

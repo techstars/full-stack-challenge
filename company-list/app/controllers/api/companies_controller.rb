@@ -31,7 +31,8 @@ class Api::CompaniesController < ApplicationController
       :name,
       :description,
       :founded_date,
-      :city
+      :city,
+      :state
     )
   end
 end
