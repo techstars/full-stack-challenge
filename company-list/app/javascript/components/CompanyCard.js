@@ -31,7 +31,7 @@ class CompanyCard extends React.Component {
                     <h2>{name}</h2>
                     <span>{`${city}, ${state}`}</span>
 
-                    <a onClick={this.handleMore}>...More</a>
+                    <h2><a onClick={this.handleMore}>...More</a></h2>
 
                 </div>
                 <p>{description}</p>

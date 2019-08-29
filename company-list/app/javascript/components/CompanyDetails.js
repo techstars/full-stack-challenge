@@ -27,7 +27,12 @@ class CompanyDetails extends React.Component {
         return (
             
             <div className="Card">
-                <button onClick={this.handleDelete}>Delete Company</button>
+                <div className="form-actions">
+                    <button className="delete"
+                        type="button"
+                        onClick={this.handleDelete}>Delete Company
+                    </button>
+                </div>
 
                 <div className="CardTitle">
                     <h2>{name}</h2>

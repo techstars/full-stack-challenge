@@ -101,15 +101,6 @@ button[type="submit"] {
   margin: 10px 0 0 106px;
 }
 
-button[type="button"] {
-  background: #f57011;
-  border: none;
-  padding: 5px 25px 8px;
-  font-weight: 500;
-  color: white;
-  cursor: pointer;
-  margin: 10px 0 0 106px;
-}
 
 .errors {
   border: 1px solid red;
