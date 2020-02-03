@@ -1,0 +1,15 @@
+{
+  "name": "techstars-asm",
+  "version": "1.0.0",
+  "description": "company managment system",
+  "engines": {
+    "node": ">=8.0 <=12.7.0"
+  },
+  "scripts": {
+    "build": "cd app/client && npm install && npm run build && cd .. && cd ..",
+    "deploy": "cp -a app/client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  },
+  "author": "",
+  "license": "ISC"
+}
