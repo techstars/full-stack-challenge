@@ -45,5 +45,6 @@ module TechstarsAsm
       'Server' => 'Not listed',
       'Content-Language' => I18n.locale.to_s
     }
+    Rails.autoloaders.main.ignore(Rails.root.join('app/client/node_modules/'))
   end
 end
