@@ -9,7 +9,7 @@ First, fork this repository into your own GitHub account. Then complete each of 
 
 ## What we are looking for
 
-* Ability to set up a REST API (Strongly Recommend Rails).
+* Ability to set up a REST API (Node or Rails preferred).
 * Ability to set up a Relational Database
 * Understanding of the HTTP protocol and how it works with REST API conventions
 * Understanding the basics of CRUD
