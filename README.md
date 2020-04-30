@@ -79,7 +79,7 @@ Build an application that will be a directory of companies, and the people who h
 Create a test suite for your application, writing unit and or functional tests that adequately cover the code base. TDD-ers will have already completed this challenge.
 
 ### Part 6 : Deployment 
- Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with the deployed URL. Bonus points for using a provider other than Heroku like Digital Ocean.  Please seed your application with at least a dozen Companies and Founders.
+ Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with the deployed URL. Bonus points for using a provider other than Heroku like AWS or Digital Ocean.  Please seed your application with at least a dozen Companies and Founders.
 
 ### Next Steps
 If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base.  Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
