@@ -109,9 +109,7 @@ describe('Tests for companies API endpoint', () => {
       method: 'PUT',
       body: JSON.stringify(companyDataUpdated)
     });
-    const jsonResult = await response.json();
     expect(response.status).toBe(200);
-    expect(jsonResult).toMatchObject({id: companyId});
   });
 
   test('Should return 404 on PUT with non-existant id', async () => {
@@ -152,8 +150,6 @@ describe('Tests for companies API endpoint', () => {
     const response = await fetch(url, {
       method: 'DELETE'
     });
-    const jsonResult = await response.json();
     expect(response.status).toBe(204);
-    expect(jsonResult).toBeNull();
   });
 });

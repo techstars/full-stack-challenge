@@ -45,8 +45,25 @@ export default async (req, res) => {
             res.status(400).json({ "error": err.message });
             resolve();
           } else {
-            if (updateStatement.lastID && updateStatement.changes > 0) {
-              res.status(200).json({id: updateStatement.lastID});
+            if (updateStatement.changes > 0) {
+              res.status(200).end();
+            } else {
+              res.status(404).end();
+            }
+            resolve();
+          }
+        });
+      });
+    case 'DELETE':
+      return new Promise((resolve, reject) => {
+        const deleteStatement = db.prepare('DELETE FROM companies WHERE id = ?');
+        deleteStatement.run([id], (err) => {
+          if (err) {
+            res.status(400).json({ "error": err.message });
+            resolve();
+          } else {
+            if (deleteStatement.changes > 0) {
+              res.status(204).end();
             } else {
               res.status(404).end();
             }
