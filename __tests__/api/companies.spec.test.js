@@ -87,7 +87,7 @@ describe('Tests for companies API endpoint', () => {
 
   test('Should return 404 on GET with non-existant id', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { massiveId }, idHandler)
+      return apiResolver(req, res, { id: massiveId }, idHandler)
     });
     const url = await listen(server) + '/' + massiveId;
 
@@ -101,7 +101,7 @@ describe('Tests for companies API endpoint', () => {
       req.headers = {
         'Content-Type': 'application/json'
       };
-      return apiResolver(req, res, { companyId }, idHandler)
+      return apiResolver(req, res, { id: companyId }, idHandler)
     });
     const url = await listen(server) + '/' + companyId;;
 
@@ -111,7 +111,7 @@ describe('Tests for companies API endpoint', () => {
     });
     const jsonResult = await response.json();
     expect(response.status).toBe(200);
-    expect(jsonResult).toMatchObject(expectedCompanyDataUpdated);
+    expect(jsonResult).toMatchObject({id: companyId});
   });
 
   test('Should return 404 on PUT with non-existant id', async () => {
@@ -120,7 +120,7 @@ describe('Tests for companies API endpoint', () => {
       req.headers = {
         'Content-Type': 'application/json'
       };
-      return apiResolver(req, res, { massiveId }, idHandler)
+      return apiResolver(req, res, { id: massiveId }, idHandler)
     });
     const url = await listen(server) + '/' + massiveId;;
 
@@ -133,7 +133,7 @@ describe('Tests for companies API endpoint', () => {
 
   test('Should return 200 with updated company detail data on GET with id', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { companyId }, idHandler)
+      return apiResolver(req, res, { id: companyId }, idHandler)
     });
     const url = await listen(server) + '/' + companyId;
 
@@ -145,7 +145,7 @@ describe('Tests for companies API endpoint', () => {
 
   test('Should return 204 with no data on DELETE with existing id', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { companyId }, idHandler)
+      return apiResolver(req, res, { id: companyId }, idHandler)
     });
     const url = await listen(server) + '/' + companyId;
 
