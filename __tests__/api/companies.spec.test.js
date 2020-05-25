@@ -15,7 +15,7 @@ describe('Tests for companies API endpoint', () => {
     description: 'testDescription',
     city: 'Denver',
     state: 'CO',
-    dateFounded: '2012-09-23'
+    dateFounded: '2019-01-01'
   };
   const expectedCompanyData = { ...companyData };
   expectedCompanyData.date_founded = expectedCompanyData.dateFounded;

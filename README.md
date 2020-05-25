@@ -9,6 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Node 12
 
 ## Installation/Development
+- Install the application by running `yarn install` at the project root
 - Run the development server using `yarn dev` and access the website at [http://localhost:3000](http://localhost:3000)
 
 ## Testing
