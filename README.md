@@ -11,6 +11,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Installation/Development
 - Run the development server using `yarn dev` and access the website at [http://localhost:3000](http://localhost:3000)
 
+## Testing
+- Run the tests with `yarn test`
+
 ## Deployment
 - Build the production deployment with `yarn build`
 - Deploy on Vercel (modified verbage from generated)

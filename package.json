@@ -5,11 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "dependencies": {
+    "babel-jest": "^26.0.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "jest": "^26.0.1",
     "next": "9.4.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "test-listen": "^1.1.0"
   }
 }
