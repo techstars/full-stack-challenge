@@ -56,18 +56,26 @@ export default async (req, res) => {
       });
     case 'DELETE':
       return new Promise((resolve, reject) => {
-        const deleteStatement = db.prepare('DELETE FROM companies WHERE id = ?');
-        deleteStatement.run([id], (err) => {
+        const deleteFoundersStatement = db.prepare('DELETE FROM company_founders WHERE company_id = ?');
+        deleteFoundersStatement.run([id], (err) => {
           if (err) {
             res.status(400).json({ "error": err.message });
             resolve();
           } else {
-            if (deleteStatement.changes > 0) {
-              res.status(204).end();
-            } else {
-              res.status(404).end();
-            }
-            resolve();
+            const deleteStatement = db.prepare('DELETE FROM companies WHERE id = ?');
+            deleteStatement.run([id], (err) => {
+              if (err) {
+                res.status(400).json({ "error": err.message });
+                resolve();
+              } else {
+                if (deleteStatement.changes > 0) {
+                  res.status(204).end();
+                } else {
+                  res.status(404).end();
+                }
+                resolve();
+              }
+            });
           }
         });
       });
