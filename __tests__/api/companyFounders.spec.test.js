@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import listen from 'test-listen';
 import { apiResolver } from 'next/dist/next-server/server/api-utils';
 import companiesHandler from '../../pages/api/companies/index';
+import companiesIdHandler from '../../pages/api/companies/[id]';
 import handler from '../../pages/api/companyFounders/index';
 import idHandler from '../../pages/api/companyFounders/[companyId]';
 
@@ -54,6 +55,18 @@ describe('Tests for companyFounders API endpoint', () => {
 
   afterEach(() => {
     server && server.close();
+  });
+
+  afterAll(async () => {
+    server = http.createServer((req, res) => {
+      return apiResolver(req, res, { id: companyId }, companiesIdHandler)
+    });
+    const url = await listen(server) + '/' + companyId;
+
+    await fetch(url, {
+      method: 'DELETE'
+    });
+    server.close();
   });
   
   test('Should return 404 on GET with existant company id that has no founders', async () => {
