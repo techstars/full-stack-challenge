@@ -45,6 +45,12 @@ export default responsiveFontSizes((createMuiTheme)({
       colorTextSecondary: {
         color: '#ABABAB'
       }
-    }
+    },
+    MuiList: {
+      root: {
+        backgroundColor: '#484848',
+        borderRadius: 8,
+      }
+    },
   }
 }));
