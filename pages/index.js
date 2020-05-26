@@ -46,7 +46,16 @@ export default function Index() {
           fullWidth={true}
           maxWidth='md'
         >
-          <CompanyDialog companyData={companyData} onClose={() => setCompanyDialogOpen(false)}/>
+          <CompanyDialog
+            companyData={companyData}
+            onClose={(reloadData) => {
+              if (reloadData) {
+                mutate();
+              }
+              setCompanyDialogOpen(false);
+            }}
+            mutate={mutate}
+          />
         </Dialog>
         <Typography style={{textAlign: 'center'}} variant="h2" gutterBottom>Company Directory</Typography>
         { !data ?

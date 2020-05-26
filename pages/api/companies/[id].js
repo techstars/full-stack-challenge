@@ -29,7 +29,7 @@ export default async (req, res) => {
       });
     case 'PUT':
       return new Promise((resolve, reject) => {
-        const bodyData = JSON.parse(body);
+        const bodyData = typeof(body) === 'string' ? JSON.parse(body) : body;
         const updateStatement = db.prepare(`UPDATE companies
           SET name = ?, description = ?, city = ?, state = ?, date_founded = ?
           WHERE id = ?`);

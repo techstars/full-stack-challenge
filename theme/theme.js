@@ -102,6 +102,11 @@ export default responsiveFontSizes((createMuiTheme)({
         color: '#FAFAFA',
         backgroundColor: '#484848'
       }
+    },
+    MuiFormLabel: {
+      filled: {
+        color: '#39C463'
+      }
     }
   }
 }));

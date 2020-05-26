@@ -6,13 +6,14 @@ import React from 'react';
 import CompanyForm from '../forms/Company';
 import useStyles from './NewCompanyDialog.style';
 
+// TODO: Update name to reflect New/Edit capabilities
 export default function NewCompanyDialog(props) {
   const classes = useStyles();
 
   return (
     <>
       <div>
-        <DialogTitle>New Company</DialogTitle>
+        <DialogTitle>{props.edit ? 'Edit Company' : 'New Company'}</DialogTitle>
         <IconButton
           className={classes.closeButton}
           onClick={() => {
@@ -24,7 +25,7 @@ export default function NewCompanyDialog(props) {
       </div>
 
       <DialogContent>
-        <CompanyForm onClose={props.onClose}/>
+        <CompanyForm onClose={props.onClose} initialValues={props.initialValues} edit={props.edit}/>
       </DialogContent>
     </>
   );

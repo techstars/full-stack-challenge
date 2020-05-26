@@ -7,11 +7,22 @@ import { TextField } from 'formik-material-ui';
 import fetch from 'isomorphic-unfetch';
 import React, { useState } from 'react';
 import SubmitButton from '../buttons/SubmitButton';
+import formatDateString from '../../utils/formatDateString';
 import CompanySchema, { initialValues } from './CompanySchema';
 
 export default function CompanyForm(props) {
   const onClose = props.onClose;
   const [error, setError] = useState(false);
+
+  let formInitialValues = { ...initialValues };
+  const companyId = props.initialValues ? props.initialValues.id : null;
+
+  if (props.initialValues && typeof(props.initialValues.date_founded) && 
+      props.initialValues.date_founded.length > 0) {
+    formInitialValues = { ...props.initialValues };
+    const initialDate = new Date(props.initialValues.date_founded + 'T00:00:00');
+    formInitialValues.dateFounded = initialDate;
+  }
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -20,22 +31,31 @@ export default function CompanyForm(props) {
         onSubmit={async (values, { resetForm }) => {
           setError(false);
           const { city, dateFounded, description, name, state } = values;
-          const databaseDateValue = dateFounded ? dateFounded.toISOString().split('T')[0] : '';  // TODO: properly convert form Date() value into SQLite date string
+          const databaseDateValue = dateFounded ? formatDateString(dateFounded) : '';
 
-          console.log(city, dateFounded, description, name, state);
-          const response = await fetch('/api/companies', {
-            method: 'POST',
-            body: JSON.stringify({city, dateFounded: databaseDateValue, description, name, state}),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          });
-          const jsonResult = await response.json();
-          console.log(`POST Result ID is: ${jsonResult.id}`)
+          if (props.edit) {
+            await fetch(`/api/companies/${companyId}`, {
+              method: 'PUT',
+              body: JSON.stringify({city, dateFounded: databaseDateValue, description, name, state}),
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            });
+          } else {
+            const response = await fetch('/api/companies', {
+              method: 'POST',
+              body: JSON.stringify({city, dateFounded: databaseDateValue, description, name, state}),
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            });
+            const jsonResult = await response.json();
+            console.log(`POST Result ID is: ${jsonResult.id}`)
+          }
           resetForm();
           onClose(true);
         }}
-        initialValues={initialValues}
+        initialValues={formInitialValues}
       >
         {({
           values,

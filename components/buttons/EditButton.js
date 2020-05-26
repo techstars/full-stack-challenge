@@ -1,12 +1,12 @@
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 import clsx from 'clsx';
 import React from 'react';
 
-import useStyles from './AddButton.style';
+import useStyles from './EditButton.style';
 
 // TODO: Refactor AddButton, EditButton, DeleteButton into one component
-export default function AddButton(props) {
+export default function EditButton(props) {
   const { className, children, ...rest } = props;
   const classes = useStyles();
 
@@ -17,7 +17,7 @@ export default function AddButton(props) {
       className={clsx(classes.fab, className)}
       {...rest}
     >
-      <AddIcon className={classes.fabIcon} />
+      <EditIcon className={classes.fabIcon} />
       {children}
     </Fab>
   );
