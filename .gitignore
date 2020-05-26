@@ -29,5 +29,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# local SQLite database
-db.sqlite
+# local SQLite database, currently allowed for easy seeding
+# db.sqlite

@@ -8,8 +8,6 @@ const db = new sqlite3.Database(databaseFile, (databaseError) => {
     console.error(databaseError.message);
     throw databaseError;
   } else {
-    console.log('Connected to the database.');
-
     const companiesCreateStatement = `
       CREATE TABLE companies (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,6 +17,7 @@ const db = new sqlite3.Database(databaseFile, (databaseError) => {
         state TEXT,
         date_founded TEXT
       )`;
+
     db.run(
       companiesCreateStatement,
       (companiesCreateError) => {
@@ -26,12 +25,10 @@ const db = new sqlite3.Database(databaseFile, (databaseError) => {
           // Table already exists, do nothing
         } else {
           // New table created, add initial data
-          console.log('Created `companies` table.');
-          console.log('Inserting initial rows...');
-
           const insertStatement = `INSERT INTO companies
             (name, description, city, state, date_founded)
             VALUES (?, ?, ?, ?, ?)`;
+
           db.run(insertStatement, ['testName', 'testDescription', 'Denver', 'CO', '2012-09-23'], (companyInsertError) => {
             if (companyInsertError) {
               console.error(`Could not open database file: ${databaseFile}`);
@@ -46,16 +43,13 @@ const db = new sqlite3.Database(databaseFile, (databaseError) => {
                   title TEXT,
                   FOREIGN KEY(company_id) REFERENCES companies(id)
                 )`;
+
               db.run(
                 companyFoundersCreateStatement,
                 (companyFoundersCreateError) => {
                   if (companyFoundersCreateError) {
                     // Table already exists, do nothing
                   } else {
-                    // New table created, add initial data
-                    console.log('Created `company_founders` table.');
-                    console.log('Inserting initial rows...');
-
                     const insertStatement = `INSERT INTO company_founders
                       (company_id, name, title)
                       VALUES (?, ?, ?)`;
