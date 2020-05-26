@@ -48,6 +48,7 @@ describe('Tests for companyFounders API endpoint', () => {
     expect(response.status).toBe(201);
     expect(jsonResult).toHaveProperty('id');
     companyId = jsonResult.id;
+    companyFounderData.companyId = companyId;
     server.close();
   });
 
@@ -57,7 +58,7 @@ describe('Tests for companyFounders API endpoint', () => {
   
   test('Should return 404 on GET with existant company id that has no founders', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { id: companyId }, idHandler)
+      return apiResolver(req, res, { companyId }, idHandler)
     });
     const url = await listen(server) + '/' + companyId;
 
@@ -88,7 +89,7 @@ describe('Tests for companyFounders API endpoint', () => {
 
   test('Should return 200 with valid company founders for a company on GET with id', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { id: companyId }, idHandler)
+      return apiResolver(req, res, { companyId }, idHandler)
     });
     const url = await listen(server) + '/' + companyId;
 
@@ -104,7 +105,7 @@ describe('Tests for companyFounders API endpoint', () => {
 
   test('Should return 404 on GET with non-existant company id', async () => {
     server = http.createServer((req, res) => {
-      return apiResolver(req, res, { id: massiveId }, idHandler)
+      return apiResolver(req, res, { companyId: massiveId }, idHandler)
     });
     const url = await listen(server) + '/' + massiveId;
 
