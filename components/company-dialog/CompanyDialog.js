@@ -4,8 +4,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import fetch from 'isomorphic-unfetch';
 import React, { useState } from 'react';
 import NewCompanyDialog from '../new-company-dialog/NewCompanyDialog';
+import DeleteButton from '../buttons/DeleteButton';
 import EditButton from '../buttons/EditButton';
 import useStyles from './CompanyDialog.style';
 
@@ -27,9 +29,9 @@ export default function CompanyDialog(props) {
             onClose={(reloadData) => {
               if (reloadData) {
                 props.mutate();
+                props.onClose();
               }
               setNewCompanyDialogOpen(false);
-              props.onClose();
             }}
             edit
           />
@@ -66,6 +68,18 @@ export default function CompanyDialog(props) {
         >
           Edit Company
         </EditButton>
+        <DeleteButton
+          onClick={async () => {
+            await fetch(`/api/companies/${props.companyData.id}`, {
+              method: 'DELETE'
+            });
+            props.mutate();
+            props.onClose()
+          }}
+          className={classes.editButton}
+        >
+          Delete Company
+        </DeleteButton>
       </DialogContent>
     </>
   );

@@ -17,11 +17,14 @@ export default function CompanyForm(props) {
   let formInitialValues = { ...initialValues };
   const companyId = props.initialValues ? props.initialValues.id : null;
 
-  if (props.initialValues && typeof(props.initialValues.date_founded) && 
-      props.initialValues.date_founded.length > 0) {
+  if (props.initialValues) {
     formInitialValues = { ...props.initialValues };
-    const initialDate = new Date(props.initialValues.date_founded + 'T00:00:00');
-    formInitialValues.dateFounded = initialDate;
+    if (typeof(props.initialValues.date_founded) && props.initialValues.date_founded.length > 0) {
+      const initialDate = new Date(props.initialValues.date_founded + 'T00:00:00');
+      formInitialValues.dateFounded = initialDate;
+    } else {
+      formInitialValues.dateFounded = null;
+    }
   }
 
   return (
@@ -49,8 +52,7 @@ export default function CompanyForm(props) {
                 'Content-Type': 'application/json'
               },
             });
-            const jsonResult = await response.json();
-            console.log(`POST Result ID is: ${jsonResult.id}`)
+            await response.json();
           }
           resetForm();
           onClose(true);

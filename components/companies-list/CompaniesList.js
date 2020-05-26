@@ -52,7 +52,6 @@ export default function CompaniesList(props) {
             <AddButton
               onClick={() => {
                 setNewCompanyDialogOpen(true);
-                console.log('add company');
               }}
               className={classes.addButton}
             >

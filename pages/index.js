@@ -15,7 +15,6 @@ export default function Index() {
   const { data, mutate } = useSWR('/api/companies', fetcher);
 
   const onCompanyClick = (companyData) => {
-    console.log("Company Clicked!");
     if (companyData) {
       setCompanyData(companyData);
       setCompanyDialogOpen(true);
