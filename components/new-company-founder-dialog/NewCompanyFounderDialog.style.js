@@ -7,12 +7,4 @@ export default makeStyles((theme) => createStyles({
     top: theme.spacing(1),
     color: theme.palette.primary.main
   },
-  dialogTitle : {
-    fontSize: '3rem',
-  },
-  editButton: {
-    marginBottom: 15,
-    marginTop: 10,
-    marginRight: 10,
-  },
 }));
