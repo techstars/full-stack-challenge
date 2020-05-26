@@ -82,5 +82,26 @@ export default responsiveFontSizes((createMuiTheme)({
         }
       }
     },
+    MuiPickersCalendarHeader : {
+      dayLabel: {
+        color: '#ABABAB'
+      }
+    },
+    MuiDialogContentText: {
+      root: {
+        color: '#FAFAFA'
+      }
+    },
+    MuiPickersModal: {
+      dialogRoot: {
+        backgroundColor: '#484848'
+      }
+    },
+    MuiPickersCalendarHeader: {
+      iconButton: {
+        color: '#FAFAFA',
+        backgroundColor: '#484848'
+      }
+    }
   }
 }));

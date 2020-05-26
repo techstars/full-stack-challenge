@@ -33,7 +33,7 @@ export default function CompanyForm(props) {
           const jsonResult = await response.json();
           console.log(`POST Result ID is: ${jsonResult.id}`)
           resetForm();
-          onClose();
+          onClose(true);
         }}
         initialValues={initialValues}
       >
