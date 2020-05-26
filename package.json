@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
     "babel-jest": "^26.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "jest": "^26.0.1",
