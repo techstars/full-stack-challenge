@@ -2,12 +2,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import AddButton from '../buttons/AddButton';
 import useStyles from './CompaniesList.style';
 
 export default function CompaniesList(props) {
   const classes = useStyles();
   const companiesData = props.companiesData;
   const onCompanyClick = props.onCompanyClick;
+  const setNewCompanyDialogOpen = props.setNewCompanyDialogOpen;
   
   return (
     <div>
@@ -46,6 +49,15 @@ export default function CompaniesList(props) {
                 </ListItem>
               )}
             </List>
+            <AddButton
+              onClick={() => {
+                setNewCompanyDialogOpen(true);
+                console.log('add company');
+              }}
+              className={classes.addButton}
+            >
+              Add Company
+            </AddButton>
           </div>
         )
       }

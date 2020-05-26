@@ -22,7 +22,7 @@ export default async (req, res) => {
       });
     case 'POST':
       return new Promise((resolve, reject) => {
-        const bodyData = JSON.parse(body);
+        const bodyData = typeof(body) === 'string' ? JSON.parse(body) : body;
         const insertStatement = db.prepare(`INSERT INTO companies
           (name, description, city, state, date_founded)
           VALUES (?, ?, ?, ?, ?)`);

@@ -7,4 +7,8 @@ export default makeStyles(() => createStyles({
     marginRight: 'auto',
     marginLeft: 10,
   },
+  addButton: {
+    marginBottom: 15,
+    marginTop: 10,
+  },
 }));

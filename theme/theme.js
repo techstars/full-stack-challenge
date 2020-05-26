@@ -52,5 +52,35 @@ export default responsiveFontSizes((createMuiTheme)({
         borderRadius: 8,
       }
     },
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: 5,
+        backgroundColor: '#FAFAFA',
+      }
+    },
+    MuiInputLabel: {
+      root: {
+        fontSize: 14,
+        '&$focused': {
+          color: '#39C463'
+        }
+      },
+    },
+    MuiInputBase: {
+      inputMarginDense: {
+        fontSize: 14,
+      }
+    },
+    MuiButton: {
+      containedPrimary: {
+        backgroundColor: '#39C463',
+        '&:hover': {
+          backgroundColor: '#38804d'
+        },
+        '&:disabled': {
+          backgroundColor: '#38804d'
+        }
+      }
+    },
   }
 }));
