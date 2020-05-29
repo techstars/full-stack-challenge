@@ -2,11 +2,9 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/companies', (_, res) => {
-  res.json({
-    message: 'the get companies endpoint'
-  })
-})
+const getCompanies = require('./handlers/getCompanies')
+
+router.get('/companies', getCompanies)
 
 router.post('/companies', (_, res) => {
   res.json({
