@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "(dropdb --if-exists techstars-test && createdb techstars-test) && NODE_ENV=test mocha"
   },
   "repository": {
     "type": "git",
@@ -21,11 +21,14 @@
   "homepage": "https://github.com/colemanimhoff/full-stack-challenge#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.1",
+    "mocha": "^7.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
-    "pg": "^8.2.1"
+    "pg": "^8.2.1",
+    "supertest": "^4.0.2"
   }
 }
