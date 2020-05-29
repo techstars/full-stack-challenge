@@ -3,8 +3,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
-const app = module.exports = express()
+
+const app = express()
 const port = parseInt(process.env.PORT || 8080)
+const router = require('./api/router')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -12,11 +14,7 @@ app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({ origin: true, credentials: true }))
 
 // TODO: inject routes
-app.get('/', (req, res) => {
-  res.send({
-    'message': 'hey there!'
-  })
-})
+app.use(router)
 
 app.use(notFound)
 app.use(errorHandler)
@@ -38,3 +36,5 @@ function errorHandler(err, req, res, next) {
 app.listen(port)
   .on('error', console.error.bind(console))
   .on('listening', console.log.bind(console, 'Listening on ' + port))
+
+module.exports = app
