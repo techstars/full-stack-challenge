@@ -41,7 +41,7 @@ Build an application that will be a directory of companies, and the people who h
 3. Add ability to create a new company
 
 
-![step 1](Step_1.png)
+![step 1](./assets/Step_1.png)
 
 ### Part 2 : Companies Create
 
@@ -53,7 +53,7 @@ Build an application that will be a directory of companies, and the people who h
     * Founded Date
 
 
-![step 2](Step_2.png)
+![step 2](./assets/Step_2.png)
 
 ### Part 3 : Company Details
 
@@ -62,7 +62,7 @@ Build an application that will be a directory of companies, and the people who h
 3. Ability to delete Company
 
 
-![step 3](Step_3.png)
+![step 3](./assets/Step_3.png)
 
 ### Part 4 : Founders
 
@@ -73,7 +73,7 @@ Build an application that will be a directory of companies, and the people who h
     * Founder Title
 4. Founders added should display in the company detail page.
 
-![step 4](Step_4.png)
+![step 4](./assets/Step_4.png)
 
 ### Part 5 : Tests
 Create a test suite for your application, writing unit and or functional tests that adequately cover the code base. TDD-ers will have already completed this challenge.
