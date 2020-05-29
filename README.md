@@ -84,4 +84,14 @@ Create a test suite for your application, writing unit and or functional tests t
 ### Next Steps
 If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base.  Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
 
+# Solution
+
+ERD:
+
+Kan Ban Board:
+
+Stack:
+
+Architecture Notes:
+
 
