@@ -86,9 +86,9 @@ If you move onto the next stage of the interview process we will have you come i
 
 # Solution
 
-ERD:
+![ERD](./assets/ERD.png)
 
-Kan Ban Board:
+[Kan Ban Board](https://trello.com/b/awqQcDNh/techstars-engineering-fun-front-to-back)
 
 Stack:
 
