@@ -1,0 +1,22 @@
+
+.company-card {
+  margin-bottom: 14px;
+  border: solid #333333 3.5px;
+  padding: 14px;
+  border-radius: 3.5px;
+}
+
+.company-name {
+  font-size: 28px;
+}
+
+.company-location, .company-link {
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+}
