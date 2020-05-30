@@ -195,7 +195,7 @@ describe('Api Endpoints', () => {
           return done(err)
         }
         expect(res.body).to.deep.equal({
-          id: 14,
+          id: 13,
           first_name: 'Coleman',
           last_name: 'Imhoff',
           title: 'Full Stack Developer',

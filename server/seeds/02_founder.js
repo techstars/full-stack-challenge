@@ -2,8 +2,7 @@
 const founders = require('../fixtures/founders.json')
 
 exports.seed = (knex) => {
-  return knex('founder').del()
-    .then(() => {
-      return knex('founder').insert(founders)
-    })
+  return knex.raw('ALTER SEQUENCE company_id_seq RESTART WITH 1')
+    .then(() => knex('founder').del())
+    .then(() => knex('founder').insert(founders))
 }

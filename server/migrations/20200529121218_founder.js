@@ -5,7 +5,12 @@ exports.up = (knex) => {
     table.text('first_name').notNullable()
     table.text('last_name').notNullable()
     table.text('title').notNullable()
-    table.integer('company_id').notNullable().references('id').inTable('company')
+    table.integer('company_id')
+      .notNullable()
+      .references('id')
+      .inTable('company')
+      .onDelete('CASCADE')
+      .index()
   })
 }
 

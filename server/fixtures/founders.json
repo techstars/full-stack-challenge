@@ -45,7 +45,7 @@
     "first_name": "Keir",
     "last_name": "Tarzey",
     "title": "Business Systems Development Analyst",
-    "company_id": 9
+    "company_id": 1
   },
   {
     "first_name": "Madelaine",
@@ -63,12 +63,6 @@
     "first_name": "Willey",
     "last_name": "Satch",
     "title": "Analog Circuit Design manager",
-    "company_id": 1
-  },
-  {
-    "first_name": "Brev",
-    "last_name": "Goodman",
-    "title": "Super Senior Full Stack Developer",
     "company_id": 1
   },
   {
