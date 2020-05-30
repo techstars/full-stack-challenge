@@ -12,7 +12,7 @@ describe('Api Endpoints', () => {
       .then(() => done())
   })
 
-  it('GET all companies', (done) => {
+  it('GET all companies - return 200', (done) => {
     request(app)
       .get('/companies')
       .set('Accept', 'application/json')
@@ -26,7 +26,7 @@ describe('Api Endpoints', () => {
       })
   })
 
-  it('GET company and founders by id', (done) => {
+  it('GET company by id - return 200', (done) => {
     request(app)
       .get('/companies/1')
       .set('Accept', 'application/json')
@@ -41,36 +41,20 @@ describe('Api Endpoints', () => {
           description: 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.',
           city: 'Baton Rouge',
           state: 'Louisiana',
-          date_founded: null,
-          founders: [
-            {
-              id: 11,
-              first_name: 'Willey',
-              last_name: 'Satch',
-              title: 'Analog Circuit Design manager',
-              company_id: 1
-            },
-            {
-              id: 12,
-              first_name: 'Brev',
-              last_name: 'Goodman',
-              title: 'Super Senior Full Stack Developer',
-              company_id: 1
-            }
-          ]
+          date_founded: null
         })
         return done()
       })
   })
 
-  it('GET company and founders by id - throws 422', (done) => {
+  it('GET company  id - return 422', (done) => {
     request(app)
       .get('/companies/x')
       .set('Accept', 'application/json')
       .expect(422, done)
   })
 
-  it('GET company and founders by id - throws 404', (done) => {
+  it('GET company by id - return 404', (done) => {
     request(app)
       .get('/companies/99999')
       .set('Accept', 'application/json')
@@ -173,7 +157,29 @@ describe('Api Endpoints', () => {
       .expect(204, done())
   })
 
-  it('POST founder', (done) => {
+  it('GET founders by company id - returns 200', (done) => {
+    request(app)
+      .get('/companies/1/founders')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+
+        expect(res.body).to.have.length(2)
+        return done()
+      })
+  })
+
+  it('GET founders by company id - return 402', (done) => {
+    request(app)
+      .get('/companies/x/founders')
+      .set('Accept', 'application/json')
+      .expect(422, done)
+  })
+
+  it('POST founder - return 201', (done) => {
     request(app)
       .post('/founders')
       .set('Accept', 'application/json')

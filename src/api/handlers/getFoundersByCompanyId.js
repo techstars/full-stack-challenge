@@ -9,19 +9,8 @@ module.exports = (req, res, next) => {
     return
   }
 
-  console.log(queries.selectCompanyAndFoundersById(req.params.id).toString())
-
-  return queries.selectCompanyAndFoundersById(req.params.id)
-    .then(result => {
-      if (result) {
-        return res.json(result)
-      }
-
-      let error = new Error('Not found')
-      error.status = 404
-      next(error)
-      return
-    })
+  return queries.selectFoundersByCompanyId(req.params.id)
+    .then(result => res.json(result))
     .catch(err => {
       let error = new Error(err)
       error.status = 500
