@@ -1,12 +1,13 @@
 
 const queries = require('../../db/queries')
 
-module.exports = function (_, res, next) {
+module.exports = (_, res, next) => {
   return queries.getCompanies()
-    .then(companies => res.json(companies))
+    .then(results => res.json(results))
     .catch(err => {
-      const error = new Error(err)
+      let error = new Error(err)
       error.status = 500
       next(error)
+      return
     })
 }

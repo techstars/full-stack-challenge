@@ -23,5 +23,8 @@ module.exports = {
       ])
       .groupBy('company.id', 'company.name')
       .first()
+  },
+  postCompany(req) {
+    return knex('company').insert(req, '*')
   }
 }

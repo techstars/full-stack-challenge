@@ -1,11 +1,13 @@
 
 const queries = require('../../db/queries')
+const isValidId = require('../validators').isValidId
 
-module.exports = function (req, res, next) {
-  if (isNaN(req.params.id)) {
-    const err = new Error('Unprocessable Entity')
-    err.status = 422
-    next(err)
+module.exports = (req, res, next) => {
+  if (!isValidId(req)) {
+    let error = new Error('Invalid id')
+    error.status = 422
+    next(error)
+    return
   }
 
   return queries.getCompanyById(req.params.id)
@@ -14,13 +16,15 @@ module.exports = function (req, res, next) {
         return res.json(result)
       }
 
-      const err = new Error('Not found')
-      err.status = 404
-      next(err)
+      let error = new Error('Not found')
+      error.status = 404
+      next(error)
+      return
     })
     .catch(err => {
-      const error = new Error(err)
+      let error = new Error(err)
       error.status = 500
       next(error)
+      return
     })
 }

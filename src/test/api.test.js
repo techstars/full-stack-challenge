@@ -76,4 +76,48 @@ describe('Api Endpoints', () => {
       .set('Accept', 'application/json')
       .expect(404, done)
   })
+
+  it('POST company - return 201', (done) => {
+    request(app)
+      .post('/companies')
+      .set('Accept', 'application/json')
+      .send({
+        name: 'UnderStudy',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat elit lorem. Curabitur dapibus neque id enim mollis, eget rhoncus arcu laoreet. Integer at sollicitudin velit. Ut laoreet ultrices sollicitudin. Quisque posuere mattis orci et viverra. Nullam id nibh malesuada nisi dignissim sollicitudin. Mauris in velit ac ipsum cursus interdum. Sed quam sem, tristique non ipsum nec, vulputate lacinia eros. Praesent et molestie magna.',
+        city: 'Denver',
+        state: 'Colorado',
+        date_founded: null
+      })
+      .expect(201)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+
+        expect(res.body).to.deep.equal({
+          id: 13,
+          name: 'UnderStudy',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat elit lorem. Curabitur dapibus neque id enim mollis, eget rhoncus arcu laoreet. Integer at sollicitudin velit. Ut laoreet ultrices sollicitudin. Quisque posuere mattis orci et viverra. Nullam id nibh malesuada nisi dignissim sollicitudin. Mauris in velit ac ipsum cursus interdum. Sed quam sem, tristique non ipsum nec, vulputate lacinia eros. Praesent et molestie magna.',
+          city: 'Denver',
+          state: 'Colorado',
+          date_founded: null
+        })
+
+        return done()
+      })
+  })
+
+  it('POST company - return 422', (done) => {
+    request(app)
+      .post('/companies')
+      .set('Accept', 'application/json')
+      .send({
+        name: 'UnderStudy',
+        description: '',
+        city: 'Denver',
+        state: 'Colorado',
+        date_founded: new Date('05/04/2017')
+      })
+      .expect(422, done)
+  })
 })

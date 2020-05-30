@@ -4,15 +4,10 @@ const router = express.Router()
 
 const getCompanies = require('./handlers/getCompanies')
 const getCompanyAndFoundersById = require('./handlers/getCompanyAndFoundersById')
+const postCompany = require('./handlers/postCompany')
 
 router.get('/companies', getCompanies)
-
-router.post('/companies', (_, res) => {
-  res.json({
-    message: 'the create company endpoint'
-  })
-})
-
+router.post('/companies', postCompany)
 router.get('/companies/:id', getCompanyAndFoundersById)
 
 router.put('/companies/:id', (_, res) => {
