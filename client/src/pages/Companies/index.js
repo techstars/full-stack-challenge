@@ -17,7 +17,7 @@ const Companies = () => {
   }, [])
 
   return (
-    <Container className="companies-container">
+    <Container className="container">
       {companies.map(company => {
         return <CompanyCard key={'company-' + company.id} company={company} />
       })}

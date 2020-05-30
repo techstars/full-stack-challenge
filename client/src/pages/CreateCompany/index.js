@@ -6,8 +6,8 @@ import CreateCompanyForm from './components/CreateCompanyForm'
 
 const CreateCompany = () => {
   return (
-    <Container>
-      <h2>Create A New Company</h2>
+    <Container className="container">
+      <h3>Create A New Company</h3>
       <CreateCompanyForm />
     </Container>
   )

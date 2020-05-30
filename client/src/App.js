@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 
 import CreateCompany from './pages/CreateCompany/index'
+import CompanyById from './pages/CompanyById/index'
 import Companies from './pages/Companies/index'
 
 function App() {
@@ -11,12 +12,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Companies />
-          </Route>
-          <Route exact path="/new">
-            <CreateCompany />
-          </Route>
+          <Route exact path="/" component={Companies} />
+          <Route path="/new" component={CreateCompany} />
+          <Route path="/:id" component={CompanyById} />
         </Switch>
       </Router>
     </div>

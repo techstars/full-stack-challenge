@@ -1,22 +1,49 @@
 
-.companies-container {
-  padding: 14px 0px 56px 0px;
+.add-founder-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.company-card {
+.buttons {
+  margin-right: 14px;
+}
+
+.container {
+  padding: 28px 0px 56px 0px;
+}
+
+.card {
   margin-bottom: 14px;
   border: solid #333333 3.5px;
   padding: 17.5px;
   border-radius: 3.5px;
 }
 
-.company-name {
-  font-size: 28px;
+.company-by-id-card {
+  padding: 56px;
 }
 
-.company-location, .company-link {
+.company-name-by-id {
+  display: flex;
+  justify-content: center;
+}
+
+.company-location, .company-link, .company-location-by-id, .company-date-by-id {
   display: flex;
   align-items: center;
+}
+
+.company-date-by-id {
+  justify-content: flex-end;
+}
+
+.company-location-by-id {
+  justify-content: center;
+}
+
+.company-description-by-id {
+  margin: 14px 0px;
 }
 
 .company-link {
@@ -30,6 +57,12 @@
   justify-content: flex-end;
 }
 
+.form {
+  border: solid #333333 3.5px;
+  padding: 28px;
+  border-radius: 3.5px;
+}
+
 .form-button {
   margin-left: 14px;
 }
@@ -37,4 +70,14 @@
 .form-buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.founder {
+  margin-top: 8px;
+}
+
+.founders {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

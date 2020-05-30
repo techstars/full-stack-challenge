@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { Alert, Form, Button } from 'react-bootstrap'
+import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
 
 const CreateCompanyForm = () => {
   const [error, setError] = useState(null)
@@ -47,29 +47,33 @@ const CreateCompanyForm = () => {
     return <Redirect to="/"></Redirect>
   }
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Company Name</Form.Label>
-        <Form.Control onChange={handleOnChange} name="name" value={req.name} type="text" placeholder="Please enter company name..." />
+        <Form.Label>Company Name:</Form.Label>
+        <Form.Control onChange={handleOnChange} name="name" value={req.name} type="text" />
         <Form.Text className="text-muted">Required</Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label>City</Form.Label>
-        <Form.Control onChange={handleOnChange} name="city" value={req.city} type="text" placeholder="Please enter city..." />
-        <Form.Text className="text-muted">Required</Form.Text>
+        <Row>
+          <Col>
+            <Form.Label>City:</Form.Label>
+            <Form.Control onChange={handleOnChange} name="city" value={req.city} type="text" />
+            <Form.Text className="text-muted">Required</Form.Text>
+          </Col>
+          <Col>
+            <Form.Label>State:</Form.Label>
+            <Form.Control onChange={handleOnChange} name="state" value={req.state} type="text" />
+            <Form.Text className="text-muted">Required</Form.Text>
+          </Col>
+          <Col>
+            <Form.Label>Founded Date:</Form.Label>
+            <Form.Control onChange={handleOnChange} name="date_founded" value={req.date} type="text" />
+          </Col>
+        </Row>
       </Form.Group>
       <Form.Group>
-        <Form.Label>State</Form.Label>
-        <Form.Control onChange={handleOnChange} name="state" value={req.state} type="text" placeholder="Please enter state..." />
-        <Form.Text className="text-muted">Required</Form.Text>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Founded Date</Form.Label>
-        <Form.Control onChange={handleOnChange} name="date_founded" value={req.date} type="text" placeholder="Please enter founded date..." />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <Form.Control onChange={handleOnChange} name="description" value={req.description} type="text" as="textarea" placeholder="Please enter description..." />
+        <Form.Label>Description:</Form.Label>
+        <Form.Control onChange={handleOnChange} name="description" value={req.description} type="text" as="textarea" rows={5} />
         <Form.Text className="text-muted">Required</Form.Text>
       </Form.Group>
       {error && (
@@ -78,7 +82,7 @@ const CreateCompanyForm = () => {
         </Alert>
       )}
       <div className="form-buttons">
-        <Button className="form-button" variant="primary" type="submit">
+        <Button className="form-button" variant="success" type="submit">
           Submit
         </Button>
         <Button className="form-button" as={Link} variant="secondary" to="/">

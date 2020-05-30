@@ -5,9 +5,11 @@ import { Container, Col, Row } from 'react-bootstrap'
 
 const CompanyCard = ({ company }) => {
   return (
-    <Container className="company-card" key={'company-' + company.id}>
+    <Container className="card" key={'company-' + company.id}>
       <Row>
-        <Col className="company-name">{company.name}</Col>
+        <Col>
+          <h3>{company.name}</h3>
+        </Col>
         <Col className="company-location">{company.city + ', ' + company.state}</Col>
         <Col className="company-link">
           <Link to={'/' + company.id}>more...</Link>
