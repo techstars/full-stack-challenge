@@ -13,25 +13,24 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({ origin: true, credentials: true }))
 
-// TODO: inject routes
+// routes
 app.use(router)
 
-app.use(notFound)
-app.use(errorHandler)
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  let err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
-function notFound(req, res, next) {
-  const url = req.originalUrl
-  if (!/favicon\.ico$/.test(url) && !/robots\.txt$/.test(url)) {
-    console.error('[404: Requested file not found] ', url)
-  }
-  res.status(404).send({ error: 'Url not found', status: 404, url })
-}
-
-function errorHandler(err, req, res, next) {
-  console.error('ERROR', err)
-  const stack = process.env.NODE_ENV !== 'production' ? err.stack : undefined
-  res.status(500).send({ error: err.message, stack, url: req.originalUrl })
-}
+// error handler
+app.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.json({
+    message: err.message,
+    error: req.app.get('env') === 'development' ? err : {}
+  })
+})
 
 app.listen(port)
   .on('error', console.error.bind(console))
