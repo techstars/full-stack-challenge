@@ -1,7 +1,11 @@
 {
-  "name": "full-stack-challenge",
+  "name": "full-stack-challenge-server",
   "version": "1.0.0",
   "description": "Coleman's Solution for the Tech Star Coding Challenge",
+  "engines": {
+    "node": "14.2.0",
+    "npm": "6.14.4"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
