@@ -165,4 +165,38 @@ describe('Api Endpoints', () => {
       })
       .expect(422, done)
   })
+
+  it('DELETE company and founders - return 204', (done) => {
+    request(app)
+      .delete('/companies/1')
+      .set('Accept', 'application/json')
+      .expect(204, done())
+  })
+
+  it('POST founder', (done) => {
+    request(app)
+      .post('/founders')
+      .set('Accept', 'application/json')
+      .send({
+        first_name: 'Coleman',
+        last_name: 'Imhoff',
+        title: 'Full Stack Developer',
+        company_id: 2
+      })
+      .expect(201)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+        expect(res.body).to.deep.equal({
+          id: 14,
+          first_name: 'Coleman',
+          last_name: 'Imhoff',
+          title: 'Full Stack Developer',
+          company_id: 2
+        })
+
+        return done()
+      })
+  })
 })

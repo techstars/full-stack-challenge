@@ -3,10 +3,16 @@
 const knex = require('./connection')
 
 module.exports = {
-  getCompanies() {
+  deleteCompanyAndFoundersById(id) {
+    return knex('company')
+      .innerJoin('founder', 'company.id', 'founder.company_id')
+      .where('id', id)
+      .del()
+  },
+  selectCompanies() {
     return knex('company', '*')
   },
-  getCompanyById(id) {
+  selectCompanyAndFoundersById(id) {
     return knex('company')
       .leftJoin('founder', 'company.id', 'founder.company_id')
       .where('company.id', id)
@@ -24,10 +30,13 @@ module.exports = {
       .groupBy('company.id', 'company.name')
       .first()
   },
-  postCompany(req) {
+  insertCompany(req) {
     return knex('company').insert(req, '*')
   },
-  putCompany(id, req) {
+  insertFounder(req) {
+    return knex('founder').insert(req, '*')
+  },
+  updateCompany(id, req) {
     return knex('company').where('id', id).update(req, '*')
   }
 }

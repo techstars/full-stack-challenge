@@ -11,5 +11,17 @@ module.exports = {
     }
 
     return true
+  },
+  isInvalidFounderRequest(req) {
+    const validFirstName = req.body.first_name.trim() !== ''
+    const validLastName = req.body.last_name.trim() !== ''
+    const validTitle = req.body.title.trim() !== ''
+    const validCompanyId = !isNaN(req.params.id)
+
+    if (validFirstName && validLastName && validTitle && validCompanyId) {
+      return false
+    }
+
+    return true
   }
 }

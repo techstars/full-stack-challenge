@@ -2,7 +2,7 @@
 const queries = require('../../db/queries')
 
 module.exports = (_, res, next) => {
-  return queries.getCompanies()
+  return queries.selectCompanies()
     .then(results => res.json(results))
     .catch(err => {
       let error = new Error(err)
