@@ -8,7 +8,7 @@ module.exports = {
   },
   getCompanyById(id) {
     return knex('company')
-      .innerJoin('founder', 'company.id', 'founder.company_id')
+      .leftJoin('founder', 'company.id', 'founder.company_id')
       .where('company.id', id)
       .select([
         'company.id',
@@ -26,5 +26,8 @@ module.exports = {
   },
   postCompany(req) {
     return knex('company').insert(req, '*')
+  },
+  putCompany(id, req) {
+    return knex('company').where('id', id).update(req, '*')
   }
 }

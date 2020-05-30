@@ -120,4 +120,49 @@ describe('Api Endpoints', () => {
       })
       .expect(422, done)
   })
+
+  it('PUT company - return 200', (done) => {
+    request(app)
+      .put('/companies/1')
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Jetpulze',
+        description: 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.',
+        city: 'Baton Rouge',
+        state: 'Louisiana',
+        date_founded: null,
+      })
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+
+        expect(res.body).to.deep.equal({
+          id: 1,
+          name: 'Jetpulze',
+          description: 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.',
+          city: 'Baton Rouge',
+          state: 'Louisiana',
+          date_founded: null,
+        })
+
+        return done()
+      })
+  })
+
+  it('PUT company - return 422', (done) => {
+    request(app)
+      .put('/companies/1')
+      .set('Accept', 'application/json')
+      .send({
+        id: 1,
+        name: '',
+        description: '',
+        city: 'Baton Rouge',
+        state: 'Louisiana',
+        date_founded: null,
+      })
+      .expect(422, done)
+  })
 })

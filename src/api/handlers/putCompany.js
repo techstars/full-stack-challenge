@@ -10,8 +10,8 @@ module.exports = (req, res, next) => {
     return
   }
 
-  return queries.postCompany(req.body)
-    .then(result => res.status(201).json(result[0]))
+  return queries.putCompany(req.params.id, req.body)
+    .then(result => res.status(200).json(result[0]))
     .catch(err => {
       let error = new Error(err)
       error.status = 500

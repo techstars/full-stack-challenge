@@ -1,9 +1,8 @@
 
 const queries = require('../../db/queries')
-const isValidId = require('../validators').isValidId
 
 module.exports = (req, res, next) => {
-  if (!isValidId(req)) {
+  if (isNaN(req.params.id)) {
     let error = new Error('Invalid id')
     error.status = 422
     next(error)
