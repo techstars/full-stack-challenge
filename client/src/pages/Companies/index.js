@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Col, Row, Navbar, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+
+import CompanyCard from './components/CompanyCard'
+import Footer from './components/Footer'
 
 const Companies = () => {
   const [companies, setCompanies] = useState([])
@@ -11,33 +13,16 @@ const Companies = () => {
     fetch(url)
       .then(res => res.json())
       .then(res => setCompanies(res))
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }, [])
 
   return (
-    <>
+    <Container className="companies-container">
       {companies.map(company => {
-        return (
-          <Container className="company-card" key={'company-' + company.id}>
-            <Row>
-              <Col className="company-name">{company.name}</Col>
-              <Col className="company-location">{company.city + ', ' + company.state}</Col>
-              <Col className="company-link">
-                <Link to={'/' + company.id}>more...</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>{company.description}</Col>
-            </Row>
-          </Container>
-        )
+        return <CompanyCard key={'company-' + company.id} company={company} />
       })}
-      <Navbar className="footer" fixed="bottom" style={{ background: '#fff' }}>
-        <Navbar.Brand>
-          <Button as={Link} variant="success" to="/new">Add Company</Button>
-        </Navbar.Brand>
-      </Navbar>
-    </>
+      <Footer />
+    </Container>
   )
 }
 

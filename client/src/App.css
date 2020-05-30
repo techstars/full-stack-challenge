@@ -1,8 +1,12 @@
 
+.companies-container {
+  padding: 14px 0px 56px 0px;
+}
+
 .company-card {
   margin-bottom: 14px;
   border: solid #333333 3.5px;
-  padding: 14px;
+  padding: 17.5px;
   border-radius: 3.5px;
 }
 
@@ -15,8 +19,22 @@
   align-items: center;
 }
 
+.company-link {
+  justify-content: flex-end;
+  text-decoration: underline;
+}
+
 .footer {
   background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-button {
+  margin-left: 14px;
+}
+
+.form-buttons {
   display: flex;
   justify-content: flex-end;
 }
