@@ -70,7 +70,7 @@ describe('Api Endpoints', () => {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat elit lorem. Curabitur dapibus neque id enim mollis, eget rhoncus arcu laoreet. Integer at sollicitudin velit. Ut laoreet ultrices sollicitudin. Quisque posuere mattis orci et viverra. Nullam id nibh malesuada nisi dignissim sollicitudin. Mauris in velit ac ipsum cursus interdum. Sed quam sem, tristique non ipsum nec, vulputate lacinia eros. Praesent et molestie magna.',
         city: 'Denver',
         state: 'Colorado',
-        date_founded: null
+        date_founded: new Date('05/04/2017')
       })
       .expect(201)
       .end((err, res) => {
@@ -84,7 +84,7 @@ describe('Api Endpoints', () => {
           description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat elit lorem. Curabitur dapibus neque id enim mollis, eget rhoncus arcu laoreet. Integer at sollicitudin velit. Ut laoreet ultrices sollicitudin. Quisque posuere mattis orci et viverra. Nullam id nibh malesuada nisi dignissim sollicitudin. Mauris in velit ac ipsum cursus interdum. Sed quam sem, tristique non ipsum nec, vulputate lacinia eros. Praesent et molestie magna.',
           city: 'Denver',
           state: 'Colorado',
-          date_founded: null
+          date_founded: '2017-05-04T06:00:00.000Z'
         })
 
         return done()
@@ -100,7 +100,7 @@ describe('Api Endpoints', () => {
         description: '',
         city: 'Denver',
         state: 'Colorado',
-        date_founded: new Date('05/04/2017')
+        date_founded: null
       })
       .expect(422, done)
   })
@@ -114,7 +114,7 @@ describe('Api Endpoints', () => {
         description: 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.',
         city: 'Baton Rouge',
         state: 'Louisiana',
-        date_founded: null,
+        date_founded: new Date('05/04/2017'),
       })
       .expect(200)
       .end((err, res) => {
@@ -128,7 +128,7 @@ describe('Api Endpoints', () => {
           description: 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.',
           city: 'Baton Rouge',
           state: 'Louisiana',
-          date_founded: null,
+          date_founded: '2017-05-04T06:00:00.000Z',
         })
 
         return done()
