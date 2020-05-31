@@ -32,7 +32,7 @@ const CreateCompanyForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies'
+    const url = 'companies'
     e.preventDefault()
     fetch(url, {
       headers: {

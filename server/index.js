@@ -3,18 +3,26 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
+const path = require('path')
 
 const app = express()
 const port = parseInt(process.env.PORT || 8080)
 const router = require('./api/router')
+
+const publicPath = path.join(__dirname, '../client', 'build')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({ origin: true, credentials: true }))
 
-// routes
+console.log(publicPath)
+
 app.use(router)
+app.use(express.static(publicPath))
+app.use('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'))
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -9,7 +9,7 @@ const Companies = () => {
   const [companies, setCompanies] = useState([])
 
   useEffect(() => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies'
+    const url = 'companies'
     fetch(url)
       .then(res => res.json())
       .then(res => setCompanies(res))

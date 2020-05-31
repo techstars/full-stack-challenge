@@ -11,7 +11,7 @@ const CompanyCard = () => {
   const params = useParams()
 
   useEffect(() => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
+    const url = 'companies/' + params.id
 
     fetch(url)
       .then(res => res.json())

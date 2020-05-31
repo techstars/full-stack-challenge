@@ -16,7 +16,7 @@ const EditCompanyForm = () => {
   })
 
   useEffect(() => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
+    const url = 'companies/' + params.id
     fetch(url)
       .then(res => res.json())
       .then(res => setReq(res))
@@ -40,7 +40,7 @@ const EditCompanyForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
+    const url = 'companies/' + params.id
     e.preventDefault()
     fetch(url, {
       headers: {

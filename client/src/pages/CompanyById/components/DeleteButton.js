@@ -8,7 +8,7 @@ const DeleteButton = () => {
   const params = useParams()
 
   const handleOnClick = () => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
+    const url = 'companies/' + params.id
 
     return fetch(url, {
       headers: {

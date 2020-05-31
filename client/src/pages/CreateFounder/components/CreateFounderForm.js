@@ -32,7 +32,7 @@ const CreateFounderForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = process.env.REACT_APP_SERVER_URL + '/founders'
+    const url = 'founders'
     e.preventDefault()
     fetch(url, {
       headers: {
