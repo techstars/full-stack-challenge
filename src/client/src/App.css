@@ -29,7 +29,7 @@
   justify-content: center;
 }
 
-.company-location, .company-link, .company-location-by-id, .company-date-by-id {
+.company-location, .company-link, .company-location-by-id, .company-date-by-id, .founders-placeholder {
   display: flex;
   align-items: center;
 }
@@ -74,6 +74,10 @@
 
 .founder {
   margin-top: 8px;
+}
+
+.founders-placeholder p {
+  margin: 0;
 }
 
 .founders {

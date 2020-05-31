@@ -23,7 +23,11 @@ const FoundersCard = () => {
           <Col className="founders">
             {founders.length > 0
               ? founders.map(founder => <h6 className="founder" key={'founder-' + founder.id}>{founder.first_name} {founder.last_name}: {founder.title}</h6>)
-              : ([])}
+              : (
+                <div className="founders-placeholder">
+                  <p>No Founders Added</p>
+                </div>
+              )}
           </Col>
           <Col className="add-founder-button" xs={3}>
             <Button as={Link} variant="success" to={'/' + params.id + '/founders/new'}>Add Founder</Button>
