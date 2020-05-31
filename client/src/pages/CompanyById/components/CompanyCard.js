@@ -26,7 +26,7 @@ const CompanyCard = () => {
         <Col className="company-location-by-id">{company.city + ', ' + company.state}</Col>
         <Col>
           <Button className="buttons" as={Link} to={'/companies/' + params.id + '/edit'} variant="success">Edit</Button>
-          <Button className="buttons">Delete</Button>
+          <Button className="buttons" variant="danger">Delete</Button>
         </Col>
       </Row>
       <Row>
