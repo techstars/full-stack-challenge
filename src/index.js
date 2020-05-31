@@ -9,7 +9,7 @@ const app = express()
 const port = parseInt(process.env.PORT || 8080)
 const router = require('./api/router')
 
-const publicPath = path.join(__dirname, '../client', 'build')
+const publicPath = path.join(__dirname, 'client', 'build')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
