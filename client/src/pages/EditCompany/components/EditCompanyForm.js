@@ -1,18 +1,27 @@
 
-import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, Redirect, useParams } from 'react-router-dom'
 import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
+import moment from 'moment'
 
-const CreateCompanyForm = () => {
+const EditCompanyForm = () => {
+  const params = useParams()
   const [error, setError] = useState(null)
   const [redirect, setRedirect] = useState(false)
   const [req, setReq] = useState({
     name: '',
     city: '',
     state: '',
-    date_founded: new Date(null),
-    description: ''
+    date_founded: ''
   })
+
+  useEffect(() => {
+    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
+    fetch(url)
+      .then(res => res.json())
+      .then(res => setReq(res))
+      .catch(err => console.error(err))
+  }, [params])
 
   const handleOnChange = (e) => {
     setReq({
@@ -31,14 +40,14 @@ const CreateCompanyForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = process.env.REACT_APP_SERVER_URL + '/companies'
+    const url = process.env.REACT_APP_SERVER_URL + '/companies/' + params.id
     e.preventDefault()
     fetch(url, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(req)
     })
       .then(res => res.json())
@@ -71,8 +80,7 @@ const CreateCompanyForm = () => {
           </Col>
           <Col>
             <Form.Label>Founded Date:</Form.Label>
-            {/* <DatePicker selected={req.date_founded} /> */}
-            <Form.Control onChange={handleOnChange} name="date_founded" value={req.date_founded} type="date" />
+            <Form.Control onChange={handleOnChange} name="date_founded" value={moment(req.date_founded).format('YYYY-MM-DD')} type="date" />
           </Col>
         </Row>
       </Form.Group>
@@ -98,4 +106,4 @@ const CreateCompanyForm = () => {
   )
 }
 
-export default CreateCompanyForm
+export default EditCompanyForm

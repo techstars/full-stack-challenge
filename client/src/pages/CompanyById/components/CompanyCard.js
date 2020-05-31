@@ -4,6 +4,7 @@ import moment from 'moment'
 import { Link, useParams } from 'react-router-dom'
 import { Container, Col, Row, Button } from 'react-bootstrap'
 import FoundersCard from './FoundersCard'
+import DeleteButton from './DeleteButton'
 
 const CompanyCard = () => {
   const [company, setCompany] = useState({})
@@ -25,8 +26,8 @@ const CompanyCard = () => {
         <Col className="company-date-by-id">{company.date_founded ? moment(company.date_founded).format('MMMM Do YYYY') : 'Date Founded TBD'}</Col>
         <Col className="company-location-by-id">{company.city + ', ' + company.state}</Col>
         <Col>
-          <Button className="buttons" as={Link} to={'/companies/' + params.id + '/edit'} variant="success">Edit</Button>
-          <Button className="buttons" variant="danger">Delete</Button>
+          <Button className="buttons" as={Link} to={'/' + params.id + '/edit'} variant="success">Edit</Button>
+          <DeleteButton />
         </Col>
       </Row>
       <Row>

@@ -16,7 +16,7 @@ module.exports = {
     const validFirstName = req.body.first_name.trim() !== ''
     const validLastName = req.body.last_name.trim() !== ''
     const validTitle = req.body.title.trim() !== ''
-    const validCompanyId = !isNaN(req.params.id)
+    const validCompanyId = req.body.company_id != undefined
 
     if (validFirstName && validLastName && validTitle && validCompanyId) {
       return false

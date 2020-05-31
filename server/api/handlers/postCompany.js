@@ -10,7 +10,15 @@ module.exports = (req, res, next) => {
     return
   }
 
-  return queries.insertCompany(req.body)
+  const newCompany = {
+    name: req.body.name,
+    description: req.body.description,
+    city: req.body.city,
+    state: req.body.state,
+    date_founded: new Date(req.body.date_founded)
+  }
+
+  return queries.insertCompany(newCompany)
     .then(result => res.status(201).json(result[0]))
     .catch(err => {
       let error = new Error(err)

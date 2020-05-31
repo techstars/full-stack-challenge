@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Container, Col, Button, Row } from 'react-bootstrap'
 
 const FoundersCard = () => {
@@ -26,7 +26,7 @@ const FoundersCard = () => {
               : ([])}
           </Col>
           <Col className="add-founder-button" xs={3}>
-            <Button variant="success">Add Founder</Button>
+            <Button as={Link} variant="success" to={'/' + params.id + '/founders/new'}>Add Founder</Button>
           </Col>
         </Row>
       </Container>

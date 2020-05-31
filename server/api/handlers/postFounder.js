@@ -3,7 +3,7 @@ const isInvalidFounderRequest = require('../validators').isInvalidFounderRequest
 const queries = require('../../db/queries')
 
 module.exports = (req, res, next) => {
-  if (!isInvalidFounderRequest) {
+  if (isInvalidFounderRequest(req)) {
     let error = new Error('Complete all required fields')
     error.status = 422
     next(error)
