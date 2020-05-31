@@ -95,12 +95,8 @@ const EditCompanyForm = () => {
         </Alert>
       )}
       <div className="form-buttons">
-        <Button className="form-button" variant="success" type="submit">
-          Submit
-        </Button>
-        <Button className="form-button" as={Link} variant="secondary" to="/">
-          Cancel
-        </Button>
+        <Button className="form-button" variant="success" type="submit">Submit</Button>
+        <Button className="form-button" as={Link} variant="secondary" to={'/' + params.id}>Cancel</Button>
       </div>
     </Form>
   )
