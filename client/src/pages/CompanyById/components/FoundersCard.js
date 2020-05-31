@@ -8,7 +8,7 @@ const FoundersCard = () => {
   const [founders, setFouders] = useState([])
 
   useEffect(() => {
-    const url = 'companies/' + params.id + '/founders'
+    const url = process.env.REACT_APP_BFF + '/companies/' + params.id + '/founders'
     fetch(url)
       .then(res => res.json())
       .then(res => setFouders(res))

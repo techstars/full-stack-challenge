@@ -16,8 +16,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({ origin: true, credentials: true }))
 
-console.log(publicPath)
-
 app.use(router)
 app.use(express.static(publicPath))
 app.use('*', (req, res) => {

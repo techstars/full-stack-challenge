@@ -32,7 +32,7 @@ const CreateFounderForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = 'founders'
+    const url = process.env.REACT_APP_BFF + '/founders'
     e.preventDefault()
     fetch(url, {
       headers: {
