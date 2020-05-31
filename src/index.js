@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({ origin: true, credentials: true }))
 
+// routes
 app.use(router)
+
+// serve static files
 app.use(express.static(publicPath))
 app.use('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'))
