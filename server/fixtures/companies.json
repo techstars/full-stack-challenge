@@ -4,7 +4,7 @@
     "description": "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
     "city": "Baton Rouge",
     "state": "Louisiana",
-    "date_founded": null
+    "date_founded": "11/11/2017"
   },
   {
     "name": "Jabberbean",
@@ -46,7 +46,7 @@
     "description": "Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
     "city": "Austin",
     "state": "Texas",
-    "date_founded": null
+    "date_founded": "05/04/2015"
   },
   {
     "name": "Edgeify",

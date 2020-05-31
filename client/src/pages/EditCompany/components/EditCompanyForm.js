@@ -56,7 +56,7 @@ const EditCompanyForm = () => {
   }
 
   if (redirect) {
-    return <Redirect to="/"></Redirect>
+    return <Redirect to={'/' + params.id}></Redirect>
   }
 
   return (

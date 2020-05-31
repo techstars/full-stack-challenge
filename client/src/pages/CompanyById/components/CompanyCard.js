@@ -23,7 +23,7 @@ const CompanyCard = () => {
     <Container className="card">
       <Row className="company-name-by-id"><h1>{company.name}</h1></Row>
       <Row>
-        <Col className="company-date-by-id">{company.date_founded ? moment(company.date_founded).format('MMMM Do YYYY') : 'Date Founded TBD'}</Col>
+        <Col className="company-date-by-id">{moment(company.date_founded).format('MMMM Do YYYY')}</Col>
         <Col className="company-location-by-id">{company.city + ', ' + company.state}</Col>
         <Col>
           <Button className="buttons" as={Link} to={'/' + params.id + '/edit'} variant="success">Edit</Button>
