@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 
+import { bff } from '../../config'
+
 import CompanyCard from './components/CompanyCard'
 import Footer from './components/Footer'
 
@@ -9,7 +11,7 @@ const Companies = () => {
   const [companies, setCompanies] = useState([])
 
   useEffect(() => {
-    const url = process.env.REACT_APP_BFF + '/companies'
+    const url = bff + '/companies'
     fetch(url)
       .then(res => res.json())
       .then(res => setCompanies(res))

@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom'
 import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
 import moment from 'moment'
 
+import { bff } from '../../../config'
+
 const CreateCompanyForm = () => {
   const [error, setError] = useState(null)
   const [redirect, setRedirect] = useState(false)
@@ -32,7 +34,7 @@ const CreateCompanyForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = 'companies'
+    const url = bff + '/companies'
     e.preventDefault()
     fetch(url, {
       headers: {

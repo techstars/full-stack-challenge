@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useParams, Redirect } from 'react-router-dom'
 
+import { bff } from '../../../config'
+
 const DeleteButton = () => {
   const [redirect, setRedirect] = useState(false)
   const params = useParams()
 
   const handleOnClick = () => {
-    const url = process.env.REACT_APP_BFF + '/companies/' + params.id
+    const url = bff + '/companies/' + params.id
 
     return fetch(url, {
       headers: {

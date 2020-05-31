@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Alert, Form, Button } from 'react-bootstrap'
 import { useParams, Redirect, Link } from 'react-router-dom'
 
+import { bff } from '../../../config'
 
 const CreateFounderForm = () => {
   const params = useParams()
@@ -32,7 +33,7 @@ const CreateFounderForm = () => {
   }
 
   const handleSubmit = (e) => {
-    const url = process.env.REACT_APP_BFF + '/founders'
+    const url = bff + '/founders'
     e.preventDefault()
     fetch(url, {
       headers: {

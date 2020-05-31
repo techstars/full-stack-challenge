@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import { Link, useParams } from 'react-router-dom'
 import { Container, Col, Row, Button } from 'react-bootstrap'
+
+import { bff } from '../../../config'
+
 import FoundersCard from './FoundersCard'
 import DeleteButton from './DeleteButton'
 
@@ -11,7 +14,7 @@ const CompanyCard = () => {
   const params = useParams()
 
   useEffect(() => {
-    const url = process.env.REACT_APP_BFF + '/companies/' + params.id
+    const url = bff + '/companies/' + params.id
 
     fetch(url)
       .then(res => res.json())

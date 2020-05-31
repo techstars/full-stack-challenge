@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Container, Col, Button, Row } from 'react-bootstrap'
 
+import { bff } from '../../../config'
+
 const FoundersCard = () => {
   const params = useParams()
   const [founders, setFouders] = useState([])
 
   useEffect(() => {
-    const url = process.env.REACT_APP_BFF + '/companies/' + params.id + '/founders'
+    const url = bff + '/companies/' + params.id + '/founders'
     fetch(url)
       .then(res => res.json())
       .then(res => setFouders(res))
