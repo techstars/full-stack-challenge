@@ -86,7 +86,9 @@ If you move onto the next stage of the interview process we will have you come i
 
 # Solution
 
-[deployed-app](https://full-snack-challenge.herokuapp.com/)
+Thanks for letting me partake in the challenge!
+
+Here is [link](https://full-snack-challenge.herokuapp.com/) to the deployed app.
 
 ![ERD](./assets/ERD.png)
 
