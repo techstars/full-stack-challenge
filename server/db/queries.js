@@ -16,7 +16,7 @@ module.exports = {
     return knex('founder').insert(req, '*')
   },
   selectCompanies() {
-    return knex('company', '*')
+    return knex('company', '*').orderBy('id', 'desc')
   },
   selectCompanyById(id) {
     return knex('company').where('id', id).first()

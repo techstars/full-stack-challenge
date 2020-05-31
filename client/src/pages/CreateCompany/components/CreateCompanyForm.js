@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
+import moment from 'moment'
 
 const CreateCompanyForm = () => {
   const [error, setError] = useState(null)
@@ -10,7 +11,7 @@ const CreateCompanyForm = () => {
     name: '',
     city: '',
     state: '',
-    date_founded: new Date(null),
+    date_founded: new Date(),
     description: ''
   })
 
@@ -71,8 +72,7 @@ const CreateCompanyForm = () => {
           </Col>
           <Col>
             <Form.Label>Founded Date:</Form.Label>
-            {/* <DatePicker selected={req.date_founded} /> */}
-            <Form.Control onChange={handleOnChange} name="date_founded" value={req.date_founded} type="date" />
+            <Form.Control onChange={handleOnChange} name="date_founded" value={moment(req.date_founded).format('YYYY-MM-DD')} type="date" />
           </Col>
         </Row>
       </Form.Group>
