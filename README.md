@@ -86,12 +86,39 @@ If you move onto the next stage of the interview process we will have you come i
 
 # Solution
 
+[deployed-app](https://full-snack-challenge.herokuapp.com/)
+
 ![ERD](./assets/ERD.png)
 
 [Kan Ban Board](https://trello.com/b/awqQcDNh/techstars-engineering-fun-front-to-back)
 
 Stack:
 
+* Node.js
+* Postgresql
+* Knex.js
+* React.js
+* Bootstrap React
+
+To install on your machine:
+
+Requires Postgreql installed. From inside the repo
+
+`cd src npm install`
+`cd client && npm install`
+`npm run build`
+
+create database:
+`create db techstars`
+
+migrate and seed database:
+`cd .. && npm run dev`
+`npx knex migrate:latest`
+`npx knex seed:run`
+
+
 Architecture Notes:
 
+I designed this API to be RESTful. I implemented TDD on the servers-side while bulidng my handlers and db queries using gernated fixtures, via [mockaroo](https://mockaroo.com/), and a separate test database which is dropped, created, and seeded before tests run. This ended up being a really good decision because I was able to fly through the front-end portion of this project. I decided to make this a mono-repo in order to deploy to one application. I ran into a little bit of trouble with this because I never servered staic files from express before and had some routing issues.
 
+If I had more time to work on this project, I'd take a little more care into setting up the environment for others to get it up a running on their machine. The above setup steps are not ideal. I would continerize this project with Docker. I would write unit end-to-end tests using Cypress.io. In addition, I believe I could make the more true to REST by designing request and response models which are then managed by my handlers.
