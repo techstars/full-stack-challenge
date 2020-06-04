@@ -1,17 +1,19 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 //require routes
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const companiesRouter = require('./routes/companies');
+const foundersRouter = require('./routes/founders');
 
-var environment = process.env.NODE_ENV || 'development'
+const environment = process.env.NODE_ENV || 'development'
 if (environment !== 'production') {
   require('dotenv').config(); //setup dotenv unless in production environment, where it is not necessary and may error
 }
 
-var app = express();
+const app = express();
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -29,5 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //tell app when to use which route
 app.use('/', indexRouter);
+app.use('/companies', companiesRouter);
+app.use('/founders', foundersRouter);
 
 module.exports = app;
