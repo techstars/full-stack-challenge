@@ -6,7 +6,7 @@ exports.up = knex => (
     table.string('state').defaultTo('');
     table.text('description').defaultTo('');
     table.date('foundedDate').defaultTo(null);
-    table.timestamps();
+    table.timestamps(false, true);
   })
 );
 
