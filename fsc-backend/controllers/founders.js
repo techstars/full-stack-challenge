@@ -1,13 +1,21 @@
 const knex = require('../knex');
 
 const getAllFounders = async () => {
-  const result = await knex('founders');
-  return result;
+  try {
+    const result = await knex('founders');
+    return result;
+  } catch (error) {
+    return { error }
+  }
 }
 
 const getOneFounder = async id => {
-  const result = await knex('founders').where('id', id);
-  return result;
+  try {
+    const result = await knex('founders').where('id', id);
+    return result;
+  } catch (error) {
+    return { error }
+  }
 }
 
 module.exports = {

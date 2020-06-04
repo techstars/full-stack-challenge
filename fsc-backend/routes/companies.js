@@ -5,12 +5,20 @@ const mw = require('../util/middleware');
 
 router.get('/', async (req, res, next) => {
   const result = await companiesController.getAllCompanies();
-  res.send(result);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
 });
 
 router.get('/:id', mw.checkIfExists('companies'), async (req, res, next) => {
   const result = await companiesController.getOneCompany(req.params.id);
-  res.send(result);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
 });
 
 module.exports = router;
