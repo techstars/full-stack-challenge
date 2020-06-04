@@ -1,3 +1,4 @@
+// Collect data and return standardized object
 const formatFounderPostData = data => ({
   firstName: data.firstName,
   lastName: data.lastName,
@@ -7,6 +8,7 @@ const formatFounderPostData = data => ({
   updated_at: new Date(Date.now())
 });
 
+// Collect existing object as well as update data and return updated object
 const formatFounderPatchData = (founder, data) => {
   const newObject = {
     firstName: data.firstName ? data.firstName : founder.firstName,

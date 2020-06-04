@@ -1,65 +1,35 @@
 const knex = require('../knex');
-const formatter = require('../util/company');
+const bc = require('./base_controller');
 
 const getAllCompanies = async () => {
-  try {
-    const result = await knex('companies');
-    return result;
-  } catch (error) {
-    return { error }
-  }
+  const response = await bc.getAll('companies');
+  return response;
 }
 
+// Gets the company and all founders associated with it, combines them into one object, and returns it
 const getOneCompany = async id => {
-  try {
-    const company = await knex('companies').where('id', id);
-    const founders = await knex('founders').where('companyId', id);
-    const companyWithFounders = {
-      ...company[0],
-      founders
-    }
-    return companyWithFounders;
-  } catch (error) {
-    return { error }
+  const company = await bc.getOne(id, 'companies');
+  const founders = await knex('founders').where('companyId', id);
+  const companyWithFounders = {
+    ...company[0],
+    founders
   }
+  return companyWithFounders;
 }
 
 const postCompany = async data => {
-  try {
-    const newObject = formatter.formatCompanyPostData(data);
-    const result = await knex('companies')
-      .returning('*')
-      .insert(newObject);
-    return result;
-  } catch (error) {
-    return { error }
-  }
+  const response = await bc.postOne(data, 'companies');
+  return response;
 }
 
 const patchCompany = async (data, id) => {
-  try {
-    const company = await knex('companies').where('id', id)
-    const newObject = formatter.formatCompanyPatchData(company, data);
-    const result = await knex('companies')
-      .where('id', id)
-      .returning('*')
-      .update(newObject);
-    return result;
-  } catch (error) {
-    return { error }
-  }
+  const response = await bc.patchOne(data, id, 'companies');
+  return response;
 }
 
 const deleteCompany = async id => {
-  try {
-    const result = await knex('companies')
-      .where('id', id)
-      .returning('*')
-      .del();
-    return result;
-  } catch (error) {
-    return { error }
-  }
+  const response = await bc.deleteOne(id, 'companies');
+  return response;
 }
 
 module.exports = {

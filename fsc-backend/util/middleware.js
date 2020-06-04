@@ -5,6 +5,15 @@ const sendError = (res, statusCode = 500, message = 'Something went wrong.') => 
   res.status(statusCode).send({ error: { message } });
 }
 
+// Reusable handler for route responses
+const handleResponse = (res, result) => {
+  if (result && result.error) {
+    sendError(res);
+  } else {
+    res.send(result);
+  }
+}
+
 // Check if entry exists in the given table.
 const checkIfExists = (tableName) => {
   return async (req, res, next) => {
@@ -17,6 +26,7 @@ const checkIfExists = (tableName) => {
   }
 }
 
+// Takes an array of required values and ensures body contains them
 const validateRequiredValues = (values) => {
   return async (req, res, next) => {
     const violations = values.filter(value => {
@@ -33,5 +43,6 @@ const validateRequiredValues = (values) => {
 module.exports = {
   sendError,
   checkIfExists,
-  validateRequiredValues
+  validateRequiredValues,
+  handleResponse
 }

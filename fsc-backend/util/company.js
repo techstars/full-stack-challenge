@@ -1,3 +1,4 @@
+// Collect data and return standardized object
 const formatCompanyPostData = data => ({
   name: data.name,
   city: data.city,
@@ -8,6 +9,7 @@ const formatCompanyPostData = data => ({
   updated_at: new Date(Date.now())
 });
 
+// Collect existing object as well as update data and return updated object
 const formatCompanyPatchData = (company, data) => {
   const newObject = {
     name: data.name ? data.name : company.name,

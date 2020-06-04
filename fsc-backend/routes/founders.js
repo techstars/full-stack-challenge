@@ -3,51 +3,37 @@ const router = express.Router();
 const foundersController = require('../controllers/founders');
 const mw = require('../util/middleware');
 
+// Get all founders
 router.get('/', async (req, res, next) => {
   const result = await foundersController.getAllFounders();
-  if (result && result.error) {
-    mw.sendError(res);
-  } else {
-    res.send(result);
-  }
+  mw.handleResponse(res, result);
 });
 
+// Get one founder
 router.get('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
   const result = await foundersController.getOneFounder(req.params.id);
-  if (result && result.error) {
-    mw.sendError(res);
-  } else {
-    res.send(result);
-  }
+  mw.handleResponse(res, result);
 });
 
+// Define required values for founder
 const founderReqs = ['firstName', 'lastName', 'title', 'companyId'];
 
+// Create a new founder
 router.post('/', mw.validateRequiredValues(founderReqs), async(req, res, next) => {
   const result = await foundersController.postFounder(req.body);
-  if (result && result.error) {
-    mw.sendError(res);
-  } else {
-    res.send(result);
-  }
+  mw.handleResponse(res, result);
 });
 
+// Edit a founder
 router.patch('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
   const result = await foundersController.patchFounder(req.body, req.params.id);
-  if (result && result.error) {
-    mw.sendError(res);
-  } else {
-    res.send(result);
-  }
+  mw.handleResponse(res, result);
 });
 
+// Delete a founder
 router.delete('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
   const result = await foundersController.deleteFounder(req.params.id);
-  if (result && result.error) {
-    mw.sendError(res);
-  } else {
-    res.send(result);
-  }
+  mw.handleResponse(res, result);
 })
 
 module.exports = router;
