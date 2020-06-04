@@ -21,4 +21,15 @@ router.get('/:id', mw.checkIfExists('companies'), async (req, res, next) => {
   }
 });
 
+const companyReqs = ['name', 'city', 'state', 'description']
+
+router.post('/', mw.validateRequiredValues(companyReqs), async (req, res, next) => {
+  const result = await companiesController.postCompany(req.body);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+});
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const knex = require('../knex');
+const formatter = require('../util/company');
 
 const getAllCompanies = async () => {
   try {
@@ -23,7 +24,20 @@ const getOneCompany = async id => {
   }
 }
 
+const postCompany = async data => {
+  try {
+    const newObject = formatter.formatCompanyPostData(data);
+    const result = await knex('companies')
+      .returning('*')
+      .insert(newObject);
+    return result;
+  } catch (error) {
+    return { error }
+  }
+}
+
 module.exports = {
   getAllCompanies,
-  getOneCompany
+  getOneCompany,
+  postCompany
 }

@@ -9,14 +9,16 @@ exports.seed = function(knex) {
           name: 'Dark Eddie\'s Infernal Depot',
           city: 'El Paso',
           state: 'TX',
-          description: 'A family-friendly store selling multiple devices to allow you to conquer the world in the name of evil.'
+          description: 'A family-friendly store selling multiple devices to allow you to conquer the world in the name of evil.',
+          foundedDate: new Date(2015, 9, 13)
         },
         {
           id: 2,
           name: 'Brasserie du Graisse',
           city: 'Laguna Beach',
           state: 'CA',
-          description: 'Combining the atmosphere of authentic Parisian-style dining with the vast amount of grease you can usually only get with fast food.'
+          description: 'Combining the atmosphere of authentic Parisian-style dining with the vast amount of grease you can usually only get with fast food.',
+          foundedDate: new Date(2010, 10, 4)
         },
         {
           id: 3,

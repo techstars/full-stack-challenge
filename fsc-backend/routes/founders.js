@@ -21,4 +21,15 @@ router.get('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
   }
 });
 
+const founderReqs = ['firstName', 'lastName', 'title', 'companyId'];
+
+router.post('/', mw.validateRequiredValues(founderReqs), async(req, res, next) => {
+  const result = await foundersController.postFounder(req.body);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+});
+
 module.exports = router;

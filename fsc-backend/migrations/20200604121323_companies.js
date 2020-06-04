@@ -5,6 +5,7 @@ exports.up = knex => (
     table.string('city').defaultTo('');
     table.string('state').defaultTo('');
     table.text('description').defaultTo('');
+    table.date('foundedDate').defaultTo(null);
     table.timestamps();
   })
 );

@@ -17,7 +17,21 @@ const checkIfExists = (tableName) => {
   }
 }
 
+const validateRequiredValues = (values) => {
+  return async (req, res, next) => {
+    const violations = values.filter(value => {
+      return !req.body[value]
+    });
+    if (violations.length > 0) {
+      sendError(res, 400, `Please provide ${violations.join(', ')}.`);
+    } else {
+      next();
+    }
+  }
+}
+
 module.exports = {
   sendError,
-  checkIfExists
+  checkIfExists,
+  validateRequiredValues
 }
