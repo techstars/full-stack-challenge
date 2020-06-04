@@ -32,4 +32,22 @@ router.post('/', mw.validateRequiredValues(companyReqs), async (req, res, next) 
   }
 });
 
+router.patch('/:id', mw.checkIfExists('companies'), async (req, res, next) => {
+  const result = await companiesController.patchCompany(req.body, req.params.id);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+});
+
+router.delete('/:id', mw.checkIfExists('companies'), async (req, res, next) => {
+  const result = await companiesController.deleteCompany(req.params.id);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+})
+
 module.exports = router;

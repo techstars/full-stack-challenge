@@ -36,8 +36,36 @@ const postCompany = async data => {
   }
 }
 
+const patchCompany = async (data, id) => {
+  try {
+    const company = await knex('companies').where('id', id)
+    const newObject = formatter.formatCompanyPatchData(company, data);
+    const result = await knex('companies')
+      .where('id', id)
+      .returning('*')
+      .update(newObject);
+    return result;
+  } catch (error) {
+    return { error }
+  }
+}
+
+const deleteCompany = async id => {
+  try {
+    const result = await knex('companies')
+      .where('id', id)
+      .returning('*')
+      .del();
+    return result;
+  } catch (error) {
+    return { error }
+  }
+}
+
 module.exports = {
   getAllCompanies,
   getOneCompany,
-  postCompany
+  postCompany,
+  patchCompany,
+  deleteCompany
 }

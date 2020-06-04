@@ -32,4 +32,22 @@ router.post('/', mw.validateRequiredValues(founderReqs), async(req, res, next) =
   }
 });
 
+router.patch('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
+  const result = await foundersController.patchFounder(req.body, req.params.id);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+});
+
+router.delete('/:id', mw.checkIfExists('founders'), async (req, res, next) => {
+  const result = await foundersController.deleteFounder(req.params.id);
+  if (result && result.error) {
+    mw.sendError(res);
+  } else {
+    res.send(result);
+  }
+})
+
 module.exports = router;

@@ -31,8 +31,37 @@ const postFounder = async data => {
   }
 }
 
+const patchFounder = async (data, id) => {
+  try {
+    const founder = await knex('founders').where('id', id)
+    const newObject = formatter.formatFounderPatchData(founder, data);
+    const result = await knex('founders')
+      .where('id', id)
+      .returning('*')
+      .update(newObject);
+    return result;
+  } catch (error) {
+    return { error }
+  }
+}
+
+const deleteFounder = async id => {
+  try {
+    const result = await knex('founders')
+      .where('id', id)
+      .returning('*')
+      .del();
+    return result;
+  } catch (error) {
+    return { error }
+  }
+}
+
+
 module.exports = {
   getAllFounders,
   getOneFounder,
-  postFounder
+  postFounder,
+  patchFounder,
+  deleteFounder
 }
