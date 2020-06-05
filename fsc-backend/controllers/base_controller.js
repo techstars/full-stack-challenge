@@ -15,7 +15,7 @@ const getAll = async (resourceType) => {
 const getOne = async (id, resourceType) => {
   try {
     const result = await knex(resourceType).where('id', id);
-    return result;
+    return result[0];
   } catch (error) {
     return { error }
   }
@@ -24,11 +24,10 @@ const getOne = async (id, resourceType) => {
 const postOne = async (data, resourceType) => {
   try {
     const newObject = formatter.formatPostData(data, resourceType);
-    console.log(newObject)
     const result = await knex(resourceType)
       .returning('*')
       .insert(newObject);
-    return result;
+    return result[0];
   } catch (error) {
     return { error }
   }
@@ -42,7 +41,7 @@ const patchOne = async (data, id, resourceType) => {
       .where('id', id)
       .returning('*')
       .update(newObject);
-    return result;
+    return result[0];
   } catch (error) {
     return { error }
   }
@@ -54,7 +53,7 @@ const deleteOne = async (id, resourceType) => {
       .where('id', id)
       .returning('*')
       .del();
-    return result;
+    return result[0];
   } catch (error) {
     return { error }
   }

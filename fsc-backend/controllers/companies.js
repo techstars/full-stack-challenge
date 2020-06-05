@@ -11,7 +11,7 @@ const getOneCompany = async id => {
   const company = await bc.getOne(id, 'companies');
   const founders = await knex('founders').where('companyId', id);
   const companyWithFounders = {
-    ...company[0],
+    ...company,
     founders
   }
   return companyWithFounders;
