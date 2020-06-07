@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CompanyDetailsCard from 'components/CompanyDetailsCard';
 import CompanyEdit from 'components/CompanyEdit';
+import FounderCard from 'components/FounderCard';
+import AddFounderCard from 'components/AddFounderCard';
 
 const CompanyPage = props => {
   const {
     theme,
     getOneCompany,
     updateCompany,
+    addFounder,
     match: { params: { id } }
   } = props;
   
   const [company, setCompany] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const [showFounderFields, setShowFounderFields] = useState(false);
+
   useEffect(() => {
     const loadCompany = async () => {
       const response = await getOneCompany(id);
@@ -32,6 +37,18 @@ const CompanyPage = props => {
 
   const handleCancel = () => {
     setIsEditing(false);
+    setShowFounderFields(false);
+  }
+
+  const handleAddFounder = async data => {
+    const response = await addFounder(data);
+    if (!response.error) {
+      const newCompany = company;
+      newCompany.founders.push(response);
+      setCompany(newCompany);
+      setShowFounderFields(false);
+      return response;
+    }
   }
 
   return (
@@ -41,13 +58,32 @@ const CompanyPage = props => {
         <CompanyEdit theme={theme} company={company} handleCancel={handleCancel} handleUpdateCompany={handleUpdateCompany}/>
         : <CompanyDetailsCard theme={theme} company={company} toggleEdit={setIsEditing}/>}
       </div>
+
+      <div className='row'>
+        {company.founders && company.founders.map((founder, i) => <FounderCard key={i} theme={theme} founder={founder} />)}
+      </div>
+
+      { showFounderFields && <AddFounderCard theme={theme} companyId={company.id} handleCancel={handleCancel} handleAddFounder={handleAddFounder} /> }
+
+      <div className='row'>
+        <div className='col text-left mt-4'>
+          <button
+            className={`fsc-nav-text btn btn-${theme}`}
+            onClick={setShowFounderFields}>
+              Add Founder
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
 
 CompanyPage.propTypes = {
   theme: PropTypes.string,
-  getOneCompany: PropTypes.func.isRequired
+  getOneCompany: PropTypes.func.isRequired,
+  updateCompany: PropTypes.func.isRequired,
+  addFounder: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired
 }
 
 CompanyPage.defaultProps = {
