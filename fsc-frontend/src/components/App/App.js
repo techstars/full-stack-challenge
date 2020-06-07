@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import IndexPage from 'components/IndexPage';
+import CompanyPage from 'components/CompanyPage';
 import Navbar from 'components/Navbar';
 
 function App(props) {
@@ -12,6 +13,7 @@ function App(props) {
       <Navbar />
       <Switch>
         <Route exact path='/' component={IndexPage} />
+        <Route path='/companies/:id' component={CompanyPage} />
       </Switch>
     </div>
   );

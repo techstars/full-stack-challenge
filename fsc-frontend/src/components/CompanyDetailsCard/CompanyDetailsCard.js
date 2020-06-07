@@ -1,31 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { formatDate } from 'util/formatter';
 
-const IndexCard = props => {
+const CompanyDetailsCard = props => {
   const { company, theme } = props;
-
   return (
     <div className='col-12'>
       <div className='card my-3'>
         <div className='card-body'>
-          <h4 className='fsc-header-text'>{ company.name }</h4>
-          <h5>
-            { company.city }, { company.state }
-          </h5>
+          <h3 className='fsc-header-text'>{ company.name }</h3>
+          <h4>{ company.city }, { company.state }</h4>
+          <h5>{company.foundedDate && `Founded ${formatDate(company.foundedDate)}`}</h5>
           <p className='fsc-body-text'>{ company.description }</p>
           <div className='row'>
             <div className='col'>
-              <Link to={`companies/${company.id}`} className={`btn btn-${theme} fsc-nav-text`}>See More</Link>
+              <button className={`btn btn-${theme} fsc-nav-text`}>Edit</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-IndexCard.propTypes = {
+CompanyDetailsCard.propTypes = {
   company: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -37,4 +35,4 @@ IndexCard.propTypes = {
   theme: PropTypes.string.isRequired
 }
 
-export default IndexCard;
+export default CompanyDetailsCard;
