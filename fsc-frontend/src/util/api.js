@@ -4,7 +4,7 @@ const baseHeaders = {
 
 export const getRequest = async endpoint => {
   const response = await fetch(
-    `${process.env.REACT_APP_GLOBALIZER_API_URL}/${endpoint}`,
+    `${process.env.REACT_APP_API_URL}/${endpoint}`,
     {
       method: 'GET',
       headers: baseHeaders

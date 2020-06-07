@@ -8,7 +8,8 @@ export const getAllCompanies = () => async dispatch => {
   dispatch({ type: LOAD_COMPANIES });
   try {
     const response = await getRequest('companies');
-    return dispatch({ type: SAVE_COMPANIES, payload: response.data });
+    dispatch({ type: SAVE_COMPANIES, payload: response });
+    return response;
   } catch (error) {
     return dispatch({ type: ERROR_COMPANIES, payload: error });
   }

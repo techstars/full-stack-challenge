@@ -7,7 +7,7 @@ import {
   selectCompaniesIsError,
   selectCompaniesErrorMessage
 } from 'state/companies/selectors';
-import { getCompanies } from 'state/companies/actions';
+import { getAllCompanies } from 'state/companies/actions';
 
 const mapStateToProps = state => ({
   theme: selectTheme(state),
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getCompanies
+  getAllCompanies
 }
 
 
