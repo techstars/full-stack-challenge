@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import IndexCard from 'components/IndexCard';
 
 const IndexPage = props => {
-  const { getAllCompanies } = props;
+  const { getAllCompanies, theme } = props;
 
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
@@ -17,7 +18,11 @@ const IndexPage = props => {
 
   return (
     <div>
-      <h3 className='fsc-body-text'>Hey how are you?</h3>
+      <div className='container'>
+        <div className='row'>
+          { companies && companies.map((company, i) => <IndexCard key={i} company={company} theme={theme}/>) }
+        </div>
+      </div>
     </div>
   )
 }
