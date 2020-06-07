@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.App-light {
+  background-color: white;
+  color: black;
+}
+
+.App-dark {
+  background-color: #37403f;
+  color: white;
+}
+
