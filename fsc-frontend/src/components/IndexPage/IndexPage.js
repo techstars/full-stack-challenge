@@ -17,7 +17,7 @@ const IndexPage = props => {
 
   return (
     <div>
-      <h3>Hey how are you?</h3>
+      <h3 className='fsc-body-text'>Hey how are you?</h3>
     </div>
   )
 }

@@ -1,0 +1,17 @@
+.fsc-navbar-light {
+  background-color: #9fe3db;
+  color: black;
+}
+
+.fsc-navbar-dark {
+  background-color: #075249;
+  color: white;
+}
+
+.fsc-nav-link {
+  color: black;
+}
+
+.fsc-nav-logo:hover{
+  text-decoration: none;
+}
