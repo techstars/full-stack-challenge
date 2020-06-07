@@ -5,13 +5,13 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const CompanyEdit = props => {
-  const { company, handleUpdateCompany, theme, handleCancel } = props;
+  const { handleSubmit, theme } = props;
 
-  const [name, setName] = useState(company.name);
-  const [description, setDescription] = useState(company.description);
-  const [city, setCity] = useState(company.city);
-  const [state, setState] = useState(company.state);
-  const [foundedDate, setFoundedDate] = useState(company.foundedDate);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [foundedDate, setFoundedDate] = useState(new Date(Date.now()));
 
   const nameToFunction = {
     name: setName,
@@ -29,7 +29,7 @@ const CompanyEdit = props => {
     setFoundedDate(day);
   }
 
-  const updateCompany = async e => {
+  const addCompany = async e => {
     e.preventDefault();
     const data = {
       name,
@@ -38,7 +38,7 @@ const CompanyEdit = props => {
       state,
       foundedDate
     }
-    handleUpdateCompany(data);
+    handleSubmit(data);
   }
 
   return (
@@ -49,13 +49,13 @@ const CompanyEdit = props => {
           <hr />
           <div className='container'>
 
-          <form onSubmit={updateCompany}>
+          <form onSubmit={addCompany}>
             <div className='row text-left'>
               <div className='col'><h6 className='fsc-header-text'>Name</h6></div>
             </div>
             <div className='row mb-3'>
               <div className='col'>
-                <input className='form-control' id='name' value={name} onChange={handleEdit} required/>
+                <input className='form-control' id='name' value={name} onChange={handleEdit} required type='text'/>
               </div>
             </div>
 
@@ -95,18 +95,11 @@ const CompanyEdit = props => {
             </div>
 
             <div className='row fsc-nav-text'>
-              <div className='col text-right'>
+              <div className='col'>
                 <button
                   type='submit'
                   className={`btn btn-${theme}`}>
                   Submit
-                </button>
-              </div>
-              <div className='col text-left'>
-                <button
-                  className={`btn btn-danger`}
-                  onClick={() => handleCancel()}>
-                  Cancel
                 </button>
               </div>
             </div>

@@ -15,7 +15,7 @@ const Navbar = props => {
           <Link to='/' className='nav-item fsc-nav-link fsc-nav-text mt-1'><h4>INDEX</h4></Link>
         </div>
         <div className='col pt-1'>
-          <Link to='/' className='nav-item fsc-nav-link fsc-nav-text mt-1'><h4>ADD ENTRY</h4></Link>
+          <Link to='/new' className='nav-item fsc-nav-link fsc-nav-text mt-1'><h4>ADD ENTRY</h4></Link>
         </div>
       </div>
     </nav>

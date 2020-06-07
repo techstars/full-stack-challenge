@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import IndexPage from 'components/IndexPage';
 import CompanyPage from 'components/CompanyPage';
+import AddCompanyPage from 'components/AddCompanyPage';
 import Navbar from 'components/Navbar';
 
 function App(props) {
@@ -14,6 +15,7 @@ function App(props) {
       <Switch>
         <Route exact path='/' component={IndexPage} />
         <Route path='/companies/:id' component={CompanyPage} />
+        <Route path='/new' component={AddCompanyPage} />
       </Switch>
     </div>
   );

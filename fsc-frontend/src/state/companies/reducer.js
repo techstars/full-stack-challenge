@@ -1,4 +1,4 @@
-import { LOAD_COMPANIES, ERROR_COMPANIES, SAVE_COMPANIES } from './actions';
+import { LOAD_COMPANIES, ERROR_COMPANIES, SAVE_COMPANIES, ADD_COMPANIES } from './actions';
 
 const initialState = {
   companies: [],
@@ -24,6 +24,14 @@ const companiesReducer = (state = initialState, action) => {
         isError: false,
         errorMessage: null,
         data: action.payload
+      }
+    case ADD_COMPANIES:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        errorMessage: null,
+        data: [...state.companies.data, action.payload]
       }
     case ERROR_COMPANIES:
       return {
