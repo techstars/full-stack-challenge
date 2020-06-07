@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100%;
 }
 
 .App-light {
@@ -26,4 +27,21 @@
 
 .fsc-logo-text {
   font-family: 'Chau Philomene One', sans-serif;
+}
+
+.fsc-card-dark {
+  background-color: #075249;
+  color: #c4c4c4;
+  border: none !important;
+}
+
+.fsc-card-light {
+  background-color: white;
+  color: black;
+}
+
+.fsc-input-dark {
+  background-color: #595959 !important;
+  border: none !important;
+  color: #c4c4c4 !important;
 }

@@ -1,4 +1,4 @@
-import { LOAD_COMPANY_DETAILS, SAVE_COMPANY_DETAILS, ERROR_COMPANY_DETAILS } from './actions';
+import { LOAD_COMPANY_DETAILS, SAVE_COMPANY_DETAILS, ERROR_COMPANY_DETAILS, DELETE_COMPANY_DETAILS } from './actions';
 
 const initialState = {
   isLoading: false,
@@ -30,6 +30,13 @@ const companyDetailsReducer = (state = initialState, action) => {
         isLoading: false,
         isError: true,
         errorMessage: action.payload
+      }
+    case DELETE_COMPANY_DETAILS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: {}
       }
     default: 
       return state;

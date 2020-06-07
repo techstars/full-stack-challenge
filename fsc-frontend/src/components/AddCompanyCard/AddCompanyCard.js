@@ -4,7 +4,7 @@ import states from 'util/states';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-const CompanyEdit = props => {
+const AddCompanyCard = props => {
   const { handleSubmit, theme } = props;
 
   const [name, setName] = useState('');
@@ -43,9 +43,9 @@ const CompanyEdit = props => {
 
   return (
     <div className='col-12'>
-      <div className='card'>
-        <div className='card-body fsc-body-text'>
-          <h3 className='fsc-header-text'>Edit Company</h3>
+      <div className={`card fsc-card-${theme}`}>
+        <div className={`card-body fsc-body-text fsc-card-${theme}`}>
+          <h3 className='fsc-header-text'>Add Company</h3>
           <hr />
           <div className='container'>
 
@@ -55,7 +55,7 @@ const CompanyEdit = props => {
             </div>
             <div className='row mb-3'>
               <div className='col'>
-                <input className='form-control' id='name' value={name} onChange={handleEdit} required type='text'/>
+                <input className={`form-control fsc-input-${theme}`} id='name' value={name} onChange={handleEdit} required type='text'/>
               </div>
             </div>
 
@@ -64,10 +64,10 @@ const CompanyEdit = props => {
             </div>
             <div className='row mb-3'>
               <div className='col'>
-                <input className='form-control' id='city' value={city} onChange={handleEdit} required/>
+                <input className={`form-control fsc-input-${theme}`} id='city' value={city} onChange={handleEdit} required/>
               </div>
               <div className='col'>
-                <select className='form-control' value={state} id='state' onChange={handleEdit} required>
+                <select className={`form-control fsc-input-${theme}`} value={state} id='state' onChange={handleEdit} required>
                   {states.map((state, i) => <option key={i}>{state}</option>)}
                 </select>
               </div>             
@@ -90,7 +90,7 @@ const CompanyEdit = props => {
             </div>
             <div className='row mb-3'>
               <div className='col'>
-                <textarea className='form-control' value={description} id='description' onChange={handleEdit} required/>
+                <textarea className={`form-control fsc-input-${theme}`} value={description} id='description' onChange={handleEdit} required/>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ const CompanyEdit = props => {
   )
 }
 
-CompanyEdit.propTypes = {
+AddCompanyCard.propTypes = {
   company: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -124,4 +124,4 @@ CompanyEdit.propTypes = {
   theme: PropTypes.string.isRequired
 }
 
-export default CompanyEdit;
+export default AddCompanyCard;

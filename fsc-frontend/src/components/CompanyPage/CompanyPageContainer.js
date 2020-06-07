@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { selectTheme } from 'state/preferences/selectors';
-import { getOneCompany, updateCompany, addFounder } from 'state/companyDetails/actions';
+import { getOneCompany, updateCompany, addFounder, deleteCompany } from 'state/companyDetails/actions';
 import CompanyPage from './CompanyPage';
 import { selectCompanyDetails } from 'state/companyDetails/selectors';
 
@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   getOneCompany,
   updateCompany,
-  addFounder
+  addFounder,
+  deleteCompany
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyPage);

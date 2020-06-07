@@ -39,3 +39,15 @@ export const patchRequest = async (endpoint, data) => {
   const json = await response.json()
   return json
 }
+
+export const deleteRequest = async endpoint => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/${endpoint}`,
+    {
+      method: 'DELETE',
+      headers: baseHeaders
+    }
+  )
+  const json = await response.json()
+  return json
+}

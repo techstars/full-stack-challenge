@@ -1,7 +1,7 @@
 import { SAVE_THEME_PREFERENCES } from './actions';
 
 const initialState = {
-  theme: 'light'
+  theme: 'dark'
 }
 
 const preferencesReducer = (state = initialState, action) => {

@@ -7,8 +7,8 @@ const IndexCard = props => {
 
   return (
     <div className='col-12'>
-      <div className='card my-3'>
-        <div className='card-body'>
+      <div className={`card my-3 fsc-card-${theme}`}>
+        <div className={`card-body fsc-card-${theme}`}>
           <h4 className='fsc-header-text'>{ company.name }</h4>
           <h5>
             { company.city }, { company.state }

@@ -11,7 +11,9 @@ const CompanyPage = props => {
     getOneCompany,
     updateCompany,
     addFounder,
-    match: { params: { id } }
+    deleteCompany,
+    match: { params: { id } },
+    history
   } = props;
   
   const [company, setCompany] = useState({});
@@ -51,12 +53,19 @@ const CompanyPage = props => {
     }
   }
 
+  const handleDelete = async () => {
+    const response = await deleteCompany(id);
+    if (!response.error) {
+      history.push('/');
+    }
+  }
+
   return (
     <div className='container'>
       <div className='row'>
         {isEditing ?
         <CompanyEdit theme={theme} company={company} handleCancel={handleCancel} handleUpdateCompany={handleUpdateCompany}/>
-        : <CompanyDetailsCard theme={theme} company={company} toggleEdit={setIsEditing}/>}
+        : <CompanyDetailsCard theme={theme} company={company} toggleEdit={setIsEditing} handleDelete={handleDelete}/>}
       </div>
 
       <div className='row'>
@@ -66,13 +75,14 @@ const CompanyPage = props => {
       { showFounderFields && <AddFounderCard theme={theme} companyId={company.id} handleCancel={handleCancel} handleAddFounder={handleAddFounder} /> }
 
       <div className='row'>
-        <div className='col text-left mt-4'>
+        <div className='col text-left my-4'>
           <button
             className={`fsc-nav-text btn btn-${theme}`}
             onClick={setShowFounderFields}>
               Add Founder
           </button>
         </div>
+
       </div>
     </div>
   )
@@ -83,6 +93,7 @@ CompanyPage.propTypes = {
   getOneCompany: PropTypes.func.isRequired,
   updateCompany: PropTypes.func.isRequired,
   addFounder: PropTypes.func.isRequired,
+  deleteCompany: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired
 }
 

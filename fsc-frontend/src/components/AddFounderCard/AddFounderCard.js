@@ -38,8 +38,8 @@ const AddFounderCard = props => {
   return (
     <div className='row my-3'>
       <div className='col-12'>
-        <div className='card'>
-          <div className='card-body'>
+        <div className={`card fsc-card-${theme}`}>
+          <div className={`card-body fsc-body-text fsc-card-${theme}`}>
             <div className='container'>
 
               <form onSubmit={addFounder}>
@@ -49,7 +49,7 @@ const AddFounderCard = props => {
               </div>
               <div className='row mb-3'>
                 <div className='col'>
-                  <input className='form-control' id='firstName' value={firstName} onChange={handleChange} required />
+                  <input className={`form-control fsc-input-${theme}`} id='firstName' value={firstName} onChange={handleChange} required />
                 </div>
               </div>
 
@@ -58,7 +58,7 @@ const AddFounderCard = props => {
               </div>
               <div className='row mb-3'>
                 <div className='col'>
-                  <input className='form-control' id='lastName' value={lastName} onChange={handleChange} required />
+                  <input className={`form-control fsc-input-${theme}`} id='lastName' value={lastName} onChange={handleChange} required />
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ const AddFounderCard = props => {
               </div>
               <div className='row mb-3'>
                 <div className='col'>
-                  <input className='form-control' id='title' value={title} onChange={handleChange} required />
+                  <input className={`form-control fsc-input-${theme}`} id='title' value={title} onChange={handleChange} required />
                 </div>
               </div>
 
