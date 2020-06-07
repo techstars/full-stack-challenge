@@ -14,8 +14,6 @@ const IndexPage = props => {
     fetchCompanies();
   }, [getAllCompanies]);
 
-  console.log(companies);
-
   return (
     <div>
       <div className='container'>

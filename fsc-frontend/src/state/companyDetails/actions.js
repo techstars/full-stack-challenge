@@ -1,4 +1,4 @@
-import { getRequest } from "util/api";
+import { getRequest, patchRequest } from "util/api";
 
 export const LOAD_COMPANY_DETAILS = 'LOAD_COMPANY_DETAILS';
 export const SAVE_COMPANY_DETAILS = 'SAVE_COMPANY_DETAILS';
@@ -10,7 +10,20 @@ export const getOneCompany = id => async dispatch => {
     const response = await getRequest(`companies/${id}`);
     dispatch({ type: SAVE_COMPANY_DETAILS, payload: response });
     return response;
-  } catch (err) {
-    return dispatch({ type: ERROR_COMPANY_DETAILS, payload: err });
+  } catch (error) {
+    dispatch({ type: ERROR_COMPANY_DETAILS, payload: error });
+    return { error }
+  }
+}
+
+export const updateCompany = (id, data) => async dispatch => {
+  dispatch({ type: LOAD_COMPANY_DETAILS });
+  try {
+    const response = await patchRequest(`companies/${id}`, data);
+    dispatch({ type: SAVE_COMPANY_DETAILS, payload: response });
+    return response;
+  } catch (error) {
+    dispatch({ type: ERROR_COMPANY_DETAILS, payload: error });
+    return { error }
   }
 }

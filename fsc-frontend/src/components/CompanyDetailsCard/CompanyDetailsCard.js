@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { formatDate } from 'util/formatter';
 
 const CompanyDetailsCard = props => {
-  const { company, theme } = props;
+  const { company, theme, toggleEdit } = props;
   return (
     <div className='col-12'>
       <div className='card my-3'>
@@ -14,7 +14,11 @@ const CompanyDetailsCard = props => {
           <p className='fsc-body-text'>{ company.description }</p>
           <div className='row'>
             <div className='col'>
-              <button className={`btn btn-${theme} fsc-nav-text`}>Edit</button>
+              <button
+                className={`btn btn-${theme} fsc-nav-text`}
+                onClick={() => toggleEdit(true)}>
+                Edit
+              </button>
             </div>
           </div>
         </div>
@@ -32,7 +36,8 @@ CompanyDetailsCard.propTypes = {
     foundedDate: PropTypes.string,
     state: PropTypes.string
   }),
-  theme: PropTypes.string.isRequired
+  theme: PropTypes.string.isRequired,
+  toggleEdit: PropTypes.func.isRequired
 }
 
 export default CompanyDetailsCard;
