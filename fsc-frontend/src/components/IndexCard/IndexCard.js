@@ -9,7 +9,7 @@ const IndexCard = props => {
     <div className='col-12'>
       <div className={`card my-3 fsc-card-${theme}`}>
         <div className={`card-body fsc-card-${theme}`}>
-          <h4 className='fsc-header-text'>{ company.name }</h4>
+          <h4 className={`fsc-header-text ${theme === 'awful' ? 'awfulspin' : ''}`}>{ company.name }</h4>
           <h5>
             { company.city }, { company.state }
           </h5>

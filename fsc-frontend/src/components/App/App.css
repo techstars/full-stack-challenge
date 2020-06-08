@@ -13,6 +13,11 @@
   color: white;
 }
 
+.App-awful {
+  background-color: #f7f30f;
+  color: black;
+}
+
 .fsc-body-text {
   font-family: 'Sarabun', sans-serif;
 }
@@ -35,9 +40,46 @@
   border: none !important;
 }
 
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.awfulspin {
+  animation-name: spin;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition: rotate(3600deg);
+
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 3000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 3000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+
 .fsc-card-light {
   background-color: white;
   color: black;
+}
+
+.fsc-card-awful {
+  background-color: #60ff47;
+  color: black;
+  border: 2px solid red;
 }
 
 .fsc-input-dark {
@@ -54,4 +96,9 @@
 
 .fsc-dropdown-light {
   cursor: pointer;
+}
+
+.fsc-dropdown-awful {
+  cursor: pointer;
+  background-color: #60ff47 !important;
 }
