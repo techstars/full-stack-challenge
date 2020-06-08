@@ -45,3 +45,13 @@
   border: none !important;
   color: #c4c4c4 !important;
 }
+
+.fsc-dropdown-dark {
+  background-color: #075249 !important;
+  color: #c4c4c4 !important;
+  cursor: pointer;
+}
+
+.fsc-dropdown-light {
+  cursor: pointer;
+}
