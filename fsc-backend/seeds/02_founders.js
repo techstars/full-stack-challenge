@@ -32,7 +32,35 @@ exports.seed = function(knex) {
           lastName: 'Smith',
           title: 'Owner',
           companyId: 3
-        }
+        },
+        {
+          id: 5,
+          firstName: 'Jacob',
+          lastName: 'Jacobson',
+          title: 'Founder',
+          companyId: 4
+        },
+        {
+          id: 6,
+          firstName: 'Argon',
+          lastName: 'Hydrogenous',
+          title: 'CEO',
+          companyId: 6
+        },
+        {
+          id: 7,
+          firstName: 'Mitzy',
+          lastName: 'Handgepackaufbewarung',
+          title: 'CEO',
+          companyId: 7
+        },
+        {
+          id: 8,
+          firstName: 'Antimony',
+          lastName: 'Technetium',
+          title: 'CEO',
+          companyId: 6
+        },
       ]).then(function() {
         return knex.raw(`SELECT setval('founders_id_seq', (SELECT MAX(id) FROM founders))`)
         });
