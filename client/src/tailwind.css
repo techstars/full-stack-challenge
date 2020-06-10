@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    margin-top: 5rem;
+  }
+}

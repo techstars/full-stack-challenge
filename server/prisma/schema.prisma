@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource postgresql {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model Founder {
+  id        String     @default(uuid()) @id
+  firstName String
+  lastName  String
+  title     String
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id])
+}
+
+model Company {
+  id          String       @default(uuid()) @id
+  city        String
+  name        String
+  state       String
+  description String
+  logoUrl     String?
+  dateFounded DateTime
+  founders    Founder[]
+}

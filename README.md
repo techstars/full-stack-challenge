@@ -1,3 +1,70 @@
+## Hi Craig & Team!
+
+Thanks so much for you consideration for this role. I wanted to share a few details and give context for the architecture of this app.
+
+* client: TS/React/TailwindCSS using v16+ hooks patterns
+  * this was my first time using tailwind after hearing a lot of good things about it and it's really nice for quickly creating reusable styled components, especially with utility & layout classes
+  * testing with _cypress_ which collects code coverage! (new since the last time I used it)
+
+* server: TS/Node/Prisma
+  * this is the first time I've used Prisma and I really like it, though the v2 release doesn't support some of the earlier version's functionality yet, which made for some surprises.
+  * testing with mocha/chai
+
+* database: aws RDS managed postgresql instance
+
+* hosting: the app is deployed to an EC2 instance using an aws application loadbalancer at either http://interview.nicecmpny.com or http://techstars-1173038303.us-west-2.elb.amazonaws.com
+
+
+A couple of notes:
+* There's still some needed refactoring but I wanted to get the app in good place with test coverage and meet the mvp first.
+* Lots of learnings with this project re: taking on a couple new technologies in the app as well as deployment
+* The testing pattern is a little brittle because of a limitation I ran into with Prisma not being able to easily switch their client to use a diffrent db based on env. It seems to be something they're actively working on but it's worth noting that the version I used isn't recommended for production yet.
+* always more to do given more time! (stretch goal was to deploy with docker) I'll look forward to talking with ya'll :)
+
+
+## Usage
+* run `npm i` in both the client and server directories. I set these up as standalone repos initially so there is are
+some config and dependencies that are duplicated
+
+## Client specific scripts
+### In the client directory, you can run:
+
+#### `npm run start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+#### `npm run e2e`
+
+Launches cypress e2e suite
+
+#### `npm run coverage`
+
+Prints most recent coverage report (must run e2e tests first!)
+
+
+### From the server directory: 
+
+* add '.env3' file to root `touch .env3`
+* add 'DB_URL' connection string to .env3 `DB_URL="I'LL SEND IT TO YOU :) "`
+* `npm run start`  (serves at http://localhost:4000)
+
+
+### Testing
+
+* `npm run e2e`
+
+* I wrote e2e tests for all of the routes. Some routes are not yet being used by the client but are still tested
+* coverage will printout after test run. I didn't 
+* Tests cleanup after themselves, but setup is not great because I learned that prisma v2 has some limitations around 
+multi tenant db so the same database is used for the app and tests right now
+
+
+
+# Thanks again ya'll
+
+
 # Techstars Engineering: Fun Front to Back
 
 Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse projects and value team members who can do it all from CSS to DevOps and everything inbetween.  We love to code and are passionate about doing it well.
