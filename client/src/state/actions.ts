@@ -15,13 +15,6 @@ export const setSelectedDetailItem = (item: Company | Founder) => {
   }
 }
 
-// export const setUser = (user: User) => {
-//   return {
-//     type: SET_USER,
-//     payload: user,
-//   }
-// }
-
 export const fetching = () => ({ type: FETCHING })
 
 export const setSuccess = () => ({ type: SUCCESS })

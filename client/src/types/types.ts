@@ -21,16 +21,8 @@ export interface Company {
 export interface ApplicationState {
   companies: Company[]
   founders: Founder[]
-  user: User | null
   status: any | null
   selectedDetailItem: Company | Founder | null
-}
-
-export interface User {
-  login: string
-  firstName: string
-  lastName: string
-  avatarUrl?: string
 }
 
 export interface ReducerAction {
