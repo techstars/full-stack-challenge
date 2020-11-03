@@ -46,8 +46,9 @@ const PanelComponent: React.FC<PanelProps> = ({
             name={name}
             placeholder={placeholder}
             className={classNames('form-select', { change: className })}
-            type={name === 'founded_date' && 'date'}
+            type={name === 'founded_date' ? 'date' : null}
             component={deteremineComponentType()}
+            key={name}
           />
           <ErrorMessage name={name} component="div" className="form__error_div" />
         </div>

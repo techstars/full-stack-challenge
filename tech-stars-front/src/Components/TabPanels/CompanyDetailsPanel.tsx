@@ -42,7 +42,7 @@ export const CompanyDetailsPanel: React.FC<Props> = ({ company }) => {
             {company.founders &&
               _.map(company.founders, (founder: Founders) => {
                 return (
-                  <div className="modal__tab-founder">
+                  <div className="modal__tab-founder" key={founder.id}>
                     {founder.first_name} {founder.last_name}
                     <div>Title: {founder.title}</div>
                   </div>

@@ -44,7 +44,7 @@ export const FoundersPanel: React.FC<Props> = ({
           {company.categories &&
             _.map(company.founders, (founder: Founders) => {
               return (
-                <div className="modal__tab-founder-card">
+                <div className="modal__tab-founder-card" key={founder.id}>
                   {founder.first_name} {founder.last_name}
                   <div>Title: {founder.title}</div>
                 </div>

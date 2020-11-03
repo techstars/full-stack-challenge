@@ -40,7 +40,7 @@ const PanelMultipleComponent: React.FC<PanelMultipleProps> = ({ names, label }):
       <div className="panel-component__body multiple">
         {_.map(names, (name) => {
           return (
-            <div className="panel-content__row">
+            <div className="panel-content__row" key={name}>
               <div className="panel-content__row-title">{name.toUpperCase()}:</div>
               <Field
                 id="shortDescription"
