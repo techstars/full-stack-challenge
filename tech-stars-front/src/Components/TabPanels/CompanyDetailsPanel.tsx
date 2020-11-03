@@ -26,14 +26,11 @@ export const CompanyDetailsPanel: React.FC<Props> = ({ company }) => {
       <div className="modal__tab-body-wrapper--bottom">
         <div className="modal__tab-tag-wrapper">
           <div className="modal__tab-tag-title">Category Tags</div>
-          {_.isBoolean(company.categories) ? (
+          {company.categories &&
             _.map(company.categories, (category: Categories) => {
               const name = category.name
               return <div className="modal__tab-tag">{name?.toUpperCase()}</div>
-            })
-          ) : (
-            <div className="modal__tab-tag">NO CATEGORIES</div>
-          )}
+            })}
         </div>
         <div className="modal__tab-body--bottom">
           <div className="modal__tab-body--description">{company.description}</div>
