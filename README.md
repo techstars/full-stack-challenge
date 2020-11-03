@@ -35,7 +35,7 @@ The app back is built with Ruby on Rails which requires the following commands t
 
     bin/rails test test/controllers/companies_controller_test.rb 
     
-  These Two Commands are for prepping to run Cypress
+    These Two Commands are for prepping to run Cypress
     rails db:test:prepare
     RAILS_ENV=test rails s 
 
