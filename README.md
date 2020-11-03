@@ -1,5 +1,9 @@
 # Techstars Engineering: Fun Front to Back
 
+bin/rails test test/controllers/companies_controller_test.rb 
+rails db:test:prepare
+RAILS_ENV=test rails s
+
 Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse projects and value team members who can do it all from CSS to DevOps and everything inbetween.  We love to code and are passionate about doing it well.
 
 This is your chance to show the team how you approach problems and give us insight into your abilities. For the challenge, you are required to design, develop, and style a Full Stack application using Rails or Node as the API and React as the front-end. Do not use Rails templates for your UI. Feel free to use any third party libraries you see fit. You will have **48 hours** to submit a solution for the given requirements.  If you need more time due to schedule conflicts, just let us know.  We value people with good communication skills. We strongly prefer that whatever you do, you do it well, as opposed to trying to razzle dazzle us.  Please read all the instructions carefully and email us if you have any questions. 

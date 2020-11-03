@@ -1,0 +1,15 @@
+[
+  {
+    "categories": [],
+    "city": "San Fransisco",
+    "created_at": "2020-11-03T00:21:26.221Z",
+    "description": "Plaid, the software powering well-known fintech apps such as Venmo and Coinbase, has raised $310 million in venture capital funding to date. Head of people McKenna Quint said the company is 'Growing quickly but carefully': It's added about 200 employees over the past year and has over 100 positions open now.",
+    "founded_date": "10/15/2012",
+    "founders": [],
+    "id": 2,
+    "name": "Plaid",
+    "short_description": "The software powering well-known fintech apps such as Venmo and Coinbase",
+    "state": "CA",
+    "updated_at": "2020-11-03T00:21:26.221Z"
+  }
+]

@@ -169,16 +169,6 @@ describe('Companies Component', () => {
       expect(_.includes(selectedTab?.innerHTML, 'Company Details')).toBeTruthy()
       expect(screen.getByText(/Manuel Medina/)).toBeInTheDocument()
       expect(screen.getByText(/NO CATEGORIES/)).toBeInTheDocument()
-      waitFor(() => {
-        const foundersTab = document.body.querySelectorAll('.modal__tab-marker')
-        fireEvent.click(foundersTab[1])
-        expect(document.body.querySelector('.company-button--create founder')).toBeInTheDocument()
-      })
-      waitFor(() => {
-        const foundersTab = document.body.querySelectorAll('.modal__tab-marker')
-        fireEvent.click(foundersTab[2])
-        expect(screen.getByText(/NO CATEGORIES/)).toBeInTheDocument()
-      })
     })
   })
 })

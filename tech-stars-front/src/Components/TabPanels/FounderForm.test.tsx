@@ -22,9 +22,7 @@ describe('Create Founder Form Component', () => {
   })
 
   test(`It renders founder form`, async () => {
-    const { debug } = render(
-      <FounderForm companyID={1} handleNewFounders={() => console.log('hit')} />
-    )
+    render(<FounderForm companyID={1} handleNewFounders={() => console.log('hit')} />)
     expect(document.querySelector('.company-button--create.submit')).toBeVisible()
     const allPanels = document.querySelectorAll('.panel-component')
     expect(_.size(allPanels)).toEqual(2)

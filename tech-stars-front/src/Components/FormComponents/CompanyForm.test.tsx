@@ -60,7 +60,7 @@ describe('Create Company Form Component', () => {
     const route = 'https://tech-stars-challenge.web.app/companies/form/edit'
     history.push(route, state)
 
-    const { debug } = render(
+    render(
       <Router history={history}>
         <CompanyForm />
       </Router>
