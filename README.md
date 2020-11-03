@@ -35,11 +35,11 @@ The app back is built with Ruby on Rails which requires the following commands t
 
     bin/rails test test/controllers/companies_controller_test.rb 
     
-    //These Two Commands are for prepping to run Cypress
+  These Two Commands are for prepping to run Cypress
     rails db:test:prepare
     RAILS_ENV=test rails s 
 
-The app front is built with the JavaScript Library React requires the following commands to run: 
+The app front is built with the JavaScript Library React which requires the following commands to run: 
     
     yarn install
     
