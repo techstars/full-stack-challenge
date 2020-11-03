@@ -1,0 +1,30 @@
+.modal__tab-founder-wrapper-top {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.modal__tab-founder-card {
+  border-radius: 4px;
+  height: 30%;
+  border: 1px solid #979eaa;
+  display: flex;
+  width: 61%;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  box-shadow: -9px 4px 8px rgba(31, 84, 132, 0.1);
+  margin-bottom: 10px;
+  flex-direction: column;
+  background: linear-gradient(268.93deg, #495d95 0%, #3f4f74 34.38%, #354052 100%);
+  color: white;
+  padding: 5px;
+}
+
+.founder-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}

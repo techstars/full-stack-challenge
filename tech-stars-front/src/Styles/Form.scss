@@ -1,0 +1,232 @@
+.body {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  font-family: Inter, sans-serif;
+}
+
+.company__form--header {
+  width: 100vw;
+  height: 65px;
+  align-items: center;
+  background: #78859e;
+  border-bottom: 2px solid #e2343b;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+}
+
+.company__form--header-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.fas.fa-arrow-circle-left {
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.company__form--create-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 50vw;
+  margin: auto;
+  padding: 5px;
+  height: 100vh;
+  overflow: auto;
+  padding-top: 10px;
+}
+
+.company__form--create {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, sans-serif;
+}
+
+.panel-component {
+  background: #ebedf8;
+  border: 1px solid #dcdfee;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+  height: 200px;
+}
+
+.panel-component__header {
+  padding: 0 12px;
+  height: 60px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdfee;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+  font-style: normal;
+}
+
+.panel-component__body {
+  background: #fff;
+  min-height: 50px;
+  border-radius: 0 0 6px 6px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.panel-component__body.multiple {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.panel-content__row {
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-component__body.multiple {
+  .panel-content__row {
+    flex-direction: row;
+  }
+}
+
+.panel-content__row-title {
+  margin-right: 5px;
+}
+
+.form-label {
+  margin-right: 23px;
+  margin-left: 30px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: end;
+  width: 160px;
+}
+
+.form-select {
+  outline: none;
+  padding: 5px;
+  width: 100%;
+  height: 25px;
+  font-size: large;
+  border: 1px solid #dcdfee;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.panel-component__secondary-title {
+  font-size: 12px;
+  line-height: 16px;
+  color: #979eaa;
+  display: flex;
+}
+
+.fas.fa-asterisk {
+  font-size: 8px;
+  margin: auto;
+}
+
+.panel-component__required-title {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: lighter;
+  color: #979eaa;
+  margin-left: 5px;
+}
+
+.panel-component__title {
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+  color: #354052;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.company__form--submit-btn {
+  border-radius: 6px;
+  font-size: 14px;
+  height: 48px;
+  padding: 0 20px;
+  background: #1aca84;
+  border: none;
+  font-family: Inter, sans-serif;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.form__error_div {
+  padding: 5px;
+  color: #c8102e;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: -5px;
+  align-self: flex-start;
+}
+
+.form-select.change {
+  height: 55%;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  text-align: left;
+}
+
+.future__form--create-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: auto;
+  padding: 5px;
+  height: 100vh;
+  overflow: auto;
+  padding-top: 10px;
+}
+
+.company-button--create.founder {
+  margin: 10px;
+  margin-left: 65%;
+  outline: none;
+}
+
+.company-button--create.back {
+  border-radius: 6px;
+  border: 1px solid #dcdfee;
+  font-size: 14px;
+  height: 48px;
+  background: #fff;
+  color: #1aca84;
+  padding: 5px 25px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.company-button--create.back {
+  margin-left: unset;
+}
+
+.company-button--create.submit {
+  margin-left: 82%;
+}
+
+.modal__tab-founder-wrapper-top.form {
+  margin-top: unset;
+}

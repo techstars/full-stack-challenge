@@ -1,0 +1,148 @@
+$DAWN: #ebedf8;
+$DUSK: #dcdfee;
+$SMOKE: #f6f7fa;
+$SLATE: #979eaa;
+$MIDNIGHT: #354052;
+$LINK: #5c84d3;
+
+body {
+  display: flex;
+  background-color: $MIDNIGHT;
+  justify-content: center;
+  font-family: Inter, sans-serif;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 100vh;
+  align-items: flex-end;
+}
+
+.ag-theme-alpine.skeleton {
+  margin-top: 30px;
+}
+
+.ag-theme-alpine {
+  width: 80vw !important;
+  height: 80vh !important;
+  cursor: pointer;
+}
+
+.ag-theme-alpine .ag-root-wrapper {
+  border: 1px solid $DUSK !important ;
+  border-radius: 3px;
+}
+
+.ag-header-viewport {
+  background: $DAWN;
+  font-size: 20px;
+}
+
+.ag-header-row {
+  height: 55px !important;
+}
+
+.ag-header-cell-text {
+  color: $MIDNIGHT;
+}
+
+.ag-header-cell {
+  border-right: 1px solid $DUSK !important;
+}
+
+.ag-row-odd {
+  &:not(.ag-row-hover) {
+    background: $SMOKE !important;
+  }
+  border: none !important;
+}
+
+.ag-row-even {
+  border: none !important;
+}
+
+.ag-theme-alpine .ag-cell {
+  border: none;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell {
+  border-right: 1px solid $DUSK !important;
+  display: flex;
+  align-items: center;
+}
+
+.ag-paging-panel {
+  color: $SLATE !important;
+  height: 32px !important;
+}
+
+.ag-cell.ag-cell-not-inline-editing.ag-cell-auto-height.ag-cell-value.ag-cell-wrap-text {
+  word-break: break-word;
+}
+
+.id-link {
+  color: $LINK;
+  cursor: pointer;
+}
+
+.company-button--create {
+  border-radius: 6px;
+  font-size: 14px;
+  height: 48px;
+  background: #1aca84;
+  border: none;
+  color: #fff;
+  padding: 5px 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.fas.fa-plus {
+  font-size: x-small;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.page__header-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+
+.company__search-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dcdfee;
+  border-radius: 6px;
+  box-sizing: border-box;
+  height: 40px;
+  width: 350px;
+  padding: 0 7.5px;
+}
+
+.company__search-bar {
+  background: #fff;
+  border: none;
+  box-sizing: border-box;
+  height: 30px;
+  padding: 12px 16px;
+  width: inherit;
+  outline: none;
+}
+
+.fas.fa-search {
+  margin-right: 5px;
+  color: #979eaa;
+}
