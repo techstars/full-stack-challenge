@@ -57,17 +57,11 @@ I strongly value formatting and checking for mistakes before pushing which is wh
     
 ## Motivation and Architectural Design
 
-To approach the solution, I first planned out everything that needed to be accomplished. I am a big picture person, so I need to understand how everything works together before tackling smaller portions and getting into the nitty gritty. Do this, I read through the entire challenge, designed my backend architecture (relationships, tech stack, routes), and researched ways to display the design effectively on the frontend. From here, I coded out the Ruby/ROR--PostgreSQL application. It has been a long time since I have coded a full application in Ruby, so I welcomed the challenge. After reading through possible future scenarios, I wanted to setup the backend as best I could to be prepared. This meant adding a table for categories with a reference to companies. The following is my backend relationship structure: 
+To approach the solution, I first planned out everything that needed to be accomplished. I am a big picture person, so I need to understand how everything works together before tackling smaller portions and getting into the nitty gritty. To do this, I read through the entire challenge, designed my backend architecture (relationships, tech stack, routes), and researched ways to display the design effectively on the frontend. From here, I coded out the Ruby/ROR--PostgreSQL application. It has been a long time since I have coded a full application in Ruby, so I welcomed the challenge. After reading through possible future scenarios, I wanted to setup the backend as best I could to be prepared. This meant adding a table for categories with a reference to companies. The following is my backend relationship structure: 
 
 Companies --< Founders
+
 Companies --< Categories
-
-Therefore: 
-
-Founders belong to Companies
-Categories belong to Companies
-Companies have many Founders
-Companies have many Categories
 
 The relationships are very simple. One thing I knew for sure, is that given what I needed to display, if I setup my backend to send everything with companies (founders and categories), then I could cut down on costly network calls. I know there are ways to cut down on db calls as well, but to be honest, it has been a long time and I was on a crunch. Though I strongly see the value that is missing. Next, I chose strong params and model validations to increase the stability of the backend as well and write better, safer code. I did however intentionally create nearly all routes for every table. I could see the need for creating or deleting or updating categories and founders, so I felt it only made sense. I like to work extremely efficiently and felt this was a good way to do so, but I understand there are certain drawbacks to every choice. The backend was so simple, that I felt no need to write any modules or methods, though again, if things got more complicated, I would certainly see the need. That just about sums up my backend architecture. I would love to get back into Rails and really dive deep into all the magical things it can do!
 
