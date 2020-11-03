@@ -103,19 +103,27 @@ Lastly, on the open drawer for the singular company instance, the user may click
 
 ### Part 1 : Companies Index
 
-![step 1](Step_1.png)
+![step 1](step1.png)
 
 ### Part 2 : Companies Create
 
-![step 2](Step_2.png)
+![step 2](step2.png)
 
 ### Part 3 : Company Details
 
-![step 3](Step_3.png)
+![step 3](step3.png)
+
+![step 6](step6.png)
+
+![step 7](step7.png)
+
+![step 8](step8.png)
 
 ### Part 4 : Founders
 
-![step 4](Step_4.png)
+![step 4](step4.png)
+
+![step 5](step5.png)
 
 ### Part 5 : Tests
 For tests, I strongly focused on frontend testing, but did not get as much done as I was hoping for. Because the backend is so simple and I have only written tests in RSPEC for modules and methods (never controllers), I chose to focus my attention elsewhere. There seems to be a lot of debate about testing controllers, so I would love to learn more about Ruby testing practices, as testing is something that has become near and dear to my heart. I don't follow TDD, but do strongly value writting good tests. For frontend coverage, I used React Testing library and sinon to mock axios requests. I wrote a set of brief tests to give you a taste for my testing style. I should have used dataTest attributes as opposed to classnames and would with more time implement that app wide. It's extremely important to test static data and functionality rather than something that is brittle and may change. I did use a few snapshots for some of the simpler tests. My current company is currently going through a phase of deciding what parts of the React app to test with RTL and which to test with Cypress, which may explain some of the overlap I have here.
