@@ -154,3 +154,29 @@ Hardware = Category.create(name: "Hardware", company: Samsara)
 Cloud = Category.create(name: "Cloud", company: Verkada)
 Advertising = Category.create(name: "Advertising", company: Bumble)
 Robotics = Category.create(name: "Robotics", company: Nuro)
+
+if Rails.env.test?
+  Company.create!([
+    { "name": "Mount Rushmore", "description": "Lots of things here. Really long description. Yeehaw", "city": "Rockspring", "state": "CO", "founded_date": "10-13-2020", "short_description": "Not Much Here" },
+    { "name": "Mount Whiteny", "description": "Tons of things here. Really long description. Yeehaw", "city": "Dillon", "state": "PA", "founded_date": "10-14-2020", "short_description": "Not Much Here" },
+    { "name": "Mount St Helens", "description": "SO MANY of things here. Really long description. Yeehaw", "city": "Pueblo", "state": "OR", "founded_date": "10-15-2020", "short_description": "Not Much Here" },
+    { "name": "Collegiate", "description": "VERY different things here. Really long description. Yeehaw", "city": "Junaeu", "state": "GA", "founded_date": "10-16-2020", "short_description": "Not Much Here" },
+    { "name": "Pikes Peak", "description": "Tons and tons things here. Really long description. Yeehaw", "city": "Carlsbad", "state": "IL", "founded_date": "10-17-2020", "short_description": "Not Much Here" },
+    { "name": "Mount Evans", "description": "Many a thing here. Really long description. Yeehaw", "city": "Passedina", "state": "CA", "founded_date": "10-18-2020", "short_description": "Not Much Here" },
+    { "name": "Hiroshima", "description": "No more things here. Really long description. Yeehaw", "city": "Little Rock", "state": "MO", "founded_date": "10-19-2020", "short_description": "Not Much Here" },
+  ])
+
+  Founder.create!([
+    { "first_name": "Jake", "last_name": "Ryan", "title": "CEO", "company_id": 2},
+    { "first_name": "Jill", "last_name": "Rose", "title": "Fouder", "company_id": 4},
+    { "first_name": "Jack", "last_name": "Ruby", "title": "CEO/Founder", "company_id": 6},
+    { "first_name": "Cake", "last_name": "Rosenkranz", "title": "CEO/CTO", "company_id": 8},
+  ])
+
+  Category.create!([
+      {"name": "fabulous", "company_id": 2}
+      {"name": "aerospace", "company_id": 8}
+      {"name": "Iot", "company_id": 4}
+      {"name": "nothing", "company_id": 6}
+  ])
+end
