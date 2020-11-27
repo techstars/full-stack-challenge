@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CompanyList from './components/CompanyList';
+import AddCompany from './components/AddCompany';
 
 const testData = [
     {
@@ -23,10 +24,22 @@ const testData = [
 ]
 
 const App = () => {
+    const [addingCompany, updateAddingCompany] = useState(false);
+
+    const addButtonHandler = () => {
+        updateAddingCompany(true);
+    }
+
     return (
         <div id="app">
-            Hello World!!
-            <CompanyList companies={testData} />
+            {addingCompany ?
+                <AddCompany />
+                :
+                <div>
+                    <CompanyList companies={testData} />
+                    <button className="add-btn" onClick={addButtonHandler}>Add Company</button>
+                </div>
+            }
         </div>
     );
 }
