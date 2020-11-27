@@ -24,7 +24,7 @@ const testData = [
 
 const App = () => {
     return (
-        <div>
+        <div id="app">
             Hello World!!
             <CompanyList companies={testData} />
         </div>

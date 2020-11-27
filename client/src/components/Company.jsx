@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Company = ({ company }) => {
+const Company = ({ data }) => {
   return (
-    <div>
-      Company
+    <div className="company-wrapper">
+      <div className="company-header">
+        <h4 className="company-name">{data.name}</h4>
+        <h5 className="company-location">{`${data.city}, ${data.state}`}</h5>
+      </div>
+      <p className ="company-description">{data.description}</p>
     </div>
   )
 }

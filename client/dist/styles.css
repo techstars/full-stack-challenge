@@ -1,0 +1,22 @@
+
+#root{
+  display: flex;
+  justify-content: center;
+}
+#app{
+  width: 75%;
+}
+.company-wrapper{
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.company-header{
+  display: flex;
+}
+.company-name{
+  width: 50%;
+  border-right: 2px solid black;
+  margin-right: 10px;
+}

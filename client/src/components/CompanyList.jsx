@@ -5,7 +5,9 @@ const CompanyList = ({ companies }) => {
   return (
     <div>
       Company List
-      <Company />
+      {companies.map((data) => {
+        return <Company data={data} />
+      })}
     </div>
   )
 }
