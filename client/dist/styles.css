@@ -1,10 +1,7 @@
-
-#root{
-  display: flex;
-  justify-content: center;
-}
 #app{
   width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .company-wrapper{
   border: 2px solid black;
@@ -32,3 +29,53 @@
   color: blue;
   padding-top: 5px;
 }
+.add-btn{
+ float: right;
+ margin-right: 20px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ padding-left: 5px;
+ padding-right: 5px;
+}
+.add-company-wrapper{
+  padding: 10px;
+  border: 2px solid black;
+}
+.line-two-label{
+  width: 33%;
+}
+.form-input{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.form-line-two{
+  display: flex;
+}
+.line-one-input{
+  height: 20px;
+  width: 99%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.line-two-input{
+  height: 20px;
+  width: 90%;
+}
+.line-three-input{
+  width: 99%;
+  height: 200px;
+  resize: none;
+}
+/* For mobile, stack the line two inputs on top of each other */
+@media screen and (max-width: 600px) {
+  .form-line-two{
+    display: inline;
+  }
+  .line-two-label{
+    width: 100%;
+  }
+  .line-two-input{
+    width: 99%;
+  }
+}
+

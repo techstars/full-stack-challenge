@@ -24,7 +24,7 @@ const testData = [
 ]
 
 const App = () => {
-    const [addingCompany, updateAddingCompany] = useState(false);
+    const [addingCompany, updateAddingCompany] = useState(true);
 
     const addButtonHandler = () => {
         updateAddingCompany(true);
@@ -35,7 +35,7 @@ const App = () => {
             {addingCompany ?
                 <AddCompany />
                 :
-                <div>
+                <div className="main-page">
                     <CompanyList companies={testData} />
                     <button className="add-btn" onClick={addButtonHandler}>Add Company</button>
                 </div>
