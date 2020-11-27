@@ -32,14 +32,13 @@ const App = () => {
 
     return (
         <div id="app">
+
             {addingCompany ?
                 <AddCompany />
                 :
-                <div className="main-page">
-                    <CompanyList companies={testData} />
-                    <button className="add-btn" onClick={addButtonHandler}>Add Company</button>
-                </div>
+                <CompanyList buttonHandler={addButtonHandler} companies={testData} />
             }
+
         </div>
     );
 }
