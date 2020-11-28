@@ -1,12 +1,13 @@
 import React from 'react';
 import Company from './Company';
+import CompanyDetail from './CompanyDetail'
 
-const CompanyList = ({ buttonHandler, companies }) => {
+const CompanyList = ({ buttonHandler, companies, setActive, activeCompany }) => {
   return (
     <div>
 
-      {companies.map((data) => {
-        return <Company data={data} />
+      {companies.map((data, index) => {
+          return <Company data={data} index={index} setActive={setActive}/>
       })}
 
       <div className="btn-wrapper">

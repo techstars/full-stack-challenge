@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CompanyForm from './CompanyForm';
+import Founders from './Founders'
 
 const CompanyDetail = ({ company }) => {
   const[name, updateName] = useState(company.name);
@@ -21,6 +22,10 @@ const CompanyDetail = ({ company }) => {
     updateEditing(true);
   }
 
+  const cancelEdit = () => {
+    updateEditing(false);
+  }
+
   const deleteHandler = () => {
     updateDeleting(true);
   }
@@ -37,12 +42,12 @@ const CompanyDetail = ({ company }) => {
     <div className="company-wrapper">
 
       <div className="company-detail-header">
-        <h3>{company.name}</h3>
+        <h3>{name}</h3>
 
         <div className="detail-line-two-wrapper">
           <div className="detail-left">
             <span className="detail-line-two">{founded}</span>
-            <span className="detail-line-two">{`${company.city}, ${company.state}`}</span>
+            <span className="detail-line-two">{`${city}, ${state}`}</span>
           </div>
 
           <div className="detail-right">
@@ -63,10 +68,12 @@ const CompanyDetail = ({ company }) => {
         }
       </div>
 
-      <p className ="company-description">{company.description}</p>
+      <p className ="company-description">{description}</p>
+
+      <Founders />
 
       {/* if editing, display edit form */}
-      {editing ? <CompanyForm company={company} /> : ''}
+      {editing ? <CompanyForm company={company} cancel={cancelEdit} /> : ''}
 
   </div>
   )

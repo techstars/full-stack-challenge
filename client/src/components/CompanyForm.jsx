@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 
 // if company passed to form, it's being used to edit existing company, otherwise it's being used to create a new company
-const AddCompany = ({ company }) => {
+const AddCompany = ({ company, cancel }) => {
   const[name, updateName] = useState('');
   const[city, updateCity] = useState('');
   const[state, updateState] = useState('');
@@ -130,6 +130,9 @@ const AddCompany = ({ company }) => {
           </div>
 
           <div className="btn-wrapper">
+          {/* used to discard changes for both adding and editing
+          cancel prop can be two different functions but both remove the company form */}
+            <button className="save-btn" onClick={cancel}>Discard Changes</button>
             <button className="save-btn" onClick={e => handleFormSubmit(e)}>Save</button>
           </div>
 
