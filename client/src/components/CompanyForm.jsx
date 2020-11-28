@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 
-const AddCompany = () => {
+// if company passed to form, it's being used to edit existing company, otherwise it's being used to create a new company
+const AddCompany = ({ company }) => {
   const[name, updateName] = useState('');
   const[city, updateCity] = useState('');
   const[state, updateState] = useState('');
   const[founded, updateFounded] = useState('');
   const[description, updateDescription] = useState('');
+
+  // if editing company, autopopulate form fields
+  useEffect(() => {
+    // break if creating new company
+    if (!company) {
+      return;
+    }
+    updateName(company.name);
+    updateCity(company.city);
+    updateState(company.state);
+    updateFounded(company.founded);
+    updateDescription(company.description);
+  }, [])
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
@@ -48,7 +62,8 @@ const AddCompany = () => {
       <form>
         <fieldset className="add-company-wrapper">
 
-          <legend className="form-legend-text">Create A New Company</legend>
+          {/* display text based on form usage */}
+          <legend className="form-legend-text">{company ? 'Edit Company' : 'Create A New Company'}</legend>
 
           <div className="form-line-one">
             <label>
@@ -58,6 +73,7 @@ const AddCompany = () => {
                 name="name"
                 className="form-input line-one-input"
                 onChange={e=> updateName(e.target.value)}
+                value={name}
               />
              {name === undefined ? <span className="form-error-text">*Company Name Required</span> : ''}
             </label>
@@ -71,6 +87,7 @@ const AddCompany = () => {
                 name="city"
                 className="form-input line-two-input"
                 onChange={e=> updateCity(e.target.value)}
+                value={city}
               />
               {city === undefined ? <span className="form-error-text">*City Required</span> : ''}
             </label><br/>
@@ -82,6 +99,7 @@ const AddCompany = () => {
                 name="state"
                 className="form-input line-two-input"
                 onChange={e=> updateState(e.target.value)}
+                value={state}
               />
               {state === undefined ? <span className="form-error-text">*State Required</span> : ''}
             </label><br/>
@@ -93,6 +111,7 @@ const AddCompany = () => {
                 name="founded-date"
                 className="form-input line-two-input"
                 onChange={e=> updateFounded(e.target.value)}
+                value={founded}
               />
             </label>
           </div>
@@ -104,6 +123,7 @@ const AddCompany = () => {
                 name="description"
                 className=" form-input line-three-input"
                 onChange={e=> updateDescription(e.target.value)}
+                value={description}
               />
               {description === undefined ? <span className="form-error-text">*Company Description Required</span> : ''}
             </label>
