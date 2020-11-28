@@ -10,6 +10,7 @@ const Founders = ({ founders, add }) => {
       name,
       title,
     }
+    // api post request
     add(founderData);
     hideForm();
   }

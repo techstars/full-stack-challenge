@@ -100,7 +100,10 @@ const deleteCompany = (params) => {
 
   client.connect();
 
-  return client.query('DELETE FROM companies WHERE _id = $1', params)
+  return client.query('DELETE FROM founders WHERE company_id = $1', params)
+               .then((data) => {
+                 return client.query('DELETE FROM companies WHERE _id = $1', params)
+               })
                .then((data) => {
                  client.end();
                  return data;
