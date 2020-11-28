@@ -70,13 +70,14 @@ const CompanyDetail = ({ company, goBack }) => {
 
       <p className ="company-description">{description}</p>
 
+      <h4 className="founders-header">Founders</h4>
       <Founders founders={company.founders}/>
 
       {/* if editing, display edit form */}
       {editing ? <CompanyForm company={company} cancel={cancelEdit} /> : ''}
 
       <div className="btn-wrapper">
-        <button className="add-btn" onClick={goBack} >Go Back</button>
+        <button className="back-btn" onClick={goBack} >Go Back</button>
       </div>
 
   </div>

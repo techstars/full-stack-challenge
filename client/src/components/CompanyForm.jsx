@@ -75,7 +75,7 @@ const AddCompany = ({ company, cancel }) => {
                 onChange={e=> updateName(e.target.value)}
                 value={name}
               />
-             {name === undefined ? <span className="form-error-text">*Company Name Required</span> : ''}
+             {name === undefined ? <p className="form-error-text">*Company Name Required</p> : ''}
             </label>
           </div>
 
@@ -89,7 +89,7 @@ const AddCompany = ({ company, cancel }) => {
                 onChange={e=> updateCity(e.target.value)}
                 value={city}
               />
-              {city === undefined ? <span className="form-error-text">*City Required</span> : ''}
+              {city === undefined ? <p className="form-error-text">*City Required</p> : ''}
             </label><br/>
 
             <label className="line-two-label">
