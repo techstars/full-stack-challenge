@@ -49,6 +49,10 @@ const App = () => {
       updateAddingCompany(false);
     }
 
+    const goBackHandler = () => {
+        updateActiveCompany('');
+    }
+
     return (
         <div id="app">
 
@@ -56,9 +60,9 @@ const App = () => {
                 <CompanyForm cancel={cancelAdd} />
                 :
                 activeCompany ?
-                <CompanyDetail company={activeCompany} />
+                <CompanyDetail company={activeCompany} goBack={goBackHandler} />
                 :
-                <CompanyList buttonHandler={addButtonHandler} companies={companies} setActive={setActive} activeCompany={activeCompany}/>
+                <CompanyList buttonHandler={addButtonHandler} companies={companies} setActive={setActive} activeCompany={activeCompany} />
             }
 
         </div>

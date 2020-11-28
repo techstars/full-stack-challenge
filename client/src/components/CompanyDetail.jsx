@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CompanyForm from './CompanyForm';
 import Founders from './Founders'
 
-const CompanyDetail = ({ company }) => {
+const CompanyDetail = ({ company, goBack }) => {
   const[name, updateName] = useState(company.name);
   const[city, updateCity] = useState(company.city);
   const[state, updateState] = useState(company.state);
@@ -70,10 +70,14 @@ const CompanyDetail = ({ company }) => {
 
       <p className ="company-description">{description}</p>
 
-      <Founders />
+      <Founders founders={company.founders}/>
 
       {/* if editing, display edit form */}
       {editing ? <CompanyForm company={company} cancel={cancelEdit} /> : ''}
+
+      <div className="btn-wrapper">
+        <button className="add-btn" onClick={goBack} >Go Back</button>
+      </div>
 
   </div>
   )

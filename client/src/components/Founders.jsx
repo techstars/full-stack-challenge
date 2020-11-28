@@ -1,9 +1,16 @@
 import React from 'react';
 
-const Founders = () => {
+const Founders = ({ founders }) => {
   return (
     <div>
-      Founders
+      {founders.map((founder) => {
+        return (
+          <div>
+            <p>{founder.name}</p>
+            <p>{founder.title}</p>
+          </div>
+        )
+      })}
     </div>
   )
 }
