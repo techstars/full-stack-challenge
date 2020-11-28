@@ -92,4 +92,28 @@
   padding-bottom: 5px;
   width: 125px;
 }
+.company-detail-header{
+  text-align: center;
+}
+.detail-line-two-wrapper{
+  display: flex;
+}
+.detail-left{
+  width: 50%;
+  text-align: right;
+  border-right: 2px solid black;
+  padding-right: 10px;
+}
+.detail-right{
+  width: 50%;
+  text-align: left;
+  padding-left: 10px;
+}
+.detail-line-two{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.detail-btn{
+  width: 50px;
+}
 

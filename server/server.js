@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(bodyParser.json());
 
+
 app.listen(PORT, () => {
   console.log('Server listening on port ', PORT);
 })
