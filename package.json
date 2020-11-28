@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd server && nodemon server.js",
-    "react-dev": "webpack --watch --env dev",
+    "react-dev": "webpack --watch --mode=development",
     "react-prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/williams-c/full-stack-challenge#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

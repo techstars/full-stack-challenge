@@ -1,12 +1,13 @@
 import React, { useState , useEffect} from 'react';
 
 // if company passed to form, it's being used to edit existing company, otherwise it's being used to create a new company
-const AddCompany = ({ company, cancel }) => {
+const AddCompany = ({ company, cancel, submit }) => {
   const[name, updateName] = useState('');
   const[city, updateCity] = useState('');
   const[state, updateState] = useState('');
   const[founded, updateFounded] = useState('');
   const[description, updateDescription] = useState('');
+  const[founders, updateFounders] = useState('');
 
   // if editing company, autopopulate form fields
   useEffect(() => {
@@ -33,9 +34,11 @@ const AddCompany = ({ company, cancel }) => {
     }
 
     // check if any fields are empty
+    let formComplete = true;
     for (const field in formData) {
       const missingRequired = []
       if (!formData[field]) {
+        formComplete = false;
         switch(field) {
           case 'name':
             updateName(undefined);
@@ -53,7 +56,13 @@ const AddCompany = ({ company, cancel }) => {
       }
     }
 
-    // API put request will go here
+    if (formComplete) {
+      // submit api request
+      submit(formData);
+      // escape from form
+      cancel();
+    }
+
   }
 
   return (

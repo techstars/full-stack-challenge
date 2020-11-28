@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import FounderForm from './FounderForm';
 
-const Founders = ({ founders }) => {
+const Founders = ({ founders, add }) => {
   const [adding, updateAdding] = useState(false);
 
   const submitHandler = (name, title) => {
-    // api request
-    console.log(name, title);
+    const founderData = {
+      name,
+      title,
+    }
+    add(founderData);
     hideForm();
   }
 

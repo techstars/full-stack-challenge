@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FounderForm = ({ hide, submit}) => {
+const FounderForm = ({ hide, submit }) => {
   const [name, updateName] = useState('');
   const [title, updateTitle] = useState('');
 

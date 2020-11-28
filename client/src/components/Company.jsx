@@ -11,7 +11,7 @@ const Company = ({ data, index, setActive }) => {
       </div>
 
       {/* Only display first 250 characters, display all when link to 'more' is clicked */}
-      <p className ="company-description">{data.description.substr(0,250) + '...'}</p>
+      <p className ="company-description">{data.description.length > 250 ? data.description.substr(0,250) + '...' : data.description}</p>
 
     </div>
   )

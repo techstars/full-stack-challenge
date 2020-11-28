@@ -50,7 +50,7 @@ app.post('/companies', (req, res) => {
 
 app.put('/companies/:company_id', (req, res) => {
   const updatedCompanyData = req.body;
-  const companyId = req.params.company_id
+  const companyId = parseInt(req.params.company_id);
   companies.updateCompany(updatedCompanyData, companyId)
            .then((data) => {
              res.sendStatus(202);
@@ -85,7 +85,7 @@ app.get('/founders', (req, res) => {
 })
 
 app.get('/founders/:company_id', (req, res) => {
-  const companyId = req.params.company_id;
+  const companyId = parseInt(req.params.company_id);
   founders.getCompanyFounders(companyId)
            .then((data) => {
              res.status(200).send(data);
