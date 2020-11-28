@@ -3,7 +3,7 @@ import axios from 'axios';
 import CompanyForm from './CompanyForm';
 import Founders from './Founders';
 
-const CompanyDetail = ({ company, goBack, updateCompanies, updateActive }) => {
+const CompanyDetail = ({ company, allCompanies, goBack, updateCompanies, updateActive }) => {
   const[name, updateName] = useState('');
   const[city, updateCity] = useState('');
   const[state, updateState] = useState('');
@@ -79,6 +79,16 @@ const CompanyDetail = ({ company, goBack, updateCompanies, updateActive }) => {
   }
 
   const addFounder = (founder) => {
+    // check if founder already exists in the list of companies
+    for (const company of allCompanies) {
+      for (const currentFounder of company.founders) {
+        if (currentFounder.name === founder.name) {
+          alert(`${founder.name} is already listed as a founder for ${company.name}`);
+          return;
+        }
+      }
+    }
+
     axios.post(`/founders/${company._id}`, founder)
          .then((data) => {
            return updateApp();
