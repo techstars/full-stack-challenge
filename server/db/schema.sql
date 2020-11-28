@@ -11,6 +11,9 @@ CREATE TABLE founders(
   _id SERIAL PRIMARY KEY,
   name VARCHAR(100),
   title VARCHAR(100),
-  company_id integer references companies(_id)
+  company_id INT,
+  CONSTRAINT fk_companies
+    FOREIGN KEY(company_id)
+	    REFERENCES companies(_id)
 );
 

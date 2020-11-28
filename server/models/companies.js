@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-const getCompanies = () => {
+const getAllCompanies = () => {
 
   const client = new Client({
     user: process.env.DB_USER,
@@ -90,7 +90,7 @@ const deleteCompany = (params) => {
 
 module.exports = {
   updateCompany,
-  getCompanies,
+  getAllCompanies,
   addCompany,
   deleteCompany,
 }

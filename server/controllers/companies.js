@@ -1,7 +1,7 @@
 const models = require('../models/companies.js');
 
-const getCompanies = () => {
-  return models.getCompanies();
+const getAllCompanies = () => {
+  return models.getAllCompanies();
 }
 
 const addCompany = (company) => {
@@ -19,7 +19,7 @@ const deleteCompany = (id) => {
 }
 
 module.exports = {
-  getCompanies,
+  getAllCompanies,
   addCompany,
   updateCompany,
   deleteCompany,

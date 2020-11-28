@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(bodyParser.json());
 
 app.get('/companies', (req, res) => {
-  companies.getCompanies()
+  companies.getAllCompanies()
            .then((data) => {
              res.status(200).send(data.rows);
            })
@@ -62,11 +62,39 @@ app.delete('/companies/:company_id', (req, res) => {
 })
 
 app.get('/founders', (req, res) => {
-
+  founders.getAllFounders()
+           .then((data) => {
+             res.status(200).send(data);
+           })
+           .catch((err) => {
+             console.log(err);
+             res.sendStatus(500);
+           })
 })
 
-app.post('/founders', (req, res) => {
+app.get('/founders/:company_id', (req, res) => {
+  const companyId = req.params.company_id;
+  founders.getCompanyFounders(companyId)
+           .then((data) => {
+             res.status(200).send(data);
+           })
+           .catch((err) => {
+             console.log(err);
+             res.sendStatus(500);
+           })
+})
 
+app.post('/founders/:company_id', (req, res) => {
+  const companyId = parseInt(req.params.company_id);
+  const newFounderData = req.body
+  founders.addFounder(newFounderData, companyId)
+           .then((data) => {
+             res.status(201).send(data);
+           })
+           .catch((err) => {
+             console.log(err);
+             res.sendStatus(500);
+           })
 })
 
 app.listen(PORT, () => {
