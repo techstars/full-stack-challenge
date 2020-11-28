@@ -16,7 +16,19 @@ app.use(bodyParser.json());
 app.get('/companies', (req, res) => {
   companies.getAllCompanies()
            .then((data) => {
-             res.status(200).send(data.rows);
+             res.status(200).send(data);
+           })
+           .catch((err) => {
+             console.log(err);
+             res.sendStatus(500);
+           })
+})
+
+app.get('/companies/:company_id', (req, res) => {
+  const companyId = req.params.company_id;
+  companies.getOneCompany(companyId)
+           .then((data) => {
+             res.status(200).send(data);
            })
            .catch((err) => {
              console.log(err);

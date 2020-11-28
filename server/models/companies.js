@@ -22,6 +22,28 @@ const getAllCompanies = () => {
                })
 }
 
+const getOneCompany = (params) => {
+
+  const client = new Client({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DB,
+    password: process.env.DB_PWD,
+    port: process.env.DB_PORT,
+  })
+
+  client.connect();
+
+  return client.query('SELECT * FROM companies WHERE _id = $1', params)
+               .then((data) => {
+                 client.end();
+                 return data;
+               })
+               .catch((err) => {
+                 throw err;
+               })
+}
+
 const addCompany = (params) => {
 
   const client = new Client({
@@ -90,6 +112,7 @@ const deleteCompany = (params) => {
 
 module.exports = {
   updateCompany,
+  getOneCompany,
   getAllCompanies,
   addCompany,
   deleteCompany,
