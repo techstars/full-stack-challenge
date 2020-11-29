@@ -30,6 +30,11 @@
   padding-top: 5px;
   width: 45%;
 }
+.company-description{
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .more-link{
   color: blue;
   padding-top: 5px;
