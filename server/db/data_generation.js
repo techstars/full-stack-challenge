@@ -1,29 +1,26 @@
 const faker = require('faker')
-const fs = require('fs')
 const fakerFuncs = require('./faker_functions.js')
+const companies = require('../models/companies.js');
+const founders = require('../models/founders.js');
 
-const writeCompanies = fs.createWriteStream('./companies_seed.csv');
-const writeFounders = fs.createWriteStream('./founders_seed.csv');
+const generateXReviews = async (number) => {
 
-const generateXReviews = (writeCompanies, writeFounders, number, encoding, cb) => {
-  function write() {
-      for (let i = 1; i <= number; i++) {
-        let numFounders = faker.random.number({'min': 1, 'max': 5})
+
+  for (let i = 1; i <= number; i++) {
+    try{
+      let company = fakerFuncs.createCompany()
+      // let addedcompany = await companies.addCompany(company)
+      let numFounders = faker.random.number({'min': 1, 'max': 5})
         for (let j = 0; j < numFounders; j++) {
-          let founder = JSON.stringify(fakerFuncs.createFounder(i))
-          writeFounders.write(founder, encoding)
+          let founder = fakerFuncs.createFounder(i)
+          let addedfounder = await founders.addFounder(founder)
         }
-        let company = JSON.stringify(fakerFuncs.createCompany())
-        writeCompanies.write(company, encoding)
-        if (i === number) {
-          cb();
-        }
-      }
+    } catch(err) {
+      console.log(err)
     }
-    write()
   }
 
-generateXReviews(writeCompanies, writeFounders, 15, 'utf-8', () => {
-  writeCompanies.end();
-  writeFounders.end()
-})
+
+  }
+
+generateXReviews(15)

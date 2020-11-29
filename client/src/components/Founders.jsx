@@ -34,7 +34,7 @@ const Founders = ({ founders, add }) => {
 
       <div className="founder-btn-wrapper">
         {/* if add founder is clicked, display form */}
-        {adding ? <FounderForm hide={hideForm} submit={submitHandler} /> : <button onClick={() => updateAdding(true)}>Add Founder</button>}
+        {adding ? <FounderForm hide={hideForm} submit={submitHandler} /> : <button className="add-founder-btn" onClick={() => updateAdding(true)}>Add Founder</button>}
       </div>
 
     </div>

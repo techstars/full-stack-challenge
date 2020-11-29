@@ -8,14 +8,13 @@ const createCompany = () => {
   founded = founded.getFullYear() + '-' + (founded.getMonth() < 10 ? ('0' + founded.getMonth()) : founded.getMonth()) + '-' + (founded.getDate() < 10 ? ('0' + founded.getDate()) : founded.getDate())
   const description = faker.lorem.paragraph(4)
 
-  const output = {
+  const output = [
     name,
     city,
     state,
     founded,
     description,
-
-  }
+  ]
   return output
 }
 
@@ -24,11 +23,11 @@ const createFounder = (id) => {
 
     let name = faker.name.findName()
     let title = faker.name.jobTitle()
-    let output = {
+    let output = [
       name,
       title,
-      company_id: id
-    }
+      id
+    ]
 
   return output;
 }

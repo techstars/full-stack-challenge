@@ -102,12 +102,12 @@ const CompanyDetail = ({ company, allCompanies, goBack, updateCompanies, updateA
     <div className="company-wrapper">
 
       <div className="company-detail-header">
-        <h3>{name}</h3>
+        <h3 className="detail-name">{name}</h3>
 
         <div className="detail-line-two-wrapper">
           <div className="detail-left">
-            <span className="detail-line-two">{founded}</span>
-            <span className="detail-line-two">{`${city}, ${state}`}</span>
+            <span className="detail-line-two detail-founded">{founded}</span>
+            <span className="detail-line-two detail-location">{`${city}, ${state}`}</span>
           </div>
 
           <div className="detail-right">
@@ -118,10 +118,10 @@ const CompanyDetail = ({ company, allCompanies, goBack, updateCompanies, updateA
 
         {/* if delete button is clicked, double check before deleting */}
         {deleting ?
-          <p>
+          <p className="delete-confirmation">
             Are you sure you want to delete {name}?
-            <button className="detail-line-two detail-btn" onClick={confirmDelete}>Yes</button>
-            <button className="detail-line-two detail-btn" onClick={cancelDelete}>No</button>
+            <button className="delete-btn detail-line-two detail-btn" onClick={confirmDelete}>Yes</button>
+            <button className="cancel-delete-btn detail-line-two detail-btn" onClick={cancelDelete}>No</button>
           </p>
           :
           ''

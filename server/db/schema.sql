@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS founders;
+DROP TABLE IF EXISTS companies;
 
 CREATE TABLE companies(
   _id SERIAL PRIMARY KEY,

@@ -66,7 +66,7 @@ const AddCompany = ({ company, cancel, submit }) => {
   }
 
   return (
-    <div>
+    <div className="company-form">
 
       <form>
         <fieldset className="add-company-wrapper">
