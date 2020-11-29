@@ -1,11 +1,11 @@
 import { mount , shallow } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import App from '../../client/src/App';
-import Company from '../../client/src/components/Company';
-import CompanyList from '../../client/src/components/CompanyList';
-import CompanyDetail from '../../client/src/components/CompanyDetail';
-import FounderForm from '../../client/src/components/FounderForm';
-import CompanyForm from '../../client/src/components/CompanyForm';
+import App from '../client/src/App';
+import Company from '../client/src/components/Company';
+import CompanyList from '../client/src/components/CompanyList';
+import CompanyDetail from '../client/src/components/CompanyDetail';
+import FounderForm from '../client/src/components/FounderForm';
+import CompanyForm from '../client/src/components/CompanyForm';
 
 import axios from 'axios';
 jest.mock('axios');
@@ -163,7 +163,7 @@ describe('<CompanyDetail /> component', () => {
     wrapper.find('.save-btn').at(1).simulate('click');
 
     expect(axios.put.mock.calls.length).toBe(1);
-    expect(axios.put).toHaveBeenCalledWith(`/companies/${testCompanies[0]._id}`, {"city": "Denver", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "founded": "2020-04-12", "name": "Test Company 1", "state": "CO"})
+    expect(axios.put).toHaveBeenCalledWith(`/companies/${testCompanies[0]._id}`, {"city": "Denver", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "founded": "2020-04-11", "name": "Test Company 1", "state": "CO"})
   })
 
   test('should display delete options on delete button click', () => {

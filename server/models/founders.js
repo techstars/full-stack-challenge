@@ -37,7 +37,7 @@ const getCompanyFounders = (params) => {
   return client.query('SELECT name, title FROM founders WHERE company_id = $1', params)
                .then((data) => {
                  client.end();
-                 return data;
+                 return data.rows;
                })
                .catch((err) => {
                  throw err;

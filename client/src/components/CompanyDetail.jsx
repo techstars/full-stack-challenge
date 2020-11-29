@@ -30,6 +30,7 @@ const CompanyDetail = ({ company, allCompanies, goBack, updateCompanies, updateA
               return axios.get(`/companies/${company._id}`);
             })
             .then((company) => {
+              console.log(company)
               updateActive(company.data);
             })
             .catch((err) => {

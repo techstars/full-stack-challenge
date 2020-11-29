@@ -15,7 +15,7 @@ const getAllCompanies = () => {
   return client.query('SELECT * FROM companies')
                .then((data) => {
                  client.end();
-                 return data;
+                 return data.rows;
                })
                .catch((err) => {
                  throw err;
@@ -37,7 +37,7 @@ const getOneCompany = (params) => {
   return client.query('SELECT * FROM companies WHERE _id = $1', params)
                .then((data) => {
                  client.end();
-                 return data;
+                 return data.rows[0];
                })
                .catch((err) => {
                  throw err;

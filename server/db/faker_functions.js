@@ -4,9 +4,11 @@ const createCompany = () => {
   const name = faker.company.companyName()
   const city = faker.address.city()
   const state = faker.address.state()
-  let founded = faker.date.past(5)
-  founded = founded.getFullYear() + '-' + (founded.getMonth() < 10 ? ('0' + founded.getMonth()) : founded.getMonth()) + '-' + (founded.getDate() < 10 ? ('0' + founded.getDate()) : founded.getDate() > 28 ? founded.getDate() - 4 : founded.getDate())
-  const description = faker.lorem.paragraph(4)
+  const year = faker.random.number({'min': 2000, 'max': 2019})
+  const month = faker.random.number({'min': 1, 'max': 12})
+  const day = faker.random.number({'min': 1, 'max': 28})
+  const founded = year + '-' + (month < 10 ? ('0' + month) : month) + '-' + (day < 10 ? ('0' + day) : day)
+  const description = faker.lorem.paragraph(6)
 
   const output = {
     name,

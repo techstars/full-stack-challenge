@@ -57,7 +57,9 @@ const App = () => {
         <div id="app">
 
             {addingCompany ?
-                <CompanyForm cancel={cancelAdd} submit={addCompany} />
+                <div className="form-wrapper">
+                  <CompanyForm cancel={cancelAdd} submit={addCompany} />
+                </div>
                 :
                 activeCompany ?
                 <CompanyDetail company={activeCompany} allCompanies={companies} goBack={goBackHandler} updateCompanies={updateCompaniesList} updateActive={updateActiveCompany} />

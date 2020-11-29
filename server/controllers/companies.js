@@ -5,12 +5,11 @@ const getAllCompanies = () => {
   return models.getAllCompanies()
                .then(async (companies) => {
 
-                 companies = companies.rows;
                  // get founders list for each company and attach to return obj
                  for(let i = 0; i < companies.length; i++) {
                    let company = companies[i]
                    let foundersList = await founders.getCompanyFounders([company._id]);
-                   company.founders = foundersList.rows;
+                   company.founders = foundersList;
                  }
 
                  return companies;
@@ -23,9 +22,8 @@ const getAllCompanies = () => {
 const getOneCompany = (id) => {
   return models.getOneCompany([id])
                .then(async (company) => {
-                 company = company.rows[0];
                  const foundersList = await founders.getCompanyFounders([company._id])
-                 company.founders = foundersList.rows;
+                 company.founders = foundersList;
                  return company;
                })
                .catch((err) => {
