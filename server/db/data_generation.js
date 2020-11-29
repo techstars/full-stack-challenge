@@ -1,26 +1,24 @@
 const faker = require('faker')
 const fakerFuncs = require('./faker_functions.js')
-const companies = require('../models/companies.js');
-const founders = require('../models/founders.js');
+const companies = require('../controllers/companies.js');
+const founders = require('../controllers/founders.js');
+const axios = require('axios');
 
-const generateXReviews = async (number) => {
+const generateXEntries = async (number) => {
 
 
   for (let i = 1; i <= number; i++) {
-    try{
       let company = fakerFuncs.createCompany()
-      // let addedcompany = await companies.addCompany(company)
+      await axios.post('http://localhost:3000/companies', company);
       let numFounders = faker.random.number({'min': 1, 'max': 5})
+
         for (let j = 0; j < numFounders; j++) {
           let founder = fakerFuncs.createFounder(i)
-          let addedfounder = await founders.addFounder(founder)
+          await axios.post(`http://localhost:3000/founders/${i}`, founder);
         }
-    } catch(err) {
-      console.log(err)
-    }
   }
 
 
   }
 
-generateXReviews(15)
+generateXEntries(15)

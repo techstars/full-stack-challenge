@@ -7,7 +7,7 @@ const CompanyList = ({ buttonHandler, companies, setActive, activeCompany }) => 
     <div>
 
       {companies.map((data, index) => {
-          return <Company data={data} index={index} setActive={setActive}/>
+          return <Company key={data.name} data={data} index={index} setActive={setActive}/>
       })}
 
       <div className="btn-wrapper">

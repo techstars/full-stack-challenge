@@ -1,7 +1,11 @@
 import { mount , shallow } from 'enzyme';
+import { act } from 'react-dom/test-utils';
+import App from '../../client/src/App';
 import Company from '../../client/src/components/Company';
+import CompanyList from '../../client/src/components/CompanyList';
 import CompanyDetail from '../../client/src/components/CompanyDetail';
 import FounderForm from '../../client/src/components/FounderForm';
+import CompanyForm from '../../client/src/components/CompanyForm';
 
 import axios from 'axios';
 jest.mock('axios');
@@ -36,6 +40,56 @@ const testCompanies =  [
       },
   ]
 
+describe('<App /> component, ', () => {
+  test('should render CompanyList component', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.find('CompanyList').length).toBe(1);
+
+  })
+
+  test('should render CompanyForm component on Add Company button click', () => {
+    axios.get.mockResolvedValue(testCompanies);
+
+    const wrapper = mount(<App />);
+    wrapper.update();
+
+    wrapper.find('.add-btn').simulate('click');
+
+    expect(wrapper.find('.company-form').length).toBe(1);
+  })
+
+  test('should make post request when CompanyForm is submitted', () => {
+    axios.post.mockResolvedValue(null);
+
+    const wrapper = mount(<App />);
+    wrapper.update();
+
+    wrapper.find('.add-btn').simulate('click');
+
+    wrapper.find('input').at(0).simulate('change', { target: { value: 'Name' } });
+    wrapper.find('input').at(1).simulate('change', { target: { value: 'City' } });
+    wrapper.find('input').at(2).simulate('change', { target: { value: 'State' } });
+    wrapper.find('input').at(3).simulate('change', { target: { value: 'Date' } });
+    wrapper.find('textarea').at(0).simulate('change', { target: { value: 'Description' } });
+
+    wrapper.find('.save-btn').at(1).simulate('click');
+
+    expect(axios.post).toHaveBeenCalledWith('/companies', {"city": "City", "description": "Description", "founded": "Date", "name": "Name", "state": "State"});
+
+  })
+})
+
+describe('<CompanyList /> component, ', () => {
+  test('should render list of companies', () => {
+    const wrapper = mount(<CompanyList companies={testCompanies} />);
+
+    expect(wrapper.find('.company-wrapper').length).toBe(3);
+
+  })
+
+})
+
 describe('<Company /> component, ', () => {
 
   test('should properly render company data', () => {
@@ -67,7 +121,8 @@ describe('<Company /> component, ', () => {
 describe('<CompanyDetail /> component', () => {
 
   test('should properly render company data', () => {
-    const wrapper = mount(<CompanyDetail company={testCompanies[0]}/>)
+    const mockFn = jest.fn()
+    const wrapper = mount(<CompanyDetail company={testCompanies[0]} updateCompanies={mockFn}/>)
 
     let name = wrapper.find('.detail-name');
     expect(name.text()).toBe(testCompanies[0].name)
@@ -90,7 +145,8 @@ describe('<CompanyDetail /> component', () => {
   })
 
   test('should display form on edit button click', () => {
-    const wrapper = mount(<CompanyDetail company={testCompanies[0]}/>)
+    const mockFn = jest.fn();
+    const wrapper = mount(<CompanyDetail company={testCompanies[0]} updateCompanies={mockFn}/>)
 
     wrapper.find('.detail-btn').at(0).simulate('click');
     expect(wrapper.find('.company-form').length).toBe(1);
@@ -98,7 +154,8 @@ describe('<CompanyDetail /> component', () => {
   })
 
   test('should handle company edit', () => {
-    const wrapper = mount(<CompanyDetail company={testCompanies[0]}/>)
+    const mockFn = jest.fn();
+    const wrapper = mount(<CompanyDetail company={testCompanies[0]} updateCompanies={mockFn}/>)
 
     axios.put.mockResolvedValue(null);
 
@@ -110,7 +167,8 @@ describe('<CompanyDetail /> component', () => {
   })
 
   test('should display delete options on delete button click', () => {
-    const wrapper = mount(<CompanyDetail company={testCompanies[0]}/>)
+    const mockFn = jest.fn();
+    const wrapper = mount(<CompanyDetail company={testCompanies[0]} updateCompanies={mockFn}/>)
 
     wrapper.find('.detail-btn').at(1).simulate('click');
 
@@ -122,7 +180,8 @@ describe('<CompanyDetail /> component', () => {
   })
 
   test('should handle company delete', () => {
-    const wrapper = mount(<CompanyDetail company={testCompanies[0]} />)
+    const mockFn = jest.fn();
+    const wrapper = mount(<CompanyDetail company={testCompanies[0]} updateCompanies={mockFn}/>)
 
     axios.delete.mockResolvedValue(null);
 
@@ -146,7 +205,7 @@ describe('<CompanyDetail /> component', () => {
   })
 
   test('should handle founder form validation', () => {
-    const wrapper = mount(<FounderForm />)
+    const wrapper = mount(<FounderForm />);
 
     wrapper.find('.founder-form-btn').at(0).simulate('click');
     expect(wrapper.find('.form-error-text').length).toBe(2)
@@ -156,4 +215,30 @@ describe('<CompanyDetail /> component', () => {
     expect(wrapper.find('.form-error-text').length).toBe(0)
   })
 
+})
+
+describe('<CompanyForm /> component', () => {
+
+  test('should handle form validation', () => {
+    const wrapper = mount(<CompanyForm />);
+
+    wrapper.find('.save-btn').at(1).simulate('click');
+    expect(wrapper.find('.form-error-text').length).toBe(4)
+  })
+
+  test('should handle form submission', () => {
+    const mockFnOne = jest.fn();
+    const mockFnTwo = jest.fn();
+    const wrapper = mount(<CompanyForm submit={mockFnOne} cancel={mockFnTwo}/>);
+
+    wrapper.find('input').at(0).simulate('change', { target: { value: 'Name' } });
+    wrapper.find('input').at(1).simulate('change', { target: { value: 'City' } });
+    wrapper.find('input').at(2).simulate('change', { target: { value: 'State' } });
+    wrapper.find('input').at(3).simulate('change', { target: { value: 'Date' } });
+    wrapper.find('textarea').at(0).simulate('change', { target: { value: 'Description' } });
+
+    wrapper.find('.save-btn').at(1).simulate('click');
+
+    expect(mockFnOne).toHaveBeenCalledWith({"city": "City", "description": "Description", "founded": "Date", "name": "Name", "state": "State"});
+  })
 })
