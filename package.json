@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cd server && nodemon server.js",
     "react-dev": "webpack --watch --mode=development",
-    "react-prod": "webpack -p",
+    "react-prod": "webpack --mode=production",
     "test": "jest"
   },
   "repository": {
