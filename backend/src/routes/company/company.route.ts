@@ -57,9 +57,7 @@ export class CompanyRoute extends BaseRoute {
                 $project: {
                     _id: 1,
                     name: 1,
-                    city: 1,
-                    state: 1,
-                    location: { $concat: ['$city', ',', '$state'] },
+                    location: { $concat: ['$city', ', ', '$state'] },
                     description: 1,
                     createdAt: 1
                 }
