@@ -62,7 +62,7 @@ app.put('/companies/:company_id', (req, res) => {
 })
 
 app.delete('/companies/:company_id', (req, res) => {
-  const companyId = req.params.company_id;
+  const companyId = parseInt(req.params.company_id);
   companies.deleteCompany(companyId)
            .then((data) => {
              res.sendStatus(200);
