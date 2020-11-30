@@ -1,7 +1,6 @@
 const { Client } = require('pg');
 
 const getAllCompanies = () => {
-
   const client = new Client({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
