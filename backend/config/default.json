@@ -1,0 +1,7 @@
+{
+  "port": 7010,
+  "host": "localhost",
+  "apiURL": "http://localhost:7010",
+  "databaseName": "techstars",
+  "connectionString": "mongodb://127.0.0.1:27017/techstars"
+}
