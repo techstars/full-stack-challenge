@@ -1,6 +1,11 @@
 ### Web App: https://tech-stars-web.herokuapp.com/
 
-### API: https://api-tech-stars.herokuapp.com/api/company/list
+### API: 
+List: https://api-tech-stars.herokuapp.com/api/company/list
+
+Details: https://api-tech-stars.herokuapp.com/api/company/{id} 
+
+you can use this id for test. ex:id=5fc5032840063500179e807a
 
 
 ## App setup to run locally
