@@ -30,7 +30,7 @@ First, fork this repository into your own GitHub account. Then complete each of 
   - DB_DB = the name of the database you want to use
   - DB_PWD = the password used to login to the database
   - DB_PORT = the port the database is hosted on(postgres uses 5432 by default)
-* Start serve and serve application
+* Start and serve application
 ```bash
   npm start
 ```
