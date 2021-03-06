@@ -22,7 +22,7 @@ class Founder < ApplicationRecord
   validates :full_name, :title, length: { minimum: 2 }
 
   validates :email,
-    format: { with: /^(.+)@(.+)$/, message: "Invalid Email" },
+    format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: "Invalid Email" },
               uniqueness: { case_sensitive: false },
               length: { minimum: 4, maximum: 254 }
 end

@@ -8,5 +8,6 @@ class CreateCities < ActiveRecord::Migration[6.1]
     end
 
     add_index :cities, :state_id
+    add_index :cities, [:name, :state_id], unique: true
   end
 end

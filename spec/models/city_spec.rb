@@ -10,7 +10,8 @@
 #
 # Indexes
 #
-#  index_cities_on_state_id  (state_id)
+#  index_cities_on_name_and_state_id  (name,state_id) UNIQUE
+#  index_cities_on_state_id           (state_id)
 #
 require 'rails_helper'
 

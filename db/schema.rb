@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_100733) do
     t.bigint "state_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "state_id"], name: "index_cities_on_name_and_state_id", unique: true
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 

@@ -22,4 +22,13 @@ class Company < ApplicationRecord
   validates :name, length: { minimum: 2 }
   validates :description, length: { minimum: 20 }
 
+  before_validation :fetch_city_state
+
+  attr_accessor :city_name, :state_name
+
+  private
+
+  def fetch_city_state
+    self.city = City.by_name_state(city_name, state_name) if city_name.present? && state_name.present?
+  end
 end
