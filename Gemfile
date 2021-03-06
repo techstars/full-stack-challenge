@@ -19,6 +19,7 @@ gem 'puma', '~> 5.0'
 
 group :development do
   gem 'listen', '~> 3.3'
+  gem 'annotate'
 end
 
 group :development, :test do
