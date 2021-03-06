@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.95.1",
+    "pg": "^8.5.1"
+  }
 }
