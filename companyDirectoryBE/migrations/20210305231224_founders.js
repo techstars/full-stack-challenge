@@ -1,11 +1,12 @@
 exports.up = function (knex) {
   return knex.schema.createTable("founders", (founder) => {
-    founder.increments("founderId");
+    founder.increments("id");
     founder.string("founderFirstName");
     founder.string("founderLastName");
     founder.string("founderTitle");
+    founder.integer("companyId").notNullable();
     founder
-      .integer("companyId")
+      .foreign("companyId")
       .references("id")
       .inTable("companies")
       .onDelete("CASCADE");
