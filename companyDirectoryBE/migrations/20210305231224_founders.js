@@ -4,7 +4,7 @@ exports.up = function (knex) {
     founder.string("founderFirstName");
     founder.string("founderLastName");
     founder.string("founderTitle");
-    founder.integer("companyId").notNullable();
+    founder.integer("companyId").unsigned();
     founder
       .foreign("companyId")
       .references("id")
