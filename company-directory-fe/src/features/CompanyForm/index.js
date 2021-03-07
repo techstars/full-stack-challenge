@@ -32,11 +32,14 @@ const CompanyForm = (props) => {
       companyDescription: desc,
       foundedDate: date,
     };
+    console.log("new here", newCompany);
     fetch(companiesAPI, {
       method: "POST",
-      body: JSON.stringify(newCompany),
+      body: new URLSearchParams({ newCompany }),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
     }).then((newCompany) => setCompanies(newCompany.json()));
   };
@@ -98,7 +101,7 @@ const CompanyForm = (props) => {
                   required
                   as="textarea"
                   rows={3}
-                  onChange={(event) => setName(event.target.value)}
+                  onChange={(event) => setDesc(event.target.value)}
                 />
               </Form.Group>
             </Form.Row>
