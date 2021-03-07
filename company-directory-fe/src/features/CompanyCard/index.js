@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 
 const CompanyCard = (props) => {
-  const { companies, setCompanies } = props;
+  const { companies } = props;
 
   return (
     <div>
       {companies?.map((company) => (
-        <Card className="m-3">
+        <Card key={company.id} className="m-3">
           <Card.Body>
             <Card.Title>{company.companyName}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">

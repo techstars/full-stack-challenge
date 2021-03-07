@@ -3,7 +3,8 @@ import CompanyCard from "./features/CompanyCard";
 import CompanyForm from "./features/CompanyForm";
 import { Button } from "react-bootstrap";
 
-const companiesAPI = `https://companydirectoryts.herokuapp.com/companies`;
+// const companiesAPI = "http://localhost:3002/companies";
+const companiesAPI = `http://companydirectoryts.herokuapp.com/companies`;
 
 const App = () => {
   const [companies, setCompanies] = useState();

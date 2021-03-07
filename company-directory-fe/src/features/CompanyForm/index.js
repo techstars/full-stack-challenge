@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
 import stateData from "../../stateData.json";
 
 const CompanyForm = (props) => {
   const { show, setShow, companiesAPI, setCompanies } = props;
-  const [states, setStateData] = useState(stateData);
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
   const [desc, setDesc] = useState("");
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    event.preventDefault();
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     }
 
@@ -25,23 +24,36 @@ const CompanyForm = (props) => {
 
     setValidated(true);
 
-    let newCompany = {
+    let details = {
       companyName: name,
       companyCity: city,
       companyState: state,
       companyDescription: desc,
       foundedDate: date,
     };
-    console.log("new here", newCompany);
+
+    console.log("date", date);
+
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+
     fetch(companiesAPI, {
       method: "POST",
-      body: new URLSearchParams({ newCompany }),
+      body: formBody,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        // "Access-Control-Allow-Credentials": true,
       },
-    }).then((newCompany) => setCompanies(newCompany.json()));
+    })
+      // .then((newCompany) => setCompanies(newCompany.json()));
+      .then((newCompany) => console.log(newCompany.json()));
   };
 
   return (
@@ -80,8 +92,10 @@ const CompanyForm = (props) => {
                   onChange={(event) => setState(event.target.value)}
                 >
                   <option disabled>Choose...</option>
-                  {states.map((state) => (
-                    <option value={state.abbreviation}>{state.name}</option>
+                  {stateData.map((state) => (
+                    <option key={state.abbreviation} value={state.abbreviation}>
+                      {state.name}
+                    </option>
                   ))}
                 </Form.Control>
               </Form.Group>
