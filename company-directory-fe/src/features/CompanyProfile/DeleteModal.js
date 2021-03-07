@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -11,9 +11,6 @@ const DeleteModal = (props) => {
     setTriggered,
   } = props;
   const handleClose = () => setShowDelete(false);
-  const handleShow = () => setShowDelete(true);
-
-  console.log(selected);
 
   const deleteCompany = () => {
     fetch(companiesAPI + `/${selected.id}`, {

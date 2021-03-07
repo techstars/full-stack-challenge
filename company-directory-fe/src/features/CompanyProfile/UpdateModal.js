@@ -17,10 +17,8 @@ const UpdateModal = (props) => {
   const [date, setDate] = useState(selected.foundedDate);
   const [desc, setDesc] = useState(selected.companyDescription);
   const handleClose = () => setShowUpdate(false);
-  const handleShow = () => setShowUpdate(true);
 
   const updateCompany = () => {
-    console.log("updating");
     let update = {
       companyName: name,
       companyCity: city,

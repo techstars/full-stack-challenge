@@ -5,7 +5,6 @@ import CompanyProfile from "./features/CompanyProfile";
 import { Button } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
-// const companiesAPI = "http://localhost:3002/companies";
 const companiesAPI = `http://companydirectoryts.herokuapp.com/companies`;
 
 const App = () => {
