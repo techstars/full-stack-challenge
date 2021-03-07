@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
+import UpdateModal from "./UpdateModal";
 
 const CompanyProfile = (props) => {
   const { selected, companiesAPI, setTriggered } = props;
   const [showDelete, setShowDelete] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+
   let date = new Date(selected.foundedDate);
   let months = [
     "January",
@@ -45,7 +49,9 @@ const CompanyProfile = (props) => {
           <Card.Text>{selected.companyDescription}</Card.Text>
         </Card.Body>
         <div className="m-5">
-          <Button className="m-2">Edit</Button>
+          <Button className="m-2" onClick={() => setShowUpdate(true)}>
+            Edit
+          </Button>
           <Button className="m-2" onClick={() => setShowDelete(true)}>
             Delete
           </Button>
@@ -58,6 +64,18 @@ const CompanyProfile = (props) => {
         companiesAPI={companiesAPI}
         setTriggered={setTriggered}
       />
+      <UpdateModal
+        showUpdate={showUpdate}
+        setShowUpdate={setShowUpdate}
+        selected={selected}
+        companiesAPI={companiesAPI}
+        setTriggered={setTriggered}
+      />
+      <div className="text-center mb-2">
+        <Link to="/">
+          <Button>Back to Company Directory</Button>
+        </Link>
+      </div>
     </>
   );
 };

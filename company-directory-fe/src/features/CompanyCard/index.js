@@ -3,9 +3,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CompanyCard = (props) => {
-  const { companies, selected, setSelectedCompany } = props;
-
-  console.log(props);
+  const { companies, setSelectedCompany } = props;
 
   return (
     <div>
@@ -24,7 +22,7 @@ const CompanyCard = (props) => {
           >
             <Card.Link
               id={company.id}
-              onClick={(event) => setSelectedCompany(company)}
+              onClick={() => setSelectedCompany(company)}
             >
               Company Profile
             </Card.Link>
