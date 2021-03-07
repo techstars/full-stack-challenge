@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 
-const companiesAPI = `https://companydirectoryts.herokuapp.com/companies`;
+const CompanyCard = (props) => {
+  const { companies, setCompanies } = props;
 
-const CompanyCard = () => {
-  const [companies, setCompanies] = useState();
-
-  useEffect(() => {
-    fetch(companiesAPI)
-      .then((companies) => companies.json())
-      .then((companies) => setCompanies(companies));
-  }, []);
-
-  console.log("companies", companies);
   return (
     <div>
       {companies?.map((company) => (
