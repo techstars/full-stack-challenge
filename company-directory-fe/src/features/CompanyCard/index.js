@@ -1,8 +1,11 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CompanyCard = (props) => {
-  const { companies } = props;
+  const { companies, selected, setSelectedCompany } = props;
+
+  console.log(props);
 
   return (
     <div>
@@ -15,9 +18,17 @@ const CompanyCard = (props) => {
             </Card.Subtitle>
             <Card.Text>{company.companyDescription.slice(0, 115)}...</Card.Text>
           </Card.Body>
-          <Card.Link href="#" className="text-center mb-2">
-            Company Profile
-          </Card.Link>
+          <Link
+            to={`/companyProfile/${company.id}`}
+            className="text-center mb-2"
+          >
+            <Card.Link
+              id={company.id}
+              onClick={(event) => setSelectedCompany(company)}
+            >
+              Company Profile
+            </Card.Link>
+          </Link>
         </Card>
       ))}
     </div>

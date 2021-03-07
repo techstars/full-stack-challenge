@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CompanyCard from "./features/CompanyCard";
 import CompanyForm from "./features/CompanyForm";
+import CompanyProfile from "./features/CompanyProfile";
 import { Button } from "react-bootstrap";
+import { Switch, Route } from "react-router-dom";
 
 // const companiesAPI = "http://localhost:3002/companies";
 const companiesAPI = `http://companydirectoryts.herokuapp.com/companies`;
@@ -10,6 +12,7 @@ const App = () => {
   const [companies, setCompanies] = useState();
   const [show, setShow] = useState(false);
   const [triggered, setTriggered] = useState(false);
+  const [selected, setSelectedCompany] = useState();
 
   useEffect(() => {
     fetch(companiesAPI)
@@ -21,19 +24,36 @@ const App = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="container">
-      <h1 className="text-center m-3">Company Directory</h1>
-      <CompanyCard companies={companies} setCompanies={setCompanies} />
-      <div className="text-center m-3">
-        <Button onClick={handleShow}>Add Company</Button>
+    <Switch>
+      <Route path="/companyProfile">
+        <CompanyProfile
+          selected={selected}
+          companiesAPI={companiesAPI}
+          setTriggered={setTriggered}
+        />
+      </Route>
+      <div className="container">
+        <h1 className="text-center m-3">Company Directory</h1>
+        <Route path="/">
+          <CompanyCard
+            companies={companies}
+            setCompanies={setCompanies}
+            setSelectedCompany={setSelectedCompany}
+          />
+        </Route>
+        <div className="text-center m-3">
+          <Button onClick={handleShow}>Add Company</Button>
+        </div>
+        <Route path="/">
+          <CompanyForm
+            show={show}
+            setShow={setShow}
+            companiesAPI={companiesAPI}
+            setTriggered={setTriggered}
+          />
+        </Route>
       </div>
-      <CompanyForm
-        show={show}
-        setShow={setShow}
-        companiesAPI={companiesAPI}
-        setTriggered={setTriggered}
-      />
-    </div>
+    </Switch>
   );
 };
 

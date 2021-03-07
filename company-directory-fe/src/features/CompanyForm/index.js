@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
-import loadCompanies from "../../App";
 import stateData from "../../stateData.json";
 
 const CompanyForm = (props) => {
