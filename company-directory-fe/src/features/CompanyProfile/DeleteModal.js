@@ -16,10 +16,9 @@ const DeleteModal = (props) => {
   console.log(selected);
 
   const deleteCompany = () => {
-    // event.preventDefault();
     fetch(companiesAPI + `/${selected.id}`, {
       method: "DELETE",
-    }).then(setTriggered(false), setShowDelete(false));
+    }).then(setTriggered(true), setShowDelete(false));
   };
 
   return (
