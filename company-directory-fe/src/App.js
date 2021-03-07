@@ -9,12 +9,14 @@ const companiesAPI = `http://companydirectoryts.herokuapp.com/companies`;
 const App = () => {
   const [companies, setCompanies] = useState();
   const [show, setShow] = useState(false);
+  const [triggered, setTriggered] = useState(false);
 
   useEffect(() => {
     fetch(companiesAPI)
       .then((companies) => companies.json())
-      .then((companies) => setCompanies(companies));
-  }, []);
+      .then((companies) => setCompanies(companies))
+      .then(setTriggered(false));
+  }, [triggered]);
 
   const handleShow = () => setShow(true);
 
@@ -29,7 +31,7 @@ const App = () => {
         show={show}
         setShow={setShow}
         companiesAPI={companiesAPI}
-        setCompanies={setCompanies}
+        setTriggered={setTriggered}
       />
     </div>
   );

@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
+import loadCompanies from "../../App";
 import stateData from "../../stateData.json";
 
 const CompanyForm = (props) => {
-  const { show, setShow, companiesAPI, setCompanies } = props;
+  const { show, setShow, companiesAPI, setTriggered } = props;
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
-  const [validated, setValidated] = useState(false);
+
+  const clearData = () => {
+    setName("");
+    setCity("");
+    setState("");
+    setDate("");
+    setDesc("");
+  };
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
     event.preventDefault();
-    if (form.checkValidity() === false) {
-      event.stopPropagation();
-    }
-
-    if (form.checkValidity() === true) {
-      setShow(false);
-    }
-
-    setValidated(true);
 
     let details = {
       companyName: name,
@@ -32,8 +30,6 @@ const CompanyForm = (props) => {
       foundedDate: date,
     };
 
-    console.log("date", date);
-
     var formBody = [];
     for (var property in details) {
       var encodedKey = encodeURIComponent(property);
@@ -42,28 +38,25 @@ const CompanyForm = (props) => {
     }
     formBody = formBody.join("&");
 
-    fetch(companiesAPI, {
-      method: "POST",
-      body: formBody,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        // "Access-Control-Allow-Credentials": true,
-      },
-    })
-      // .then((newCompany) => setCompanies(newCompany.json()));
-      .then((newCompany) => console.log(newCompany.json()));
+    if (name !== "" && city !== "" && state !== "" && desc !== "") {
+      fetch(companiesAPI, {
+        method: "POST",
+        body: formBody,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }).then(setTriggered(true), clearData(), setShow(false));
+    }
   };
 
   return (
     <>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add New Company</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridCompanyName">
                 <Form.Label>Company Name:</Form.Label>

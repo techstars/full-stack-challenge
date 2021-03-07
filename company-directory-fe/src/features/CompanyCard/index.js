@@ -13,11 +13,11 @@ const CompanyCard = (props) => {
             <Card.Subtitle className="mb-2 text-muted">
               {company.companyCity}, {company.companyState}
             </Card.Subtitle>
-            <Card.Text>
-              {company.companyDescription.slice(0, 115)}{" "}
-              <Card.Link href="#">...more</Card.Link>
-            </Card.Text>
+            <Card.Text>{company.companyDescription.slice(0, 115)}...</Card.Text>
           </Card.Body>
+          <Card.Link href="#" className="text-center mb-2">
+            Company Profile
+          </Card.Link>
         </Card>
       ))}
     </div>
