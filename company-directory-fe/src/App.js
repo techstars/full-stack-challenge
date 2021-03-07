@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import CompanyCard from "./components/CompanyCard";
+import { Button } from "react-bootstrap";
 
-function App() {
+import "./App.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="text-center m-3">Company Directory</h1>
+      <CompanyCard />
+      <div className="text-center m-3">
+        <Button>Add Company</Button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
