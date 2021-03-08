@@ -5,7 +5,7 @@ import CompanyProfile from "./features/CompanyProfile";
 import { Button } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
-const companiesAPI = `http://companydirectoryts.herokuapp.com/companies`;
+const companiesAPI = `https://companydirectoryts.herokuapp.com/companies`;
 
 const App = () => {
   const [companies, setCompanies] = useState();
