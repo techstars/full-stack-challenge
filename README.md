@@ -18,7 +18,7 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ## Deployed Site
 
-https://evening-refuge-08504.herokuapp.com/
+[https://evening-refuge-08504.herokuapp.com/](https://evening-refuge-08504.herokuapp.com/)
 
 ## API Reference
 
