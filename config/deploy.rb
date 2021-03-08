@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:soni2213/full-stack-challenge.git"
 set :deploy_to, '/home/ubuntu/projects/comapany_directory'
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-append :linked_files, 'config/database.yml'
+append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/credentials/production.key'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
