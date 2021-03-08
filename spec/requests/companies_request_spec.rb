@@ -41,7 +41,7 @@ RSpec.describe Api::V1::CompaniesController, type: :request do
   describe 'GET /api/v1/companies/{:id}' do
     context 'Renders the company details' do
       before do
-        @company = create(:company)
+        @company = create(:company, city: city)
         get "/api/v1/companies/#{@company.id}"
       end
 
