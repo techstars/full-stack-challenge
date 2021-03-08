@@ -30,7 +30,7 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ## Project Management: Jira
 
-![Jira Implementation] (jira.png)
+![Jira Implementation](jira.png)
 
 ### Future Implementation Goals
 
