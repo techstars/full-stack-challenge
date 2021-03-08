@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 JavaScript, React, Bootstrap, Nodejs, and Express
 
-## Deployed Site
+## Deployed React Site
 
 [https://evening-refuge-08504.herokuapp.com/](https://evening-refuge-08504.herokuapp.com/)
 
