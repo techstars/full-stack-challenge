@@ -18,6 +18,12 @@ gem 'puma', '~> 5.0'
 # gem 'rack-cors'
 gem 'active_model_serializers'
 
+## deployment tools
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rvm'
+
 group :development do
   gem 'listen', '~> 3.3'
   gem 'annotate'
