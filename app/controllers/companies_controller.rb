@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
   # GET companies
   def index
     ## Notes: put pagination here. gems like kaminari/pagy
-    companies = Company.all
+    companies = Company.includes(:founders, { city: :state }).all
     render json: companies
   end
 
