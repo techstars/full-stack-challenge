@@ -34,6 +34,7 @@ const CompanyProfile = (props) => {
 
   return (
     <>
+      <h1 className="text-center m-3">Company Profile</h1>
       <Card key={selected.id} className="m-3">
         <Card.Body>
           <Card.Title>{selected.companyName}</Card.Title>

@@ -18,11 +18,11 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ## API Reference
 
-# Companies
+### Companies
 
 [https://companydirectoryts.herokuapp.com/companies](https://companydirectoryts.herokuapp.com/companies)
 
-# Founders
+### Founders
 
 [https://companydirectoryts.herokuapp.com/founders](https://companydirectoryts.herokuapp.com/founders)
 
@@ -31,6 +31,28 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 ## Project Management: Jira
 
 ![Jira Implementation](jira.png)
+
+## Project Screenshots
+
+### Company Directory View
+
+![Company Directory View](companyDirectoryView.png)
+
+### Add Company
+
+![Add Company](addCompany.png)
+
+### Company Profile
+
+![Company Profile](companyProfile.png)
+
+### Edit Company
+
+![Edit Company](editCompany.png)
+
+### Delete Company
+
+![Delete Company](deleteCompany.png)
 
 ### Future Implementation Goals
 
