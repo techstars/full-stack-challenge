@@ -17,6 +17,9 @@
 #
 FactoryBot.define do
   factory :founder do
-    
+    full_name { Faker::Name.name }
+    email { Faker::Internet.email }
+    title { Faker::Company.profession }
+    company
   end
 end
