@@ -1,6 +1,6 @@
 # Full Stack Challenge
 
-A fun front to back app with a Company Directory.
+A fun, front to back app about a Company Directory.
 
 ## Installation
 
