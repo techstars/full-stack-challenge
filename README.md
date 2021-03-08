@@ -87,6 +87,8 @@ If you move onto the next stage of the interview process we will have you come i
 
 # Documentation
 
+#### Deployed at http://128.199.252.105/
+
 The system is written using Ruby on Rails for APIs and ReactJS for frontend consumer.
 Ruby version: 2.7.2
 Ruby on Rails: 6.1.3
