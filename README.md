@@ -5,7 +5,7 @@ A fun front to back app with a Company Directory.
 ## Installation
 
 - Clone this repo
-- open company-directory-fe
+- Navigate to the company-directory-fe folder
 - npm install
 - npm start
 
