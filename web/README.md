@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## deployment
+
+# build the js bundle
+npm run build
+
+# scp the bundle on remote server, and serve via nginx
+scp -r ./build/* ubuntu@SERVER_IP:~/projects/web
