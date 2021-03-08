@@ -24,6 +24,10 @@ gem 'capistrano-rails'
 gem 'capistrano3-puma'
 gem 'capistrano-rvm'
 
+## for seed data
+gem 'factory_bot_rails'
+gem 'faker'
+
 group :development do
   gem 'listen', '~> 3.3'
   gem 'annotate'
@@ -33,8 +37,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'amazing_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop'
