@@ -18,6 +18,6 @@ FactoryBot.define do
   factory :company do
     description { Faker::Lorem.paragraph }
     name { Faker::Company.name }
-    city
+    city { create(:city) }
   end
 end

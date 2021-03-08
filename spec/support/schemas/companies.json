@@ -1,0 +1,47 @@
+
+
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "short_description": {
+          "type": "string"
+        },
+        "city_name": {
+          "type": "string"
+        },
+        "state_name": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "null"
+        },
+        "founders": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "short_description",
+        "city_name",
+        "state_name",
+        "start_date",
+        "founders"
+      ]
+    }
+  ]
+}

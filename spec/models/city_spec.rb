@@ -29,19 +29,22 @@ RSpec.describe City, type: :model do
     context '.by_name_state' do
       it "state not matching" do
         state = create(:state)
-        create(:city, name: "abcd")
-        expect { City.by_name_state("abcd", state.name) }.to change {City.count}.by(1)
+        city_name = Faker::Address.city
+        create(:city, name: city_name)
+        expect { City.by_name_state(city_name, state.name) }.to change {City.count}.by(1)
       end
 
       it "city name not matching" do
         state = create(:state)
-        city = create(:city, name: "abcd", state_id: state.id)
-        expect { City.by_name_state("abcd", state.name) }.to change {City.count}.by(1)
+        city_name = Faker::Address.city
+        city = create(:city, name: city_name, state_id: state.id)
+        expect { City.by_name_state(city_name + 'a', state.name) }.to change {City.count}.by(1)
       end
 
       it "city and state match" do
         state = create(:state)
-        city = create(:city, name: "Abcd", state_id: state.id)
+        city_name = Faker::Address.city
+        city = create(:city, name: city_name.titleize, state_id: state.id)
         expect(City.by_name_state(city.name, state.name)).to eq(city)
       end
     end
