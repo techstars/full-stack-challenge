@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import AddFounder from "./AddFounder";
 
 const Founders = (props) => {
   const { foundersAPI, selected } = props;
   const [founders, setFounders] = useState();
   const [showAddFounder, setShowAddFounder] = useState(false);
+  const [triggeredFounder, setTriggeredFounder] = useState(false);
 
   useEffect(() => {
     fetch(foundersAPI)
       .then((founders) => founders.json())
-      .then((founders) => findFoundersOfCompany(founders));
-  }, []);
+      .then((founders) => findFoundersOfCompany(founders))
+      .then(setTriggeredFounder(false));
+  }, [triggeredFounder]);
 
   const findFoundersOfCompany = (founderList) => {
     let founderArray = founderList.filter(
       (founder) => founder.companyId === selected.id
     );
     setFounders(founderArray);
-    console.log("founders here", founders);
   };
-
-  console.log(founders);
 
   return (
     <>
@@ -48,6 +48,13 @@ const Founders = (props) => {
           </Card.Title>
         </Card.Body>
       </Card>
+      <AddFounder
+        showAddFounder={showAddFounder}
+        setShowAddFounder={setShowAddFounder}
+        foundersAPI={foundersAPI}
+        selected={selected}
+        setTriggeredFounder={setTriggeredFounder}
+      />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { Card, Button, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
 import UpdateModal from "./UpdateModal";
-import Founders from "./Founders";
+import Founders from "../Founders";
 
 const CompanyProfile = (props) => {
   const { selected, companiesAPI, foundersAPI, setTriggered } = props;

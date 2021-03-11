@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
+import { setFormBody } from "../../utils/setFormBody";
 import stateData from "../../stateData.json";
 
 const CompanyForm = (props) => {
@@ -10,41 +11,21 @@ const CompanyForm = (props) => {
   const [date, setDate] = useState("");
   const [desc, setDesc] = useState("");
 
-  const clearData = () => {
-    setName("");
-    setCity("");
-    setState("");
-    setDate("");
-    setDesc("");
+  let details = {
+    companyName: name,
+    companyCity: city,
+    companyState: state,
+    companyDescription: desc,
+    foundedDate: date,
   };
 
-  const handleSubmit = (event) => {
+  const handleCompnaySubmit = (event) => {
     event.preventDefault();
-
-    let details = {
-      companyName: name,
-      companyCity: city,
-      companyState: state,
-      companyDescription: desc,
-      foundedDate: date,
-    };
-
-    let formBody = [];
-    for (let property in details) {
-      let encodedKey = encodeURIComponent(property);
-      let encodedValue = encodeURIComponent(details[property]);
-      formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-
     if (name !== "" && city !== "" && state !== "" && desc !== "") {
-      fetch(companiesAPI, {
-        method: "POST",
-        body: formBody,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }).then(setTriggered(true), clearData(), setShow(false));
+      setFormBody(details, companiesAPI);
+      setShow(false);
+      setTriggered(true);
+      setDate("");
     }
   };
 
@@ -55,7 +36,7 @@ const CompanyForm = (props) => {
           <Modal.Title>Add New Company</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleCompnaySubmit}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridCompanyName">
                 <Form.Label>Company Name:</Form.Label>
