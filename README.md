@@ -58,6 +58,10 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ![Delete Company](deleteCompany.png)
 
+### Add Founder
+
+![Add Founder](addFounder.png)
+
 ### Future Implementation Goals
 
 - Add Founders to Companies
