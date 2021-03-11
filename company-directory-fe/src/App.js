@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
 const companiesAPI = `https://companydirectoryts.herokuapp.com/companies`;
+const foundersAPI = `https://companydirectoryts.herokuapp.com/founders`;
 
 const App = () => {
   const [companies, setCompanies] = useState();
@@ -28,6 +29,7 @@ const App = () => {
         <CompanyProfile
           selected={selected}
           companiesAPI={companiesAPI}
+          foundersAPI={foundersAPI}
           setTriggered={setTriggered}
         />
       </Route>

@@ -14,7 +14,11 @@ const CompanyCard = (props) => {
             <Card.Subtitle className="mb-2 text-muted">
               {company.companyCity}, {company.companyState}
             </Card.Subtitle>
-            <Card.Text>{company.companyDescription.slice(0, 115)}...</Card.Text>
+            <Card.Text>
+              {company.companyDescription.length < 120
+                ? company.companyDescription
+                : company.companyDescription.slice(0, 120) + "..."}
+            </Card.Text>
           </Card.Body>
           <Link
             to={`/companyProfile/${company.id}`}
