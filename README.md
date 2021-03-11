@@ -64,7 +64,6 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ### Future Implementation Goals
 
-- Add Founders to Companies
 - Add tests with React Testing Library
 - Add TypeScript
 - Add Redux Toolkit or Recoil for data persistance and management
