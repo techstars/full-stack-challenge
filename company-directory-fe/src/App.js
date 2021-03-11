@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CompanyCard from "./features/CompanyCard";
 import CompanyForm from "./features/CompanyForm";
 import CompanyProfile from "./features/CompanyProfile";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
 const companiesAPI = `https://companydirectoryts.herokuapp.com/companies`;
@@ -35,24 +35,32 @@ const App = () => {
       </Route>
       <div className="container">
         <h1 className="text-center m-3">Company Directory</h1>
-        <Route path="/">
-          <CompanyCard
-            companies={companies}
-            setCompanies={setCompanies}
-            setSelectedCompany={setSelectedCompany}
-          />
-        </Route>
-        <div className="text-center m-3">
-          <Button onClick={handleShow}>Add Company</Button>
-        </div>
-        <Route path="/">
-          <CompanyForm
-            show={show}
-            setShow={setShow}
-            companiesAPI={companiesAPI}
-            setTriggered={setTriggered}
-          />
-        </Route>
+        {companies === undefined ? (
+          <div className="text-center m-3">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        ) : (
+          <>
+            <Route path="/">
+              <CompanyCard
+                companies={companies}
+                setCompanies={setCompanies}
+                setSelectedCompany={setSelectedCompany}
+              />
+            </Route>
+            <div className="text-center m-3">
+              <Button onClick={handleShow}>Add Company</Button>
+            </div>
+            <Route path="/">
+              <CompanyForm
+                show={show}
+                setShow={setShow}
+                companiesAPI={companiesAPI}
+                setTriggered={setTriggered}
+              />
+            </Route>
+          </>
+        )}
       </div>
     </Switch>
   );
