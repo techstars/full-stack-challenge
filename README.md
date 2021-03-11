@@ -46,9 +46,9 @@ JavaScript, React, Bootstrap, Nodejs, and Express
 
 ![Add Company](addCompany.png)
 
-### Company Profile
+### Company
 
-![Company Shot](companyProfile.png)
+![Company Profile](companyProfile.png)
 
 ### Edit Company
 
