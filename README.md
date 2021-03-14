@@ -1,87 +1,70 @@
-# Techstars Engineering: Fun Front to Back
+# Getting Started with Create React App
 
-Welcome to the Techstars Engineering Full Stack code Challenge. We work on diverse projects and value team members who can do it all from CSS to DevOps and everything inbetween.  We love to code and are passionate about doing it well.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is your chance to show the team how you approach problems and give us insight into your abilities. For the challenge, you are required to design, develop, and style a Full Stack application using Rails or Node as the API and React as the front-end. Do not use Rails templates for your UI. Feel free to use any third party libraries you see fit. You will have **48 hours** to submit a solution for the given requirements.  If you need more time due to schedule conflicts, just let us know.  We value people with good communication skills. We strongly prefer that whatever you do, you do it well, as opposed to trying to razzle dazzle us.  Please read all the instructions carefully and email us if you have any questions. 
+## Available Scripts
 
-## Getting Started
-First, fork this repository into your own GitHub account. Then complete each of the parts below, working as you would in a professional environment. Once you have completed all the sections, please update the README, to reflect how to build and run your application, as well as any architectural decisions you have made. Add your deployment url to your github repo so we can test the deployed application. When you believe you are ready to submit your challenge, submit a pull request into our master branch. We will see the notification and get back to you on next steps. 
+In the project directory, you can run:
 
-## What we are looking for
+### `npm start`
 
-* Ability to set up a REST API (Node or Rails preferred).
-* Ability to set up a Relational Database
-* Understanding of the HTTP protocol and how it works with REST API conventions
-* Understanding the basics of CRUD
-  * Create
-  * Read
-  * Update
-  * Delete
-* Ability to layout and design an HTML page with CSS
-* Ability to create an intuitive UI using a front-end framework (React preferred)
-* Ability to use Javascript on the front-end to interact with a REST API
-* Ability to develop automated tests for your application
-* Ability to translate user stories into a web application
-* Ability to deploy a front-end and back-end stack.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## The Challenge
+### `npm test`
 
-### Intro
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Build an application that will be a directory of companies, and the people who have founded them. The main page should be a list of all the companies with some high-level information (Name, Short Description, City, State). When the user clicks on a company, show its details. Included in those details will be the founding members of company and a long description.
+### `npm run build`
 
-### Part 1 : Companies Index
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. Create the basic layout for the page
-2. Create a list view of all companies
-  * Company Name
-  * Company Location
-  * Short Description
-3. Add ability to create a new company
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-![step 1](Step_1.png)
+### `npm run eject`
 
-### Part 2 : Companies Create
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-1. Implement form to create a new company
-2. Fields
-    * Company Name __required__
-    * Company Location (City, State) __required__
-    * Company Description __required__
-    * Founded Date
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-![step 2](Step_2.png)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### Part 3 : Company Details
+## Learn More
 
-1. Shows all of the Company's information
-2. Ability to update Company
-3. Ability to delete Company
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-![step 3](Step_3.png)
+### Code Splitting
 
-### Part 4 : Founders
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-1. In the Company details add the ability to add a Founder to a Company.
-2. Each Founder can only belong to a single company.
-3. Founder  Fields
-    * Founder Full Name
-    * Founder Title
-4. Founders added should display in the company detail page.
+### Analyzing the Bundle Size
 
-![step 4](Step_4.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Part 5 : Tests
-Create a test suite for your application, writing unit and or functional tests that adequately cover the code base. TDD-ers will have already completed this challenge.
+### Making a Progressive Web App
 
-### Part 6 : Deployment 
- Sign-up for a Heroku account (or other provider) and deploy your application to the web. Please provide us with the deployed URL. Bonus points for using a provider other than Heroku like AWS or Digital Ocean.  Please seed your application with at least a dozen Companies and Founders.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Next Steps
-If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base.  Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
+### Advanced Configuration
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
