@@ -1,2 +1,1 @@
-web_api: cd api & npm start
-web: npm start
+web: npm start & cd api & npm start & wait -n
