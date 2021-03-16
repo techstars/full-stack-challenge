@@ -51,7 +51,7 @@ const RenderLayout = () => {
 
     useEffect(() => {
         if (companies.rendered === false) {
-            fetch('http://localhost:3004/companies', {
+            fetch('../../api/companies', {
                     method:'GET'
                 })
                 .then(response=>response.json())

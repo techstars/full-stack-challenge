@@ -61,7 +61,6 @@ export default function CompanyForm(props) {
 
     const gridItem = {
         item: true,
-        xs: true,
     }
 
     const defaultTextField = {
@@ -131,7 +130,7 @@ export default function CompanyForm(props) {
             </AppBar>
             <div style={{padding:"2rem"}}>
                 <Grid {...gridContainer}>
-                    <Grid {...gridItem} md={12}>
+                    <Grid {...gridItem} sm={12}>
                         <TextField
                             {...defaultTextField}
                             label="Company Name"
