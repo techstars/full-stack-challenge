@@ -61,7 +61,6 @@ export default function CompanyForm(props) {
 
     const gridItem = {
         item: true,
-        xs: true,
     }
 
     const defaultTextField = {
