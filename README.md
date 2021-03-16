@@ -16,7 +16,7 @@ Included endpoints are
   `PUT` (parameters: `name`, `title`, `company_id`
   
   ## React Frontend
-  Application components are divided into hoc, component, and container files. 
+  The frontend was created using create-react-app as a frame. Application components are divided into hoc, component, and container files. 
   
   * Hoc is used as a top level for aux (a wrapper component for inline elements) and Layout
   * Component contains elements which are repeated within the application, but don't necessarily tell a "story" on their own.
