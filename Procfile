@@ -1,1 +1,1 @@
-web: npm start & cd api & npm start & wait -n
+web: npm start & cd api & npm install & npm start & wait -n
