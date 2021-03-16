@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
@@ -30,9 +30,11 @@ const Company = (props) => {
     const data = props.data;
     const [open, setOpen] = React.useState({open: false, render: false, founders: null});
 
+    const fetchURL = process.env.FETCH_URL || 'http://localhost:3004';
+
     const handleOpen = () => {
       if (open.founders === null) {
-        fetch('http://localhost:3004/founders/' + props.data.id, {
+        fetch(fetchURL + '/founders/' + props.data.id, {
             method:'GET'
         })
         .then(response=>response.json())

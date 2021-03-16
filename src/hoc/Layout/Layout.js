@@ -48,10 +48,11 @@ const RenderLayout = () => {
         setOpen({...open, open: false, data: null});
     }
 
-
     useEffect(() => {
+        const fetchURL = process.env.FETCH_URL || 'http://localhost:3004';
+
         if (companies.rendered === false) {
-            fetch('../../api/companies', {
+            fetch(fetchURL + '/companies', {
                     method:'GET'
                 })
                 .then(response=>response.json())
@@ -63,7 +64,6 @@ const RenderLayout = () => {
                             if (props.date_founded === "0000-00-00" || props.date_founded === null) {
                                 props.date_founded = null;
                             } else {
-                                console.log(props.date_founded);
                                 const date_founded = props.date_founded;
                                 let date_founded_converted = date_founded.split('T',1);
                                 props.date_founded = date_founded_converted[0];

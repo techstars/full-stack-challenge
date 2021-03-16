@@ -50,9 +50,11 @@ export default function FounderForm(props) {
           },
     }
 
+    const fetchURL = process.env.FETCH_URL || 'http://localhost:3004';
+
     function handleClick() {
         if (formValues.name !== null || formValues.title !== null) {
-            fetch('http://localhost:3004/founders', {
+            fetch(fetchURL + '/founders', {
                 method:'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({put: formValues}),
@@ -60,7 +62,7 @@ export default function FounderForm(props) {
             .then(response=>response.json())
             .then(response=>{
                 setFormValue(defaultState);
-                    fetch('http://localhost:3004/founders/' + props.id, {
+                    fetch(fetchURL + '/founders/' + props.id, {
                         method:'GET'
                     })
                     .then(response=>response.json())

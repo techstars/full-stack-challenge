@@ -70,6 +70,7 @@ export default function CompanyForm(props) {
             shrink: true,
           },
     }
+    const fetchURL = process.env.FETCH_URL || 'http://localhost:3004';
 
     function handleClick() {
         //fix date format
@@ -78,7 +79,7 @@ export default function CompanyForm(props) {
             || formValues.description !== null 
             || formValues.name !== null ) {
             if (formData === null) {
-                fetch('http://localhost:3004/companies', {
+                fetch(fetchURL + '/companies', {
                     method:'put',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({put: formValues}),
@@ -88,7 +89,7 @@ export default function CompanyForm(props) {
                     window.location.reload(true);
                 });
             } else {
-                fetch('http://localhost:3004/companies/'+formValues.id, {
+                fetch(fetchURL + '/companies/' + formValues.id, {
                     method:'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({post: formValues}),

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -39,9 +39,11 @@ export default function FullCompany(props) {
         setForm({...formOpen, open: true, data: props.data})
     }
 
+    const fetchURL = process.env.FETCH_URL || 'http://localhost:3004';
+
     const handleDelete = () => {
         const id = props.data.id
-        fetch('http://localhost:3004/companies/'+id, {
+        fetch(fetchURL + '/companies/'+id, {
             method:'delete'
         });
         window.location.reload(true);
