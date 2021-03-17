@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const PORT = process.env.port || 3004;
+const INDEX = '/index.html';
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,7 +14,9 @@ var companyRouter = require('./routes/companies');
 var founderRouter = require('./routes/founders');
 
 
-var app = express();
+var app = express()
+  .use((req,res) => res.sendFile(INDEX, {root: __dirname}))
+  .listen(PORT, () => console.log(`listening on ${PORT}`));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

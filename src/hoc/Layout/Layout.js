@@ -6,7 +6,6 @@ import Company from '../../components/Company/Company';
 import Aux from '../Auxilary/Auxilary';
 import CompanyForm from '../../containers/CompanyForm/CompanyForm';
 
-
 const useStyles = makeStyles((theme) => ({
     companyContainer: {
         display: 'flex',
