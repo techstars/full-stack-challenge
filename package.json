@@ -24,7 +24,7 @@
     "morgan": "~1.9.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "(react-scripts start&) & (cd api && npm start&)",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
