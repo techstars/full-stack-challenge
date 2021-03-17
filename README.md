@@ -26,6 +26,6 @@ Included endpoints are
   
   ## Build
   The application is available online at https://mf-frontend-challenge.herokuapp.com/
-  To run the application locally, run `npm start` from the api directory. In another terminal, run `npm start` from the parent directory. In its current configuration, the application is accessible at http://localhost:3000 with the api located at http://localhost:3004.
+  To run the application locally, run `npm install` followed by `npm start` in the parent directory. In its current configuration, the application is accessible at http://localhost:3000 with the api located at http://localhost:3004.
   
   Thank you so much for giving me the opportunity to participate in your coding challenge!
