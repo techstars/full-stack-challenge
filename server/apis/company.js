@@ -24,9 +24,14 @@ const updateCompanyById = async (id, companyObj) => {
   });
 }
 
+const deleteCompanyById = async (id) => {
+  return await model.destroy(id);
+}
+
 export {
   createCompany, 
   getCompanyById, 
   getAllCompanies,
-  updateCompanyById
+  updateCompanyById,
+  deleteCompanyById
 };

@@ -3,7 +3,8 @@ import {
   createCompany, 
   getCompanyById, 
   getAllCompanies, 
-  updateCompanyById 
+  updateCompanyById,
+  deleteCompanyById 
 } from '../apis/company';
 
 const router = express.Router();
@@ -47,6 +48,18 @@ router.get('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const result = await updateCompanyById(req.params.id, req.body);
+    res.status(200);
+    res.send(result);
+  }
+  catch(error) {
+    res.status(400);
+    res.send(error.message);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const result = await deleteCompanyById(req.params.id);
     res.status(200);
     res.send(result);
   }
