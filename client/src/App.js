@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 import './App.css';
 
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    view: () => <Redirect to="/dashboard" />
+  },
+  {
+    path: "/dashboard",
+    exact: true,
+    view: Dashboard
+  }
+];
+
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch location={location}>
+          {routes.map((route, index) => {
+            return (
+              <Route
+                exact={route.exact}
+                path={route.path}
+                render={({match}) => <route.view match={match}/>}
+                key={index}
+              />
+            );
+          })}
+        </Switch>
     </div>
   );
 }
