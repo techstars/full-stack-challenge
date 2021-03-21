@@ -1,0 +1,6 @@
+.company-selector-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+}
