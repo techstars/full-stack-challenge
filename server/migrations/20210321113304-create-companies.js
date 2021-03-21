@@ -8,16 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Name: {
+      name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      Location: {
+      location: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      Description: {
+      description: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      Founded: {
+      founded: {
         type: Sequelize.DATE
       },
       createdAt: {

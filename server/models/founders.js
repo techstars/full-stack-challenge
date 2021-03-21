@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Founders.init({
-    Name: DataTypes.STRING,
-    Title: DataTypes.STRING,
-    Company: DataTypes.INTEGER
+    name: DataTypes.STRING,
+    title: DataTypes.STRING,
+    company: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Founders',

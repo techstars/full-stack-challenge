@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Companies.init({
-    Name: DataTypes.STRING,
-    Location: DataTypes.STRING,
-    Description: DataTypes.STRING,
-    Founded: DataTypes.DATE
+    name: DataTypes.STRING,
+    location: DataTypes.STRING,
+    description: DataTypes.STRING,
+    founded: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Companies',
