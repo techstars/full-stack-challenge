@@ -1,0 +1,20 @@
+.my-fieldset {
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+.my-container {
+    padding: 20px;
+}
+
+.isRequired { 
+    color: red;
+}
+
+.react-datepicker-wrapper {
+    display: block !important;
+}
+
+#formCompanyDescription{ 
+    resize: none;
+}

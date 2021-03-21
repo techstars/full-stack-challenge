@@ -1,0 +1,80 @@
+.edit-container { 
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    height: 80vh;
+}
+.company-info-container {
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.my-row { 
+    justify-content: center;
+    padding: 10px;
+}
+#container-modal-title-center{
+    text-align: center;
+}
+
+.my-text-area { 
+    resize: none !important;
+    text-align: center;
+    height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.edit-btn {
+    margin-right: 10px;
+}
+
+.description-container {
+    padding: 30px !important;
+}
+
+.modal-header { 
+    justify-content: center !important;
+}
+
+.no-data-exist-container {
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+.error-message-container {
+    color: red;
+    font-weight: bold;
+}
+
+.founders-fieldset {
+    text-align: left;
+    margin: 0px 30px;
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid black; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-founder-btn {
+    float: right;
+}
+
+#founderErrorMessage {
+    color: red;
+    text-align: center;
+}
+
+.my-toast {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width : 250px;
+    margin: 15px;
+}

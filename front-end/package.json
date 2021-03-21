@@ -6,12 +6,19 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "date-fns": "^2.0.0-beta.5",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
+    "react-datepicker": "^3.6.0",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,6 +43,8 @@
     ]
   },
   "devDependencies": {
-    "react-test-renderer": "^17.0.1"
+    "dotenv": "^8.2.0",
+    "react-test-renderer": "^17.0.1",
+    "webpack-cli": "^4.5.0"
   }
 }

@@ -1,0 +1,56 @@
+body { 
+    overflow: hidden;
+} 
+
+.list-container { 
+    overflow: auto;
+    max-height: 80vh;
+    padding-top: 25px;
+}
+
+.company-card-container {
+    overflow: hidden;
+    min-height: 30vh;
+    max-height: 30vh;
+    margin: 20px;
+}
+
+.company-card-container:hover {
+    cursor: pointer;
+}
+.company-card-header {
+    display: block;
+    text-align: center;
+    background-color: rgba(0,0,0,.08);
+    border-bottom: 1px solid rgba(0,0,0,.925);
+    padding: .75rem 1.25rem;
+}
+.company-card-header-name {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+.company-card-header-location {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+.company-card-body-description-container {
+    overflow: auto;
+    padding: 20px;
+}
+
+.company-card-body-description {
+    font-weight: normal;
+    align-items: left;
+}
+
+#companyBtn { 
+    position: fixed;
+    right: 150px;
+    bottom: 50px;
+}
+
+.my-card-text {
+    font-size: 20px;
+}
