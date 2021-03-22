@@ -18,7 +18,6 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
