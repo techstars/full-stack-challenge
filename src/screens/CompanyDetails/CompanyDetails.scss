@@ -1,0 +1,14 @@
+.details-container{
+    border: 2px solid black;
+    margin: 5rem;
+    height: 80vh;
+    .line-break{
+        height: 3rem;
+        border-left: 1px solid black;
+    }
+    .founders-list{
+        border: 2px solid black;
+        min-height: 10vh;
+    }
+
+}
