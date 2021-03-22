@@ -84,7 +84,7 @@ Once tables are created, seed the database with this command:
 ```psql -U <user> <database> < /path/to/seed.sql``` 
 
 
-## Running project locally
+## Running back end
 
 Change directory to `/back-end/` and run the command : `npm run start:dev`
 
@@ -92,8 +92,8 @@ Change directory to `/back-end/` and run the command : `npm run start:dev`
 
 Change directory to `/front-end/` and run the command : `npm run start`
 
-### Note: For environment variables, review .env.sample and provide your values
-
 ## Live Site
 
 This project has been deployed with DigitalOcean on : http://143.198.100.192
+
+### Note: For environment variables, review .env.sample and provide your values
