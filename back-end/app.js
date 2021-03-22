@@ -3,8 +3,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const router = express.Router();
-// const cors = require('cors');
-// const helmet = require('helmet');
+const cors = require('cors');
+const helmet = require('helmet');
 require('dotenv').config();
 
 const companiesRouter = require('./routes/companies');
@@ -13,8 +13,8 @@ const foundersRouter = require('./routes/founders');
 const app = express();
 
 app.use(logger('dev'));
-// app.use(helmet());
-// app.use(cors());
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
