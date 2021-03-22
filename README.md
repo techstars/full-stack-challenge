@@ -27,6 +27,8 @@ Screen Shot 2021-03-20 at 3.06.08 PM![image](https://user-images.githubuserconte
 ### Repository to the frontend: 
 https://github.com/jculver1/company_index_frontend
 
+### Steps:
+
 git clone git@github.com:jculver1/company_index_frontend.git
 
 cd company_index_frontend
@@ -34,6 +36,8 @@ cd company_index_frontend
 npm install
 
 npm start
+
+navigate to localhost:3000
 
 
 
