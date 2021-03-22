@@ -1,3 +1,12 @@
+CREATE TABLE location(
+	id 					serial,
+	city 			    text NOT NULL,
+	state 			    text NOT NULL,
+	date_created		timestamptz DEFAULT NOW(),
+	date_updated		timestamptz,
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE companies(
 	id           serial,
 	name         text NOT NULL,
@@ -8,15 +17,6 @@ CREATE TABLE companies(
 	date_updated timestamptz,
     PRIMARY KEY(id),
     FOREIGN KEY (location_id) REFERENCES location(id) ON DELETE CASCADE
-);
-
-CREATE TABLE location(
-	id 					serial,
-	city 			    text NOT NULL,
-	state 			    text NOT NULL,
-	date_created		timestamptz DEFAULT NOW(),
-	date_updated		timestamptz,
-    PRIMARY KEY(id)
 );
 
 CREATE TABLE founder(
