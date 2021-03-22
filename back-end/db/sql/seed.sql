@@ -103,7 +103,7 @@ INSERT INTO founder(full_name, title, company_id) VALUES('Nestor Cano', 'EVP', 1
 
 
 INSERT INTO location(city, state) VALUES('San Diego', 'California');
-INSERT INTO companies(id, name, description,location_id) VALUES(12, 'Qualcomm', 'Qualcomm Inc. is a multinational company providing semiconductors and telecommunications equipment. It develops and commercializes wireless telecommunications products and services, with subsidiaries specializing in certain areas of operations: Qualcomm CDMA Technologies sells Qualcomm’s products and services, Qualcomm Technology Licensing manages the patent licensing business, and Qualcomm Technologies, Inc. conducts Qualcomm’s R&D activities',
+INSERT INTO companies(name, description,location_id) VALUES('Qualcomm', 'Qualcomm Inc. is a multinational company providing semiconductors and telecommunications equipment. It develops and commercializes wireless telecommunications products and services, with subsidiaries specializing in certain areas of operations: Qualcomm CDMA Technologies sells Qualcomm’s products and services, Qualcomm Technology Licensing manages the patent licensing business, and Qualcomm Technologies, Inc. conducts Qualcomm’s R&D activities',
 12);
 INSERT INTO founder(full_name, title, company_id) VALUES('Steve Mollenkopf', 'CEO', 12);
 INSERT INTO founder(full_name, title, company_id) VALUES('Cristiano R. Amon', 'President', 12);
