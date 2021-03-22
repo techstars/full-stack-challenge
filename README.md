@@ -86,10 +86,14 @@ Once tables are created, seed the database with this command:
 
 ## Running project locally
 
-Change directory to `/back-end/` and run the command : npm run start:dev
+Change directory to `/back-end/` and run the command : `npm run start:dev`
 
 ## Running front end
 
-Change directory to `/front-end/` and run the command : npm run start
+Change directory to `/front-end/` and run the command : `npm run start`
 
 ### Note: For environment variables, review .env.sample and provide your values
+
+## Live Site
+
+This project has been deployed with DigitalOcean on : http://143.198.100.192
