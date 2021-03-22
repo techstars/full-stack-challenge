@@ -15,9 +15,6 @@ body {
     margin: 20px;
 }
 
-.company-card-container:hover {
-    cursor: pointer;
-}
 .company-card-header {
     display: block;
     text-align: center;

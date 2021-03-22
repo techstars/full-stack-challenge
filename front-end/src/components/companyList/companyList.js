@@ -18,16 +18,18 @@ function ListItem(props) {
             border="dark"
             bg="light" 
             className="company-card-container text-center" 
-            onClick={() => window.location.href = `/company-detail/${props.item.id}`}
         >
             <Card.Header className="company-card-header" > 
                 <Row>
-                <Col col={6}>
-                    <h4>{capitalizeFirstLetterOfEveryWord(props.item.name)}</h4>
-                </Col>
-                <Col col={6}>
-                    <h4>{capitalizeFirstLetterOfEveryWord(props.item.city)}, {capitalizeFirstLetterOfEveryWord(props.item.state)} </h4>
-                </Col>
+                    <Col col={5}>
+                        <h4>{capitalizeFirstLetterOfEveryWord(props.item.name)}</h4>
+                    </Col>
+                    <Col col={5}>
+                        <h4>{capitalizeFirstLetterOfEveryWord(props.item.city)}, {capitalizeFirstLetterOfEveryWord(props.item.state)} </h4>
+                    </Col>
+                    <Col col={2}>
+                        <Link to={`/company-detail/${props.item.id}`}> more... </Link>
+                    </Col>
                 </Row>
             </Card.Header>
                 <Card.Body>
