@@ -1,0 +1,28 @@
+.founders-container {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: fit-content;
+  min-height: 100px;
+  min-width: 70vw;
+  border: 1px #FFFFFF solid;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-button {
+  display: inline-flex;
+  color: white;
+  opacity: 0.5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}

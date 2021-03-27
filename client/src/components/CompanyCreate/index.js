@@ -5,13 +5,12 @@ import './index.css';
 
 const CompanyCreate = ({onClose, formModelData, update = false}) => {
   const apis = new Api();
-  console.log(formModelData, update);
   const formModel = update ? {
     name: formModelData.name,
     city: formModelData.city,
     state: formModelData.state,
     description: formModelData.description,
-    founded: formModelData.founded.split('T')[0]
+    founded: formModelData.founded? formModelData.founded.split('T')[0]: ''
   }:{
     name: '',
     city: '',
@@ -63,7 +62,7 @@ const CompanyCreate = ({onClose, formModelData, update = false}) => {
 
   return (
     <div className="form-container">
-      <span className="heading">Create a new company</span>
+      <span className="heading">{update ? "Edit":"Create"} a company</span>
       <input 
         className={clsx({["input-name"]: true, ["input-error"]: errors.name && !update})} 
         name="name" 

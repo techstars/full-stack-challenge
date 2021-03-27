@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Api from '../../apis';
 import CompanyItem from '../../components/CompanyItem';
 import CompanySelector from '../../components/CompanySelector';
-import CompanyCreate from '../CompanyCreate';
+import CompanyCreate from '../../components/CompanyCreate';
 import Modal from 'react-modal';
 import './index.css';
 

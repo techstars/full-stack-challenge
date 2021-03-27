@@ -10,6 +10,9 @@ import {
   createFounder,
   getFoundersByCompanyId
 } from './founder';
+import {
+  getCompanyAndFoundersByCompanyId
+} from './common';
 
 export default class Api {
   constructor() {
@@ -46,5 +49,10 @@ export default class Api {
 
   async getFoundersByCompanyId(companyId) {
     return (await getFoundersByCompanyId(this.instance, companyId)).data;
+  }
+
+  //Common Function
+  async getCompanyAndFoundersByCompanyId(id) {
+    return (await getCompanyAndFoundersByCompanyId(this.instance, id)).data
   }
 }

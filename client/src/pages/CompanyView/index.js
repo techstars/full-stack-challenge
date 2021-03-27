@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Api from '../../apis';
-import CompanyCreate from '../CompanyCreate';
+import CompanyCreate from '../../components/CompanyCreate';
+import Founders from '../../components/Founders';
+import FounderCreate from '../../components/FounderCreate';
 import Modal from 'react-modal';
 import './index.css';
 
@@ -9,14 +11,20 @@ const CompanyView = ({match}) => {
   const api = new Api();
   const history = useHistory();
   const [modalIsOpen, setModalOpen] = useState(false);
-  const [company, setCompany] = useState();
+  const modalTypes = {
+    edit: 'EDIT',
+    founder: 'FOUNDER'
+  }
+  const [modalType, setModalType] = useState();
+  const [data, setData] = useState();
   const { id } = match.params;
 
   Modal.setAppElement('#root');
 
   const _init = () => {
-    api.getCompanyById(id).then((company) => {
-      setCompany(company[0]);
+    api.getCompanyAndFoundersByCompanyId(id).then((data) => {
+      console.log(data);
+      setData(data);
     });
   }
 
@@ -38,6 +46,27 @@ const CompanyView = ({match}) => {
     _init();
   }
 
+  const setModalOpenEdit = () => {
+    setModalType(modalTypes.edit);
+    setModalOpen(true);
+  }
+
+  const setModalOpenFounder = () => {
+    setModalType(modalTypes.founder);
+    setModalOpen(true);
+  }
+
+  const ModalType = ({type}) => {
+    switch(type) {
+      case modalTypes.edit: {
+        return <CompanyCreate update={true} formModelData={data && data.company} onClose={onClose}/>
+      };
+      case modalTypes.founder: {
+        return <FounderCreate onClose={onClose} companyId={data && data.company.id}/>
+      }
+    }
+  }
+
   return (
     <>
       <Modal
@@ -53,18 +82,21 @@ const CompanyView = ({match}) => {
           }
         }}
       >
-        <CompanyCreate update={true} formModelData={company} onClose={onClose}/>
+        <ModalType type={modalType}/>
       </Modal>
-      {company && (<div className="company-container">
-        <div className="company-heading">{company.name}</div>
+      {data && (<div className="main-container">
+        <div className="company-container">
+        <div className="company-heading">{data.company.name}</div>
         <div className="company-info-container">
-          <div>{company.founded.split('T')[0]}</div>
-          <div>{company.city}, {company.state}</div>
+          <div>{data.company.founded && data.company.founded.split('T')[0]}</div>
+          <div>{data.company.city}, {data.company.state}</div>
           <div>|</div> 
-          <div className="op-button" onClick={() => setModalOpen(true)}>Edit</div>
+          <div className="op-button" onClick={setModalOpenEdit}>Edit</div>
           <div className="op-button" onClick={onDelete}>Delete</div>
         </div>
-        <div>{company.description}</div>
+        <div>{data.company.description}</div>
+      </div>
+        <Founders founders={data.founders} onClick={setModalOpenFounder}/>
       </div>)}
     </>
   );

@@ -1,3 +1,8 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .company-container {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;

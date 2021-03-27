@@ -1,6 +1,5 @@
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import CompanyCreate from './pages/CompanyCreate';
 import CompanyView from './pages/CompanyView';
 import './App.css';
 
@@ -16,19 +15,9 @@ const routes = [
     view: Dashboard
   },
   {
-    path: "/company/add",
-    exact: true,
-    view: CompanyCreate
-  },
-  {
     path: "/company/:id",
     exact: true,
     view: CompanyView
-  },
-  {
-    path: "/company/:id",
-    exact: true,
-    view: null
   }
 ];
 
