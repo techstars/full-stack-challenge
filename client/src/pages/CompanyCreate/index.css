@@ -1,0 +1,60 @@
+.company-create-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-create-input {
+  background-color: #FFFFFF;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  width: 100%; 
+  justify-content: space-evenly;
+  align-items: center; 
+  background-color: #FFFFFF;
+}
+
+.heading {
+  font-family: monospace;
+  background-color: #FFFFFF;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.input-name {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px #000000 solid;
+  height: 30px;
+}
+
+.input-group-container {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  background-color: #FFFFFF;
+}
+
+.input-group-item {
+  width: 32%;
+  background-color: #FFFFFF;
+  border: 1px #000000 solid;
+  height: 30px;
+}
+
+.input-description {
+  resize: none;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px #000000 solid;
+  height: 100px;
+}
+
+.input-error {
+  border: 3px red solid;
+}

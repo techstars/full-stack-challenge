@@ -17,3 +17,29 @@
   opacity: 1;
   cursor: pointer;
 }
+
+.company-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+}
+
+.save-button {
+  display: flex;
+  color: black;
+  background-color: white;
+  opacity: 0.5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  float: right;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
