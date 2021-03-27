@@ -12,13 +12,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      location: {
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      state: {
         allowNull: false,
         type: Sequelize.STRING
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(5048)
       },
       founded: {
         type: Sequelize.DATE

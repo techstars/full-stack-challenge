@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   Companies.init({
     name: DataTypes.STRING,
-    location: DataTypes.STRING,
-    description: DataTypes.STRING,
+    city: DataTypes.STRING,
+    state: DataTypes.STRING,
+    description: DataTypes.STRING(5048),
     founded: DataTypes.DATE
   }, {
     sequelize,

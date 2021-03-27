@@ -60,8 +60,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const result = await deleteCompanyById(req.params.id);
-    res.status(200);
-    res.send(result);
+    res.sendStatus(200);
   }
   catch(error) {
     res.status(400);

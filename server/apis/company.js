@@ -25,7 +25,11 @@ const updateCompanyById = async (id, companyObj) => {
 }
 
 const deleteCompanyById = async (id) => {
-  return await model.destroy(id);
+  return await model.destroy({
+    where: {
+      id: [id]
+    }
+  });
 }
 
 export {
