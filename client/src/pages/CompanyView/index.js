@@ -15,7 +15,7 @@ const CompanyView = ({match}) => {
     edit: 'EDIT',
     founder: 'FOUNDER'
   }
-  const [modalType, setModalType] = useState();
+  const [modalType, setModalType] = useState(modalTypes.edit);
   const [data, setData] = useState();
   const { id } = match.params;
 
@@ -64,6 +64,9 @@ const CompanyView = ({match}) => {
       case modalTypes.founder: {
         return <FounderCreate onClose={onClose} companyId={data && data.company.id}/>
       }
+      default: {
+        return null;
+      }
     }
   }
 
@@ -96,7 +99,7 @@ const CompanyView = ({match}) => {
         </div>
         <div>{data.company.description}</div>
       </div>
-        <Founders founders={data.founders} onClick={setModalOpenFounder}/>
+        <Founders founders={data.founders} onClick={setModalOpenFounder} companyId={data.company.id}/>
       </div>)}
     </>
   );

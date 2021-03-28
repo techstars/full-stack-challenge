@@ -21,7 +21,7 @@ router.get('/:companyId', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const result = await createFounder(req.body);
-    res.status(200);
+    res.status(201);
     res.send(result);
   }
   catch(error) {

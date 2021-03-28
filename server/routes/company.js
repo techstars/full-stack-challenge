@@ -12,7 +12,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const result = await createCompany(req.body);
-    res.status(200);
+    res.status(201);
     res.send(result);
   }
   catch(error) {

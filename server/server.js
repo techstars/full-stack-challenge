@@ -19,3 +19,5 @@ app.use('/common', common);
 app.listen(PORT, () =>
   console.log(`Serving on port ${PORT}!`),
 );
+
+module.exports = app;
