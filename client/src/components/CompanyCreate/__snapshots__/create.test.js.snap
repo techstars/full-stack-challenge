@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Company Create Snapshot Test 1`] = `
+<div
+  className="form-container"
+>
+  <span
+    className="heading"
+  >
+    Create
+     a company
+  </span>
+  <input
+    className="input-name"
+    name="name"
+    onChange={[Function]}
+    placeholder=" Company Name *Required"
+    value=""
+  />
+  <div
+    className="input-group-container"
+  >
+    <input
+      className="input-group-item"
+      name="city"
+      onChange={[Function]}
+      placeholder=" City *Required"
+      value=""
+    />
+    <input
+      className="input-group-item"
+      name="state"
+      onChange={[Function]}
+      placeholder=" State *Required"
+      value=""
+    />
+    <input
+      className="input-group-item"
+      name="founded"
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder=" Founded Date"
+      value=""
+    />
+  </div>
+  <textarea
+    className="input-description"
+    name="description"
+    onChange={[Function]}
+    placeholder=" Description *Required"
+    value=""
+  />
+  <div
+    className="save-button"
+    onClick={[Function]}
+  >
+    SAVE
+  </div>
+</div>
+`;

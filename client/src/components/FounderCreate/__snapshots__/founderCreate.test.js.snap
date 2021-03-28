@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Founder Create snapshot 1`] = `
+<div
+  className="form-container"
+>
+  <span
+    className="heading"
+  >
+    Add a founder
+  </span>
+  <input
+    className="input-group-item"
+    name="name"
+    onChange={[Function]}
+    placeholder=" Name *Required"
+    value=""
+  />
+  <input
+    className="input-group-item"
+    name="title"
+    onChange={[Function]}
+    placeholder=" Title *Required"
+  />
+  <div
+    className="save-button"
+    onClick={[Function]}
+  >
+    ADD
+  </div>
+</div>
+`;

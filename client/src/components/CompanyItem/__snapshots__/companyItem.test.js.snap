@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Company Item Snapshot Test 1`] = `
+<div
+  className="company-item-container"
+  onClick={[Function]}
+>
+  <div
+    className="company-item-row"
+  >
+    <span
+      className="company-item-name"
+    >
+      Name
+    </span>
+    <span
+      className="company-item-divider"
+    />
+    <span>
+      City State
+    </span>
+  </div>
+  <div
+    className="company-item-row"
+  >
+    Description
+  </div>
+</div>
+`;
