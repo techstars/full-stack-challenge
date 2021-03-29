@@ -11,7 +11,7 @@ Commands to run:
 1. `yarn install` OR `npm install`
 2. `yarn start` OR `npm start`
 
-The front-end uses a React app bootstrapped with create-react-app, is uses hooks and simple re-usable components with plain CSS and no libraries except for the official React-Modal for showing modals.
+The front-end uses a React app bootstrapped with create-react-app, it uses React hooks and simple re-usable components with plain CSS and no libraries except for the official React-Modal for showing modals.
 
 ### Backend (/server)
 
