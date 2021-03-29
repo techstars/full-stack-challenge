@@ -23,7 +23,6 @@ const CompanyView = ({match}) => {
 
   const _init = () => {
     api.getCompanyAndFoundersByCompanyId(id).then((data) => {
-      console.log(data);
       setData(data);
     });
   }
