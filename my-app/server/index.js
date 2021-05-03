@@ -8,20 +8,20 @@ app.use(express.urlencoded({ extended: false }))
 
 const connection = mysql.createConnection({
     host: "companies.cygwiqvea0nt.us-west-1.rds.amazonaws.com",
-    user: 'dderojasAdmin',
-    password: 'challenge',
-    databse: 'companies',
+    user: "dderojasAdmin",
+    password: "challenge",
+    database: "companies",
 })
 
-// connection.connect((error) => {
-//     if(error) throw error;
-//     console.log('data base connected!!!')
+// connection.query('CREATE TABLE Companies (Name VARCHAR(255), Founded VARCHAR(255))', (error, results, fields) => {
+//     if (error) console.log('errorrrrrr', error)
+//     console.log(results, 'table probably created?')
 // })
 
 // connection.end()
 app.get('/test', (req, res) => {
     console.log('hellooooasdfasdfasdfa')
-    connection.query('SELECT * FROM sys.Founders', (error, results, fields) => {
+    connection.query('SELECT * FROM sys.Locations', (error, results, fields) => {
         if (error) console.log(error,'error I think' )
         console.log('dataDawg', results)
         res.json(results)
@@ -30,6 +30,7 @@ app.get('/test', (req, res) => {
         
         
         
-        app.listen(3001, () => {
-            console.log('port 3001 good?')
-        })
+app.listen(3001, () => {
+    console.log(connection, 'connection!!!')
+    console.log('port 3001 good?')
+})
