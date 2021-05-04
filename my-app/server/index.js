@@ -2,7 +2,8 @@ const express = require('express');
 // const mysql = require('mysql')
 const cors = require('cors')
 const db = require('../database')
-
+// const hello = require('../database')
+const { companies } = require('../database')
 const app = express();
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -23,14 +24,16 @@ app.use(cors())
 //     console.log(results, 'table probably created?')
 // })
 
-// app.get('/test', (req, res) => {
-//     console.log('hellooooasdfasdfasdfa')
-//     connection.query('DROP TABLE sys.Companies', (error, results, fields) => {
-//         if (error) console.log(error,'error I think' )
-//         console.log('dataDawg', results)
-//         res.json(results)
-//     })
-// })
+app.get('/test', (req, res) => {
+    console.log('hellooooasdfasdfasdfa', companies)
+    companies.findAll()
+    .then((val) => {
+        res.send(val)
+    })
+    .catch((e) => {
+        console.log(e, 'error back here')
+    })
+})
         
 console.log('here!!!!!!!', db)
 db.sequelize.sync().then((req) => {

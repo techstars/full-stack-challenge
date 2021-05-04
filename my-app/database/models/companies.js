@@ -28,12 +28,12 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 notEmpty: true
             }
-        }
+        },
     })
     Companies.associate = (models) => {
-        Companies.belongsTo(models.Locations, {
-            as: 'location',
-            foreignKey: 'Location'
+        Companies.hasOne(models.Locations, {
+            as: "Location",
+            foreignKey: "Location"
         })
     }
     return Companies;

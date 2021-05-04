@@ -21,10 +21,10 @@ const App = () => {
     .then((response) => {
       let { data } = response
       console.log(data, 'response dawg')
-      setFirstName(data[0].FirstName)
+      setFirstName(data[0].Name)
     })
     .catch((error) => {
-      console.log(error, 'errororororor')
+      console.log(error, 'error in the front')
     })
   }
 
