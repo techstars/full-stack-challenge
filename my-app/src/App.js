@@ -3,8 +3,10 @@ import { Formik, Form, Field } from 'formik'
 import axios from 'axios';
 
 const App = () => {
+  const port = process.env.port || "http://localhost:3001/"
+ 
   const api = axios.create({
-    baseURL: "http://localhost:3001/"
+    baseURL: port
   })
   const [companies, setCompanies] = useState([])
 
