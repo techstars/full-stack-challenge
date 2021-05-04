@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "concurrently": "^6.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "formik": "^2.2.6",
@@ -20,8 +21,13 @@
     "styled-system": "^5.1.5",
     "web-vitals": "^1.1.1"
   },
+  "engines": {
+    "node": "16.0.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start-server": "node server.js",
+    "dev": "react-scripts start",
+    "start": "concurrently \"npm run dev\" \"npm run start-server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

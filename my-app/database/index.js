@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize')
 
 const dbName = process.env.DBNAME || 'companiesChallenge'
+console.log(process.env.DBNAME, dbName, 'testdbname!!!!!')
+console.log(process.env.ENDPOINT, 'endopinttest!!!!!!')
 
 const sequelize = new Sequelize(dbName,'dderojasAdmin', 'mypassword',{
     host: process.env.ENDPOINT || 'companieschallenge.cygwiqvea0nt.us-west-1.rds.amazonaws.com',

@@ -64,6 +64,7 @@ app.post('/postTest', async (req, res) => {
 
 db.sequelize.sync().then((req) => {
     const port = process.env.PORT || 3001
+    console.log(process.env.PORT, port, 'testportbackend!!')
     app.listen(port, () => {
         console.log('port 3001 server running!!!')
     })

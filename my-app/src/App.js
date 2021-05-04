@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const App = () => {
   const port = process.env.PORT || "http://localhost:3001/"
- 
+  console.log(process.env.PORT, port, 'testportstuff!!!!!')
   const api = axios.create({
     baseURL: port
   })
