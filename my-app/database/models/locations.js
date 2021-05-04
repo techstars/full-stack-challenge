@@ -2,14 +2,15 @@ const companiesModel = require('./companies')
 
 module.exports = (sequelize, DataTypes) => {
     const Locations = sequelize.define('Locations', {
-        id: {
-            primaryKey: true,
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     primaryKey: true,
+        //     autoIncrement: true,
+        //     allowNull: false,
+        //     validate: {
+        //         notEmpty: true
+        //     }
+        // },
         City: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,5 +26,12 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     })
+    // Locations.hasOne(models.Companies, {
+    //     as: "Location",
+    //     foreignKey: "Location"
+    // })
+    // Locations.associate = (models) => {
+    //     Locations.belongsTo(models.Companies)
+    // }
     return Locations;
 }

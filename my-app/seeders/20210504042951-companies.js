@@ -12,7 +12,6 @@ module.exports = {
      * }], {});
     */
       await queryInterface.bulkInsert('Locations', [{
-        id: 1,
         City: 'Westfield',
         State: 'CA',
         createdAt: new Date(),
@@ -21,9 +20,8 @@ module.exports = {
 
       const locations = await queryInterface.sequelize.query(`SELECT id from Locations`);
       const locationRows = locations[0];
-      console.log(locations, 'asdlfkasdf!!!!!')
+
       await queryInterface.bulkInsert('Companies', [{
-          id: 1,
           Name: 'Google',
           Location: locationRows[0].id,
           Founded: 1954,
@@ -36,7 +34,6 @@ module.exports = {
 
       return queryInterface.bulkInsert('Founders', [
         {
-          id: 1,
           Name: 'Dwayne',
           Title: 1954,
           Company: companyRows[0].id,
