@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize')
 
 const dbName = process.env.DBNAME || 'companiesChallenge'
 
-const sequelize = new Sequelize(DBNAME,'dderojasAdmin', 'mypassword',{
+const sequelize = new Sequelize(dbName,'dderojasAdmin', 'mypassword',{
     host: process.env.ENDPOINT || 'companieschallenge.cygwiqvea0nt.us-west-1.rds.amazonaws.com',
     dialect: 'mysql',
     port: 3306,

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors')
-const db = require('../database')
-const { companies, locations, founders } = require('../database')
+const db = require('./database')
+const { companies, locations, founders } = require('./database')
 const app = express();
 
 app.use(express.json())
@@ -63,7 +63,7 @@ app.post('/postTest', async (req, res) => {
 })
 
 db.sequelize.sync().then((req) => {
-    const port = 3001 || process.env.PORT
+    const port = process.env.PORT || 3001
     app.listen(port, () => {
         console.log('port 3001 server running!!!')
     })
