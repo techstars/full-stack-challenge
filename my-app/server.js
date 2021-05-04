@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
+app.use(express.static('public'))
 
 // const connection = mysql.createConnection({
 //     host: "companies.cygwiqvea0nt.us-west-1.rds.amazonaws.com",
@@ -23,6 +24,10 @@ app.use(cors())
 //     if (error) console.log('errorrrrrr', error)
 //     console.log(results, 'table probably created?')
 // })
+// app.get('/', (req, res) => {
+//     res.send('hello world')
+// })
+
 
 app.get('/test', (req, res) => {
     console.log('inget!!!!!', companies)
