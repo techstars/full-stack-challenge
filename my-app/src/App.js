@@ -46,7 +46,7 @@ const App = () => {
 const companiesArr = companies.length > 0 ? companies : [] 
   return (
     <div>
-      Test
+      Companies Challenge
       <Formik onSubmit={handleSubmit} validationSchema={validationSchema} initialValues={{ company: '', founded: '', city: '', state: '' }}>
         <Form>
           <Field placeholder="company" type="company" name="company"/>
