@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import axios from 'axios';
 import { object, string, number} from 'yup';
-import Card from './components/cardTable'
 
 const App = () => {
   const [companies, setCompanies] = useState([])

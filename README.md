@@ -85,3 +85,6 @@ Create a test suite for your application, writing unit and or functional tests t
 If you move onto the next stage of the interview process we will have you come in and pair program with our engineers and build on top of your code base.  Example features we might implement together would be to add category tags, add a search component or add images to Companies and Founders using a third party hosting service.
 
 
+## Initiate App
+1. cd into my-app and run npm i
+2. npm run start
