@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import axios from 'axios';
+import { object, string, ref, number} from 'yup';
 
 const App = () => {
   const port = process.env.PORT || "http://localhost:3001/"
@@ -9,6 +10,13 @@ const App = () => {
     baseURL: port
   })
   const [companies, setCompanies] = useState([])
+
+  const validationSchema = object({
+    company: string().required(`Enter your company's name`),
+    city: string().required('Enter a city'),
+    state: string().required('Enter a state'),
+    founded: number().required('When was the company founded?')
+  })
 
   const handleSubmit = (value) => {
     console.log('hello ther!!!11', value)
@@ -47,12 +55,16 @@ const companiesArr = companies.length > 0 ? companies : []
   return (
     <div>
       Test
-      <Formik onSubmit={handleSubmit} initialValues={{ company: '', founded: '', city: '', state: '' }}>
+      <Formik onSubmit={handleSubmit} validationSchema={validationSchema} initialValues={{ company: '', founded: '', city: '', state: '' }}>
         <Form>
           <Field type="company" name="company"/>
+          <br/>
           <Field type="founded" name="founded"/>
+          <br/>
           <Field type="city" name="city"/>
+          <br/>
           <Field type="state" name="state"/>
+          <br/>
           <button type="submit">submit</button>
         </Form>
       </Formik>
