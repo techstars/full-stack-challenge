@@ -5,13 +5,6 @@ import { object, string, number} from 'yup';
 import Card from './components/cardTable'
 
 const App = () => {
-  // for development
-  // const port = "3001"
-  // console.log(process.env.PORT, port, 'testportstuff!!!!!')
-  // const api = axios.create({
-  //   // baseURL: port
-  //   baseURL: "http://localhost:3001"
-  // })
   const [companies, setCompanies] = useState([])
 
   const validationSchema = object({
@@ -51,9 +44,6 @@ const App = () => {
     })
   }
 
-// const buttons = [<button>heyhye</button>]
-
-console.log(companies, 'checking companies!!!')
 const companiesArr = companies.length > 0 ? companies : [] 
   return (
     <div>
@@ -71,7 +61,7 @@ const companiesArr = companies.length > 0 ? companies : []
           <button type="submit">submit</button>
         </Form>
       </Formik>
-          <button onClick={handleClick}>get stuff</button>
+          <button onClick={handleClick}>get</button>
           {companiesArr.map((val) => {
             return <li>{val.Name || ''}</li>
           })}
