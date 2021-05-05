@@ -28,7 +28,7 @@
   "scripts": {
     "start-server": "node server.js",
     "dev": "react-scripts start",
-    "start": "concurrently \"npm run dev\" \"npm run start-server\"",
+    "start": "concurrently \"npm run build\" \"npm run dev\" \"npm run start-server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
