@@ -5,7 +5,7 @@ import { object, string, number} from 'yup';
 import Card from './components/cardTable'
 
 const App = () => {
-  const port = process.env.PORT || "0.0.0.0:3001/"
+  const port = process.env.PORT || "3001"
   console.log(process.env.PORT, port, 'testportstuff!!!!!')
   const api = axios.create({
     baseURL: port
