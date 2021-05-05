@@ -30,7 +30,6 @@ const App = () => {
     .then((response) => {
       let { data } = response
       console.log(data, 'in put')
-      // setCompanies(data.Name)
       setCompanies(arr => [...arr, ...[data]])
     })
     .catch((error) => {
