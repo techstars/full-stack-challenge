@@ -8,8 +8,9 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
-// app.use(express.static('public'))
-app.use(express.static(path.join(__dirname, 'public'))); 
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build'))); // possibly the solution instead of public
+
 
 // const connection = mysql.createConnection({
 //     host: "companies.cygwiqvea0nt.us-west-1.rds.amazonaws.com",
