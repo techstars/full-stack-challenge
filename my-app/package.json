@@ -15,10 +15,12 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-table": "^7.7.0",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",
     "styled-components": "^5.2.3",
     "styled-system": "^5.1.5",
+    "theme-ui": "^0.7.5",
     "web-vitals": "^1.1.1",
     "yup": "^0.32.9"
   },
@@ -28,7 +30,9 @@
   "scripts": {
     "start-server": "node server.js",
     "dev": "react-scripts start",
-    "start": "concurrently \"npm run build\" \"npm run dev\" \"npm run start-server\"",
+    "install-client": "npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "concurrently \"npm run dev\" \"npm run start-server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

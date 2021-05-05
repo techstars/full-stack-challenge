@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import axios from 'axios';
-import { object, string, ref, number} from 'yup';
+import { object, string, number} from 'yup';
+import Card from './components/cardTable'
 
 const App = () => {
-  const port = process.env.PORT || "http://localhost:3001/"
+  const port = process.env.PORT || "http://localhost:5000/"
   console.log(process.env.PORT, port, 'testportstuff!!!!!')
   const api = axios.create({
     baseURL: port
@@ -50,6 +51,9 @@ const App = () => {
       console.log(error, 'error in the front')
     })
   }
+
+// const buttons = [<button>heyhye</button>]
+
 console.log(companies, 'checking companies!!!')
 const companiesArr = companies.length > 0 ? companies : [] 
   return (
@@ -72,6 +76,7 @@ const companiesArr = companies.length > 0 ? companies : []
           {companiesArr.map((val) => {
             return <li>{val.Name || ''}</li>
           })}
+          <Card />
     </div>
   )
 }
