@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Box, Grid } from 'theme-ui';
+import { flexbox, grid, box } from 'styled-system';
 
 const ActionButton = styled.button`
   margin: 0 5px;
@@ -16,18 +18,18 @@ const ActionButton = styled.button`
 ` 
 
 const Card = (props) => (
-    <div style={{ color: '#003366', borderColor: 'blue', border: '5px solid' }}>
-      <h2>The Benefits of Green Apples</h2>
+    <div style={{ flexContainer: "", color: '#003366', borderColor: 'blue', border: '5px solid' }}>
+      <Grid gridGap={[128, null, 192]}>
+        <div>hey</div>
+        <div>hello</div>
+      </Grid>
+      {/* <h2>The Benefits of Green Apples</h2>
       <div>3/2/2019</div>
       <div>
         Green apples have a high fiber content which helps in increasing the
-        body's metabolism. While consuming an apple, make sure that you're not
-        tossing the peel in the trash. Consuming apple with its peel improves the
-        overall health. Due to its high fiber content, apple helps in
-        detoxification process. It keeps the liver and digestive system away from
-        harmful elements.
+        body's metabolism. 
       </div>
-      <ActionButton>hey</ActionButton>
+      <ActionButton>hey</ActionButton> */}
     </div>
   )
 export default Card
