@@ -21,7 +21,7 @@ const App = () => {
 
   const handleSubmit = (value) => {
     console.log('hello ther!!!11', value)
-    api({
+    axios({
       method: 'post',
       url: '/postTest',
       data: value
@@ -38,7 +38,7 @@ const App = () => {
   }
 
   const handleClick = () => {
-    api({
+    axios({
       method: 'get',
       url: '/test'
     })
