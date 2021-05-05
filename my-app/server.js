@@ -8,28 +8,7 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'build'))); // possibly the solution instead of public
-
-
-// const connection = mysql.createConnection({
-//     host: "companies.cygwiqvea0nt.us-west-1.rds.amazonaws.com",
-//     user: "dderojasAdmin",
-//     password: "challenge",
-//     // database: "companies", why no work?!?!?
-//     port: 3306
-// })
-// console.log(connection, 'connenca;skdjfasf')
-// connection.connect((err) => {
-//     console.log(err.stack, 'errororororo')
-// })
-// connection.query('CREATE TABLE IF NOT EXISTS sys.Companies (Name VARCHAR(255), Founded VARCHAR(255))', (error, results, fields) => {
-//     if (error) console.log('errorrrrrr', error)
-//     console.log(results, 'table probably created?')
-// })
-// app.get('/', (req, res) => {
-//     res.send('hello world')
-// })
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.get('/test', (req, res) => {
