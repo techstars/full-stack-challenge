@@ -50,13 +50,13 @@ const companiesArr = companies.length > 0 ? companies : []
       Test
       <Formik onSubmit={handleSubmit} validationSchema={validationSchema} initialValues={{ company: '', founded: '', city: '', state: '' }}>
         <Form>
-          <Field type="company" name="company"/>
+          <Field placeholder="company" type="company" name="company"/>
           <br/>
-          <Field type="founded" name="founded"/>
+          <Field placeholder="founded" type="founded" name="founded"/>
           <br/>
-          <Field type="city" name="city"/>
+          <Field placeholder="city" type="city" name="city"/>
           <br/>
-          <Field type="state" name="state"/>
+          <Field placeholder="state" type="state" name="state"/>
           <br/>
           <button type="submit">submit</button>
         </Form>
@@ -65,7 +65,6 @@ const companiesArr = companies.length > 0 ? companies : []
           {companiesArr.map((val) => {
             return <li>{val.Name || ''}</li>
           })}
-          <Card />
     </div>
   )
 }
