@@ -12,19 +12,16 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.get('/test', (req, res) => {
-    console.log('inget!!!!!', companies)
     companies.findAll()
     .then((val) => {
         res.send(val)
     })
     .catch((e) => {
-        console.log(e, 'error back here')
+        console.log(e, 'error in get endpoint')
     })
 })
 
 app.post('/postTest', async (req, res, next) => {
-    console.log('in put!!!!', req.body)
-
     try {
         const locationResult = await locations.create({
                 City: req.body.city,
@@ -40,7 +37,7 @@ app.post('/postTest', async (req, res, next) => {
            createdAt: new Date(),
            updatedAt: new Date()
        })
-       console.log(companiesResult, 'companiesResfasdfadsfas')
+
        res.send(companiesResult.dataValues)
        // await founders.create({
        //     name: req.body.city,
@@ -50,15 +47,15 @@ app.post('/postTest', async (req, res, next) => {
        //     updatedAt: new Date()
        // })
     } catch(e) {
-        console.log(e, 'error in post!!!')
+        console.log(e, 'error in post endpoint')
         next(e)
     }
 })
 
 db.sequelize.sync().then((req) => {
     const port = process.env.PORT || 3001
-    console.log(process.env.PORT, port, 'testportbackend!!')
+    console.log(`env port: ${port}`)
     app.listen(port, () => {
-        console.log('port 3001 server running!!!')
+        console.log(`server running on port:${port}`)
     })
 });

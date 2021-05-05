@@ -23,13 +23,8 @@ const Card = (props) => (
         <div>hey</div>
         <div>hello</div>
       </Grid>
-      {/* <h2>The Benefits of Green Apples</h2>
-      <div>3/2/2019</div>
-      <div>
-        Green apples have a high fiber content which helps in increasing the
-        body's metabolism. 
-      </div>
-      <ActionButton>hey</ActionButton> */}
     </div>
   )
+
+
 export default Card

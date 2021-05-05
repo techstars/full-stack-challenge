@@ -9,7 +9,8 @@ const App = () => {
   // const port = "3001"
   // console.log(process.env.PORT, port, 'testportstuff!!!!!')
   // const api = axios.create({
-  //   baseURL: port
+  //   // baseURL: port
+  //   baseURL: "http://localhost:3001"
   // })
   const [companies, setCompanies] = useState([])
 
@@ -21,34 +22,32 @@ const App = () => {
   })
 
   const handleSubmit = (value) => {
-    console.log('hello ther!!!11', value)
-    axios({
+    console.log('handleSubmit value:', value)
+    api({
       method: 'post',
       url: '/postTest',
       data: value
     })
     .then((response) => {
       let { data } = response
-      console.log(data, 'in put')
       setCompanies(arr => [...arr, ...[data]])
     })
     .catch((error) => {
-      console.log(error, 'error in the front')
+      console.log(error, 'error in post response')
     })
   }
 
   const handleClick = () => {
-    axios({
+    api({
       method: 'get',
       url: '/test'
     })
     .then((response) => {
       let { data } = response
-      console.log(data, 'response dawg')
       setCompanies(arr => [...arr, ...data])
     })
     .catch((error) => {
-      console.log(error, 'error in the front')
+      console.log(error, 'error in get response')
     })
   }
 
