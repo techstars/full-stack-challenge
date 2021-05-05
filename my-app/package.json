@@ -24,6 +24,7 @@
     "web-vitals": "^1.1.1",
     "yup": "^0.32.9"
   },
+  "homepage": ".",
   "engines": {
     "node": "14.16.1"
   },
