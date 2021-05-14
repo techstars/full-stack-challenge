@@ -1,0 +1,122 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.information input {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+/* .information button {
+  width: 300px;
+  height: 50px;
+  margin-top: 20px;
+} */
+
+.information button:hover {
+  cursor: pointer;
+}
+
+/* button {
+  width: 320px;
+  height: 50px;
+  margin-top: 15px;
+} */
+
+button:hover {
+  cursor: pointer;
+}
+
+.companies {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.company {
+  width: 700px;
+  height: auto;
+  /* border: 1px solid black; */
+  margin: 10px;
+  display: flex;
+  padding: 10px;
+}
+
+.company h3 {
+  margin: 20px;
+}
+
+.new-company-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.founded-date {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 15px;
+}
+
+.founding-date-location {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  /* background-color: red; */
+}
+
+.description {
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: blue; */
+}
+
+.founder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.founders-section {
+  margin: 0px 10px 10px 0px;
+  padding: 10px 40px;
+  border: 1px solid black;
+}
+
+.founder-founder-position {
+  margin: 10px;
+}
+
+.save-cancel-button {
+  margin: 10px;
+}
