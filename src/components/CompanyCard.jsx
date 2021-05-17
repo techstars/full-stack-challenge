@@ -74,7 +74,7 @@ const CompanyCard = () => {
     const addCompany = () => {
         const defaultState = "";
         setShowForm(true);
-        axios.post('https://techstars-challenge-keljohnson.herokuapp.com//create', {
+        axios.post('https://techstars-challenge-keljohnson.herokuapp.com/create', {
             name: name,
             state: state,
             city: city,
