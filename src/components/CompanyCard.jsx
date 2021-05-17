@@ -103,7 +103,7 @@ const CompanyCard = () => {
     }
 
     const addFounder = (id) => {
-        axios.put(`https://techstars-challenge-keljohnson.herokuapp.com//addFounder`, { newFounder: newFounder, founderPosition: founderPosition, id: id }).then((response) => {
+        axios.put(`https://techstars-challenge-keljohnson.herokuapp.com/addFounder`, { newFounder: newFounder, founderPosition: founderPosition, id: id }).then((response) => {
             setCompanyList(
                 companyList.map((val) => {
 
@@ -128,7 +128,7 @@ const CompanyCard = () => {
     }
 
     const getCompanies = () => {
-        axios.get('https://techstars-challenge-keljohnson.herokuapp.com//companies').then((response) => {
+        axios.get('https://techstars-challenge-keljohnson.herokuapp.com/companies').then((response) => {
             console.log('RESPONSE', response.data)
             setCompanyList(response.data)
 
@@ -136,7 +136,7 @@ const CompanyCard = () => {
     }
 
     const updateCompany = (id) => { // Try and make it so you can update the whole card with this one function
-        axios.put('https://techstars-challenge-keljohnson.herokuapp.com//update', { name: newName, state: newState, city: newCity, foundedDate: newFoundedDate, description: newDescription, newFounder: newFounder, founderPosition: founderPosition, id: id }).then((response) => {
+        axios.put('https://techstars-challenge-keljohnson.herokuapp.com/update', { name: newName, state: newState, city: newCity, foundedDate: newFoundedDate, description: newDescription, newFounder: newFounder, founderPosition: founderPosition, id: id }).then((response) => {
             setCompanyList(
                 companyList.map((val) => {
                     return val.id === id
@@ -164,7 +164,7 @@ const CompanyCard = () => {
     }
 
     const deleteCompany = (id) => {
-        axios.delete(`https://techstars-challenge-keljohnson.herokuapp.com//delete/${id}`).then((response) => {
+        axios.delete(`https://techstars-challenge-keljohnson.herokuapp.com/delete/${id}`).then((response) => {
             setCompanyList(
                 companyList.filter((val) => {
                     return val.id !== id;
